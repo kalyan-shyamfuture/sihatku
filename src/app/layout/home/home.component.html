@@ -1,0 +1,340 @@
+<app-header></app-header>
+<!-- <owl-carousel-o [options]="bannerOptions">
+  <ng-template carouselSlide *ngFor="let banner of bannerList; let i = index">
+      <div class="carousel-item active">
+          <div class="view">
+              <img class="d-block w-100" [src]="imageBaseUrl+banner.image_large" alt="First slide">
+              <div class="mask rgba-black-light"></div>
+          </div>
+      </div>
+  </ng-template>
+</owl-carousel-o> -->
+
+<div class="wocommersbox"> <a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
+
+<!-- Start Banner -->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+    <!-- <ol class="carousel-indicators">
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+        </ol> -->
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <owl-carousel-o [options]="bannerOptions">
+            <ng-template carouselSlide *ngFor="let banner of mediaList; let i = index">
+                <div class="carousel-item active">
+                    <div class="view"> <img class="d-block w-100" [src]="banner.image" alt="First slide">
+                        <div class="mask rgba-black-light"></div>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+        <!-- <div class="carousel-item active">
+                <div class="view">
+                    <img class="d-block w-100" src="assets/img/banner1.png" alt="First slide">
+                    <div class="mask rgba-black-light"></div>
+                </div>
+    
+            </div>
+            <div class="carousel-item">
+                <div class="view">
+                    <img class="d-block w-100" src="assets/img/banner2.png" alt="Second slide">
+                    <div class="mask rgba-black-strong"></div>
+                </div>
+    
+            </div>
+            <div class="carousel-item">
+                <div class="view">
+                    <img class="d-block w-100" src="assets/img/banner3.png" alt="Third slide">
+                    <div class="mask rgba-black-slight"></div>
+                </div>
+    
+            </div> -->
+    </div>
+    <!--/.Slides-->
+</div>
+<!--/.End Banner-->
+
+<section class="iconSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/maging.png" alt="" title=""> </div>
+                    <h2><a href="#">Imaging & Radiology</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/lab.png" alt="" title=""> </div>
+                    <h2><a href="#">Labs</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/generalsurgery.png" alt="" title=""> </div>
+                    <h2><a href="#">General Surgery</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/bariatrics-.png" alt="" title=""> </div>
+                    <h2><a href="#">Bariatrics</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/ivf.png" alt="" title=""> </div>
+                    <h2><a href="#">IVF/Fertility</a></h2>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/more.png" alt="" title="" class="iconSectionRoundDots"> </div>
+                    <h2><a href="#">More</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-----iconbox---->
+
+<!-- Start Topoffers -->
+<section id="topoffers" class="section-bg wow fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="text-left">Top Offers</h3>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="text-right"><a href="#">View All <i class="fa fa-play" aria-hidden="true"></i></a></h3>
+            </div>
+        </div>
+        <div class="carousel-inner" role="listbox">
+            <owl-carousel-o [options]="topOffersOptions">
+                <ng-template carouselSlide *ngFor="let topoffer of topOfferList; let i = index">
+                    <div class="carousel-item active">
+                        <div class="view"> <img class="d-block w-100" [src]="topoffer.image" alt="First slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>
+
+<!--/.End Topoffers-->
+
+<!-- Start Most Popular -->
+<section id="topoffers2" class="section-bg wow fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="text-left">Most Popular Procedures</h3>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="text-right"><a href="#">View All <i class="fa fa-play" aria-hidden="true"></i></a></h3>
+            </div>
+        </div>
+        <div class="carousel-inner" role="listbox">
+            <owl-carousel-o [options]="mostpopularOptions">
+                <ng-template carouselSlide *ngFor="let mostpopular of mostpopularList; let i = index">
+                    <div class="carousel-item active">
+                        <div class="view"> <img class="d-block w-100" [src]="mostpopular.image" alt="First slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>
+<!--/.End Most Popular-->
+
+<!-- Start Featured Providers -->
+<section id="topoffers3" class="section-bg wow fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 class="text-left">Featured Providers</h3>
+            </div>
+            <div class="col-sm-6">
+                <h3 class="text-right"><a href="#">View All <i class="fa fa-play" aria-hidden="true"></i></a></h3>
+            </div>
+        </div>
+        <div class="carousel-inner" role="listbox">
+            <owl-carousel-o [options]="featuredprovidersOptions">
+                <ng-template carouselSlide *ngFor="let featuredproviders of featuredprovidersList; let i = index">
+                    <div class="carousel-item active">
+                        <div class="view"> <img class="d-block w-100" [src]="featuredproviders.image" alt="First slide">
+                            <div class="mask rgba-black-light"></div>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>
+<!--/.End Featured Providers-->
+<div class="clearfix"></div>
+
+<!-----------------------------------------How Sihatku work---------------------------------------------------------------------->
+
+<section id="howSihatkuWork">
+    <div class="container">
+        <div class="col-sm-12">
+            <h5>How Sihatku work</h5>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="sihatkuWorkBox"> </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="sihatkuWorkBox"> </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="sihatkuWorkBox"> </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="sihatkuWorkBox"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!------------------------------Explore Sihatku----------------------------------------------------------->
+
+<section id="exploreSihatku">
+    <div class="container">
+        <div class="col-sm-12">
+            <h5>Explore Sihatku</h5>
+        </div>
+    </div>
+</section>
+<section class="workRow1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="workRow1Left"> <img src="assets/img/MarketPlace.png" alt="" title=""> </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="workRow1Right">
+                    <h2>Market Place</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="workRow2">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="workRow2Left">
+                    <h2>Health Tracking System</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it </p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="workRo2wRight"> <img src="assets/img/HealthTracking.png" alt="" title=""> </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="workRow1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="workRow1Left"> <img src="assets/img/BloodDonation.png" alt="" title=""> </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="workRow1Right">
+                    <h2>Blood Donation Service</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!----------------------------------------------------------------->
+
+<!-- Start Download App -->
+<section id="downloadapp" class="section-bg wow fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5>Download the app</h5>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="left-banner"> <img src="assets/img/left-banner.png" alt="" title=""></div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="rightbox">
+                    <form>
+                        <h1>Drop us a note</h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <input type="text" placeholder="Email ID" name="email" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <textarea id="subject" name="subject" placeholder="Share your query/suggestion/Feedback" style="height:200px"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <button type="submit" class="signupbtn">Sign Up</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-xs-12">
+                                <p><b>Registered office :</b> 123 Str , xxx city, yy state, zz- 000000<br>
+                                    <b>Call us :</b> +00 0000000000</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/.End Download App-->
+
+<div class="clearfix"></div>
+
+<!------------------------socailIcon------------------------------------------->
+
+<section class="socialIconRow">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h5>Social Us</h5>
+            </div>
+            <div class="socialIconBox">
+                <ul>
+                    <li>
+                        <a href="#"> <i class="fa fa-facebook-f icon"></i></a>
+                    </li>
+                    <li> <a href="#"><i class="fa fa-twitter icon"></i></a> </li>
+                    <li> <a href="#"><i class="fa fa-instagram icon" aria-hidden="true"></i></a></li>
+                    <li> <a href="#"><i class="fa fa-youtube-play icon" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin icon" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest-p icon" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!------------------------socailIcon------------------------------------------->
+<app-footer></app-footer>

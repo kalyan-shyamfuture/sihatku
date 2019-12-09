@@ -1,0 +1,100 @@
+<!-- Modal Login -->
+<!-- <div class="modal fade login-modal" id="myModal" role="dialog">
+    <div class="modal-dialog"> -->
+
+<!-- Modal content-->
+<div class="login-modal">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sign in</h4>
+                <button type="button" class="close" data-dismiss="modal" (click)="closeSignIn()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form role="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()" novalidate *ngIf="!showOtp">
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number:</label>
+                        <input type="text" class="form-control" id="mobile" name="mobile" formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+                        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                            <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+                            <div *ngIf="!f.mobile.errors.pattern && f.mobile.errors.minlength">Mobile Number must be at least 10 numeric characters</div>
+                            <div *ngIf="!f.mobile.errors.pattern && f.mobile.errors.maxlength">Mobile Number can not be more than 10 numeric characters</div>
+                            <div *ngIf="f.mobile.errors.pattern">Only numeric characters are allowed</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn waves-effect waves-light">Sign in</button>
+                </form>
+                <form role="form" [formGroup]="otpForm" (ngSubmit)="onOTPSubmit()" novalidate *ngIf="showOtp">
+                    <div class="form-group">
+                        <label for="otp">OTP:</label>
+                        <input type="text" class="form-control" id="otp" name="otp" formControlName="otp" [ngClass]="{ 'is-invalid': submitted && f1.otp.errors }">
+                        <div *ngIf="submitted && f1.otp.errors" class="invalid-feedback">
+                            <div *ngIf="f1.otp.errors.required">OTP is required</div>
+                            <div *ngIf="!f1.otp.errors.pattern && f1.otp.errors.minlength">Mobile Number must be at least 4 numeric characters</div>
+                            <div *ngIf="!f1.otp.errors.pattern && f1.otp.errors.maxlength">Mobile Number can not be more than 4 numeric characters</div>
+                            <div *ngIf="f1.otp.errors.pattern">Only numeric characters are allowed</div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn waves-effect waves-light">Submit</button>
+                </form>
+                <div class="form-group form-check">
+                    <p><a (click)="openForgotModal()">Forgot Password?</a></p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div>
+    <tabset>
+        <tab heading="Basic title" id="tab1">
+            <form role="form" [formGroup]="signInForm" (ngSubmit)="onSubmit()" novalidate *ngIf="!showOtp">
+                <div class="form-group">
+                    <label for="mobile">Mobile Number:</label>
+                    <input type="text" class="form-control" id="mobile" name="mobile" formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+                    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+                        <div *ngIf="!f.mobile.errors.pattern && f.mobile.errors.minlength">Mobile Number must be at least 10 numeric characters</div>
+                        <div *ngIf="!f.mobile.errors.pattern && f.mobile.errors.maxlength">Mobile Number can not be more than 10 numeric characters</div>
+                        <div *ngIf="f.mobile.errors.pattern">Only numeric characters are allowed</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn waves-effect waves-light">Sign in</button>
+            </form>
+        </tab>
+
+        <tab heading="Basic Title 1">
+
+            <form role="form" [formGroup]="otpForm" (ngSubmit)="onOTPSubmit()" novalidate *ngIf="showOtp">
+                <div class="form-group">
+                    <label for="otp">OTP:</label>
+                    <input type="text" class="form-control" id="otp" name="otp" formControlName="otp" [ngClass]="{ 'is-invalid': submitted && f1.otp.errors }">
+                    <div *ngIf="submitted && f1.otp.errors" class="invalid-feedback">
+                        <div *ngIf="f1.otp.errors.required">OTP is required</div>
+                        <div *ngIf="!f1.otp.errors.pattern && f1.otp.errors.minlength">Mobile Number must be at least 4 numeric characters</div>
+                        <div *ngIf="!f1.otp.errors.pattern && f1.otp.errors.maxlength">Mobile Number can not be more than 4 numeric characters</div>
+                        <div *ngIf="f1.otp.errors.pattern">Only numeric characters are allowed</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn waves-effect waves-light">Submit</button>
+            </form>
+        </tab>
+
+    </tabset>
+</div>
+
+<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
