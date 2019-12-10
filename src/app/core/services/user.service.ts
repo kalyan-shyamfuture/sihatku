@@ -60,7 +60,7 @@ export class UserService {
  
 
 
-  // Api for sihatku
+  // Api for Medflicks
 
   userSignin(data): Observable<any> {
     return this.http.post(environment.apiEndpoint + 'usersigninsignupotp/', data, {headers: this.headers})
