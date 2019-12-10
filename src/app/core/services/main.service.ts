@@ -173,7 +173,7 @@ export class MainService {
 
 
 
-  // Api for Medflicks
+  // Api for sihatku
 
   getBannerListNew() {
     return this.http.get(environment.apiEndpoint + 'healtharticles/', {headers: this.headers});

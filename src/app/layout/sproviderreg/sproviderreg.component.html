@@ -1,350 +1,356 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand pb-2" href="index.html"><img src="assets/img/logo.png" class="d-block w-100" alt="Sihatku" title="Sihatku"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <a class="navbar-brand pb-2" href="index.html"><img src="assets/img/logo.png" class="d-block w-100"
+                alt="Sihatku" title="Sihatku"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span
+                class="navbar-toggler-icon"></span> </button>
         <div class="reregistrationNav">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item"> <a class="nav-link" href="#">Already Registered ?</a> </li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Log In</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="JavaScript:void(0);">Already Registered ?</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="JavaScript:void(0);">Log In</a> </li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
-
 <!-----------------body----------------------------------------->
-
 <!-- Start ServiceForm -->
 <div class="container">
     <div class="serviceform">
-        <div class="row">
-            <div class="col-sm-4 col-xs-12">
-                <input type="text" class="form-control mb-3" placeholder="Email ID" name="email" required="">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <input type="text" class="form-control mb-3" placeholder="Email ID" name="email" required="">
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <input type="password" class="form-control mb-3" placeholder="Password">
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <input type="password" class="form-control mb-3" placeholder="Confirm Password">
+                </div>
             </div>
-            <div class="col-sm-4 col-xs-12">
-                <input type="password" class="form-control mb-3" placeholder="Password">
-            </div>
-            <div class="col-sm-4 col-xs-12">
-                <input type="password" class="form-control mb-3" placeholder="Confirm Password">
-            </div>
-        </div>
-        <h2>General information</h2>
-        <div class="row">
-            <div class="col-sm-6 col-xs-12">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Center/Clinic Name" name="email" required="">
+            <h2>General information</h2>
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Center/Clinic Name" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <textarea class="form-control" rows="3" id="comment"
+                                placeholder="About Center / Clinic"></textarea>
+                        </div>
                     </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <textarea class="form-control" rows="3" id="comment" placeholder="About Center / Clinic"></textarea>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <p>Image/Logo to represent your Center</p>
+                    <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-upload"
+                            aria-hidden="true"></i>
+                        <input type="file" name="file">
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <p>Image/Logo to represent your Center</p>
-                <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-upload" aria-hidden="true"></i>
-                    <input type="file" name="file">
-                </div>
-                <div class="clearfix"> </div>
-                <br>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-            <p> Provider Type </p>
-            </label>
-                </div>
-                <br>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio">
-              Health Service Provider </label>
-                </div>
-                <br>
-                <div class="form-check-inline">
-                    <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio">
-              Wellness Service Provider </label>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <h2>Add Your Services</h2>
-        <div class="row">
-            <div class="col-sm-4 col-xs-12">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <select class="mdb-select classic">
-                <option value="1">Choose Speciality</option>
-                <option value="2">....</option>
-                <option value="2">....</option>
-                <option value="2">....</option>
-              </select>
+                    <div class="clearfix"> </div>
+                    <br>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <p> Provider Type </p>
+                        </label>
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-12 col-xs-12">
-                        <textarea class="form-control" rows="5" id="comment" placeholder="About Procedure"></textarea>
+                    <br>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio">
+                            Health Service Provider </label>
+                    </div>
+                    <br>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="optradio">
+                            Wellness Service Provider </label>
                     </div>
                 </div>
             </div>
             <div class="clearfix"></div>
-            <div class="col-sm-4 col-xs-12">
-                <div class="row">
-                    <div class="clearfix"></div>
-                    <div class="col-sm-12 col-xs-12">
-                        <select class="mdb-select classic">
-                <option value="1">Select a Procedure</option>
-                <option value="2">10%</option>
-                <option value="2">20%</option>
-                <option value="2">30%</option>
-              </select>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-2" placeholder="Set Price" name="email" required="">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-sm-12 col-xs-12">
-                        <select class="mdb-select classic">
-                <option value="1">Add Discount</option>
-                <option value="2">10%</option>
-                <option value="2">20%</option>
-                <option value="2">30%</option>
-              </select>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Set Promo Code" name="email" required="">
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-4 col-xs-12">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <p>Add Images of Procedure</p>
-                        <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-upload" aria-hidden="true"></i>
-                            <div class="clearfix"></div>
-                            <input type="file" name="file">
+            <h2>Add Your Services</h2>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <select class="mdb-select classic">
+                                <option value="1">Choose Speciality</option>
+                                <option value="2">....</option>
+                                <option value="2">....</option>
+                                <option value="2">....</option>
+                            </select>
                         </div>
-                        <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-upload" aria-hidden="true"></i>
-                            <div class="clearfix"></div>
-                            <input type="file" name="file">
-                        </div>
-                        <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            <div class="clearfix"></div>
-                            <input type="file" name="file">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
                         <div class="clearfix"></div>
-                        <p><span>you can also choose to display our default images</span></p>
-                        <div class="default-image">
-                            <input type="checkbox" class="form-check-input" value="">
-                            <img src="assets/img/default-image-3.jpg" alt="" title=""></div>
-                        <div class="default-image">
-                            <input type="checkbox" class="form-check-input" value="">
-                            <img src="assets/img/default-image-2.jpg" alt="" title=""></div>
-                        <div class="default-image">
-                            <input type="checkbox" class="form-check-input" value="">
-                            <img src="assets/img/default-image-1.jpg" alt="" title=""></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <h2>Add a Practioner</h2>
-        <div class="row">
-            <div class="col-sm-4 col-xs-12">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Full Name" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="IC/Passport Number" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12 mb-3">
-                        <p>Gender</p>
-                        <div class="clearfix"></div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="optradio">
-                  Male </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="optradio">
-                  Female </label>
-                        </div>
-                        <div class="form-check-inline">
-                            <label class="form-check-label">
-                  <input type="radio" class="form-check-input" name="optradio">
-                  Other </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <select class="mdb-select classic">
-                <option value="1">Field of Speciality</option>
-                <option value="2">....</option>
-                <option value="2">....</option>
-              </select>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Place of Practice" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Medical Council No" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Medical School" name="email" required="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-xs-12">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <select class="mdb-select classic">
-                <option value="1">Title</option>
-                <option value="2">....</option>
-                <option value="2">....</option>
-              </select>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <select class="mdb-select classic">
-                <option value="1">Country of Residence</option>
-                <option value="2">....</option>
-                <option value="2">....</option>
-              </select>
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Contact Number" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Expertise Category" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Address of Practice" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Speciality Registration No" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="About Practioner" name="email" required="">
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-xs-12">
-                <div class="row">
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Date of Birth" name="email" required="">
-                    </div>
-                    <br clear="all">
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Sub Category" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Practising Since" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <input type="text" class="form-control mb-3" placeholder="Qualification" name="email" required="">
-                    </div>
-                    <div class="col-sm-12 col-xs-12">
-                        <p>Upload your photo (optional)</p>
-                        <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-upload" aria-hidden="true"></i>
-                            <div class="clearfix"></div>
-                            <input type="file" name="file" placeholder="Upload a Photo( Optional)">
+                        <div class="col-sm-12 col-xs-12">
+                            <textarea class="form-control" rows="5" id="comment"
+                                placeholder="About Procedure"></textarea>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-xs-12">
-                <button type="submit" class="btn1"><i class="fa fa-plus" aria-hidden="true"></i> Add Another Practioner</button>
                 <div class="clearfix"></div>
-                <button type="submit" class="btn1 mb-4"><i class="fa fa-plus" aria-hidden="true"></i> Add Another Service</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12 col-xs-12 d-flex justify-content-center">
-                <div class="justify-content-center">
-                    <button class="btn3" type="submit">
-          <a href="my-procedures-practioners.html">Submit</a>
-          </button>
-                    <button class="btn3" type="submit">Cancel</button>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="clearfix"></div>
+                        <div class="col-sm-12 col-xs-12">
+                            <select class="mdb-select classic">
+                                <option value="1">Select a Procedure</option>
+                                <option value="2">10%</option>
+                                <option value="2">20%</option>
+                                <option value="2">30%</option>
+                            </select>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-2" placeholder="Set Price" name="email"
+                                required="">
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-sm-12 col-xs-12">
+                            <select class="mdb-select classic">
+                                <option value="1">Add Discount</option>
+                                <option value="2">10%</option>
+                                <option value="2">20%</option>
+                                <option value="2">30%</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Set Promo Code" name="email"
+                                required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <p>Add Images of Procedure</p>
+                            <div class="file btn leftbtn waves-effect waves-light">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                <div class="clearfix"></div>
+                                <input type="file" name="file">
+                            </div>
+                            <div class="file btn leftbtn waves-effect waves-light">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                <div class="clearfix"></div>
+                                <input type="file" name="file">
+                            </div>
+                            <div class="file btn leftbtn waves-effect waves-light">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                <div class="clearfix"></div>
+                                <input type="file" name="file">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <div class="clearfix"></div>
+                            <p><span>you can also choose to display our default images</span></p>
+                            <div class="default-image">
+                                <input type="checkbox" class="form-check-input" value="">
+                                <img src="assets/img/default-image-3.jpg" alt="" title="">
+                            </div>
+                            <div class="default-image">
+                                <input type="checkbox" class="form-check-input" value="">
+                                <img src="assets/img/default-image-2.jpg" alt="" title="">
+                            </div>
+                            <div class="default-image">
+                                <input type="checkbox" class="form-check-input" value="">
+                                <img src="assets/img/default-image-1.jpg" alt="" title="">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-
+            <div class="clearfix"></div>
+            <h2>Add a Practioner</h2>
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Full Name" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="IC/Passport Number" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12 mb-3">
+                            <p>Gender</p>
+                            <div class="clearfix"></div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optradio">
+                                    Male </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optradio">
+                                    Female </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optradio">
+                                    Other </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <select class="mdb-select classic">
+                                <option value="1">Field of Speciality</option>
+                                <option value="2">....</option>
+                                <option value="2">....</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Place of Practice" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Medical Council No" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Medical School" name="email"
+                                required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <select class="mdb-select classic">
+                                <option value="1">Title</option>
+                                <option value="2">....</option>
+                                <option value="2">....</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <select class="mdb-select classic">
+                                <option value="1">Country of Residence</option>
+                                <option value="2">....</option>
+                                <option value="2">....</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Contact Number" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Expertise Category" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Address of Practice" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Speciality Registration No"
+                                name="email" required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="About Practioner" name="email"
+                                required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="row">
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Date of Birth" name="email"
+                                required="">
+                        </div>
+                        <br clear="all">
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Sub Category" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Practising Since" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <input type="text" class="form-control mb-3" placeholder="Qualification" name="email"
+                                required="">
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                            <p>Upload your photo (optional)</p>
+                            <div class="file btn leftbtn waves-effect waves-light">
+                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                <div class="clearfix"></div>
+                                <input type="file" name="file" placeholder="Upload a Photo( Optional)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <button type="submit" class="btn1"><i class="fa fa-plus" aria-hidden="true"></i> Add Another
+                        Practioner</button>
+                    <div class="clearfix"></div>
+                    <button type="submit" class="btn1 mb-4"><i class="fa fa-plus" aria-hidden="true"></i> Add Another
+                        Service</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 d-flex justify-content-center">
+                    <div class="justify-content-center">
+                        <button class="btn3" type="submit">
+                            <a href="my-procedures-practioners.html">Submit</a>
+                        </button>
+                        <button class="btn3" type="submit">Cancel</button>
+                    </div>
+                </div>
+            </div>
     </div>
 </div>
 <!-- End ServiceForm -->
-
 <!---------------------------------------------------------->
-
-
-
-
 <!-- Start Footer -->
 <footer class="page-footer font-small cyan darken-3">
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">
-
         <div class="container">
             <!-- Grid row-->
             <div class="row">
-
                 <!-- Grid column -->
                 <div class="col-md-12">
                     <div class="flex-center">
-
-
                         <!-- Twitter -->
                         <a class="tw-ic">
                             <i class="fa fa-twitter fa-lg white-text  mr-3 fa-2x"> </i>
                         </a>
-
                         <!--Instagram-->
                         <a class="ins-ic">
                             <i class="fa fa-instagram fa-lg white-text mr-3 fa-2x"> </i>
                         </a>
-
                         <!--Youtube-->
                         <a class="ins-ic">
                             <i class="fa fa-youtube fa-lg white-text mr-3 fa-2x"> </i>
                         </a>
-
                         <!-- Facebook -->
                         <a class="fb-ic">
                             <i class="fa fa-facebook-f fa-lg white-text mr-3 fa-2x"> </i>
                         </a>
-
                     </div>
                 </div>
                 <!-- Grid column -->
-
             </div>
             <!-- Grid row-->
-
             <div _ngcontent-jyo-c5="" class="container">
                 <div _ngcontent-jyo-c5="" class="footer-copyright text-center py-3">
-                    <a _ngcontent-jyo-c5="" class="mr-4" href="#">Terms &amp; Conditions</a>
-                    <a _ngcontent-jyo-c5="" class="mr-4" href="#">Privacy Policy</a>
-                    <a _ngcontent-jyo-c5="" class="mr-4" href="#">( c ) 2019 - 2027 Sihatku.com</a>
-                    <a _ngcontent-jyo-c5="" class="mr-4" href="#">Payment Policy</a>
-                    <a _ngcontent-jyo-c5="" class="mr-4" href="#">Disclamer</a>
-                    <a _ngcontent-jyo-c5="" class="mr-4" href="#">FA Qs etc</a></div>
+                    <a _ngcontent-jyo-c5="" class="mr-4" href="JavaScript:void(0);">Terms &amp; Conditions</a>
+                    <a _ngcontent-jyo-c5="" class="mr-4" href="JavaScript:void(0);">Privacy Policy</a>
+                    <a _ngcontent-jyo-c5="" class="mr-4" href="JavaScript:void(0);">( c ) 2019 - 2027 Sihatku.com</a>
+                    <a _ngcontent-jyo-c5="" class="mr-4" href="JavaScript:void(0);">Payment Policy</a>
+                    <a _ngcontent-jyo-c5="" class="mr-4" href="JavaScript:void(0);">Disclamer</a>
+                    <a _ngcontent-jyo-c5="" class="mr-4" href="JavaScript:void(0);">FA Qs etc</a>
+                </div>
             </div>
-
-
-
         </div>
-
-
         <!-- Copyright -->
     </div>
 </footer>
 <!--/.End Footer -->
-
-
 <!--/.End Footer -->

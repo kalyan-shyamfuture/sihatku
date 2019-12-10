@@ -86,7 +86,7 @@ body {
     color: #000;
     transition: .35s;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
     padding: 0px 9px;
 }
 
@@ -1274,8 +1274,9 @@ footer.page-footer a:hover {
 /*******************************how-is-work*****************************************************************/
 
 #howSihatkuWork {
-    padding: 40px 0px 0px;
+    padding: 40px 0px;
     margin: 0px;
+    background: #f4f4f4;
 }
 
 #howSihatkuWork h5::after {
@@ -1310,12 +1311,32 @@ footer.page-footer a:hover {
 }
 
 .sihatkuWorkBox {
-    width: 100%;
     padding: 0px;
     margin: 20px 0px;
-    background: #ccc;
-    min-height: 350px;
-    border-radius: 15px 15px 0px 0px;
+    background: #fff;
+    min-height: 339px;
+    border-radius: 35px;
+    position: relative;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.08), 0 5px 5px 0 rgba(0, 0, 0, 0.37);
+    border: 2px solid #d5d5d5;
+}
+
+.sihatkuWorkBox img {
+    width: 100%;
+    border-radius: 35px;
+}
+
+.sihatkuWorkBoxText {
+    position: absolute;
+    top: 266px
+}
+
+.sihatkuWorkBoxText h2 {
+    font-size: 20px;
+    padding: 0px 18px;
+    color: #000;
+    font-weight: 400;
+    line-height: 28px;
 }
 
 
@@ -1351,6 +1372,7 @@ footer.page-footer a:hover {
     z-index: 99999;
     border-radius: 10px 0px 0px 10px;
     padding: 9px 0px;
+    box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.08), 0 6px 6px 0px rgba(0, 0, 0, 0.37);
 }
 
 .wocommersbox a {
@@ -1662,7 +1684,7 @@ a h2.navtext {
 }
 
 .nav-item {
-    width: 89px;
+    width: auto;
     margin: 0px auto;
     margin-bottom: 0px;
     border: none;
@@ -1721,6 +1743,16 @@ a h2.navtext {
     color: #000;
     padding: 0px;
     margin: 0px;
+}
+
+.loginSection .nav-item {
+    width: 50%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.loginSection .tab-content {
+    padding: 30px 10px;
 }
 
 
