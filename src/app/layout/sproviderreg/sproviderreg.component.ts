@@ -9,7 +9,7 @@ import { MustMatch } from '../../core/validation/must-match.validator';
 export class SproviderregComponent implements OnInit {
 
   registerForm: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder
