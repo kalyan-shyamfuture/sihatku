@@ -39,7 +39,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  closeSignIn() {
+  closeModal() {
     this.dialogRef.close(true);
   }
   // convenience getter for easy access to form fields

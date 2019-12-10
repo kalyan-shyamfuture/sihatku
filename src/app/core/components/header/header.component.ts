@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
     router.events.pipe(
       filter(e => e instanceof NavigationEnd)
     ).subscribe(e => {
-     // this.closeNav();
+      this.closeNav();
       if (localStorage.getItem('cart')) {
         this.customer_cart_data = JSON.parse(localStorage.getItem('cart'));
         this.cartCount = this.customer_cart_data.length;
@@ -75,19 +75,19 @@ export class HeaderComponent implements OnInit {
   //  this.getSettings();
   }
 
-  // expandClose() {
-  //   if (this.openCloseAnim === 'open') {
-  //     this.closeNav();
-  //   } else {
-  //     this.expandNav();
-  //   }
-  // }
-  // closeNav() {
-  //   setTimeout(() => {
-  //     this.topNav.nativeElement.classList.remove('show');
-  //   }, 500);
-  //   this.openCloseAnim = 'close';
-  // }
+  expandClose() {
+    if (this.openCloseAnim === 'open') {
+      this.closeNav();
+    } else {
+      this.expandNav();
+    }
+  }
+  closeNav() {
+    setTimeout(() => {
+      this.topNav.nativeElement.classList.remove('show');
+    }, 500);
+    this.openCloseAnim = 'close';
+  }
   expandNav() {
     this.topNav.nativeElement.classList.add('show');
     this.openCloseAnim = 'open';

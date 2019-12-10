@@ -1,13 +1,15 @@
 // font-awesome fonts
 $fa-font-path : '../../../node_modules/font-awesome/fonts';
 // _variables.scss
-$primary: #3498db;
+$primary: #ccc;
 $secondary: #e67e22;
 $success: #2ecc71;
 $danger: #e74c3c;
+$primary2: rgb(219, 37, 37);
 $theme-colors: map-merge(
   (
-    'theme-red': #fa2c69
+    'theme-red': #fa2c69,
+    'primary2': $primary2
   )
   , $theme-colors
 );

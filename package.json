@@ -34,6 +34,8 @@
     "ngx-lightbox": "^2.0.1",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-owl-carousel-o": "^2.0.1",
+    "ngx-page-scroll": "^7.0.0",
+    "ngx-page-scroll-core": "^7.0.0",
     "ngx-spinner": "^8.0.3",
     "ngx-toastr": "^10.0.4",
     "rxjs": "~6.4.0",

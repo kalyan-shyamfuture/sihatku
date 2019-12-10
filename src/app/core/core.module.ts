@@ -10,7 +10,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthGuard } from './guard/auth.guard';
 
 // Ngx Bootstrap
-import { BsDropdownModule,TabsModule  } from 'ngx-bootstrap';
+import { BsDropdownModule,TabsModule } from 'ngx-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // Material
@@ -22,6 +22,8 @@ import {
   MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule,
   MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatStepperModule,
 } from '@angular/material';
+
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -69,7 +71,8 @@ import { AgmCoreModule } from '@agm/core';
        //apiKey:'AIzaSyBozOMarWpi9n-gu7TkXZR3WH36Admg--Q',
         libraries: ['places']
       }),
-      AngularFontAwesomeModule
+      AngularFontAwesomeModule,
+      NgxPageScrollCoreModule
   ],
   exports: [
     FormsModule,

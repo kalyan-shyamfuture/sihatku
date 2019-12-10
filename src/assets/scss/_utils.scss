@@ -59,7 +59,7 @@ body {
 .md-form input[type=text]:not(.browser-default):focus:not([readonly]),
 .md-form textarea.md-textarea:focus:not([readonly]) {
     border-bottom: 0px solid #fdbe12;
-    box-shadow: 0 0px 0 0 #e2a603;
+    box-shadow: 0 0px 0 0 #817f78;
 }
 
 .navbar {
@@ -1833,4 +1833,15 @@ a h2.navtext {
     #downloadapp h5:after {
         width: 19%;
     }
+}
+@media only screen and (min-width: 992px) {
+.navbar-expand-md .navbar-collapse {
+    visibility: visible!important;
+    opacity: 1!important;
+}
+}
+
+
+.btn-primary {
+   // background:$primary;
 }
