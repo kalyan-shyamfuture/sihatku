@@ -27,19 +27,19 @@
                         <a class="nav-link" (click)="openSigninModal()">Log in / Sign up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#downloadapp">Download the app</a>
+                        <a class="nav-link"  [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#downloadapp'" >Download the app</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">How it works</a>
+                        <a class="nav-link" [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#howSihatkuWork'">How it works</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="service-provider-registration.html">Become a service provider</a>
+                        <a class="nav-link" [routerLink]="'/registration'">Become a service provider</a>
                     </li>
 
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)"> Explore Sihatku</a>
+                        <a class="nav-link" [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#exploreSihatku'" > Explore Sihatku</a>
                     </li>
 
 

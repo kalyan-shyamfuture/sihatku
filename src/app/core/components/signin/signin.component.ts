@@ -32,11 +32,10 @@ export class SigninComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
-    this.otpForm = this.formBuilder.group({
-      otp: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
-    });
+    
   }
 
   closeModal() {
@@ -57,46 +56,31 @@ export class SigninComponent implements OnInit {
     else {
 
       this.spinner.show();
-      this.mobile = this.signInForm.value.mobile;
+      console.log(this.signInForm.value);
       this.signInForm.value.device_token = "";
-      this.userService.userSignin(this.signInForm.value).subscribe(
-        res => {
-          console.log("Login ==>", res);
-          if (res['result']['status'] == true) {
-            
-            console.log("cccc", this.showOtp);
-            this.getOtp = res['result']['otp']
-            if(this.getOtp) {
-              this.showOtp = true;
-              this.toastr.success(res['result']['message'], '', {
-                timeOut: 3000,
-              });
-            }
-            else {
-              this.toastr.warning(res['result']['message'], '', {
-                timeOut: 3000,
-              });
-            }
+      // this.userService.userSignin(this.signInForm.value).subscribe(
+      //   res => {
+      //     console.log("Login ==>", res);
+      //     if (res['result']['status'] == true) {
            
-
-            this.submitted = false;
-            this.spinner.hide();
-          }
-          else {
-            this.toastr.error(res['result']['message'], '', {
-              timeOut: 3000,
-            });
-            this.spinner.hide();
-          }
-        },
-        error => {
-          console.log(error.error);
-          this.toastr.error('Sorry! Please enter valid login creadentials', '', {
-            timeOut: 3000,
-          });
-          this.spinner.hide();
-        }
-      )
+      //       this.submitted = false;
+      //       this.spinner.hide();
+      //     }
+      //     else {
+      //       this.toastr.error(res['result']['message'], '', {
+      //         timeOut: 3000,
+      //       });
+      //       this.spinner.hide();
+      //     }
+      //   },
+      //   error => {
+      //     console.log(error.error);
+      //     this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+      //       timeOut: 3000,
+      //     });
+      //     this.spinner.hide();
+      //   }
+      // )
     }
 
     // display form values on success

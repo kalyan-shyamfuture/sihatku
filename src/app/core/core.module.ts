@@ -32,7 +32,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AgmCoreModule } from '@agm/core';
 
-
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 @NgModule({
@@ -72,7 +72,8 @@ import { AgmCoreModule } from '@agm/core';
         libraries: ['places']
       }),
       AngularFontAwesomeModule,
-      NgxPageScrollCoreModule
+      NgxPageScrollCoreModule,
+      ScrollToModule.forRoot()
   ],
   exports: [
     FormsModule,

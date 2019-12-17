@@ -7,7 +7,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { MainService } from "../../../core/services/main.service";
 import { environment } from "../../../../environments/environment";
 import { filter } from 'rxjs/operators';
-
+import { ScrollToAnimationEasing, ScrollToOffsetMap } from '@nicky-lenaers/ngx-scroll-to';
 
 @Component({
   selector: 'app-header',
@@ -45,6 +45,7 @@ export class HeaderComponent implements OnInit {
   customer_cart_data:any;
   cartCount:any;
   userType:any;
+  public ngxScrollToDuration: number;
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -67,6 +68,7 @@ export class HeaderComponent implements OnInit {
       }
       // logger.log(e.id, e.url);
     });
+    this.ngxScrollToDuration = 2000;
   }
 
   ngOnInit() {
