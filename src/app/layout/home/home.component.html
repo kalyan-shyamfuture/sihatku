@@ -2,7 +2,7 @@
 
 
 <div class="wocommersbox"> <a href="javascript:void(0)"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
-<div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div>
+<!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
 <!-- Start Banner -->
 <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
@@ -276,18 +276,25 @@
             </div>
             <div class="col-sm-6 col-xs-12">
                 <div class="rightbox">
-                    <form>
+                    <form [formGroup]="requestForm" (ngSubmit)="homeDetails()">
                         <h2>Drop us a note</h2>
                         <hr>
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <input type="text" placeholder="Email ID" name="email" required>
+                                <input type="text" class="form-control" placeholder="Email ID" name="email"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <textarea id="subject" name="subject" placeholder="Share your query/suggestion/Feedback" style="height:200px"></textarea>
+                                <textarea id="subject" class="form-control" name="subject" formControlName="subject" placeholder="Share your query/suggestion/Feedback" style="height:200px" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></textarea>
+                                <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
+                                    <div *ngIf="f.subject.errors.required">Subject is required</div>
+                                </div>
                             </div>
+                           
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">

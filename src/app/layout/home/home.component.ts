@@ -315,11 +315,11 @@ export class HomeComponent implements OnInit {
     this.imageBaseUrl = environment.imageEndpoint;
 
     this.requestForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern(/^[ \A-Za-z]*$/)]],
+      // name: ['', [Validators.required, Validators.pattern(/^[ \A-Za-z]*$/)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
+      // phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
       subject: ['', [Validators.required]],
-      message: ['', [Validators.required]],
+      // message: ['', [Validators.required]],
     });
 
     this.searchForm = this.formBuilder.group({
@@ -346,6 +346,15 @@ export class HomeComponent implements OnInit {
    
 
 
+  }
+  get f() {
+    return this.requestForm.controls;
+  }
+  homeDetails(){
+    this.submitted = true;
+    if(this.requestForm.valid){
+      console.log(this.requestForm.value)
+    }
   }
 
  

@@ -111,7 +111,7 @@ export class HeaderComponent implements OnInit {
 
   openSigninModal() {
     let dialogRef = this.dialog.open(SigninComponent, {
-      width: '525px',
+      width: '626px',
       data: {}
     });
     dialogRef.afterClosed().subscribe(result => {
