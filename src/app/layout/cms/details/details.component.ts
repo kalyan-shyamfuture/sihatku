@@ -15,22 +15,8 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(routeParams => {
-      this.getCmsDetails(routeParams.id)
-     });
   }
 
-  getCmsDetails(name) {
-    this.mainService.cmsDetails(name).subscribe(
-      res => {
-       this.cmsDetails = res['result'][0];
-      },
-      error => {
-        console.log(error);
 
-        
-      }
-    )
-  }
 
 }

@@ -3,8 +3,7 @@
         <div class="col-sm-12 col-xs-12">
             <div class="row">
                 <div class="col-sm-1 col-xs-12">
-                    <a class="navbar-brand pb-2" [routerLink]="'/home'"><img src="assets/img/logo.png" alt="Sihatku"
-                            title="Sihatku"></a>
+                    <a class="navbar-brand pb-2" [routerLink]="'/home'"><img src="assets/img/logo.png" alt="Sihatku" title="Sihatku"></a>
                 </div>
                 <div class="col-sm-6 col-xs-12">
                     <h2 class="serviceTittle">Service Provider Registration</h2>
@@ -24,35 +23,36 @@
         </div>
     </div>
 </nav>
-
-<!-----------------body----------------------------------------->
 <!-- Start ServiceForm -->
 <div class="container">
     <div class="serviceform">
-        <form role="form" [formGroup]="serviceRegForm" (ngSubmit)="onSubmit()">
+        <form role="form" autocomplete="off" [formGroup]="serviceRegForm" (ngSubmit)="submitForm()">
             <div class="row">
                 <div class="col-sm-4 col-xs-12">
-                    <input type="text" class="form-control mb-3" placeholder="Email ID" name="email"
-                        formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" required>
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
-                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="errorHandling(serviceRegForm,'email', 'required')">
+                            Please enter a valid email
+                        </mat-error>
+                    </mat-form-field>
                 </div>
                 <div class="col-sm-4 col-xs-12">
-                    <input type="password" class="form-control mb-3" placeholder="Password" name="password"
-                        formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                        required>
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                    </div>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Password" formControlName="password" class="no-background-custom">
+                        <mat-error *ngIf="errorHandling(serviceRegForm,'password', 'required')">
+                            Please enter a minimum 6 length password 
+                        </mat-error>
+                    </mat-form-field>
                 </div>
                 <div class="col-sm-4 col-xs-12">
-                    <input type="password" class="form-control mb-3" placeholder="Confirm Password" name="confPass"
-                        formControlName="confPass" [ngClass]="{ 'is-invalid': submitted && f.confPass.errors }"
-                        required>
-                    <div *ngIf="submitted && f.confPass.errors" class="invalid-feedback">
-                        <div *ngIf="f.confPass.errors.required">Confirm password is required</div>
-                    </div>
+                    <mat-form-field>
+                        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" no-background-custom>
+                        <mat-error *ngIf="errorHandling(serviceRegForm,'confirmPassword', 'required')">
+                            Please enter confirm password 
+                        </mat-error>
+                        <mat-error *ngIf="serviceRegForm.controls['confirmPassword'].pristine || serviceRegForm.controls['confirmPassword'].errors?.MatchPassword">
+                            Password and Confirm should be same</mat-error>
+                    </mat-form-field>
                 </div>
             </div>
             <h2>General information</h2>
@@ -60,20 +60,20 @@
                 <div class="col-sm-8 col-xs-12">
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
-                            <input type="text" class="form-control mb-3" placeholder="Center / Clinic Name"
-                                name="clinicName" formControlName="clinicName"
-                                [ngClass]="{ 'is-invalid': submitted && f.clinicName.errors }" required>
-                            <div *ngIf="submitted && f.clinicName.errors" class="invalid-feedback">
-                                <div *ngIf="f.clinicName.errors.required">Center/Clinic Name is required</div>
-                            </div>
+                            <mat-form-field>
+                                <input matInput placeholder="Clinic Name" formControlName="clinicName">
+                                <mat-error *ngIf="errorHandling(serviceRegForm,'clinicName', 'required')">
+                                    Please enter clinicName
+                                </mat-error>
+                            </mat-form-field>
                         </div>
                         <div class="col-sm-12 col-xs-12">
-                            <textarea class="form-control textareaHeight" rows="1" id="comment"
-                                placeholder="About Center / Clinic" name="aboutClinic" formControlName="aboutClinic"
-                                [ngClass]="{ 'is-invalid': submitted && f.aboutClinic.errors }" required></textarea>
-                            <div *ngIf="submitted && f.aboutClinic.errors" class="invalid-feedback">
-                                <div *ngIf="f.aboutClinic.errors.required">About Center / Clinic is required</div>
-                            </div>
+                            <mat-form-field class="about-clinic">
+                                <textarea matInput formControlName="aboutClinic" placeholder="About Clinic" rows="1"></textarea>
+                                <mat-error *ngIf="errorHandling(serviceRegForm,'aboutClinic', 'required')">
+                                    Please enter aboutClinic
+                                </mat-error>
+                            </mat-form-field>
                         </div>
                     </div>
                 </div>
@@ -87,15 +87,17 @@
                             </div>
                             <div class="col-sm-3 col-xs-12">
                                 <div class="row">
-                                    <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-plus-square"
-                                            aria-hidden="true"></i>
-
-                                        <!-- <i class="fa fa-upload" aria-hidden="true"></i>-->
-                                        <input type="file" name="centerLogo" formControlName="centerLogo"
-                                            [ngClass]="{ 'is-invalid': submitted && f.centerLogo.errors }" required>
-                                        <div *ngIf="submitted && f.centerLogo.errors" class="invalid-feedback">
-                                            <div *ngIf="f.centerLogo.errors.required">Image is required</div>
-                                        </div>
+                                    <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                        <input type="file" name="centerLogo" (change)="centerLogoUpload($event)">
+                                        <div class="default-image">
+                                                        
+                                            <img [src]="imgCenterURL" height="50" alt="" title=""></div>
+                                            
+                                                <i class="fa fa-times delete-img" aria-hidden="true" *ngIf="imgCenterURL"></i>
+                                           
+                                            
+                                   
+                                   
                                     </div>
                                 </div>
                             </div>
@@ -118,86 +120,81 @@
             <div>
                 <h2>Add Your Services</h2>
                 <div formArrayName="services_details">
-                    <div class="row services-section"
-                        *ngFor="let item of serviceRegForm.get('services_details').controls; index as i"
-                        [formGroupName]="i">
-
+                    <div class="row services-section" *ngFor="let item of serviceRegForm.get('services_details')['controls']; index as i" [formGroupName]="i">
+                        <div class="remove-section" *ngIf="i>0">
+                            <img src="assets/img/remove.png" (click)="deleteServices(i)">
+                        </div>
                         <div class="col-12 p-0 d-flex flex-row flex-wrap">
                             <div class="col-sm-4 col-xs-12">
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
-                                        <select class="mdb-select classic selectArrow" style="webkit-appearance:none;"
-                                            formControlName="speciality">
-                                            <option value="">Choose Speciality</option>
-                                            <option value="1">Speciality 1</option>
-                                            <option value="2">Speciality 2</option>
-                                            <option value="3">Speciality 3</option>
-                                            <option value="4">Speciality 4</option>
-                                        </select>
+                                        <mat-form-field>
+                                            <mat-label>Speciality</mat-label>
+                                            <mat-select name="speciality" formControlName="speciality"  (selectionChange)="getProcedure($event)">
+                                                <mat-option [value]="speciality.specialityID" *ngFor="let speciality of listSpeciality">
+                                                    {{speciality.specialityName}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <p  *ngIf="errorState(item['controls'].speciality, 'speciality').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].speciality, 'speciality').message">
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <mat-form-field class="about-procedure">
+                                            <textarea matInput formControlName="aboutProcedure" placeholder="About Precedure"></textarea>
+                                        </mat-form-field>
+                                        <!-- Error Message -->
+
+                                        <p  *ngIf="errorState(item['controls'].aboutProcedure, 'aboutProcedure').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].aboutProcedure, 'aboutProcedure').message">
+                                        </p>
 
                                     </div>
                                     <div class="col-sm-12 col-xs-12">
-                                        <textarea class="form-control textareaHeight" rows="5"
-                                            placeholder="About Procedure" formControlName="aboutProcedure"></textarea>
-                                    </div>
-                                    <div class="col-sm-12 col-xs-12">
-                                        <input type="text" class="form-control mb-3" placeholder="Set Promo Code"
-                                            name="setPromoCode" formControlName="setPromoCode">
+                                        <mat-form-field>
+                                            <input matInput placeholder="Set Promo Code" name="setPromoCode" formControlName="setPromoCode">
+                                        </mat-form-field>
+                                        <p  *ngIf="errorState(item['controls'].setPromoCode, 'setPromoCode').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].setPromoCode, 'setPromoCode').message">
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-4 col-xs-12">
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
-                                        <select class="mdb-select classic selectArrow" style="webkit-appearance:none;"
-                                            formControlName="selectProcedure">
-                                            <option value="">Select a Procedure</option>
-                                            <option value="1">10%</option>
-                                            <option value="2">20%</option>
-                                            <option value="3">30%</option>
-                                        </select>
+
+                                        <mat-form-field>
+                                            <mat-label>Procedure</mat-label>
+                                            <mat-select name="selectProcedure" formControlName="selectProcedure">
+                                                <mat-option [value]="procedure.procedureID" *ngFor="let procedure of listProcedure">
+                                                    {{procedure.procedureName}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <p  *ngIf="errorState(item['controls'].selectProcedure, 'selectProcedure').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].selectProcedure, 'selectProcedure').message">
+                                        </p>
 
                                     </div>
                                     <div class="col-sm-12 col-xs-12">
-                                        <input type="text" class="form-control mb-2" placeholder="Set Price"
-                                            name="setPrice" formControlName="setPrice"
-                                            [ngClass]="{ 'is-invalid': submitted && f.setPrice.errors }" required>
-                                        <div *ngIf="submitted && f.setPrice.errors" class="invalid-feedback">
-                                            <div *ngIf="f.setPrice.errors.required">Set price is required</div>
-                                        </div>
+                                        <mat-form-field>
+                                            <input matInput placeholder="Set Price" name="setPrice" formControlName="setPrice">
+                                        </mat-form-field>
+                                        <p  *ngIf="errorState(item['controls'].setPrice, 'setPrice').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].setPrice, 'setPrice').message">
+                                        </p>
+
                                     </div>
                                     <div class="col-sm-12 col-xs-12">
-                                        <select class="mdb-select classic selectArrow" style="webkit-appearance:none;"
-                                            formControlName="discount">
-                                            <option value="">Add Discount</option>
-                                            <option value="1">10%</option>
-                                            <option value="2">20%</option>
-                                            <option value="3">30%</option>
-                                        </select>
+
+                                        <mat-form-field>
+                                            <input matInput placeholder="Discount (%)" name="discount" formControlName="discount">
+                                        </mat-form-field>
+                                        <p  *ngIf="errorState(item['controls'].discount, 'discount').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].discount, 'discount').message">
+                                        </p>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-sm-4 col-xs-12">
                                 <div class="row">
-                                    <div class="col-sm-12 col-xs-12">
-                                        <div class="row">
-                                            <div class="col-sm-7 col-xs-12">
-                                                <p>Add Images of Procedure</p>
-                                            </div>
-                                            <div class="col-sm-5 col-xs-12">
-                                                <div class="row">
-                                                    <div class="file btn leftbtn waves-effect waves-light"> <i
-                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
-                                                        <input type="file" name="image1">
-                                                    </div>
-                                                    <div class="file btn leftbtn waves-effect waves-light"> <i
-                                                            class="fa fa-plus-circle" aria-hidden="true"></i>
-                                                        <input type="file" name="image2">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="col-sm-12 col-xs-12">
                                         <p><span>you can also choose to display our default images</span></p>
                                         <div class="default-image">
@@ -210,113 +207,181 @@
                                             <input type="checkbox" class="form-check-input" value="">
                                             <img src="assets/img/default-image-1.jpg" alt="" title=""></div>
                                     </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <div class="row">
+                                            <div class="col-sm-7 col-xs-12">
+                                                <p>Add Images of Procedure</p>
+                                            </div>
+                                            <div class="col-sm-5 col-xs-12">
+                                                <div class="row">
+                                                    <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                                        <input type="file" multiple name="image1" (change)="procedureImageUpload($event)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <h2>Add a Practioner</h2>
-                        <div formArrayName="practioner_deatils">
-                            <div class="row prac-details"
-                                *ngFor="let item of item['controls'].practioner_deatils['controls']; index as j"
-                                [formGroupName]="j">
+                        <div formArrayName="practioner_details">
+                            <div class="row prac-details" *ngFor="let item of item['controls'].practioner_details['controls']; index as j" [formGroupName]="j">
+                                <div class="remove-section" *ngIf="j>0">
+                                    <img src="assets/img/remove.png" (click)="deletePractioner(i,j)">
+                                </div>
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Full Name"
-                                                name="fullName" formControlName="fullName">
+                                            <mat-form-field>
+                                                <mat-label>Title</mat-label>
+                                                <mat-select name="title" formControlName="title">
+                                                    <mat-option [value]="title.id" *ngFor="let title of listTitle">
+                                                        {{title.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].title, 'title').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].title, 'title').message">
+                                            </p>
+                                            
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3"
-                                                placeholder="IC / Passport Number" name="passportNumber"
-                                                formControlName="passportNumber">
+                                            <mat-form-field>
+                                                <mat-label>Gender</mat-label>
+                                                <mat-select name="gender" formControlName="gender">
+                                                    <mat-option [value]="gender.id" *ngFor="let gender of listGender">
+                                                        {{gender.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].gender, 'gender').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].gender, 'gender').message">
+                                            </p>
+
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <select class="mdb-select classic selectArrow"
-                                                style="webkit-appearance:none;" formControlName="dropdown1">
-                                                <option value="">Gender</option>
-                                                <option value="1">Male</option>
-                                                <option value="2">Female</option>
-                                            </select>
+                                            <mat-form-field>
+                                                <input matInput placeholder="Contact Number" name="contactNumber" formControlName="contactNumber">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].medicalCouncilNo, 'medicalCouncilNo').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].medicalCouncilNo, 'medicalCouncilNo').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <select class="mdb-select classic selectArrow"
-                                                style="webkit-appearance:none;" formControlName="dorpdown2">
-                                                <option value="">Field of Speciality</option>
-                                                <option value="1">Speciality 1</option>
-                                                <option value="2">Speciality 2</option>
-                                            </select>
+                                            <mat-form-field>
+                                                <mat-label>Field Speciality</mat-label>
+                                                <mat-select name="fieldSpeciality" formControlName="fieldSpeciality">
+                                                    <mat-option [value]="fieldSpeciality.id" *ngFor="let fieldSpeciality of listfieldSpeciality">
+                                                        {{fieldSpeciality.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].contactNumber, 'fieldSpeciality').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].fieldSpeciality, 'fieldSpeciality').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Place of Practice"
-                                                name="placeofPractice" formControlName="placeofPractice">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Place of Practice" name="placeofPractice" formControlName="placeofPractice">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].placeofPractice, 'placeofPractice').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].placeofPractice, 'placeofPractice').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3"
-                                                placeholder="Medical Council No" name="medicalCouncilNo"
-                                                formControlName="medicalCouncilNo"> </div>
-                                        <!-- <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Medical School"
-                                                name="medicalSchool" formControlName="medicalSchool">
-                                        </div> -->
+                                            <mat-form-field>
+                                                <input matInput placeholder="Medical Council No" name="medicalCouncilNo" formControlName="medicalCouncilNo">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].medicalCouncilNo, 'medicalCouncilNo').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].medicalCouncilNo, 'medicalCouncilNo').message">
+                                            </p>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-xs-12">
-                                            <select class="mdb-select classic selectArrow"
-                                                style="webkit-appearance:none;" formControlName="dorpdown3">
-                                                <option value="">Title</option>
-                                                <option value="1">Mr</option>
-                                                <option value="2">Mrs</option>
-                                            </select>
+                                            <mat-form-field>
+                                                <input matInput placeholder="First Name" name="firstName" formControlName="firstName">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].firstName, 'firstName').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].firstName, 'firstName').message">
+                                            </p>
+
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <select class="mdb-select classic selectArrow"
-                                                style="webkit-appearance:none;" formControlName="countryResidence">
-                                                <option value="">Country of Residence</option>
-                                                <option value="1">Malaysia</option>
-                                                <option value="2">India</option>
-                                            </select>
+                                            <mat-form-field>
+                                                <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="DOB">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker startView="year" [startAt]="startDate">
+                                                </mat-datepicker>
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].firstName, 'firstName').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].firstName, 'firstName').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Contact Number"
-                                                name="contactNumber" formControlName="contactNumber">
+                                            <mat-form-field>
+                                                <input matInput placeholder="IC / Passport Number" name="passportNumber" formControlName="passportNumber">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].passportNumber, 'passportNumber').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].passportNumber, 'passportNumber').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3"
-                                                placeholder="Expertise Category" name="expertiseCategory"
-                                                formControlName="expertiseCategory">
+
+                                            <mat-form-field>
+                                                <input matInput placeholder="Expertise Category" name="expertiseCategory" formControlName="expertiseCategory">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].expertiseCategory, 'expertiseCategory').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].expertiseCategory, 'expertiseCategory').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3"
-                                                placeholder="Address of Practice" name="addressPractice"
-                                                formControlName="addressPractice">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Address of Practice Category" name="addressPractice" formControlName="addressPractice">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].addressPractice, 'addressPractice').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].addressPractice, 'addressPractice').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3"
-                                                placeholder="Speciality Registration No" name="registrationNo"
-                                                formControlName="registrationNo">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Registration Number Registration No" name="registrationNo" formControlName="registrationNo">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].registrationNo, 'registrationNo').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].registrationNo, 'registrationNo').message">
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4 col-xs-12">
                                     <div class="row">
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Date of Birth"
-                                                name="dob">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Last Name" name="lastName" formControlName="lastName">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].lastName, 'lastName').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].lastName, 'lastName').message">
+                                            </p>
                                         </div>
                                         <br clear="all">
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Sub Category"
-                                                name="subCategory" formControlName="subCategory">
+                                            <mat-form-field>
+                                                <mat-label>Country</mat-label>
+                                                <mat-select name="country" formControlName="country">
+                                                    <mat-option [value]="country.countryID" *ngFor="let country of listCountry">
+                                                        {{country.Name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].country, 'country').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].country, 'country').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Practising Since"
-                                                name="practisingSince" formControlName="practisingSince">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Practising Since" name="practisingSince" formControlName="practisingSince">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].practisingSince, 'practisingSince').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].practisingSince, 'practisingSince').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Qualification"
-                                                name="qualification" formControlName="qualification">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Qualification" name="qualification" formControlName="qualification">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].qualification, 'qualification').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].qualification, 'qualification').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
                                             <div class="row">
@@ -324,12 +389,15 @@
                                                     <p>Upload your photo (optional)</p>
                                                 </div>
                                                 <div class="col-sm-5 col-xs-12">
-                                                    <div class="file btn leftbtn waves-effect waves-light"> <i
-                                                            class="fa fa-plus-square" aria-hidden="true"></i>
-                                                        <input type="file" name="file"
-                                                            placeholder="Upload a Photo( Optional)"
-                                                            formControlName="uploadpic">
+                                                    <div class="file btn leftbtn waves-effect waves-light"> <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                        <input type="file" (change)="practionarImageUpload($event)" name="file" placeholder="Upload a Photo( Optional)">
+                                                   
+                                                        <div class="default-image">
+                                                        
+                                                            <img [src]="imgPractURL" height="50" alt="" title=""></div>
+                                                   
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -338,31 +406,34 @@
                                 <div class="col-sm-12 col-xs-12">
                                     <div class="row">
                                         <div class="col-sm-4 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="Medical School"
-                                                name="medicalSchool" formControlName="medicalSchool">
+                                            <mat-form-field>
+                                                <input matInput placeholder="Medical School" name="medicalSchool" formControlName="medicalSchool">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].medicalSchool, 'medicalSchool').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].medicalSchool, 'medicalSchool').message">
+                                            </p>
                                         </div>
                                         <div class="col-sm-8 col-xs-12">
-                                            <input type="text" class="form-control mb-3" placeholder="About Practioner"
-                                                name="aboutPractioner" formControlName="aboutPractioner">
+                                            <mat-form-field>
+                                                <input matInput placeholder="About Practioner" name="aboutPractioner" formControlName="aboutPractioner">
+                                            </mat-form-field>
+                                            <p  *ngIf="errorState(item['controls'].aboutPractioner, 'aboutPractioner').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].aboutPractioner, 'aboutPractioner').message">
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-12 col-xs-12 p-0">
-                            <button type="button" class="btn1" (click)="practioneraddItem(i)"><i class="fa fa-plus"
-                                    aria-hidden="true"></i> Add Another
-                                Practioner</button>
+                            <button type="button" class="btn1" (click)="practioneraddItem(i)"><i class="fa fa-plus" aria-hidden="true"></i> Add Another Practioner
+                            </button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-sm-12 col-xs-12">
-                    <button type="button" class="btn1 mb-4" (click)="serviceaddItem()"><i class="fa fa-plus"
-                            aria-hidden="true"></i> Add Another Service</button>
+                    <button type="button" class="btn1 mb-4" (click)="serviceaddItem()"><i class="fa fa-plus" aria-hidden="true"></i> Add Another Service</button>
                 </div>
             </div>
             <div class="row">
@@ -390,42 +461,30 @@
                 <div class="col-md-12">
                     <div class="footerIcon flex-center">
                         <!-- Facebook -->
-                        <a class="fb-ic" href="javascript:void(0);"> <i
-                                class="fa fa-facebook-f fa-lg white-text mr-3 fa-2x"> </i> </a>
+                        <a class="fb-ic" href="javascript:void(0);"> <i class="fa fa-facebook-f fa-lg white-text mr-3 fa-2x"> </i> </a>
 
                         <!-- Twitter -->
-                        <a class="tw-ic" href="javascript:void(0);"> <i
-                                class="fa fa-twitter fa-lg white-text  mr-3 fa-2x"> </i> </a>
+                        <a class="tw-ic" href="javascript:void(0);"> <i class="fa fa-twitter fa-lg white-text  mr-3 fa-2x"> </i> </a>
 
                         <!--Instagram-->
-                        <a class="ins-ic" href="javascript:void(0);"> <i
-                                class="fa fa-instagram fa-lg white-text mr-3 fa-2x"> </i> </a>
+                        <a class="ins-ic" href="javascript:void(0);"> <i class="fa fa-instagram fa-lg white-text mr-3 fa-2x"> </i> </a>
 
                         <!--Youtube-->
-                        <a class="ins-ic" href="javascript:void(0);"> <i
-                                class="fa fa-youtube fa-lg white-text mr-3 fa-2x"> </i> </a>
+                        <a class="ins-ic" href="javascript:void(0);"> <i class="fa fa-youtube fa-lg white-text mr-3 fa-2x"> </i> </a>
 
                         <!--linkin-->
-                        <a class="ins-ic" href="javascript:void(0);"> <i
-                                class="fa fa-linkedin fa-lg white-text mr-3 fa-2x"> </i> </a>
+                        <a class="ins-ic" href="javascript:void(0);"> <i class="fa fa-linkedin fa-lg white-text mr-3 fa-2x"> </i> </a>
 
                         <!--pinterest--->
 
-                        <a class="ins-ic" href="javascript:void(0);"> <i
-                                class="fa fa-pinterest-p fa-lg white-text mr-3 fa-2x"> </i> </a>
+                        <a class="ins-ic" href="javascript:void(0);"> <i class="fa fa-pinterest-p fa-lg white-text mr-3 fa-2x"> </i> </a>
                     </div>
                 </div>
                 <!-- Grid column -->
             </div>
             <!-- Grid row-->
             <div _ngcontent-jyo-c5="" class="container">
-                <div _ngcontent-jyo-c5="" class="footer-copyright text-center py-3"> <a _ngcontent-jyo-c5=""
-                        class="mr-4" href="javascript:void(0);">Terms &amp; Conditions</a> <a _ngcontent-jyo-c5=""
-                        class="mr-4" href="javascript:void(0);">Privacy Policy</a> <a _ngcontent-jyo-c5="" class="mr-4"
-                        href="javascript:void(0);">( c ) 2019 - 2027 Sihatku.com</a> <a _ngcontent-jyo-c5=""
-                        class="mr-4" href="javascript:void(0);">Payment Policy</a> <a _ngcontent-jyo-c5="" class="mr-4"
-                        href="javascript:void(0);">Disclamer</a> <a _ngcontent-jyo-c5="" class="mr-4"
-                        href="javascript:void(0);">FAQs etc</a></div>
+                <div _ngcontent-jyo-c5="" class="footer-copyright text-center py-3"> <a _ngcontent-jyo-c5="" class="mr-4" href="javascript:void(0);">Terms &amp; Conditions</a> <a _ngcontent-jyo-c5="" class="mr-4" href="javascript:void(0);">Privacy Policy</a> <a _ngcontent-jyo-c5="" class="mr-4" href="javascript:void(0);">( c ) 2019 - 2027 Sihatku.com</a> <a _ngcontent-jyo-c5="" class="mr-4" href="javascript:void(0);">Payment Policy</a> <a _ngcontent-jyo-c5="" class="mr-4" href="javascript:void(0);">Disclamer</a> <a _ngcontent-jyo-c5="" class="mr-4" href="javascript:void(0);">FAQs etc</a></div>
             </div>
         </div>
         <!-- Copyright -->

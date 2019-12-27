@@ -72,9 +72,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadUserInfo();
-   // this.getServicesList();
-  //  this.getSettings();
+    //this.loadUserInfo();
   }
 
   expandClose() {
@@ -120,53 +118,8 @@ export class HeaderComponent implements OnInit {
 
   private changeStatus(status: boolean) {
     if (status) {
-      //alert(0);
-      this.loadUserInfo();
+     // this.loadUserInfo();
     }
-  }
-
-  loadUserInfo() {
-    if (localStorage.getItem('isLoggedin')) {
-      this.loggedIn = true;
-      this.userName = localStorage.getItem('userName');
-      this.userType = localStorage.getItem('userType');
-    }
-    else {
-      this.loggedIn = false;
-    }
-  }
-
-  getServicesList() {
-    this.mainService.getParentCatList(0).subscribe(
-      res => {
-        this.catList = res['result']['list'];
-      },
-      error => {
-        console.log(error.error);
-      }
-    )
-  }
-
-  getSettings() {
-    this.mainService.getSettings().subscribe(
-      res => {
-       this.settingList = res['result'][0];
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
-  gotoServicePage(id) {
-    this.router.navigateByUrl('/services/' + id);
-  }
-
-  logOut() {
-    localStorage.clear();
-    this.loggedIn = false;
-    this.mainService.cartNumberStatus(true);
-    this.router.navigate(['/']);
   }
 
 

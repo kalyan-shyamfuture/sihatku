@@ -5,7 +5,8 @@ import { UserService } from "../../../core/services/user.service";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
-import { MustMatch } from '../../../core/validation/must-match.validator';
+import { MustMatch } from '../../../core/components/validator/must-match.validator';
+import { PasswordValidation } from '../../../core/validation/PasswordValidation';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -40,15 +41,15 @@ export class SigninComponent implements OnInit {
     });
 
     this.signupForm = this.formBuilder.group({
-      userFirstName: ['', Validators.required],
-      userMiddleName: [''],
-      userLastName: ['', Validators.required],
-      userDOB: ['', Validators.required],
-      userGender: ['',Validators.required],
-      userCountry: ['',Validators.required],
-      userEmail: ['',Validators.required],
-      userMob: ['',Validators.required],
-      userpassword: ['',Validators.required],
+      firstName: ['', Validators.required],
+      middleName: [''],
+      lastName: ['', Validators.required],
+      dob: ['', Validators.required],
+      gender: ['',Validators.required],
+      country: ['',Validators.required],
+      email: ['',Validators.required],
+      mobile: ['',Validators.required],
+      password: ['',Validators.required],
       confirmPassword: ['',Validators.required],
     },
     {
@@ -81,54 +82,106 @@ export class SigninComponent implements OnInit {
   }
   get f1() { return this.otpForm.controls; }
 
-  onSubmit() {
-    this.submitted = true;
-    // stop here if form is invalid
-    if (this.signInForm.invalid) {
-      return;
-    }
-    else {
+  // onSubmit() {
+  //   this.submitted = true;
+  //   // stop here if form is invalid
+  //   if (this.signInForm.invalid) {
+  //     return;
+  //   }
+  //   else {
 
-      this.spinner.show();
-      console.log(this.signInForm.value);
-      this.signInForm.value.device_token = "";
-      // this.userService.userSignin(this.signInForm.value).subscribe(
-      //   res => {
-      //     console.log("Login ==>", res);
-      //     if (res['result']['status'] == true) {
-           
-      //       this.submitted = false;
-      //       this.spinner.hide();
-      //     }
-      //     else {
-      //       this.toastr.error(res['result']['message'], '', {
-      //         timeOut: 3000,
-      //       });
-      //       this.spinner.hide();
-      //     }
-      //   },
-      //   error => {
-      //     console.log(error.error);
-      //     this.toastr.error('Sorry! Please enter valid login creadentials', '', {
-      //       timeOut: 3000,
-      //     });
-      //     this.spinner.hide();
-      //   }
-      // )
-    }
+  //     this.spinner.show();
+  //     console.log(this.signInForm.value);
+  //    // this.signInForm.value.device_token = "";
+  //    var data = {
+  //      "EmailID":this.signInForm.value.userName,
+  //      "Password":this.signInForm.value.password,
+  //      "FcmToken":""
+  //    }
+  //     this.userService.userSignin(data).subscribe(
+  //       res => {
+  //         console.log("Login Result==>", res);
+  //       },
+  //       error => {
+  //         console.log(error.error);
+  //         this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+  //           timeOut: 3000,
+  //         });
+  //         this.spinner.hide();
+  //       }
+  //     )
+  //   }
   
+  // }
+
+  public errorHandling = (form: FormGroup,control: string, error: string) => {
+    return form.controls[control].hasError(error);
   }
-  signUp(){
-    console.log('123');
-    
-     this.submitted = true;
-    //  console.log(this.signupForm.value);
+
+  submitSigninForm() {
+    console.log(this.signInForm.value)
+    this.signInForm.markAllAsTouched();
+      var data = {
+      "Username":this.signInForm.value.userName,
+      "Password":this.signInForm.value.password,
+      "FcmToken":""
+      }
+      this.userService.userSignIn(data).subscribe(
+        res => {
+          console.log("Login Result==>", res);
+        },
+        error => {
+          console.log(error.error);
+          this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+            timeOut: 3000,
+          });
+          this.spinner.hide();
+        }
+      )
+  }
+  // signUp(){
+  //   console.log('123');
+  //    this.submitted = true;
+  //   //  console.log(this.signupForm.value);
      
-     if(this.signupForm.valid)
-     {
-      console.log('helllo');
-       console.log(this.signupForm.value)
-     }
+  //    if(this.signupForm.valid)
+  //    {
+  //     console.log('helllo');
+  //      console.log(this.signupForm.value)
+  //    }
+
+  // }
+
+  signUp(){
+    console.log(this.signupForm.value)
+    this.signupForm.markAllAsTouched();
+      var data = {
+      "FirstName":this.signupForm.value.firstName,
+      "MiddleName":this.signupForm.value.middleName,
+      "LastName":this.signupForm.value.lastName,
+      "DOB":this.signupForm.value.dob,
+      "Gender":this.signupForm.value.gender,
+      "Country":this.signupForm.value.country,
+      "EmailID":this.signupForm.value.email,
+      "MobileNo":this.signupForm.value.mobile,
+      "Password":this.signupForm.value.password,
+      "Latitude":'',
+      "Longitude":'',
+      "FcmToken":'',
+      "Flag":1,
+      }
+      this.userService.userSignUp(data).subscribe(
+        res => {
+          console.log("Login Result==>", res);
+        },
+        error => {
+          console.log(error.error);
+          this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+            timeOut: 3000,
+          });
+          this.spinner.hide();
+        }
+      )
 
   }
     // display form values on success

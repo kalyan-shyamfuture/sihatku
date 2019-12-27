@@ -39,172 +39,28 @@ export class MainService {
     });
 
   }
-
-  getBannerList(data) {
-    return this.http.post(environment.apiEndpoint + 'medialist/',data, {headers: this.headers});
+  getProcedureList() {
+    return this.http.get(environment.apiEndpoint + 'healthDashboard');
   }
-  getParentCatList(id) {
-    return this.http.get(environment.apiEndpoint + 'categorylist/' + id, {headers: this.headers});
-  }
-
-  getSubCatList(id) {
-    return this.http.get(environment.apiEndpoint + 'categorylist/' + id, {headers: this.headers});
+  getSpecialityList() {
+    return this.http.get(environment.apiEndpoint + 'Specialitylist');
   }
 
-  getPackageList(data) {
-    return this.http.post(environment.apiEndpoint + 'getserviceslist/', data, {headers: this.headers});
-   // return this.http.get(environment.apiEndpoint + 'packageslistbyserviceid/'+id, {headers: this.headers})
+  getCountryList() {
+    return this.http.get(environment.apiEndpoint + 'CountryList');
+  }
+  getProcedurebySpeciality(id) {
+    return this.http.get(environment.apiEndpoint + 'procbyname/'+id);
+  }
+  getBannerList() {
+    return this.http.get(environment.apiEndpoint + 'webbannerlist');
+  }
+  getTopOffers() {
+    return this.http.get(environment.apiEndpoint + 'topoffers');
   }
 
-  getCmsDetails(slug) {
-    return this.http.get(environment.apiEndpoint + 'getcms?page_slug=' + slug, {headers: this.headers});
+  requestFeedBack(data) {
+    return this.http.post(environment.apiEndpoint + 'userfeedbac',data);
   }
-
-  getGalleryList() {
-    return this.http.get(environment.apiEndpoint + 'galleryimagelist/', {headers: this.headers});
-  }
-
-  contactus(data) {
-    return this.http.post(environment.apiEndpoint + 'contactus/', data, {headers: this.headers});
-  }
-
-  getSettings() {
-    return this.http.get(environment.apiEndpoint + 'generallist/', {headers: this.headers});
-  }
-
-  getTestimonials(data) {
-    return this.http.post(environment.apiEndpoint + 'testimoniallist/', data, {headers: this.headers});
-  }
-
-  cmsDetails(name) {
-    return this.http.get(environment.apiEndpoint + 'getcms/?page_slug=' + name, {headers: this.headers});
-  }
-
-  getCityList() {
-    return this.http.get(environment.apiEndpoint + 'locationlist/', {headers: this.headers});
-  }
-
-  addorder(data) {
-    return this.http.post(environment.apiEndpoint + 'addorder/', data, {headers: this.headers});
-  }
-
-  
-  searchServices(name) {
-    return this.http.get(environment.apiEndpoint + 'serviceparentsearch/' + name, {headers: this.headers});
-  }
-
-  getSearchResultStatus(data) {
-    return this.http.post(environment.apiEndpoint + 'servicesearchbylocation/', data, {headers: this.headers});
-  }
-  orderDetails(id) {
-    return this.http.get(environment.apiEndpoint + 'orderDetailsByID/' + id, {headers: this.headers});
-  }
-
-  cancelorder(data) {
-    return this.http.post(environment.apiEndpoint + 'cancelorder/', data, {headers: this.headers});
-  }
-
-  addRating(data) {
-    return this.http.post(environment.apiEndpoint + 'addservicereview/', data, {headers: this.headers});
-  }
-
-  getNearestUserList(data) {
-    return this.http.post(environment.apiEndpoint + 'getnearestserviceuser/', data, {headers: this.headers});
-  }
-
-  getReviewsByService(data) {
-    return this.http.post(environment.apiEndpoint + 'getratingbyservice/', data, {headers: this.headers});
-  }
-
-  rescheduleService(data) {
-    return this.http.post(environment.apiEndpoint + 'rescheduleorder/', data, {headers: this.headers});
-  }
-
-  addVenderLocation(data) {
-    return this.http.post(environment.apiEndpoint + 'addvendorlocation/', data, {headers: this.headers});
-  }
-
-  listVenderLocation(data) {
-    return this.http.post(environment.apiEndpoint + 'listvendorlocation/', data, {headers: this.headers});
-  }
-  deleteVenderLocation(data) {
-    return this.http.post(environment.apiEndpoint + 'deletevendorlocation/', data, {headers: this.headers});
-  }
-
-  listVendorReview(data) {
-    return this.http.post(environment.apiEndpoint + 'listvendorreview/', data, {headers: this.headers});
-  }
-
-  appointmentlist(id) {
-    return this.http.get(environment.apiEndpoint + 'orderlistbyvendorid/' + id, {headers: this.headers});
-  }
-
-  addWallet(data) {
-    return this.http.post(environment.apiEndpoint + 'addwalletbalance/', data, {headers: this.headers});
-  }
-
-  getbloglist() {
-    return this.http.get(environment.apiEndpoint + 'bloglist/', {headers: this.headers});
-  }
-
-  getBlogById(blogId) {
-    return this.http.get(environment.apiEndpoint + 'blogdetailsbyid/' + blogId, { headers: this.headers });
-  }
-
-  getBalance(id) {
-    return this.http.get(environment.apiEndpoint + 'getuserwalletbalance/' + id, {headers: this.headers});
-  }
-
-  subscribe(data) {
-    return this.http.post(environment.apiEndpoint + 'addsubscriber/', data, {headers: this.headers});
-  }
-
-  completeOrder(data) {
-    return this.http.post(environment.apiEndpoint + 'uvchangestatus/', data, {headers: this.headers});
-  }
-  
-  getUserWalletDetails(data) {
-    return this.http.post(environment.apiEndpoint + 'getuserwalletdetails/', data, {headers: this.headers});
-  }
-
-  getLocation() {
-    return this.http.get(environment.apiEndpoint + 'locationlist/', { headers: this.headers });
-  }
-
-
-
-  // Api for Medflicks
-
-  getBannerListNew() {
-    return this.http.get(environment.apiEndpoint + 'healtharticles/', {headers: this.headers});
-  }
-
-  getTestimonialList() {
-    return this.http.get(environment.apiEndpoint + 'testimoniallist/', {headers: this.headers});
-  }
-
-  getDepartment() {
-    return this.http.post(environment.apiEndpoint + 'listspeciality', '',{headers: this.headers});
-  }
-
-  getDoclistbysplclzn(data) {
-    return this.http.post(environment.apiEndpoint + 'doclistbysplclzn', data,{headers: this.headers});
-  }
-
-  orderlist(data) {
-    return this.http.post(environment.apiEndpoint + 'orderhistory',data, {headers: this.headers});
-  }
-
-  orderMedicine(formdata) {
-    return this.http.post(environment.apiEndpoint + 'addorder',formdata, {headers: this.headers});
-  }
-
-  uploaPrescription(formdata) {
-    return this.http.post(environment.apiEndpoint + 'prescriptionimage',formdata, {headers: this.headers});
-  }
-
-
-
-
  
 }

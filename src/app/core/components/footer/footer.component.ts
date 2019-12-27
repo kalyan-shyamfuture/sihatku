@@ -25,55 +25,8 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   // this.getSettings();
-  }
-  // convenience getter for easy access to form fields
-  get f() { return this.subscribeForm.controls; }
 
-  getSettings() {
-    this.mainService.getSettings().subscribe(
-      res => {
-       this.settingList = res['result'][0];
-      },
-      error => {
-        console.log(error);
-      }
-    )
   }
 
-  onSubscribeSubmit() {
-    this.submitted = true;
-    if (this.subscribeForm.valid) {
-      var data = {
-        "email": this.subscribeForm.value.email,
-      }
-      this.mainService.subscribe(data).subscribe(
-        res => {
-          this.submitted = false;
-         
-          if(res['status']) {
-            this.subscribeForm.reset();
-            this.toastr.success(res['result']['message'], '', {
-              timeOut: 4000,
-            });
-          }
-          else {
-            this.toastr.warning(res['result']['message'], '', {
-              timeOut: 4000,
-            });
-          }
-          
-        },
-        error => {
-          console.log(error.error);
-          this.toastr.error('Error!!!', '', {
-            timeOut: 3000,
-          });
-        }
-      )
-    } else {
-      
-    }
-  }
 
 }

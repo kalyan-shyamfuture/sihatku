@@ -12,9 +12,9 @@ export class UserService {
   constructor(
     private http: HttpClient
   ) { 
-    let login = 'admin';
-    let password = '12345';
-    this.headers = new HttpHeaders().set('x-api-key', 'Shyam@12345').set('Authorization', "Basic " + btoa(login + ':' + password) );
+   // let login = 'admin';
+  //  let password = '12345';
+  //  this.headers = new HttpHeaders().set('x-api-key', 'Shyam@12345').set('Authorization', "Basic " + btoa(login + ':' + password) );
   }
   loginStatus(data): Observable<any> {
     if (data = true) {
@@ -23,75 +23,13 @@ export class UserService {
     }
   }
 
- 
-  // userSignup(data) {
-  //   return this.http.post(environment.apiEndpoint + 'userregister/', data, {headers: this.headers})
-  // }
-
-  userOtp(data) {
-    return this.http.post(environment.apiEndpoint + 'userotp/', data, {headers: this.headers})
+  userSignIn(data) {
+    return this.http.post(environment.apiEndpoint + 'user-login/',data);
   }
 
-
- 
-
-  userForgotPassword(data): Observable<any> {
-    return this.http.post(environment.apiEndpoint + 'userforgetpasswordotp/', data, {headers: this.headers})
-  }
-  userForgotPasswordUpdate(data): Observable<any> {
-    return this.http.post(environment.apiEndpoint + 'userforgetpasswordupdate/', data, {headers: this.headers})
+  userSignUp(data) {
+    return this.http.post(environment.apiEndpoint + 'user-registration/',data);
   }
 
-
-
-  // userlistAddress(id) {
-  //   return this.http.get(environment.apiEndpoint + 'cusaddlistbycusid/'+id, {headers: this.headers})
-  // }
-
-
-  userupdateAddress(data) {
-    return this.http.post(environment.apiEndpoint + 'updatecustomeraddress/', data, {headers: this.headers})
-  }
-
-  updateImage(form,userId) {
-    return this.http.post(environment.apiEndpoint + 'userprofileimageupdate/'+userId, form, {headers: this.headers})
-  }
-
- 
-
-
-  // Api for Medflicks
-
-  userSignin(data): Observable<any> {
-    return this.http.post(environment.apiEndpoint + 'usersigninsignupotp/', data, {headers: this.headers})
-  }
-
-  userSigninOtp(data): Observable<any> {
-    return this.http.post(environment.apiEndpoint + 'usersigninsignup/', data, {headers: this.headers})
-  }
-
-  userDetails(data) {
-    return this.http.post(environment.apiEndpoint + 'getprofile/', data,{headers: this.headers})
-  }
-
-  editProfile(data) {
-    return this.http.post(environment.apiEndpoint + 'updateprofile/', data,{headers: this.headers})
-  }
-
-  userlistAddress(data) {
-    return this.http.post(environment.apiEndpoint + 'listaddress/',data, {headers: this.headers})
-  }
-
-  defaultAddress(data) {
-    return this.http.post(environment.apiEndpoint + 'defaultaddress/', data, {headers: this.headers});
-  }
-
-  deleteAddress(data) {
-    return this.http.post(environment.apiEndpoint + 'deleteaddress/', data, {headers: this.headers})
-  }
-
-  userAddAddress(data) {
-    return this.http.post(environment.apiEndpoint + 'addaddress/', data, {headers: this.headers})
-  }
 
 }

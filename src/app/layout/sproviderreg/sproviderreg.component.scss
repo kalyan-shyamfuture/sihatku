@@ -17,3 +17,55 @@
     min-height: 200px;
     border-radius: 4px;
 }
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  mat-form-field {
+      width:100%;
+  } 
+
+  input#mat-input-1,input#mat-input-2 {
+      border:none;
+      background:none;
+      padding:0;
+      height:15px;
+  }
+  .no-background-custom {
+    border:none;
+    background:none;
+    padding:0;
+    height:15px;
+  }
+
+//   textarea#mat-input-4 {
+//       min-height: 90px;
+// }
+// textarea#mat-input-5 {
+//     min-height: 30px;
+// }
+
+.danger {
+  color:#f44336;
+}
+.about-clinic ::ng-deep .mat-form-field-infix {
+    height:110px;
+}
+
+.about-procedure ::ng-deep .mat-form-field-infix {
+  height:110px;
+}
+
+.delete-img {
+  position: absolute;
+    top: 52px;
+    font-size: 20px;
+    right: -46px;
+    color: #e91e63 !important;
+}

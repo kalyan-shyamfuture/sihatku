@@ -118,10 +118,6 @@ export class HomeComponent implements OnInit {
     nav: true
   }
 
-
-
-
-
   featuredprovidersOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -148,13 +144,6 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
-
-
-
-
-
-
-
 
 
   testimonialOptions: OwlOptions = {
@@ -245,12 +234,6 @@ export class HomeComponent implements OnInit {
   ];
 
 
-
-
-
-
-
-
   featuredprovidersList: any = [
     {
       image: 'assets/img/mostpopular1.png',
@@ -271,21 +254,6 @@ export class HomeComponent implements OnInit {
       image: 'assets/img/mostpopular4.png',
     },
   ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   testimonialList:any=[
     {
@@ -315,18 +283,17 @@ export class HomeComponent implements OnInit {
     this.imageBaseUrl = environment.imageEndpoint;
 
     this.requestForm = this.formBuilder.group({
-      // name: ['', [Validators.required, Validators.pattern(/^[ \A-Za-z]*$/)]],
       email: ['', [Validators.required, Validators.email]],
-      // phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]*$/)]],
       subject: ['', [Validators.required]],
-      // message: ['', [Validators.required]],
     });
 
     this.searchForm = this.formBuilder.group({
       citylist: [''],
       searchtxt: ['', [Validators.required]],
     });
-
+    
+    this.getAllData();
+    
     this.bannerList = [{
       image: 'assets/img/banner1.jpg',
     },
@@ -342,20 +309,97 @@ export class HomeComponent implements OnInit {
       image: 'assets/img/banner1.jpg',
     }
     ]
-
-   
-
-
+    this.procedureList();
   }
+
   get f() {
     return this.requestForm.controls;
   }
+
   homeDetails(){
     this.submitted = true;
     if(this.requestForm.valid){
       console.log(this.requestForm.value)
     }
   }
+
+  procedureList() {
+    this.mainService.getProcedureList().subscribe(
+      res => {
+        console.log("Result==>",res);
+      },
+      error => {
+        console.log(error.error); 
+      }
+    )
+  }
+
+  getAllData() {
+    var forkArray = [];
+    forkArray.push(this.mainService.getBannerList())
+    forkArray.push(this.mainService.getTopOffers())
+    forkJoin(forkArray).subscribe(
+      (result: any[]) => {
+        for (var i = 0; i < result.length; i++) {
+          if (i == 0) {
+            console.log("Banner List==>",result);
+          }
+          if (i == i) {
+            console.log("Top Offers==>",result);
+          }
+        }
+        this.visibleKey = true;
+      },
+      err => {
+        this.toastr.error('Something went wrong', '', {
+          timeOut: 3000,
+        });
+      }
+    )
+  }
+
+  requestFeedBack() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.requestForm.invalid) {
+      return;
+    }
+    else {
+
+      this.spinner.show();
+    //  console.log(this.requestForm.value);
+     var data = {
+       "emailid":this.requestForm.value.email,
+       "Message":this.requestForm.value.subject
+     }
+     console.log(data);
+     
+      this.mainService.requestFeedBack(data).subscribe(
+        res => {
+          if(res['status']) {
+            this.toastr.success(res['response'][0].Message, '', {
+              timeOut: 3000,
+            });
+          }
+          else {
+            this.toastr.error('Sorry Unable to send request', '', {
+              timeOut: 3000,
+            });
+          }
+          
+        },
+        error => {
+          console.log(error.error);
+          this.toastr.error('Error!!!', '', {
+            timeOut: 3000,
+          });
+        //  this.spinner.hide();
+        }
+      )
+    }
+  }
+
+
 
  
 

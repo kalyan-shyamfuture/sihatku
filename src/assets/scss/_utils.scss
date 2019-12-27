@@ -7,8 +7,12 @@ body {
     background-color: #FDBE12!important;
 }
 
+.cdk-overlay-container {
+    z-index: 1032 !important;
+}
+
 .navbar {
-    padding: 8px 0px;
+    padding: 0px;
 }
 
 .navbar-light .navbar-brand {
@@ -62,9 +66,12 @@ body {
     border-bottom: 0px solid #fdbe12;
     box-shadow: 0 0px 0 0 #817f78;
 }
+.carousel{ position: relative;
+    top: 110px;}
+
 
 .navbar {
-    padding: 10px 0px;
+    padding: 0px;
 }
 
 .navbar-light .lime.lighten-2 {
@@ -1000,7 +1007,7 @@ footer.page-footer a:hover {
 .iconSection {
     background: #ffed97;
     padding: 30px 0px;
-    margin: 0px;
+    margin: 109px 0px 40px;
 }
 
 .iconSectionBox {
@@ -1050,13 +1057,13 @@ footer.page-footer a:hover {
 
 .headerTopRow {
     background: #000;
-    padding: 6px 0px;
+    padding: 0px;
 }
 
 .headerTopRow p {
     font-size: 16px;
     color: #FFF;
-    padding: 0px;
+    padding: 6px 0px;
     margin: 0px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
@@ -1371,7 +1378,7 @@ footer.page-footer a:hover {
     font-size: 18px;
     padding: 0px 18px;
     color: #000;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 28px;
     font-family: 'Montserrat', sans-serif;
 }
@@ -1534,7 +1541,7 @@ footer.page-footer a:hover {
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid #0a0a0a;
+   border-bottom: 2px solid #0a0a0a;
     border-radius: 0px;
     margin: 0px;
     font-family: 'Montserrat', sans-serif;
@@ -1882,6 +1889,49 @@ a h2.navtext {
     background-repeat: no-repeat;
 }
 
+/*BackTop Button*/
+
+.back-top {
+    color: #fff;
+    right: 20px;
+    font-size: 22px;
+    position: fixed;
+    z-index: 1600;
+    opacity: 0;
+    visibility: hidden;
+    bottom: 70px;
+    height: 40px;
+    width: 40px;
+    background: #fcbe11;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 38px;
+    -webkit-border-radius: 4px;
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+.back-top-visible {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+
+.back-top:hover,
+.back-top:focus {
+    color: #fff;
+    // background: #00abc9;
+}
+
+
 
 /********************************************responsive*******************************************************************/
 
@@ -1968,4 +2018,11 @@ a h2.navtext {
 }
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
     border-color: #fcbe11;
+}
+
+.remove-section {
+    width:100%;
+    img{
+        float: right;
+    }
 }
