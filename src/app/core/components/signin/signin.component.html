@@ -164,8 +164,8 @@
                                         <mat-form-field>
                                                 <mat-label>Country</mat-label>
                                                 <mat-select name="country" formControlName="country">
-                                                    <mat-option [value]="country.id" *ngFor="let country of countryList">
-                                                        {{country.name}}
+                                                    <mat-option [value]="country.countryID" *ngFor="let country of listCountry">
+                                                        {{country.Name}}
                                                     </mat-option>
                                                 </mat-select>
                                                 <mat-error *ngIf="errorHandling(signupForm,'country', 'required')">

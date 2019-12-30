@@ -316,12 +316,6 @@ export class HomeComponent implements OnInit {
     return this.requestForm.controls;
   }
 
-  homeDetails(){
-    this.submitted = true;
-    if(this.requestForm.valid){
-      console.log(this.requestForm.value)
-    }
-  }
 
   procedureList() {
     this.mainService.getProcedureList().subscribe(
@@ -377,12 +371,13 @@ export class HomeComponent implements OnInit {
       this.mainService.requestFeedBack(data).subscribe(
         res => {
           if(res['status']) {
-            this.toastr.success(res['response'][0].Message, '', {
+            this.toastr.success(res['response'][0].Message,'Success!!!', {
               timeOut: 3000,
             });
+            this.requestForm.reset();
           }
           else {
-            this.toastr.error('Sorry Unable to send request', '', {
+            this.toastr.error('Failed!!!', 'Sorry Unable to send request', {
               timeOut: 3000,
             });
           }

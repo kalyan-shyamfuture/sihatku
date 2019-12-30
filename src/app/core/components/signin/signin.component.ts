@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from "../../../core/services/user.service";
+import { MainService } from "../../../core/services/main.service";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
-import { MustMatch } from '../../../core/components/validator/must-match.validator';
 import { PasswordValidation } from '../../../core/validation/PasswordValidation';
 @Component({
   selector: 'app-signin',
@@ -13,6 +13,7 @@ import { PasswordValidation } from '../../../core/validation/PasswordValidation'
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+  listCountry:any=[];
   signInForm: FormGroup;
   otpForm: FormGroup;
   showOtp: boolean = false;
@@ -27,6 +28,7 @@ export class SigninComponent implements OnInit {
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private userService: UserService,
+    private mainService:MainService,
     private toastr: ToastrService,
     private router: Router,
     private spinner: NgxSpinnerService
@@ -35,6 +37,7 @@ export class SigninComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCountry();
     this.signInForm = this.formBuilder.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -53,16 +56,13 @@ export class SigninComponent implements OnInit {
       confirmPassword: ['',Validators.required],
     },
     {
-      validator: MustMatch('userpassword', 'confirmPassword')
+      validator: PasswordValidation.MatchPassword
     }
     );
     
   }
  
-  countryList: any = [
-    { id: 1, name: "India" },
-    { id: 2, name: "Others" },
-  ]
+
 
   genderList: any = [
     { id: 1, type: "Male" },
@@ -73,52 +73,26 @@ export class SigninComponent implements OnInit {
   closeModal() {
     this.dialogRef.close(true);
   }
-  // convenience getter for easy access to form fields
-  get f() {
-    return this.signInForm.controls;
-  }
-  get f2() {
-    return this.signupForm.controls;
-  }
-  get f1() { return this.otpForm.controls; }
-
-  // onSubmit() {
-  //   this.submitted = true;
-  //   // stop here if form is invalid
-  //   if (this.signInForm.invalid) {
-  //     return;
-  //   }
-  //   else {
-
-  //     this.spinner.show();
-  //     console.log(this.signInForm.value);
-  //    // this.signInForm.value.device_token = "";
-  //    var data = {
-  //      "EmailID":this.signInForm.value.userName,
-  //      "Password":this.signInForm.value.password,
-  //      "FcmToken":""
-  //    }
-  //     this.userService.userSignin(data).subscribe(
-  //       res => {
-  //         console.log("Login Result==>", res);
-  //       },
-  //       error => {
-  //         console.log(error.error);
-  //         this.toastr.error('Sorry! Please enter valid login creadentials', '', {
-  //           timeOut: 3000,
-  //         });
-  //         this.spinner.hide();
-  //       }
-  //     )
-  //   }
-  
-  // }
 
   public errorHandling = (form: FormGroup,control: string, error: string) => {
     return form.controls[control].hasError(error);
   }
 
-  submitSigninForm() {
+  getCountry() {
+    this.mainService.getCountryList().subscribe(
+      res => {
+        console.log("Country List==>",res);
+        this.listCountry = res['response']
+       // console.log("List Country ==>",this.listCountry);
+      },
+      error => {
+        console.log(error.error);
+       
+      }
+    )
+  }
+
+  signIn() {
     console.log(this.signInForm.value)
     this.signInForm.markAllAsTouched();
       var data = {
@@ -139,35 +113,18 @@ export class SigninComponent implements OnInit {
         }
       )
   }
-  // signUp(){
-  //   console.log('123');
-  //    this.submitted = true;
-  //   //  console.log(this.signupForm.value);
-     
-  //    if(this.signupForm.valid)
-  //    {
-  //     console.log('helllo');
-  //      console.log(this.signupForm.value)
-  //    }
-
-  // }
-
   signUp(){
     console.log(this.signupForm.value)
     this.signupForm.markAllAsTouched();
       var data = {
-      "FirstName":this.signupForm.value.firstName,
-      "MiddleName":this.signupForm.value.middleName,
+      "FirstName":this.signupForm.value.firstName +" "+this.signupForm.value.middleName,
       "LastName":this.signupForm.value.lastName,
       "DOB":this.signupForm.value.dob,
-      "Gender":this.signupForm.value.gender,
-      "Country":this.signupForm.value.country,
+      "Gender":this.signupForm.value.gender.toString(),
+      "Country":this.signupForm.value.country.toString(),
       "EmailID":this.signupForm.value.email,
-      "MobileNo":this.signupForm.value.mobile,
+      "Phone":this.signupForm.value.mobile,
       "Password":this.signupForm.value.password,
-      "Latitude":'',
-      "Longitude":'',
-      "FcmToken":'',
       "Flag":1,
       }
       this.userService.userSignUp(data).subscribe(
@@ -184,69 +141,5 @@ export class SigninComponent implements OnInit {
       )
 
   }
-    // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signInForm.value, null, 4));
-
-
-  // onOTPSubmit() {
-  //   this.submitted = true;
-  //   // stop here if form is invalid
-  //   if (this.otpForm.invalid) {
-  //     return;
-  //   }
-  //   else {
-  //     if(this.getOtp != this.otpForm.value.otp) {
-  //       this.toastr.error('OTP mismatched!!!', '', {
-  //         timeOut: 3000,
-  //       });
-  //     }
-  //     else {
-  //       this.spinner.show();
-  //       this.otpForm.value.device_token = "";
-  //       this.otpForm.value.mobile = this.mobile;
-  //       this.userService.userSigninOtp(this.otpForm.value).subscribe(
-  //         res => {
-  //           console.log("Login After Otp ==>", res);
-  //           if (res['result']['status'] == true) {
-  //                localStorage.setItem('isLoggedin', 'true');
-  //             localStorage.setItem('userId', res['result']['user']['id']);
-  //             //   // localStorage.setItem('userType', res['result']['detail']['user_type']);
-  //              localStorage.setItem('userName', res['result']['user']['username']);
-  //              localStorage.setItem('userEmail', res['result']['user']['email']);
-  //             localStorage.setItem('userContact', res['result']['user']['phone_no']);
-  //             localStorage.setItem('userImage', res['result']['user']['profile_image']);
-  //             this.userService.loginStatus(true);
-  //                this.router.navigate(['/home']);
-  //                this.dialogRef.close(true);
-  //             this.toastr.success(res['result']['message'], '', {
-  //               timeOut: 3000,
-  //             });
-  //             this.showOtp = false;
-  //             this.submitted = false;
-  //             this.spinner.hide();
-  //           }
-  //           else {
-  //             this.toastr.error(res['result']['message'], '', {
-  //               timeOut: 3000,
-  //             });
-  //             this.spinner.hide();
-  //           }
-  //         },
-  //         error => {
-  //           console.log(error.error);
-  //           this.toastr.error('Sorry! Please enter valid login creadentials', '', {
-  //             timeOut: 3000,
-  //           });
-  //           this.spinner.hide();
-  //         }
-  //       )
-  //     }
-      
-  //   }
-
-    // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signInForm.value, null, 4));
-  // }
-
-
+    
 }
