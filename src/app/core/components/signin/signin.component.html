@@ -1,7 +1,7 @@
 <div class="close-icon" (click)="closeModal()"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
 <div class="loginSection">
 
-    <tabset>
+    <tabset *ngIf="showLogin">
         <tab heading="Login" id="tab1">
 
             <form role="form" [formGroup]="signInForm" (ngSubmit)="submitSigninForm()" novalidate>
@@ -39,10 +39,12 @@
                     </mat-form-field>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary">Log in</button>
             </form>
+
+            <div><br><p (click)="gotoForgotPass()"><span style="font-weight: bold;">Forgot Password? Click Here</span></p></div>
         </tab>
-        <!-------------------------------------------------------------Signup---------------------------------------------------------------------->
+ <!-------------------------------------------------------------Signup---------------------------------------------------------------------->
         <tab heading="Sign Up">
 
 
@@ -96,7 +98,7 @@
                             </div>
                         </div>
 
-                     
+
                     </div>
 
                     <div class="row">
@@ -111,8 +113,7 @@
                                 </div> -->
 
                                 <mat-form-field>
-                                    <input matInput [matDatepicker]="picker" formControlName="dob"
-                                        placeholder="DOB">
+                                    <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="DOB">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                     <mat-datepicker #picker startView="year" [startAt]="startDate">
                                     </mat-datepicker>
@@ -150,8 +151,8 @@
 
                     <div class="row">
                         <div class="col-6">
-                                <div class="form-group">
-                                        <!-- <label for="userCountry">User Country</label>
+                            <div class="form-group">
+                                <!-- <label for="userCountry">User Country</label>
                                         <select class="form-control mdb-select classic selectArrow" style="webkit-appearance:none;"
                                             formControlName="userCountry"
                                             [ngClass]="{ 'is-invalid': submitted && f2.userCountry.errors }">
@@ -161,41 +162,41 @@
                                         <div *ngIf="submitted && f2.userCountry.errors" class="invalid-feedback">
                                             <div *ngIf="f2.userCountry.errors.required">Country Name is required</div>
                                         </div> -->
-                                        <mat-form-field>
-                                                <mat-label>Country</mat-label>
-                                                <mat-select name="country" formControlName="country">
-                                                    <mat-option [value]="country.countryID" *ngFor="let country of listCountry">
-                                                        {{country.Name}}
-                                                    </mat-option>
-                                                </mat-select>
-                                                <mat-error *ngIf="errorHandling(signupForm,'country', 'required')">
-                                                    Please select Country
-                                                </mat-error>
-                                            </mat-form-field>
-                                    </div>
+                                <mat-form-field>
+                                    <mat-label>Country</mat-label>
+                                    <mat-select name="country" formControlName="country">
+                                        <mat-option [value]="country.countryID" *ngFor="let country of listCountry">
+                                            {{country.Name}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error *ngIf="errorHandling(signupForm,'country', 'required')">
+                                        Please select Country
+                                    </mat-error>
+                                </mat-form-field>
                             </div>
-                            <div class="col-6">
-                                   
-                                            <div class="form-group">
-                                                <!-- <label for="userMob">User Mobile:</label>
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group">
+                                <!-- <label for="userMob">User Mobile:</label>
                                                 <input type="number" class="form-control" id="userMob" name="userMob"
                                                     formControlName="userMob"
                                                     [ngClass]="{ 'is-invalid': submitted && f2.userMob.errors }">
                                                 <div *ngIf="submitted && f2.userMob.errors" class="invalid-feedback">
                                                     <div *ngIf="f2.userMob.errors.required">User Mobile No is required</div>
                                                 </div> -->
-                                                <mat-form-field class="custom-full-width">
-                                                        <input matInput placeholder="Mobile Number" formControlName="mobile">
-                                                        <mat-error *ngIf="errorHandling(signupForm,'mobile', 'required')">
-                                                            Please enter valid Mobile Number
-                                                        </mat-error>
-                                                    </mat-form-field>
-                                            </div>
-                                        
-                                </div>
+                                <mat-form-field class="custom-full-width">
+                                    <input matInput placeholder="Mobile Number" formControlName="mobile">
+                                    <mat-error *ngIf="errorHandling(signupForm,'mobile', 'required')">
+                                        Please enter valid Mobile Number
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                        </div>
                     </div>
 
-                
+
 
                     <div class="row">
                         <div class="col-12">
@@ -208,14 +209,14 @@
                                     <div *ngIf="f2.userEmail.errors.required">User Email is required</div>
                                 </div> -->
                                 <mat-form-field class="custom-full-width">
-                                        <input matInput placeholder="Email" formControlName="email">
-                                        <mat-error *ngIf="errorHandling(signupForm,'email', 'required')">
-                                            Please enter a valid Email
-                                        </mat-error>
-                                    </mat-form-field>
+                                    <input matInput placeholder="Email" formControlName="email">
+                                    <mat-error *ngIf="errorHandling(signupForm,'email', 'required')">
+                                        Please enter a valid Email
+                                    </mat-error>
+                                </mat-form-field>
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-6">
@@ -228,11 +229,12 @@
                                     <div *ngIf="f2.userpassword.errors.required">User Password is required</div>
                                 </div> -->
                                 <mat-form-field>
-                                        <input matInput type="password" placeholder="Password" formControlName="password" class="no-background-custom">
-                                        <mat-error *ngIf="errorHandling(signupForm,'password', 'required')">
-                                            Please enter minimum 6 length password 
-                                        </mat-error>
-                                    </mat-form-field>
+                                    <input matInput type="password" placeholder="Password" formControlName="password"
+                                        class="no-background-custom">
+                                    <mat-error *ngIf="errorHandling(signupForm,'password', 'required')">
+                                        Please enter minimum 6 length password
+                                    </mat-error>
+                                </mat-form-field>
                             </div>
                         </div>
                         <div class="col-6">
@@ -246,26 +248,53 @@
                                     <div *ngIf="f2.confirmPassword.errors.mustMatch">Passwords must match</div>
                                 </div> -->
                                 <mat-form-field>
-                                        <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword" class="no-background-custom">
-                                        <mat-error *ngIf="errorHandling(signupForm,'confirmPassword', 'required')">
-                                            Please enter confirm password 
-                                        </mat-error>
-                                        <mat-error *ngIf="signupForm.controls['confirmPassword'].pristine || signupForm.controls['confirmPassword'].errors?.MatchPassword">
-                                            Password and Confirm should be same</mat-error>
-                                    </mat-form-field>
+                                    <input matInput type="password" placeholder="Confirm Password"
+                                        formControlName="confirmPassword" class="no-background-custom">
+                                    <!-- <mat-error *ngIf="errorHandling(signupForm,'confirmPassword', 'required')">
+                                        Please enter confirm password
+                                    </mat-error>
+                                    <mat-error
+                                        *ngIf="signupForm.controls['confirmPassword'].pristine || signupForm.controls['confirmPassword'].errors?.MatchPassword">
+                                        Password and Confirm password should be same</mat-error> -->
+                                </mat-form-field>
                             </div>
                         </div>
                     </div>
-
-
-
-
                     <button type="submit" class="btn btn-primary">Sign Up</button>
                 </div>
             </form>
         </tab>
-
     </tabset>
+
+    <!---------------------------Forget password-------------------------------------------------------------------------------->
+    <tabset *ngIf="!showLogin">
+        <tab heading="Forgot Password">
+            <form role="form" [formGroup]="forgotPasswordForm" (ngSubmit)="forgetPass()" novalidate>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" style="width: 200;">
+                                <mat-form-field class="custom-full-width">
+                                    <input matInput placeholder="Email-id" formControlName="email">
+                                    <mat-error *ngIf="errorHandling(forgotPasswordForm,'email', 'required')">
+                                        Please enter Valid Email-id
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Verify your account</button>
+                        </div>
+                        <div class="col-12"><br><p (click)="backtoLogin()"><span style="font-weight: bold;">Back to login</span></p></div>
+                    </div>
+                </div>
+            </form>
+
+
+        </tab>
+    </tabset>
+    <!-------------------------------------------------------------Signup---------------------------------------------------------------------->
+
+
+
 </div>
 <!-- 
 <ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">

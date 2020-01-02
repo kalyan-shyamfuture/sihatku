@@ -22,10 +22,7 @@
             </div>
             <div class="homeNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <!-- <a class="nav-link" href="javascript:void(0)" data-toggle="modal" data-target="#modalLRForm">Log in / Sign up</a> -->
-                        <a class="nav-link" (click)="openSigninModal()">Log in / Sign up</a>
-                    </li>
+                  
                     <li class="nav-item">
                         <a class="nav-link"  [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#downloadapp'" >Download the app</a>
                     </li>
@@ -42,9 +39,29 @@
                         <a class="nav-link" [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#exploreSihatku'" > Explore Sihatku</a>
                     </li>
 
-                    <!-- <li class="nav-item"> 
-                            <a _ngcontent-vqi-c2="" aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="JavaScript:void(0);" id="dropdownMenuLink" role="button"><i _ngcontent-vqi-c2="" aria-hidden="true" class="fa fa-user-circle-o"></i> Welcome Sihatku </a>
-                    </li> -->
+                      <li class="nav-item" *ngIf="!loggedIn">
+                        <!-- <a class="nav-link" href="javascript:void(0)" data-toggle="modal" data-target="#modalLRForm">Log in / Sign up</a> -->
+                        <a class="nav-link" (click)="openSigninModal()">Log in / Sign up</a>
+                    </li>
+
+                    <li class="nav-item" *ngIf="loggedIn"> 
+                            <!-- <a _ngcontent-vqi-c2="" aria-expanded="false" aria-haspopup="true" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="JavaScript:void(0);" id="dropdownMenuLink" role="button"><i _ngcontent-vqi-c2="" aria-hidden="true" class="fa fa-user-circle-o"></i> Welcome {{userName}} </a> -->
+
+                            <div class="btn-group" dropdown>
+                                <button id="button-animated" dropdownToggle type="button" class="btn btn-secondary dropdown-toggle"
+                                        aria-controls="dropdown-animated">
+                                       {{userName}} <span class="caret"></span>
+                                </button>
+                                <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                                    role="menu" aria-labelledby="button-animated">
+                                  <li role="menuitem"><a class="dropdown-item" href="JavaScript:void(0);">My Account</a></li>
+                                  <li role="menuitem"><a class="dropdown-item" (click)="logOut()">Logout</a>
+                                  </li>
+                                 
+                                </ul>
+                              </div>
+                            
+                    </li>
 
 
                 </ul>

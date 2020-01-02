@@ -7,12 +7,14 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 import { PasswordValidation } from '../../../core/validation/PasswordValidation';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+  showLogin:boolean=true;
   listCountry:any=[];
   signInForm: FormGroup;
   otpForm: FormGroup;
@@ -21,6 +23,7 @@ export class SigninComponent implements OnInit {
   mobile: number;
   getOtp:any;
   signupForm: FormGroup;
+  forgotPasswordForm:FormGroup;
   
 
   constructor(
@@ -60,6 +63,10 @@ export class SigninComponent implements OnInit {
     }
     );
     
+    this.forgotPasswordForm = this.formBuilder.group({
+      email:['',Validators.required],
+    });
+    
   }
  
 
@@ -92,7 +99,8 @@ export class SigninComponent implements OnInit {
     )
   }
 
-  signIn() {
+  submitSigninForm() {
+    //console.log(this.signInForm.);
     console.log(this.signInForm.value)
     this.signInForm.markAllAsTouched();
       var data = {
@@ -103,6 +111,23 @@ export class SigninComponent implements OnInit {
       this.userService.userSignIn(data).subscribe(
         res => {
           console.log("Login Result==>", res);
+          if(res['Status'] ==1) {
+            localStorage.setItem('isLoggedin', 'true');
+            localStorage.setItem('userId', res['UserID']);
+            localStorage.setItem('userName', res['Username']);
+            localStorage.setItem('userEmail', res['EmailID']);
+            localStorage.setItem('userContact', res['Phone']);
+            this.userService.loginStatus(true);
+            this.dialogRef.close(true);
+            this.toastr.success(res['msg'], '', {
+              timeOut: 3000,
+            });
+          }
+          else {
+            this.toastr.error(res['msg'], '', {
+              timeOut: 3000,
+            });
+          }
         },
         error => {
           console.log(error.error);
@@ -140,6 +165,21 @@ export class SigninComponent implements OnInit {
         }
       )
 
+  }
+
+  gotoForgotPass() {
+    this.showLogin =false;
+  }
+  forgetPass(){
+    if(this.forgotPasswordForm.valid){
+      this.showLogin =true;
+      console.log('hi');
+      
+    }
+
+  }
+  backtoLogin(){
+    this.showLogin =true;
   }
     
 }

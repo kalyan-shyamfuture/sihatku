@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
   public openCloseAnim: string = 'open';
   loggedIn: any;
   userName: any;
+  userEmail:any;
   catList: any = [];
   settingList:any={};
   imageBaseUrl: any;
@@ -72,7 +73,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.loadUserInfo();
+    this.loadUserInfo();
   }
 
   expandClose() {
@@ -118,8 +119,34 @@ export class HeaderComponent implements OnInit {
 
   private changeStatus(status: boolean) {
     if (status) {
-     // this.loadUserInfo();
+      this.loadUserInfo();
     }
+  }
+
+
+  loadUserInfo() {
+    if (localStorage.getItem('isLoggedin')) {
+
+      // localStorage.setItem('isLoggedin', 'true');
+      // localStorage.setItem('userId', res['UserID']);
+      // localStorage.setItem('userName', res['Username']);
+      // localStorage.setItem('userEmail', res['EmailID']);
+      // localStorage.setItem('userContact', res['Phone']);
+
+      this.loggedIn = true;
+      this.userName = localStorage.getItem('userName');
+      this.userEmail  = localStorage.getItem('userEmail');
+
+    }
+    else {
+      this.loggedIn = false;
+    }
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.loggedIn = false;
+    this.router.navigate(['/']);
   }
 
 

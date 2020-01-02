@@ -30,6 +30,9 @@ export class UserService {
   userSignUp(data) {
     return this.http.post(environment.apiEndpoint + 'user-registration/',data);
   }
+  serviceProRegister(data) {
+    return this.http.post(environment.apiEndpoint + 'CreateProvider/',data);
+  }
 
 
 }

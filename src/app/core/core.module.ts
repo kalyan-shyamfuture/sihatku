@@ -33,6 +33,8 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { AgmCoreModule } from '@agm/core';
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { HeaderProviderComponent } from './components/header-provider/header-provider.component';
+import { FooterProviderComponent } from './components/footer-provider/footer-provider.component';
 
 
 @NgModule({
@@ -40,7 +42,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     HeaderComponent, 
     FooterComponent, 
     SidebarComponent, 
-    SigninComponent,
+    SigninComponent, HeaderProviderComponent, FooterProviderComponent,
     
   ],
   imports: [
@@ -100,7 +102,9 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
     FooterComponent,
     NgxSpinnerModule,
     SidebarComponent, 
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    HeaderProviderComponent,
+    FooterProviderComponent
   
   ],
   entryComponents: [

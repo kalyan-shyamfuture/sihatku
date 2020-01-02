@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiEndpoint: "https://mucapp.azurewebsites.net/api/",
-  imageEndpoint: "https://mucapp.azurewebsites.net"
+  imageEndpoint: "https://mucapp.azurewebsites.net/Content/ProviderImages/"
 };
 
 /*

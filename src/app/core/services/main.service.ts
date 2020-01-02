@@ -62,5 +62,9 @@ export class MainService {
   requestFeedBack(data) {
     return this.http.post(environment.apiEndpoint + 'userfeedbac',data);
   }
+
+  uploadImage(data) {
+    return this.http.post(environment.apiEndpoint + 'upload',data);
+  }
  
 }

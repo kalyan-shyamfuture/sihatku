@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder ,Validators , FormArray} from '@angular/forms';
+import { FormGroup, FormBuilder ,Validators , FormArray, FormControl} from '@angular/forms';
 import { PasswordValidation } from '../../core/validation/PasswordValidation';
 import {  MainService} from "../../core/services/main.service";
+import { UserService } from "../../core/services/user.service";
 import { FormControlValidator } from "../../core/validation/form-control.validator";
+import { environment } from "../../../environments/environment";
 @Component({
   selector: 'app-sproviderreg',
   templateUrl: './sproviderreg.component.html',
@@ -12,6 +14,10 @@ export class SproviderregComponent implements OnInit {
   public centerLogo: any;
   public practionarLogo:any;
   public proImage:any=[];
+  fileDataCenterLogo:any;
+  practionerImage:any;
+  fileDataProfile:any;
+  procedureImage:any;
   imgPractURL:any;
   imgCenterURL:any;
   serviceRegForm: FormGroup;
@@ -66,22 +72,24 @@ export class SproviderregComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public mainService:MainService
+    public mainService:MainService,
+    public userService:UserService
   ) { 
     
   }
 
   ngOnInit() {
       this.serviceRegForm = this.formBuilder.group({
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required]],
-        clinicName: ['', [Validators.required]],
-        aboutClinic: ['', [Validators.required]],
+        providerEmail: ['k@k.com', [Validators.required, Validators.email]],
+        providerPassword: ['12345678 ', [Validators.required, Validators.minLength(6)]],
+        providerconfirmPassword: ['12345678', [Validators.required]],
+        clinicName: ['Test Clinic', [Validators.required]],
+        aboutClinic: ['This is about the clinic', [Validators.required]],
         providerType:['1'],
+        centerLogoFile: [''],
         services_details: this.formBuilder.array([ this.servicecreate() ]),
       }, {
-        validator: PasswordValidation.MatchPassword
+        validator: PasswordValidation.MatchPasswordProvider
       })
 
     this.getSpeiality();
@@ -97,9 +105,9 @@ export class SproviderregComponent implements OnInit {
   getSpeiality() {
     this.mainService.getSpecialityList().subscribe(
       res => {
-        console.log("Speciality List==>",res);
+      //  console.log("Speciality List==>",res);
         this.listSpeciality = res['response']
-        console.log("List Speciality ==>",this.listSpeciality);
+       // console.log("List Speciality ==>",this.listSpeciality);
       },
       error => {
         console.log(error.error);
@@ -127,9 +135,9 @@ export class SproviderregComponent implements OnInit {
   getCountry() {
     this.mainService.getCountryList().subscribe(
       res => {
-        console.log("Country List==>",res);
+       // console.log("Country List==>",res);
         this.listCountry = res['response']
-        console.log("List Country ==>",this.listCountry);
+       // console.log("List Country ==>",this.listCountry);
       },
       error => {
         console.log(error.error);
@@ -142,12 +150,14 @@ export class SproviderregComponent implements OnInit {
 
   servicecreate(): FormGroup {
     return this.formBuilder.group({
-      speciality:['', Validators.required],
-      aboutProcedure: ['', Validators.required],
-      setPromoCode: ['', Validators.required],
-      selectProcedure:['', Validators.required],
-      setPrice: ['', Validators.required],
-      discount:['', Validators.required],
+      servicesSpeciality:['1', Validators.required],
+      servicesProcedure:['', Validators.required],
+      servicesProcDesc: ['This is about procedure', Validators.required],
+      servicePromoCode: ['zzz123', Validators.required],   
+      USAPrice: ['10', Validators.required],
+      locPrice: ['100', Validators.required],
+      discPrice:['10', Validators.required],
+      procedureImageFile: [''],
       practioner_details: this.formBuilder.array([ this.practionercreate() ])
     });
   }
@@ -162,25 +172,27 @@ export class SproviderregComponent implements OnInit {
 
   practionercreate(): FormGroup{
     return this.formBuilder.group({
-      firstName:['', Validators.required],
-      lastName:['', Validators.required],
-      passportNumber: ['', Validators.required],
-      gender: ['', Validators.required],
+      firstName:['Kalyan ', Validators.required],
+      lastName:['Acharya', Validators.required],
+      passportNumber: ['123456', Validators.required],
+      gender: ['1', Validators.required],
       fieldSpeciality: ['', Validators.required],
-      placeofPractice:['', Validators.required],
-      medicalCouncilNo:['', Validators.required],
-      medicalSchool: ['', Validators.required],
-      title:['', Validators.required],
-      country: ['', Validators.required],
-      contactNumber:['', Validators.required],
+     // placeofPractice:['', Validators.required],
+      medicalCouncilNo:['5655676', Validators.required],
+      medicalSchool: ['aaaaaaa', Validators.required],
+      title:['1', Validators.required],
+      country: ['1', Validators.required],
+      contactNumber:['7894561230', Validators.required],
       expertiseCategory: ['', Validators.required],
-      addressPractice:['', Validators.required],
-      registrationNo: ['', Validators.required],
-      aboutPractioner: ['', Validators.required],
-      dob: ['', Validators.required],
-      pracsubCategory: ['', Validators.required],
-      practisingSince: ['', Validators.required],
-      qualification: ['', Validators.required],
+      address:['Kolkata', Validators.required],
+      registrationNo: ['9999999', Validators.required],
+      aboutPractioner: ['This is about practioner', Validators.required],
+      DOB: ['', Validators.required],
+     // pracsubCategory: ['1', Validators.required],
+      practisingSince: ['2010', Validators.required],
+      qualification: ['MBBS', Validators.required],
+      practImageFile: [''],
+      
     });
   }
   practioneraddItem(index): void {
@@ -222,55 +234,151 @@ export class SproviderregComponent implements OnInit {
       return form.controls[control].hasError(error);
     }
 
-    centerLogoUpload(event) {
-        if (event.target.files.length) {
-          this.centerLogo = event.target.files[0];
-          console.log(this.centerLogo);
-        }
+    // centerLogoUpload(event) {
+    //     if (event.target.files.length) {
+    //       this.centerLogo = event.target.files[0];
+    //     //  console.log(this.centerLogo);
+    //     }
 
-        if (event.target.files.length) {
-          this.centerLogo = event.target.files[0];
-          console.log(this.centerLogo);
-          var reader = new FileReader();
-          reader.readAsDataURL(event.target.files[0]); 
-          reader.onload = (_event) => { 
-            this.imgCenterURL = reader.result; 
-            console.log(this.imgCenterURL);
-          }
-        }
-    }
+    //     if (event.target.files.length) {
+    //       this.centerLogo = event.target.files[0];
+    //       console.log(this.centerLogo);
+    //       var reader = new FileReader();
+    //       reader.readAsDataURL(event.target.files[0]); 
+    //       reader.onload = (_event) => { 
+    //         this.imgCenterURL = reader.result; 
+    //         console.log(this.imgCenterURL);
+    //       }
+    //     }
+    // }
 
-    procedureImageUpload(event) {
-      console.log(event.target.files.length);
-     // this.proImage = [];
-      for(var i = 0; i < event.target.files.length; i++ ) {
-          this.proImage.push(event.target.files[i]);
+    centerLogoUpload(event,formControl: FormControl) {
+      console.log(event);
+      if (event.target.files.length) {
+        this.centerLogo = event.target.files[0];
+      this.fileDataCenterLogo = <File>event.target.files[0];
+      const formData = new FormData();
+      formData.append('ImageUpload', this.fileDataCenterLogo, this.fileDataCenterLogo.name);
+      this.mainService.uploadImage(formData).subscribe(
+        res => {
+
+          console.log("Center Logo Upload==>",res);
+          console.log("Image Url==>",environment.imageEndpoint+res);
+          this.imgCenterURL = environment.imageEndpoint+res;
+          formControl.setValue(environment.imageEndpoint+res);
+          
+        },
+        error => {
+         
+        }
+      )
       }
+  }
+
+  practionarImageUpload(event,formControl: FormControl) {
+    console.log(formControl);
+    if (event.target.files.length) {
+      this.practionerImage = event.target.files[0];
+    this.fileDataProfile = <File>event.target.files[0];
+    const formData = new FormData();
+    formData.append('ImageUpload', this.practionerImage, this.practionerImage.name);
+    this.mainService.uploadImage(formData).subscribe(
+      res => {
+        console.log("Practioner Image Upload==>",res);
+        formControl.setValue(environment.imageEndpoint+res);
+      },
+      error => {
+       
+      }
+    )
+    }
+}
+
+    procedureImageUpload(event,formControl: FormControl) {
+      // for(var i = 0; i < event.target.files.length; i++ ) {
+      //     this.proImage.push(event.target.files[i]);
+      // }
+      const formData = new FormData();
+      if (event.target.files.length) {
+         for(var i = 0; i < event.target.files.length; i++ ) {
+          this.proImage.push(event.target.files[i]);
+          formData.append('[]', event.target.files[i], event.target.files[i].name);
+        }
       console.log(this.proImage);
+       this.procedureImage =this.proImage;
+     this.fileDataProfile = <FileList>this.proImage;
+       // this.procedureImage = event.target.files[0];
+     // this.fileDataProfile = <File>event.target.files[0];
+      
+      this.mainService.uploadImage(formData).subscribe(
+        res => {
+          console.log("procedureImage Upload==>",res);
+          console.log(typeof(res));
+          var proImg = String(res);
+          if(res) {
+ //console.log(res.split(","));
+          var imgList = proImg.split(",");
+          var newImgList = imgList.map(image => {
+            image = environment.imageEndpoint+image;
+            console.log(image);
+            return image;
+          });
+          console.log(newImgList);
+          formControl.setValue(newImgList);
+          }
+         
+        },
+        error => {
+         
+        }
+      )
+     
+      }
+
     
     }
 
-    practionarImageUpload(event) {
-      if (event.target.files.length) {
-        this.practionarLogo = event.target.files[0];
-        console.log(this.centerLogo);
-        var reader = new FileReader();
-        reader.readAsDataURL(event.target.files[0]); 
-        reader.onload = (_event) => { 
-          this.imgPractURL = reader.result; 
-          console.log(this.imgPractURL);
-        }
-      }
-    }
+    // practionarImageUpload(event) {
+    //   if (event.target.files.length) {
+    //     this.practionarLogo = event.target.files[0];
+    //     console.log(this.centerLogo);
+    //     var reader = new FileReader();
+    //     reader.readAsDataURL(event.target.files[0]); 
+    //     reader.onload = (_event) => { 
+    //       this.imgPractURL = reader.result; 
+    //       console.log(this.imgPractURL);
+    //     }
+    //   }
+    // }
 
     submitForm() {
-      console.log(this.serviceRegForm.value)
-      this.serviceRegForm.markAllAsTouched();
-      let formData = new FormData();
-     // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
-     // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
-     formData.append('email', this.serviceRegForm.value.email);
-     console.log(formData);
+      console.log(this.serviceRegForm.valid);
+      if(this.serviceRegForm.valid) {
+        const formValue = [this.serviceRegForm.value];
+        //   let formData = new FormData();
+          // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
+          // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
+         // formData.append('email', this.serviceRegForm.value.email);
+         // console.log(formData);
+          this.userService.serviceProRegister(formValue).subscribe(
+           res => {
+             console.log("Country List==>",res);
+             this.listCountry = res['response']
+            // console.log("List Country ==>",this.listCountry);
+           },
+           error => {
+             console.log(error.error);
+            
+           }
+         )
+      }
+      else {
+        console.log(this.serviceRegForm.value)
+        this.serviceRegForm.markAllAsTouched();
+      }
+      
+      
+     
     }
 
 

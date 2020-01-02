@@ -1,20 +1,23 @@
 export const Errors = {
-  aboutProcedure: [
+  servicesProcDesc: [
     { type: 'required', message: 'Please Enter About Procedure' },
   ],
-  setPromoCode: [
+  servicePromoCode: [
     { type: 'required', message: 'Please Enter Promo Code' },
   ],
-  setPrice: [
+  USAPrice: [
+    { type: 'required', message: 'Please Enter USD Price' },
+  ],
+  locPrice: [
     { type: 'required', message: 'Please Enter Price' },
   ],
-  discount: [
+  discPrice: [
     { type: 'required', message: 'Please Enter Discount' },
   ],
-  speciality: [
+  servicesSpeciality: [
     { type: 'required', message: 'Please Select Speciality' },
   ],
-  selectProcedure: [
+  servicesProcedure: [
     { type: 'required', message: 'Please Select Procedure' },
   ],
   title: [
@@ -29,9 +32,9 @@ export const Errors = {
   fieldSpeciality: [
     { type: 'required', message: 'Please Select Field Speciality' },
   ],
-  placeofPractice: [
-    { type: 'required', message: 'Please Enter Practice Place' },
-  ],
+  // placeofPractice: [
+  //   { type: 'required', message: 'Please Enter Practice Place' },
+  // ],
   medicalCouncilNo: [
     { type: 'required', message: 'Please Enter Medical Council Number' },
   ],
@@ -44,7 +47,7 @@ export const Errors = {
   expertiseCategory: [
     { type: 'required', message: 'Please Enter Expertise Category' },
   ],
-  addressPractice: [
+  address: [
     { type: 'required', message: 'Please Enter Practice Address' },
   ],
   registrationNo: [
@@ -67,6 +70,9 @@ export const Errors = {
   ],
   aboutPractioner: [
     { type: 'required', message: 'Please Enter About Practicioner' },
+  ],
+  DOB: [
+    { type: 'required', message: 'Date-of-Birth is required' },
   ],
   // email: [
   //   { type: 'required', message: 'Email is required' },
@@ -104,9 +110,7 @@ export const Errors = {
   //   { type: 'required', message: 'Last Name is required' },
   //   { type: 'minlength', message: 'Must be more than 3 characters' }
   // ],
-  // dob: [
-  //   { type: 'required', message: 'Date-of-Birth is required' },
-  // ],
+
   // gender: [
   //   { type: 'required', message: 'Gender is required' },
   // ],
