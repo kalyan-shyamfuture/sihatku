@@ -209,31 +209,6 @@ export class HomeComponent implements OnInit {
 
 
 
-
-
-
-  mostpopularList: any = [
-    {
-      image: 'assets/img/mostpopular1.png',
-    },
-    {
-      image: 'assets/img/mostpopular2.png',
-    },{
-      image: 'assets/img/mostpopular3.png',
-    },{
-      image: 'assets/img/mostpopular4.png',
-    },{
-      image: 'assets/img/mostpopular1.png',
-    },{
-      image: 'assets/img/mostpopular2.png',
-    },{
-      image: 'assets/img/mostpopular3.png',
-    },{
-      image: 'assets/img/mostpopular4.png',
-    },
-  ];
-
-
   featuredprovidersList: any = [
     {
       image: 'assets/img/mostpopular1.png',

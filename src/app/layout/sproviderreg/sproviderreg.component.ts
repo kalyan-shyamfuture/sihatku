@@ -354,13 +354,13 @@ export class SproviderregComponent implements OnInit {
     submitForm() {
       console.log(this.serviceRegForm.valid);
       if(this.serviceRegForm.valid) {
-        const formValue = [this.serviceRegForm.value];
+       // const formValue = [this.serviceRegForm.value];
         //   let formData = new FormData();
           // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
           // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
          // formData.append('email', this.serviceRegForm.value.email);
          // console.log(formData);
-          this.userService.serviceProRegister(formValue).subscribe(
+          this.userService.serviceProRegister(this.serviceRegForm.value).subscribe(
            res => {
              console.log("Country List==>",res);
              this.listCountry = res['response']

@@ -35,6 +35,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { HeaderProviderComponent } from './components/header-provider/header-provider.component';
 import { FooterProviderComponent } from './components/footer-provider/footer-provider.component';
+import { ServiceproviderSigninComponent } from './components/serviceprovider-signin/serviceprovider-signin.component';
 
 
 @NgModule({
@@ -42,7 +43,11 @@ import { FooterProviderComponent } from './components/footer-provider/footer-pro
     HeaderComponent, 
     FooterComponent, 
     SidebarComponent, 
-    SigninComponent, HeaderProviderComponent, FooterProviderComponent,
+    SigninComponent,
+     HeaderProviderComponent, 
+     FooterProviderComponent,
+     ServiceproviderSigninComponent
+
     
   ],
   imports: [
@@ -104,11 +109,13 @@ import { FooterProviderComponent } from './components/footer-provider/footer-pro
     SidebarComponent, 
     AngularFontAwesomeModule,
     HeaderProviderComponent,
-    FooterProviderComponent
+    FooterProviderComponent,
+    
   
   ],
   entryComponents: [
     SigninComponent,
+    ServiceproviderSigninComponent
   ]
 })
 export class CoreModule { }

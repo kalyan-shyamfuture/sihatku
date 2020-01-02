@@ -1,158 +1,114 @@
-<!-- <div class="orderHeader">
-
-    <div class="container">
-        <div class="row">
-
-            <div class="col-md-8">
-                <div class="orderPageLogo">
-                    <a href="index.html"><img src="assets/img/logo.png" class="d-block w-100" alt="Sihatku" title="Sihatku"></a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-
-                <div class="dropdown welcomeRow">
-                    <a class="btn btn-secondary dropdown-toggle" href="JavaScript:void(0);" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user-circle-o" aria-hidden="true"></i> Welcome Sihatku
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="JavaScript:void(0);">Action</a>
-                     </div>
-                </div>
-
-
-            </div>
-        </div>
-
-
-    </div>
-</div> -->
-
 <app-header-provider></app-header-provider>
-
-
-
-
 <div class="container">
-    <div class="procedures">
-
-        <!-- Nav tabs -->
-        <div class="row">
-            <div class="col-md-9">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item" [routerLink]="'/order/practioners'">
-                        <a class="nav-link active">
-                            <img src="assets/img/Practioners.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">practioners</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/my-procedures'">
-                        <a class="nav-link">
-                            <img src="assets/img/MyProcedures.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">My Procedures</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/new-oders'">
-                        <a class="nav-link">
-                            <img src="assets/img/NewOrders.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">New Orders</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/order-history'">
-                        <a class="nav-link">
-                            <img src="assets/img/OrderHistory.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">Order History</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/my-payments'">
-                        <a class="nav-link">
-                            <img src="assets/img/Mypayments.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">My payments</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/consumer-Review'">
-                        <a class="nav-link">
-                            <img src="assets/img/Consumerreviews.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">Consumerre Views</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/switch-toConsumer'">
-                        <a class="nav-link">
-                            <img src="assets/img/switchtoconsumerfront.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">Switch to Consumer Front</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/inbox'">
-                        <a class="nav-link last">
-                            <img src="assets/img/inbox.png">
-                        </a>
-                        <a >
-                            <h2 class="navtext">Inbox</h2>
-                        </a>
-                    </li>
-                    <li class="nav-item" [routerLink]="'/order/explore-Sihatku'">
-                        <a class="nav-link last">
-                            <img src="assets/img/Exploresihatku.png">
-                        </a>
-                        <a>
-                            <h2 class="navtext">Explore sihatku</h2>
-                        </a>
-                    </li>
-                </ul>
+   <div class="procedures">
+      <div class="row">
+         <div class="col-md-12">
+            <ul class="nav nav-tabs">
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link active" [routerLink]="'/order/practioners'">
+               <img src="assets/img/Practioners.png">
+               </a>
+               <a>
+                  <h2 class="navtext">practioners</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}" >
+               <a class="nav-link" [routerLink]="'/order/my-procedures'">
+               <img src="assets/img/MyProcedures.png">
+               </a>
+               <a>
+                  <h2 class="navtext">My Procedures</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link" [routerLink]="'/order/new-oders'">
+               <img src="assets/img/NewOrders.png">
+               </a>
+               <a>
+                  <h2 class="navtext">New Orders</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link" [routerLink]="'/order/order-history'">
+               <img src="assets/img/OrderHistory.png">
+               </a>
+               <a>
+                  <h2 class="navtext">Order History</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link" [routerLink]="'/order/my-payments'">
+               <img src="assets/img/Mypayments.png">
+               </a>
+               <a>
+                  <h2 class="navtext">My payments</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link" [routerLink]="'/order/consumer-Review'">
+               <img src="assets/img/Consumerreviews.png">
+               </a>
+               <a>
+                  <h2 class="navtext">Consumerre Views</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link" [routerLink]="'/order/switch-toConsumer'">
+               <img src="assets/img/switchtoconsumerfront.png">
+               </a>
+               <a>
+                  <h2 class="navtext">Switch to Consumer Front</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link last" [routerLink]="'/order/inbox'">
+               <img src="assets/img/inbox.png">
+               </a>
+               <a >
+                  <h2 class="navtext">Inbox</h2>
+               </a>
+               </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               true}">
+               <a class="nav-link last" [routerLink]="'/order/explore-Sihatku'">
+               <img src="assets/img/Exploresihatku.png">
+               </a>
+               <a>
+                  <h2 class="navtext">Explore sihatku</h2>
+               </a>
+               </li>
+            </ul>
+         </div>
+         <!-- <div class="col-md-3">
+            <div class="search-formRow">
+               <form action="" class="search-form">
+                  <div class="form-group has-feedback">
+                     <label for="search" class="sr-only">Search</label>
+                     <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                     <span class="glyphicon glyphicon-search form-control-feedback"><i class="fa fa-search" aria-hidden="true"></i>
+                     </span>
+                  </div>
+               </form>
             </div>
-            <div class="col-md-3">
-                <div class="search-formRow">
-                    <form action="" class="search-form">
-                        <div class="form-group has-feedback">
-                            <label for="search" class="sr-only">Search</label>
-                            <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                            <span class="glyphicon glyphicon-search form-control-feedback"><i class="fa fa-search" aria-hidden="true"></i>
-                          </span>
-                        </div>
-                    </form>
-                </div>
-
-                <br clear="all">
-
-                <div class="addRow">
-                    <p><span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure</p>
-                </div>
-
-
+            <br clear="all">
+            <div class="addRow">
+               <p><span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure</p>
             </div>
-        </div>
-        <div class="col-12 p-0 border mb-3">
-            <router-outlet></router-outlet>
-        </div>
-
-        <!-- Tab panes -->
-    
-    </div>
+         </div> -->
+      </div>
+      <div class="col-12 p-0 border mb-3">
+         <router-outlet></router-outlet>
+      </div>
+   </div>
 </div>
-<!-- End My Procedures -->
-
-
-
-
-<!---------------------------------------------------------->
-
 <!-- Start Footer -->
 <app-footer-provider></app-footer-provider>
-<!--/.End Footer -->
-
 <!--/.End Footer -->
