@@ -45,7 +45,7 @@
                    <br> Lorem&nbsp;Ipsum&nbsp;is&nbsp;simply&nbsp;dummy&nbsp;text
                    <br>
                 </td>
-                <td><img class="table-img1" src="assets/img/table-img-1.jpg" alt="" title=""></td>
+                <td><img  (click)="openModal(template)" class="table-img1" src="assets/img/table-img-1.jpg" alt="" title=""></td>
                 <td>MYR&nbsp;100/USD50</td>
                 <td><i style="font-size:24px" class="fa">&#xf06e;</i></td>
              </tr>
@@ -53,3 +53,29 @@
        </table>
     </div>
  </div>
+
+ <ng-template #template>
+   <div class="modal-body">
+   <!-- Start Banner -->
+   <div id="carousel-example-2" class="carousel topheight slide carousel-fade" data-ride="carousel">
+       <!--Indicators-->
+
+       <!--Slides-->
+       <div class="carousel-inner" role="listbox">
+           <owl-carousel-o [options]="bannerOptions">
+               <ng-template carouselSlide *ngFor="let banner of mediaList; let i = index">
+                   <div class="carousel-item active">
+                       <div class="view"> <img class="d-block w-100" [src]="banner.image"
+                               alt="First slide">
+                           <div class="mask rgba-black-light"></div>
+                       </div>
+                   </div>
+               </ng-template>
+           </owl-carousel-o>
+
+       </div>
+       <!--/.Slides-->
+   </div>
+   <!--/.End Banner-->
+</div>
+</ng-template>

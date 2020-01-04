@@ -66,8 +66,19 @@ body {
     border-bottom: 0px solid #fdbe12;
     box-shadow: 0 0px 0 0 #817f78;
 }
-.carousel{ position: relative;
-    top: 110px;}
+// .carousel{ position: relative;
+//     top: 110px;}
+
+    .carousel{
+        position: relative;
+        top: 110px;
+        &.topheight {
+            top:0;
+        }
+    }
+    
+    
+    
 
 
 .navbar {
