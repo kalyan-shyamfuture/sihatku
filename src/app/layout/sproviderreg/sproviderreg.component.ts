@@ -5,6 +5,8 @@ import {  MainService} from "../../core/services/main.service";
 import { UserService } from "../../core/services/user.service";
 import { FormControlValidator } from "../../core/validation/form-control.validator";
 import { environment } from "../../../environments/environment";
+import { ToastrService } from 'ngx-toastr';
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-sproviderreg',
   templateUrl: './sproviderreg.component.html',
@@ -29,22 +31,22 @@ export class SproviderregComponent implements OnInit {
   listProcedure:any=[];
   listTitle:any = [
     {
-      "id":1,
+      "id":'1',
       "name":"Mr"
     },
     {
-      "id":2,
+      "id":'2',
       "name":"Mrs"
     }
 
   ];
   listGender:any = [
     {
-      "id":1,
+      "id":'1',
       "name":"Male"
     },
     {
-      "id":2,
+      "id":'2',
       "name":"Female"
     }
 
@@ -53,19 +55,19 @@ export class SproviderregComponent implements OnInit {
 
   listfieldSpeciality:any=[
     {
-      "id":1,
+      "id":'1',
       "name":"Speciality 1"
     },
     {
-      "id":2,
+      "id":'2',
       "name":"Speciality 2"
     },
     {
-      "id":3,
+      "id":'3',
       "name":"Speciality 3"
     },
     {
-      "id":4,
+      "id":'4',
       "name":"Speciality 4"
     }
   ];
@@ -73,7 +75,9 @@ export class SproviderregComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public mainService:MainService,
-    public userService:UserService
+    public userService:UserService,
+    private toastr: ToastrService,
+    private router: Router,
   ) { 
     
   }
@@ -81,7 +85,7 @@ export class SproviderregComponent implements OnInit {
   ngOnInit() {
       this.serviceRegForm = this.formBuilder.group({
         providerEmail: ['k@k.com', [Validators.required, Validators.email]],
-        providerPassword: ['12345678 ', [Validators.required, Validators.minLength(6)]],
+        providerPassword: ['12345678', [Validators.required, Validators.minLength(6)]],
         providerconfirmPassword: ['12345678', [Validators.required]],
         clinicName: ['Test Clinic', [Validators.required]],
         aboutClinic: ['This is about the clinic', [Validators.required]],
@@ -94,7 +98,7 @@ export class SproviderregComponent implements OnInit {
 
     this.getSpeiality();
    // this.getProcedure();
-    this.getCountry();
+    //this.getCountry();
 
   }
 
@@ -106,11 +110,13 @@ export class SproviderregComponent implements OnInit {
     this.mainService.getSpecialityList().subscribe(
       res => {
       //  console.log("Speciality List==>",res);
-        this.listSpeciality = res['response']
+        this.listSpeciality = res['response'];
+        this.getCountry();
        // console.log("List Speciality ==>",this.listSpeciality);
       },
       error => {
         console.log(error.error);
+        this.getCountry();
        
       }
     )
@@ -157,7 +163,7 @@ export class SproviderregComponent implements OnInit {
       USAPrice: ['10', Validators.required],
       locPrice: ['100', Validators.required],
       discPrice:['10', Validators.required],
-      procedureImageFile: [''],
+      procedureImageFile: [[]],
       practioner_details: this.formBuilder.array([ this.practionercreate() ])
     });
   }
@@ -352,19 +358,27 @@ export class SproviderregComponent implements OnInit {
     // }
 
     submitForm() {
-      console.log(this.serviceRegForm.valid);
+      console.log(this.serviceRegForm.value);
       if(this.serviceRegForm.valid) {
-       // const formValue = [this.serviceRegForm.value];
-        //   let formData = new FormData();
-          // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
-          // formData.append('servicedetails[].name', this.serviceRegForm.value.name);
-         // formData.append('email', this.serviceRegForm.value.email);
-         // console.log(formData);
           this.userService.serviceProRegister(this.serviceRegForm.value).subscribe(
            res => {
-             console.log("Country List==>",res);
-             this.listCountry = res['response']
-            // console.log("List Country ==>",this.listCountry);
+             console.log(res);
+             if(res['Status'] ==1) {
+            //  this.dialogRef.close(true);
+            this.router.navigate(['/order']);
+              this.toastr.success(res['msg'], '', {
+                timeOut: 3000,
+              });
+             }
+             else {
+            //  this.dialogRef.close(true);
+              this.toastr.error(res['msg'], '', {
+                timeOut: 3000,
+              });
+             }
+            //  console.log("Country List==>",res);
+            //  this.listCountry = res['response']
+            // // console.log("List Country ==>",this.listCountry);
            },
            error => {
              console.log(error.error);

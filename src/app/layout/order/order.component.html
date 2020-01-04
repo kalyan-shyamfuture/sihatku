@@ -58,15 +58,7 @@
                   <h2 class="navtext">Consumerre Views</h2>
                </a>
                </li>
-               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
-               true}">
-               <a class="nav-link" [routerLink]="'/order/switch-toConsumer'">
-               <img src="assets/img/switchtoconsumerfront.png">
-               </a>
-               <a>
-                  <h2 class="navtext">Switch to Consumer Front</h2>
-               </a>
-               </li>
+            
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                true}">
                <a class="nav-link last" [routerLink]="'/order/inbox'">
@@ -85,6 +77,15 @@
                   <h2 class="navtext">Explore sihatku</h2>
                </a>
                </li>
+               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+                  true}">
+                  <a class="nav-link" (click)="openModal(template)">
+                  <img src="assets/img/switchtoconsumerfront.png">
+                  </a>
+                  <a>
+                     <h2 class="navtext">Switch to Consumer</h2>
+                  </a>
+                  </li>
             </ul>
          </div>
          <!-- <div class="col-md-3">
@@ -109,6 +110,14 @@
       </div>
    </div>
 </div>
+<ng-template #template>
+   <div class="modal-body text-center">
+     <p>Do you want to go home page?</p>
+     <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+     <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+   </div>
+ </ng-template>
+
 <!-- Start Footer -->
 <app-footer-provider></app-footer-provider>
 <!--/.End Footer -->

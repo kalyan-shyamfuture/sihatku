@@ -1044,7 +1044,7 @@ footer.page-footer a:hover {
 
 .iconSectionBox h2 a {
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color: #000;
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
@@ -1791,7 +1791,8 @@ a h2.navtext {
 }
 
 .addRow {
-    float: right;
+    float: left;
+    margin: 17px 0 0 0px;
 }
 
 .addRow p span {
@@ -1867,7 +1868,7 @@ a h2.navtext {
 }
 
 .procedures .nav-item {
-    width: 70px;
+    //width: 70px;
 }
 
 .table td {

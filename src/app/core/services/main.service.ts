@@ -66,5 +66,15 @@ export class MainService {
   uploadImage(data) {
     return this.http.post(environment.apiEndpoint + 'upload',data);
   }
- 
+
+  getPopularProcedure() {
+    return this.http.get(environment.apiEndpoint + 'popularProcedures');
+  }
+  getFeatureProvider() {
+    return this.http.get(environment.apiEndpoint + 'featuredProviders');
+  }
+
+  getPractionerList(id) {
+    return this.http.get(environment.apiEndpoint + 'PracticenerDetails/'+id);
+  }
 }

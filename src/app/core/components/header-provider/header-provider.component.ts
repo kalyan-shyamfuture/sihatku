@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ServiceproviderSigninComponent } from '../serviceprovider-signin/serviceprovider-signin.component';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
-
+import { UserService } from "../../../core/services/user.service";
+import { Router, NavigationEnd } from '@angular/router';
 @Component({
   selector: 'app-header-provider',
   templateUrl: './header-provider.component.html',
@@ -31,10 +31,21 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class HeaderProviderComponent implements OnInit {
   @ViewChild('topNav', { static: true }) public topNav: ElementRef;
   public openCloseAnim: string = 'open';
-
-  constructor(public dialog: MatDialog) { }
+  loggedIn: any;
+  userId:any;
+  userName: any;
+  userEmail:any;
+  userType:any;
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    public userService: UserService
+    ) {
+    userService.getLoggedInStatus.subscribe(status => this.changeStatus(status));
+   }
 
   ngOnInit() {
+    this.loadUserInfo();
   }
 
   expandClose() {
@@ -64,6 +75,36 @@ export class HeaderProviderComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
     })
+  }
+
+  private changeStatus(status: boolean) {
+    if (status) {
+      this.loadUserInfo();
+    }
+  }
+
+  loadUserInfo() {
+    if (localStorage.getItem('isLoggedin')) {
+      this.loggedIn = true;
+      this.userId = localStorage.getItem('userId');
+      this.userName = localStorage.getItem('userName');
+      this.userType = localStorage.getItem('userType');
+      this.userEmail  = localStorage.getItem('userEmail');
+
+    }
+    else {
+      this.loggedIn = false;
+    }
+  }
+
+  gotoPage() {
+    this.router.navigate(['/home']);
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.loggedIn = false;
+    this.router.navigate(['/registration']);
   }
 
 

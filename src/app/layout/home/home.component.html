@@ -1,6 +1,4 @@
 <app-header></app-header>
-
-
 <div class="wocommersbox"> <a href="javascript:void(0)"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
 <!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
@@ -11,15 +9,15 @@
     <!--Slides-->
     <div class="carousel-inner" role="listbox">
         <owl-carousel-o [options]="bannerOptions">
-            <ng-template carouselSlide *ngFor="let banner of mediaList; let i = index">
+            <ng-template carouselSlide *ngFor="let banner of bannerList; let i = index">
+                {{banner.serviceImgURL1}}
                 <div class="carousel-item active">
-                    <div class="view"> <img class="d-block w-100" [src]="banner.image" alt="First slide">
+                    <div class="view"> <img class="d-block w-100" [src]="banner.Column1" alt="First slide">
                         <div class="mask rgba-black-light"></div>
                     </div>
                 </div>
             </ng-template>
         </owl-carousel-o>
-
     </div>
     <!--/.Slides-->
 </div>
@@ -28,13 +26,13 @@
 <section class="iconSection">
     <div class="container">
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-sm-2" *ngFor="let speciality of specialitylist | slice:0:5; let i = index">
                 <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img src="assets/img/maging.png" alt="" title=""> </div>
-                    <h2><a href="#">Imaging & Radiology</a></h2>
+                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title=""> </div>
+                    <h2><a href="javascript:void(0)">{{speciality.specialityName}}</a></h2>
                 </div>
             </div>
-            <div class="col-sm-2">
+            <!-- <div class="col-sm-2">
                 <div class="iconSectionBox">
                     <div class="iconSectionRound"> <img src="assets/img/lab.png" alt="" title=""> </div>
                     <h2><a href="#">Labs</a></h2>
@@ -57,7 +55,7 @@
                     <div class="iconSectionRound"> <img src="assets/img/ivf.png" alt="" title=""> </div>
                     <h2><a href="#">IVF/Fertility</a></h2>
                 </div>
-            </div>
+            </div> -->
             <div class="col-sm-2">
                 <div class="iconSectionBox">
                     <div class="iconSectionRound"> <img src="assets/img/more.png" alt="" title="" class="iconSectionRoundDots"> </div>
@@ -84,8 +82,9 @@
         <div class="carousel-inner" role="listbox">
             <owl-carousel-o [options]="topOffersOptions">
                 <ng-template carouselSlide *ngFor="let topoffer of topOfferList; let i = index">
+                 
                     <div class="carousel-item active">
-                        <div class="view"> <img class="d-block w-100" [src]="topoffer.image" alt="First slide">
+                        <div class="view"> <img class="d-block w-100" [src]="topoffer.serviceImgURL1" alt="First slide">
                             <div class="mask rgba-black-light"></div>
                         </div>
                     </div>
@@ -136,9 +135,9 @@
         </div>
         <div class="carousel-inner" role="listbox">
             <owl-carousel-o [options]="featuredprovidersOptions">
-                <ng-template carouselSlide *ngFor="let featuredproviders of featuredprovidersList; let i = index">
+                <ng-template carouselSlide *ngFor="let featuredproviders of featureProviderList; let i = index">
                     <div class="carousel-item active">
-                        <div class="view"> <img class="d-block w-100" [src]="featuredproviders.image" alt="First slide">
+                        <div class="view"> <img class="d-block w-100" [src]="featuredproviders.centerLogoFile" alt="First slide">
                             <div class="mask rgba-black-light"></div>
                         </div>
                     </div>

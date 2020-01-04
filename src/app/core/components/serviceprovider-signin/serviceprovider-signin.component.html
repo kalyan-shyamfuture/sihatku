@@ -1,7 +1,7 @@
 <div class="close-icon" (click)="closeModal()"><i class="fa fa-times-circle" aria-hidden="true"
         style="float: right;"></i></div>
 <div class="loginSection">
-
+  
     <tabset *ngIf="showLogin">
         <tab heading="Login" id="tab1">
 
@@ -12,9 +12,9 @@
 
                             <div class="form-group">
                                 <mat-form-field class="custom-full-width">
-                                    <input matInput placeholder="userName" formControlName="userName">
-                                    <mat-error *ngIf="errorHandling(signInForm,'userName', 'required')">
-                                        Please enter User Name
+                                    <input matInput placeholder="Email" formControlName="providerEmail">
+                                    <mat-error *ngIf="errorHandling(signInForm,'providerEmail', 'required')">
+                                        Please enter Email
                                     </mat-error>
                                 </mat-form-field>
                             </div>
@@ -22,9 +22,9 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <mat-form-field class="custom-full-width">
-                                    <input matInput type="password" placeholder="Password" formControlName="password"
+                                    <input matInput type="password" placeholder="Password" formControlName="providerPassword"
                                         class="no-background-custom">
-                                    <mat-error *ngIf="errorHandling(signInForm,'password', 'required')">
+                                    <mat-error *ngIf="errorHandling(signInForm,'providerPassword', 'required')">
                                         Please enter a minimum 6 length password
                                     </mat-error>
                                 </mat-form-field>
@@ -37,7 +37,7 @@
                 </div>
             </form>
             <div><br>
-                <p (click)="gotoForgotPass()"><span style="font-weight: bold;">Forgot Password? Click Here </span></p>
+                <p ><span (click)="gotoForgotPass()" style="font-weight: bold;">Forgot Password? Click Here </span></p>
             </div>
         </tab>
     </tabset>
@@ -51,8 +51,11 @@
                             <div class="form-group" style="width: 200;">
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Email-id" formControlName="email">
-                                    <mat-error *ngIf="errorHandling(forgotPasswordForm,'email', 'required')">
+                                    <!-- <mat-error *ngIf="errorHandling(forgotPasswordForm,'email', 'required')">
                                         Please enter Valid Email-id
+                                    </mat-error> -->
+                                    <mat-error *ngIf="errorHandling(forgotPasswordForm,'providerEmail', 'required')">
+                                        Please enter a valid email
                                     </mat-error>
                                 </mat-form-field>
                             </div>

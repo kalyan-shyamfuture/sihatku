@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef , TemplateRef} from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { SigninComponent } from '../signin/signin.component';
@@ -8,6 +8,9 @@ import { MainService } from "../../../core/services/main.service";
 import { environment } from "../../../../environments/environment";
 import { filter } from 'rxjs/operators';
 import { ScrollToAnimationEasing, ScrollToOffsetMap } from '@nicky-lenaers/ngx-scroll-to';
+
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-header',
@@ -37,6 +40,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('topNav', { static: true }) public topNav: ElementRef;
   public openCloseAnim: string = 'open';
   loggedIn: any;
+  userId:any;
   userName: any;
   userEmail:any;
   catList: any = [];
@@ -46,12 +50,15 @@ export class HeaderComponent implements OnInit {
   customer_cart_data:any;
   cartCount:any;
   userType:any;
+  modalRef: BsModalRef;
+  message: string;
   public ngxScrollToDuration: number;
   constructor(
     public dialog: MatDialog,
     private router: Router,
     public userService: UserService,
     private mainService: MainService,
+    private modalService: BsModalService,
   ) {
     this.imageBaseUrl = environment.imageEndpoint;
     mainService.getCartNumberStatus.subscribe(status => this.cartNumberStatus(status));
@@ -134,7 +141,9 @@ export class HeaderComponent implements OnInit {
       // localStorage.setItem('userContact', res['Phone']);
 
       this.loggedIn = true;
+      this.userId = localStorage.getItem('userId');
       this.userName = localStorage.getItem('userName');
+      this.userType = localStorage.getItem('userType');
       this.userEmail  = localStorage.getItem('userEmail');
 
     }
@@ -147,6 +156,22 @@ export class HeaderComponent implements OnInit {
     localStorage.clear();
     this.loggedIn = false;
     this.router.navigate(['/']);
+  }
+  // ----------------------------------------------------------modal function
+  openServiceProviderModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+ 
+  confirm(): void {
+    this.modalRef.hide();
+    localStorage.clear();
+    this.loggedIn = false;
+    this.router.navigate(['/registration']);
+  }
+ 
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 
 

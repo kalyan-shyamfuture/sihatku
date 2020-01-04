@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 // core
 import { CoreModule } from './core/core.module';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     CoreModule,
     ToastrModule.forRoot(),
     TabsModule.forRoot(),
+    ModalModule.forRoot(),
     //CoreModule.forRoot()
   ],
   providers: [],

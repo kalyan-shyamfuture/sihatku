@@ -31,7 +31,12 @@ export class UserService {
     return this.http.post(environment.apiEndpoint + 'user-registration/',data);
   }
   serviceProRegister(data) {
+    console.log("Data in service page ==>",data);
     return this.http.post(environment.apiEndpoint + 'CreateProvider/',data);
+  }
+
+  providerSignIn(data) {
+    return this.http.post(environment.apiEndpoint + 'provider-login/',data);
   }
 
 

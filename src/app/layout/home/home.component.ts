@@ -33,6 +33,10 @@ export class HomeComponent implements OnInit {
   locId:any;
   blogList:any=[];
   recentWorkList:any=[];
+  topOfferList:any=[];
+  specialitylist:any=[];
+  mostpopularList:any=[];
+  featureProviderList:any=[];
 
   bannerOptions: OwlOptions = {
     loop: true,
@@ -87,9 +91,6 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
-
-
-
 
   mostpopularOptions: OwlOptions = {
     loop: true,
@@ -175,37 +176,38 @@ export class HomeComponent implements OnInit {
 
   images: any = [];
   catList: any = [];
-  mediaList: any = [
-    {
-      image: 'assets/img/banner3.png',
-    },
-    {
-      image: 'assets/img/banner1.png',
-    },{
-      image: 'assets/img/banner2.png',
-    },
-  ];
+  // mediaList: any = [
+  //   {
+  //     image: 'assets/img/banner3.png',
+  //   },
+  //   {
+  //     image: 'assets/img/banner1.png',
+  //   },{
+  //     image: 'assets/img/banner2.png',
+  //   },
+  // ];
+  
 
-  topOfferList: any = [
-    {
-      image: 'assets/img/top-offers3.png',
-    },
-    {
-      image: 'assets/img/top-offers2.png',
-    },{
-      image: 'assets/img/top-offers3.png',
-    },{
-      image: 'assets/img/top-offers2.png',
-    },{
-      image: 'assets/img/top-offers3.png',
-    },{
-      image: 'assets/img/top-offers2.png',
-    },{
-      image: 'assets/img/top-offers3.png',
-    },{
-      image: 'assets/img/top-offers2.png',
-    },
-  ];
+  // topOfferList: any = [
+  //   {
+  //     image: 'assets/img/top-offers3.png',
+  //   },
+  //   {
+  //     image: 'assets/img/top-offers2.png',
+  //   },{
+  //     image: 'assets/img/top-offers3.png',
+  //   },{
+  //     image: 'assets/img/top-offers2.png',
+  //   },{
+  //     image: 'assets/img/top-offers3.png',
+  //   },{
+  //     image: 'assets/img/top-offers2.png',
+  //   },{
+  //     image: 'assets/img/top-offers3.png',
+  //   },{
+  //     image: 'assets/img/top-offers2.png',
+  //   },
+  // ];
 
 
 
@@ -284,38 +286,88 @@ export class HomeComponent implements OnInit {
       image: 'assets/img/banner1.jpg',
     }
     ]
-    this.procedureList();
+    // this.procedureList();
+    // this.getTopOffers();
+    // this.getBannerList();
   }
+
+
 
   get f() {
     return this.requestForm.controls;
   }
 
 
-  procedureList() {
-    this.mainService.getProcedureList().subscribe(
-      res => {
-        console.log("Result==>",res);
-      },
-      error => {
-        console.log(error.error); 
-      }
-    )
-  }
+  // procedureList() {
+  //   this.mainService.getProcedureList().subscribe(
+  //     res => {
+  //       console.log("Result Procedure List==>",res);
+  //       this.getTopOffers();
+  //     },
+  //     error => {
+  //       console.log(error.error); 
+  //       this.getTopOffers();
+  //     }
+  //   )
+  // }
+
+  // getTopOffers() {
+  //   this.mainService.getTopOffers().subscribe(
+  //     res => {
+  //       console.log("Result Top Offers==>",res);
+  //       this.getBannerList();
+  //     },
+  //     error => {
+  //       console.log(error.error); 
+  //       this.getBannerList();
+  //     }
+  //   )
+  // }
+
+  // getBannerList() {
+  //   this.mainService.getBannerList().subscribe(
+  //     res => {
+  //       console.log("Result Banner List==>",res);
+  //     },
+  //     error => {
+  //       console.log(error.error); 
+  //     }
+  //   )
+  // }
 
   getAllData() {
     var forkArray = [];
     forkArray.push(this.mainService.getBannerList())
+    forkArray.push(this.mainService.getSpecialityList())
     forkArray.push(this.mainService.getTopOffers())
+    forkArray.push(this.mainService.getPopularProcedure())
+    forkArray.push(this.mainService.getFeatureProvider())
     forkJoin(forkArray).subscribe(
       (result: any[]) => {
+        console.log("All result ==>",result);
         for (var i = 0; i < result.length; i++) {
-          if (i == 0) {
-            console.log("Banner List==>",result);
+          if (i == 0) {   
+            this.bannerList = result[i]['response'];
+            console.log("Banner List==>",this.bannerList);
           }
-          if (i == i) {
-            console.log("Top Offers==>",result);
+          if (i == 1) {
+            this.specialitylist = result[i]['response'];
+            console.log("getSpecialityList List==>",result[i]);
           }
+          if (i == 2) {
+            this.topOfferList = result[i]['response'];
+            console.log("Top Offer List==>",this.topOfferList);
+          }
+          
+          if (i == 3) {
+            this.mostpopularList = result[i]['response'];
+            console.log("Popular Proce List==>",result[i]);
+          }
+          if (i == 4) {
+            this.featureProviderList = result[i]['response'];
+            console.log("Popular Proce List==>",result[i]);
+          }
+         
         }
         this.visibleKey = true;
       },

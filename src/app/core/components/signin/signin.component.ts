@@ -117,6 +117,7 @@ export class SigninComponent implements OnInit {
             localStorage.setItem('userName', res['Username']);
             localStorage.setItem('userEmail', res['EmailID']);
             localStorage.setItem('userContact', res['Phone']);
+            localStorage.setItem('userType', '2');
             this.userService.loginStatus(true);
             this.dialogRef.close(true);
             this.toastr.success(res['msg'], '', {
@@ -131,7 +132,7 @@ export class SigninComponent implements OnInit {
         },
         error => {
           console.log(error.error);
-          this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+          this.toastr.error('Error!!!', '', {
             timeOut: 3000,
           });
           this.spinner.hide();
@@ -154,11 +155,24 @@ export class SigninComponent implements OnInit {
       }
       this.userService.userSignUp(data).subscribe(
         res => {
-          console.log("Login Result==>", res);
+          console.log("Signup Result==>", res);
+
+          if(res['Status'] ==1) {
+            this.dialogRef.close(true);
+          this.toastr.success(res['msg'], '', {
+            timeOut: 3000,
+          });
+        }
+        else {
+          this.dialogRef.close(true);
+          this.toastr.error(res['msg'], '', {
+            timeOut: 3000,
+          });
+        }
         },
         error => {
           console.log(error.error);
-          this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+          this.toastr.error('Error!!!', '', {
             timeOut: 3000,
           });
           this.spinner.hide();

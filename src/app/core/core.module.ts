@@ -25,6 +25,8 @@ import {
 
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -80,7 +82,8 @@ import { ServiceproviderSigninComponent } from './components/serviceprovider-sig
       }),
       AngularFontAwesomeModule,
       NgxPageScrollCoreModule,
-      ScrollToModule.forRoot()
+      ScrollToModule.forRoot(),
+      ModalModule.forRoot(),
   ],
   exports: [
     FormsModule,

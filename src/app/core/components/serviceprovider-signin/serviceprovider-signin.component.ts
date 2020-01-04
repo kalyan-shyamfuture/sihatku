@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
-
+import { Router } from '@angular/router';
 import { UserService } from "../../../core/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -22,12 +22,13 @@ export class ServiceproviderSigninComponent implements OnInit {
     public dialog: MatDialog,
     private toastr: ToastrService,
     private userService: UserService,
+    private router: Router,
     private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.signInForm = this.formBuilder.group({
-      userName: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      providerEmail: ['',[Validators.required, Validators.email]],
+      providerPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.forgotPasswordForm = this.formBuilder.group({
       email:['',Validators.required],
@@ -41,42 +42,50 @@ export class ServiceproviderSigninComponent implements OnInit {
     return form.controls[control].hasError(error);
   }
   submitSigninForm() {
-    console.log(this.signInForm.value)
-    this.signInForm.markAllAsTouched();
-      var data = {
-      "Username":this.signInForm.value.userName,
-      "Password":this.signInForm.value.password,
-      "FcmToken":""
-      }
-      this.userService.userSignIn(data).subscribe(
-        res => {
-          console.log("Login Result==>", res);
-          if(res['Status'] ==1) {
-            localStorage.setItem('isLoggedin', 'true');
-            localStorage.setItem('userId', res['UserID']);
-            localStorage.setItem('userName', res['Username']);
-            localStorage.setItem('userEmail', res['EmailID']);
-            localStorage.setItem('userContact', res['Phone']);
-            this.userService.loginStatus(true);
-            this.dialogRef.close(true);
-            this.toastr.success(res['msg'], '', {
-              timeOut: 3000,
-            });
-          }
-          else {
-            this.toastr.error(res['msg'], '', {
-              timeOut: 3000,
-            });
-          }
-        },
-        error => {
-          console.log(error.error);
-          this.toastr.error('Sorry! Please enter valid login creadentials', '', {
-            timeOut: 3000,
-          });
-          this.spinner.hide();
+
+    if(this.signInForm.valid) {
+      console.log(this.signInForm.value)
+      this.signInForm.markAllAsTouched();
+        var data = {
+        "providerEmail":this.signInForm.value.providerEmail,
+        "providerPassword":this.signInForm.value.providerPassword,
         }
-      )
+        this.userService.providerSignIn(data).subscribe(
+          res => {
+            console.log("Provider Login Result==>", res);
+            if(res['Status'] ==1) {
+              localStorage.setItem('isLoggedin', 'true');
+              localStorage.setItem('userId', res['providerID']);
+              localStorage.setItem('userType', '4');
+              localStorage.setItem('userName', '');
+              localStorage.setItem('userEmail', res['providerEmail']);
+              localStorage.setItem('userContact', res['providerPassword']);
+              this.userService.loginStatus(true);
+              this.dialogRef.close(true);
+              this.toastr.success(res['msg'], '', {
+                timeOut: 3000,
+              });
+              this.router.navigate(['/order']);
+            }
+            else {
+              this.toastr.error(res['msg'], '', {
+                timeOut: 3000,
+              });
+            }
+          },
+          error => {
+            console.log(error.error);
+            this.toastr.error('Sorry! Please enter valid login creadentials', '', {
+              timeOut: 3000,
+            });
+            this.spinner.hide();
+          }
+        )
+    }
+    else {
+      this.signInForm.markAllAsTouched();
+    }
+   
   }
   gotoForgotPass() {
     this.showLogin =false;

@@ -105,7 +105,7 @@
                                         <mat-form-field>
                                             <mat-label>Speciality</mat-label>
                                             <mat-select name="servicesSpeciality" formControlName="servicesSpeciality"  (selectionChange)="getProcedure($event)">
-                                                <mat-option [value]="speciality.specialityID" *ngFor="let speciality of listSpeciality">
+                                                <mat-option value="{{speciality.specialityID}}" *ngFor="let speciality of listSpeciality">
                                                     {{speciality.specialityName}}
                                                 </mat-option>
                                             </mat-select>
@@ -139,7 +139,7 @@
                                         <mat-form-field>
                                             <mat-label>Procedure</mat-label>
                                             <mat-select name="servicesProcedure" formControlName="servicesProcedure">
-                                                <mat-option [value]="procedure.procedureID" *ngFor="let procedure of listProcedure">
+                                                <mat-option value="{{procedure.procedureID}}" *ngFor="let procedure of listProcedure">
                                                     {{procedure.procedureName}}
                                                 </mat-option>
                                             </mat-select>
@@ -221,7 +221,7 @@
                                             <mat-form-field>
                                                 <mat-label>Title</mat-label>
                                                 <mat-select name="title" formControlName="title">
-                                                    <mat-option [value]="title.id" *ngFor="let title of listTitle">
+                                                    <mat-option value="{{title.id}}" *ngFor="let title of listTitle">
                                                         {{title.name}}
                                                     </mat-option>
                                                 </mat-select>
@@ -234,7 +234,7 @@
                                             <mat-form-field>
                                                 <mat-label>Gender</mat-label>
                                                 <mat-select name="gender" formControlName="gender">
-                                                    <mat-option [value]="gender.id" *ngFor="let gender of listGender">
+                                                    <mat-option value="{{gender.id}}" *ngFor="let gender of listGender">
                                                         {{gender.name}}
                                                     </mat-option>
                                                 </mat-select>
@@ -257,7 +257,7 @@
                                             <mat-form-field>
                                                 <mat-label>Field Speciality</mat-label>
                                                 <mat-select name="fieldSpeciality" formControlName="fieldSpeciality">
-                                                    <mat-option [value]="fieldSpeciality.id" *ngFor="let fieldSpeciality of listfieldSpeciality">
+                                                    <mat-option value="{{fieldSpeciality.id}}" *ngFor="let fieldSpeciality of listfieldSpeciality">
                                                         {{fieldSpeciality.name}}
                                                     </mat-option>
                                                 </mat-select>
@@ -296,7 +296,7 @@
                                             <mat-form-field>
                                                 <input matInput [matDatepicker]="picker" formControlName="DOB" placeholder="DOB">
                                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                                <mat-datepicker #picker startView="year" [startAt]="startDate">
+                                                <mat-datepicker #picker  [startAt]="startDate">
                                                 </mat-datepicker>
                                             </mat-form-field>
                                             <p  *ngIf="errorState(item['controls'].DOB, 'DOB').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].DOB, 'DOB').message">
@@ -347,7 +347,7 @@
                                             <mat-form-field>
                                                 <mat-label>Country</mat-label>
                                                 <mat-select name="country" formControlName="country">
-                                                    <mat-option [value]="country.countryID" *ngFor="let country of listCountry">
+                                                    <mat-option value="{{country.countryID}}" *ngFor="let country of listCountry">
                                                         {{country.Name}}
                                                     </mat-option>
                                                 </mat-select>
