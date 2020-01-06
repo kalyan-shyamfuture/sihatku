@@ -48,7 +48,6 @@ export class SigninComponent implements OnInit {
 
     this.signupForm = this.formBuilder.group({
       firstName: ['', Validators.required],
-      middleName: [''],
       lastName: ['', Validators.required],
       dob: ['', Validators.required],
       gender: ['',Validators.required],
@@ -143,7 +142,7 @@ export class SigninComponent implements OnInit {
     console.log(this.signupForm.value)
     this.signupForm.markAllAsTouched();
       var data = {
-      "FirstName":this.signupForm.value.firstName +" "+this.signupForm.value.middleName,
+      "FirstName":this.signupForm.value.firstName,
       "LastName":this.signupForm.value.lastName,
       "DOB":this.signupForm.value.dob,
       "Gender":this.signupForm.value.gender.toString(),

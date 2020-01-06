@@ -39,9 +39,9 @@ export class MainService {
     });
 
   }
-  getProcedureList() {
-    return this.http.get(environment.apiEndpoint + 'healthDashboard');
-  }
+  // getProcedureList() {
+  //   return this.http.get(environment.apiEndpoint + 'healthDashboard');
+  // }
   getSpecialityList() {
     return this.http.get(environment.apiEndpoint + 'Specialitylist');
   }
@@ -76,5 +76,8 @@ export class MainService {
 
   getPractionerList(id) {
     return this.http.get(environment.apiEndpoint + 'PracticenerDetails/'+id);
+  }
+  getProcedureList(id) {
+    return this.http.get(environment.apiEndpoint + 'providerServices/'+id);
   }
 }

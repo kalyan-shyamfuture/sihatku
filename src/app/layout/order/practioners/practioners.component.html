@@ -29,25 +29,23 @@
           <thead>
              <tr>
                 <th>Speciality</th>
-                <th>Procedure</th>
-                <th>About Procedure</th>
-                <th>Procedure&nbsp;Images</th>
-                <th>Price</th>
+                <th>Name</th>
+                <th>About Practioner</th>
+                <th>Practioner&nbsp;Image</th>
+                <th>Qualification</th>
                 <th>View</th>
              </tr>
           </thead>
           <tbody>
-             <tr class="trboder">
-                <td>Cardiac&nbsp;Imaging</td>
-                <td>Stress&nbsp;Test</td>
-                <td>Lorem&nbsp;Ipsum&nbsp;is&nbsp;simply&nbsp;dummy&nbsp;text<br>
-                   Lorem&nbsp;Ipsum&nbsp;is&nbsp;simply&nbsp;dummy&nbsp;text
-                   <br> Lorem&nbsp;Ipsum&nbsp;is&nbsp;simply&nbsp;dummy&nbsp;text
-                   <br>
-                </td>
-                <td><img  (click)="openModal(template)" class="table-img1" src="assets/img/table-img-1.jpg" alt="" title=""></td>
-                <td>MYR&nbsp;100/USD50</td>
-                <td><i style="font-size:24px" class="fa">&#xf06e;</i></td>
+             <tr class="trboder" *ngFor="let praclist of practionerList; let i = index">
+                  <td>{{praclist.fieldSpeciality}}</td>
+                  <td>{{praclist.firstName}} {{praclist.lastName}}</td>
+                  <td>{{praclist.aboutPractioner}}</td>
+                  <td>
+                     <img (click)="openModal(template)" class="table-img1" [src]="praclist.pracImages" alt="" title="">
+                  </td>
+                  <td>{{praclist.qualification}}</td>
+                  <td><i style="font-size:24px" class="fa">&#xf06e;</i></td>
              </tr>
           </tbody>
        </table>

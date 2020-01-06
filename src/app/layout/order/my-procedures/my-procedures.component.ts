@@ -1,5 +1,6 @@
 import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {  MainService} from "../../../core/services/main.service";
 import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-my-procedures',
@@ -7,6 +8,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./my-procedures.component.scss']
 })
 export class MyProceduresComponent implements OnInit {
+  procedureList:any=[];
+  userId:any;
   bannerOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -33,9 +36,15 @@ export class MyProceduresComponent implements OnInit {
     },
     nav: false
   }
-  constructor(private modalService: BsModalService) { }
+  constructor(
+    private modalService: BsModalService,
+    private mainService: MainService
+    ) {
+      this.userId = localStorage.getItem('userId');
+     }
 
   ngOnInit() {
+    this.getProcedureList();
   }
   modalRef: BsModalRef;
   config = {
@@ -53,6 +62,18 @@ export class MyProceduresComponent implements OnInit {
       image: '../../../../assets/img/test2.jpg',
     },
   ];
+
+  getProcedureList() {
+    this.mainService.getProcedureList(this.userId).subscribe(
+        res => {
+          this.procedureList = res['response'];
+          console.log("Practioner List==>",this.procedureList);
+        },
+        error => {
+          console.log(error.error); 
+        }
+    )
+  }
  
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);

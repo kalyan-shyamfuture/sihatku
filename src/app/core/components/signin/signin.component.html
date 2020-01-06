@@ -7,14 +7,7 @@
             <form role="form" [formGroup]="signInForm" (ngSubmit)="submitSigninForm()" novalidate>
 
                 <div class="form-group">
-                    <!-- <label for="userName">User Name:</label> -->
-                    <!-- <input type="text" class="form-control" id="userName" name="userName" formControlName="userName"
-                        [ngClass]="{ 'is-invalid': submitted && f.userName.errors }">
-                    <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
-                        <div *ngIf="f.userName.errors.required">User name is required</div>
-                    </div> -->
-
-                    <mat-form-field class="custom-full-width">
+               <mat-form-field class="custom-full-width">
                         <input matInput placeholder="Email" formControlName="userName">
                         <mat-error *ngIf="errorHandling(signInForm,'userName', 'required')">
                             Please enter User Name
@@ -23,13 +16,7 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" formControlName="password"
-                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Password is required</div>
-                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                    </div> -->
+                  
                     <mat-form-field class="custom-full-width">
                         <input matInput type="password" placeholder="Password" formControlName="password"
                             class="no-background-custom">
@@ -51,15 +38,9 @@
             <form role="form" [formGroup]="signupForm" (ngSubmit)="signUp()" novalidate>
                 <div class="container">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group" style="width: 200;">
-                                <!-- <label for="userFirstName"> First Name:</label>
-                                <input type="text" class="form-control" id="userFirstName" name="userFirstName"
-                                    formControlName="userFirstName"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.userFirstName.errors }">
-                                <div *ngIf="submitted && f2.userFirstName.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.userFirstName.errors.required">First name is required</div>
-                                </div> -->
+                                
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="First Name" formControlName="firstName">
                                     <mat-error *ngIf="errorHandling(signupForm,'firstName', 'required')">
@@ -69,26 +50,10 @@
                             </div>
                         </div>
 
-                        <div class="col-4">
+       
+                        <div class="col-6">
                             <div class="form-group">
-                                <!-- <label for="userMiddleName">Middle Name</label>
-                                <input type="text" class="form-control" id="userMiddleName" name="userMiddleName"
-                                    formControlName="userMiddleName"> -->
-                                <mat-form-field class="custom-full-width">
-                                    <input matInput placeholder="Middle Name" formControlName="middleName">
-
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="form-group">
-                                <!-- <label for="userLastName"> Last Name:</label>
-                                <input type="text" class="form-control" id="userLastName" name="userLastName"
-                                    formControlName="userLastName"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.userLastName.errors }">
-                                <div *ngIf="submitted && f2.userLastName.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.userLastName.errors.required">User Last Name is required</div>
-                                </div> -->
+                               
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Last Name" formControlName="lastName">
                                     <mat-error *ngIf="errorHandling(signupForm,'lastName', 'required')">
@@ -104,14 +69,6 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <!-- <label for="userDOB" class="label-dob">User DOB:</label>
-                                <input type="date" class="form-control" id="userDOB" name="userDOB"
-                                    formControlName="userDOB"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.userDOB.errors }">
-                                <div *ngIf="submitted && f2.userDOB.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.userDOB.errors.required">User Date of birth required</div>
-                                </div> -->
-
                                 <mat-form-field>
                                     <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="DOB">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -123,17 +80,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                                <!-- <label for="userGender">User Gender</label>
-                                <select class="form-control mdb-select classic selectArrow"
-                                    style="webkit-appearance:none;" formControlName="userGender"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.userGender.errors }">
-                                    <option value="">Select Gender</option>
-                                    <option *ngFor="let gender of genderList" [value]="gender.id">{{gender.type}}
-                                    </option>
-                                </select>
-                                <div *ngIf="submitted && f2.userGender.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.userGender.errors.required">Gender is required</div>
-                                </div> -->
+                              
                                 <mat-form-field>
                                     <mat-label>Gender</mat-label>
                                     <mat-select name="gender" formControlName="gender">
@@ -152,16 +99,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <!-- <label for="userCountry">User Country</label>
-                                        <select class="form-control mdb-select classic selectArrow" style="webkit-appearance:none;"
-                                            formControlName="userCountry"
-                                            [ngClass]="{ 'is-invalid': submitted && f2.userCountry.errors }">
-                                            <option value="">Select Your Country</option>
-                                            <option *ngFor="let country of countryList" [value]="country.id">{{country.name}} </option>
-                                        </select>
-                                        <div *ngIf="submitted && f2.userCountry.errors" class="invalid-feedback">
-                                            <div *ngIf="f2.userCountry.errors.required">Country Name is required</div>
-                                        </div> -->
+                               
                                 <mat-form-field>
                                     <mat-label>Country</mat-label>
                                     <mat-select name="country" formControlName="country">
@@ -178,13 +116,7 @@
                         <div class="col-6">
 
                             <div class="form-group">
-                                <!-- <label for="userMob">User Mobile:</label>
-                                                <input type="number" class="form-control" id="userMob" name="userMob"
-                                                    formControlName="userMob"
-                                                    [ngClass]="{ 'is-invalid': submitted && f2.userMob.errors }">
-                                                <div *ngIf="submitted && f2.userMob.errors" class="invalid-feedback">
-                                                    <div *ngIf="f2.userMob.errors.required">User Mobile No is required</div>
-                                                </div> -->
+                               
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Mobile Number" formControlName="mobile">
                                     <mat-error *ngIf="errorHandling(signupForm,'mobile', 'required')">
@@ -201,13 +133,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <!-- <label for="userEmail">User Email:</label>
-                                <input type="text" class="form-control" id="userEmail" name="userEmail"
-                                    formControlName="userEmail"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.userEmail.errors }">
-                                <div *ngIf="submitted && f2.userEmail.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.userEmail.errors.required">User Email is required</div>
-                                </div> -->
+                              
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Email" formControlName="email">
                                     <mat-error *ngIf="errorHandling(signupForm,'email', 'required')">
@@ -221,13 +147,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <!-- <label for="userpassword">User Password:</label>
-                                <input type="password" class="form-control" id="userpassword" name="userpassword"
-                                    formControlName="userpassword"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.userpassword.errors }">
-                                <div *ngIf="submitted && f2.userpassword.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.userpassword.errors.required">User Password is required</div>
-                                </div> -->
+                               
                                 <mat-form-field>
                                     <input matInput type="password" placeholder="Password" formControlName="password"
                                         class="no-background-custom">
@@ -239,23 +159,11 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <!-- <label for="confirmPassword">Confirm Password:</label>
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-                                    formControlName="confirmPassword"
-                                    [ngClass]="{ 'is-invalid': submitted && f2.confirmPassword.errors }">
-                                <div *ngIf="submitted && f2.confirmPassword.errors" class="invalid-feedback">
-                                    <div *ngIf="f2.confirmPassword.errors.required">Confirm Password is required</div>
-                                    <div *ngIf="f2.confirmPassword.errors.mustMatch">Passwords must match</div>
-                                </div> -->
+                              
                                 <mat-form-field>
                                     <input matInput type="password" placeholder="Confirm Password"
                                         formControlName="confirmPassword" class="no-background-custom">
-                                    <!-- <mat-error *ngIf="errorHandling(signupForm,'confirmPassword', 'required')">
-                                        Please enter confirm password
-                                    </mat-error>
-                                    <mat-error
-                                        *ngIf="signupForm.controls['confirmPassword'].pristine || signupForm.controls['confirmPassword'].errors?.MatchPassword">
-                                        Password and Confirm password should be same</mat-error> -->
+                                
                                 </mat-form-field>
                             </div>
                         </div>

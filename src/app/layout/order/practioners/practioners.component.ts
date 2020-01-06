@@ -13,6 +13,7 @@ export class PractionersComponent implements OnInit {
   config = {
     animated: true
   };
+  practionerList:any=[];
 
   bannerOptions: OwlOptions = {
     loop: true,
@@ -65,7 +66,8 @@ export class PractionersComponent implements OnInit {
   getPractionerList() {
     this.mainService.getPractionerList(this.userId).subscribe(
         res => {
-          console.log("Practioner List==>",res);
+          this.practionerList = res['response'];
+          console.log("Practioner List==>",this.practionerList);
         },
         error => {
           console.log(error.error); 

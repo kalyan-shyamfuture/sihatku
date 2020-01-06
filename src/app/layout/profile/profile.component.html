@@ -1,16 +1,19 @@
+<app-header></app-header>
 <section class="innerbanner">
     <img src="assets/img/contact.jpg" alt="">
 </section>
-<div class="editporfilebg">
+
+<div class="editporfilebg sidebarCss">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <app-sidebar></app-sidebar>
 
             </div>
-            <div class="col-lg-9">
-                <h2>My Profile</h2>
-                <!-- <div class="editporfilebgInner">
+            <!-- <div class="col-lg-9"> -->
+            <!-- <h2>My Profile</h2> -->
+            <!-- <div class="editporfilebgInner">
                     <a class="btn btn-link btn-sm edit-icon" href="javascript:void(0)" (click)="gotoPage(1)">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     </a>
@@ -34,6 +37,200 @@
                     <br clear="all">
 
                 </div> -->
+            <!-- </div> -->
+            <div class="mainframe1 mainframe2">
+                <div class="mainframeHeight">
+                    <div class="mainframeShadow">
+                        <div class="mainframePadding">
+                            <div class="mainframeForm">
+                                <div class="ContentPadding">
+                                    <span class="ContentPadding .fontCss">Personal Information</span>
+                                    <span class="fontEditCss" (click)="edit()">Edit</span>
+                                </div>
+                                <div>
+                                    <form role="form" [formGroup]="profileViewForm" (ngSubmit)="profileUpdate()" novalidate>
+                                    <div class="container">
+                                        <div class="row paddingGap">
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="First Name" formControlName="firstName" [readonly]="isReadonly">
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'firstName', 'required')">
+                                                        Please enter First Name
+                                                    </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Last Name" formControlName="lastName" [readonly]="isReadonly">
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'lastName', 'required')">
+                                                        Please enter Last Name
+                                                    </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width" isReadonly>
+                                                        <input matInput [matDatepicker]="picker" placeholder="DOB" formControlName="dob">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker">
+                                                        </mat-datepicker-toggle>
+                                                        <mat-datepicker #picker>
+                                                        </mat-datepicker>
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'dob', 'required')">
+                                                            Please select Date of birth
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <mat-label>Gender</mat-label>
+                                                        <mat-select name="gender"  formControlName="gender" >
+                                                            <mat-option *ngFor="let gender of genderList">
+                                                                {{gender.type}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'gender', 'required')">
+                                                        Please select Gender
+                                                    </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row paddingGap">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field>
+                                                        <mat-label>Country</mat-label>
+                                                        <mat-select name="country" formControlName="country">
+                                                            <mat-option [value]="country.countryID" *ngFor="let country of listCountry">
+                                                                {{country.Name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'country', 'required')">
+                                                            Please select Country
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Mobile Number"  formControlName="number" [readonly]="isReadonly">
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'number', 'required')">
+                                                            Please enter valid Mobile Number
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="paddingGap">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <mat-form-field class="custom-full-width">
+                                                            <input matInput placeholder="Email"  formControlName="email" [readonly]="isReadonly">
+                                                            <mat-error *ngIf="errorHandling(profileViewForm,'email', 'required')">
+                                                                Please enter a valid Email
+                                                            </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Address 1"  formControlName="address1" [readonly]="isReadonly">
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'address1', 'required')">
+                                                                  Please enter Address
+                                                              </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Address 2" formControlName="address2" [readonly]="isReadonly">
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'address2', 'required')">
+                                                                  Please enter Address 2
+                                                              </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <mat-label>City</mat-label>
+                                                        <mat-select name="city" formControlName="city">
+                                                            <mat-option *ngFor="let city of cityList" [value]="city.id" >
+                                                                {{city.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'gender', 'required')">
+                                                                    Please select Gender
+                                                                </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <mat-label>State</mat-label>
+                                                        <mat-select name="state" formControlName="state" isReadonly>
+                                                            <mat-option *ngFor="let state of stateList">
+                                                                {{state.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error *ngIf="errorHandling(profileViewForm,'state', 'required')">
+                                                                    Please select State
+                                                                </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="paddingGap">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <mat-form-field class="custom-full-width">
+                                                            <input matInput placeholder="Pincode" formControlName="pincode" [readonly]="isReadonly">
+                                                            <mat-error *ngIf="errorHandling(profileViewForm,'pincode', 'required')">
+                                                                    Please enter a valid Pincode
+                                                                </mat-error>
+                                                        </mat-form-field>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div *ngIf="!profileUpdateButton">
+                                    <input type="submit"></div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

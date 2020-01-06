@@ -53,13 +53,13 @@ export class ServiceproviderSigninComponent implements OnInit {
         this.userService.providerSignIn(data).subscribe(
           res => {
             console.log("Provider Login Result==>", res);
-            if(res['Status'] ==1) {
+            if(res['response'][0]['Status'] ==1) {
               localStorage.setItem('isLoggedin', 'true');
-              localStorage.setItem('userId', res['providerID']);
+              localStorage.setItem('userId', res['response'][0]['providerID']);
               localStorage.setItem('userType', '4');
               localStorage.setItem('userName', '');
-              localStorage.setItem('userEmail', res['providerEmail']);
-              localStorage.setItem('userContact', res['providerPassword']);
+              localStorage.setItem('userEmail', res['response'][0]['providerEmail']);
+              localStorage.setItem('userContact', res['response'][0]['providerPassword']);
               this.userService.loginStatus(true);
               this.dialogRef.close(true);
               this.toastr.success(res['msg'], '', {
