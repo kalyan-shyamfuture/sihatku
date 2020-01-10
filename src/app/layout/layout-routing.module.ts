@@ -15,7 +15,8 @@ const routes: Routes = [
       { path: 'contactus', loadChildren: './contactus/contactus.module#ContactusModule' },
       { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
       { path: 'cms', loadChildren: './cms/cms.module#CmsModule' },
-      { path: 'order', loadChildren: './order/order.module#OrderModule' }
+      { path: 'order', loadChildren: './order/order.module#OrderModule' },
+      { path: 'providerreg', loadChildren: './providerreg/providerreg.module#ProviderregModule' }
 
       ]
   }
