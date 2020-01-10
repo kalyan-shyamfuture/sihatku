@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder ,Validators , FormArray, FormControl} from '@angular/forms';
+import { FormGroup, FormBuilder ,Validators , FormArray, FormControl, AbstractControl} from '@angular/forms';
 import { PasswordValidation } from '../../core/validation/PasswordValidation';
 import {  MainService} from "../../core/services/main.service";
 import { UserService } from "../../core/services/user.service";
@@ -84,11 +84,11 @@ export class SproviderregComponent implements OnInit {
 
   ngOnInit() {
       this.serviceRegForm = this.formBuilder.group({
-        providerEmail: ['k@k.com', [Validators.required, Validators.email]],
-        providerPassword: ['12345678', [Validators.required, Validators.minLength(6)]],
-        providerconfirmPassword: ['12345678', [Validators.required]],
-        clinicName: ['Test Clinic', [Validators.required]],
-        aboutClinic: ['This is about the clinic', [Validators.required]],
+        providerEmail: ['', [Validators.required, Validators.email]],
+        providerPassword: ['', [Validators.required, Validators.minLength(6)]],
+        providerconfirmPassword: ['', [Validators.required]],
+        clinicName: ['', [Validators.required]],
+        aboutClinic: ['', [Validators.required]],
         providerType:['1'],
         centerLogoFile: [''],
         services_details: this.formBuilder.array([ this.servicecreate() ]),
@@ -158,11 +158,11 @@ export class SproviderregComponent implements OnInit {
     return this.formBuilder.group({
       servicesSpeciality:['1', Validators.required],
       servicesProcedure:['', Validators.required],
-      servicesProcDesc: ['This is about procedure', Validators.required],
-      servicePromoCode: ['zzz123', Validators.required],   
-      USAPrice: ['10', Validators.required],
-      locPrice: ['100', Validators.required],
-      discPrice:['10', Validators.required],
+      servicesProcDesc: ['', Validators.required],
+      servicePromoCode: ['', Validators.required],   
+      USAPrice: ['', Validators.required],
+      locPrice: ['', Validators.required],
+      discPrice:['', Validators.required],
       procedureImageFile: [[]],
       practioner_details: this.formBuilder.array([ this.practionercreate() ])
     });
@@ -178,25 +178,25 @@ export class SproviderregComponent implements OnInit {
 
   practionercreate(): FormGroup{
     return this.formBuilder.group({
-      firstName:['Kalyan ', Validators.required],
-      lastName:['Acharya', Validators.required],
-      passportNumber: ['123456', Validators.required],
+      firstName:[' ', Validators.required],
+      lastName:['', Validators.required],
+      passportNumber: ['', Validators.required],
       gender: ['1', Validators.required],
       fieldSpeciality: ['', Validators.required],
      // placeofPractice:['', Validators.required],
-      medicalCouncilNo:['5655676', Validators.required],
-      medicalSchool: ['aaaaaaa', Validators.required],
+      medicalCouncilNo:['', Validators.required],
+      medicalSchool: ['', Validators.required],
       title:['1', Validators.required],
       country: ['1', Validators.required],
-      contactNumber:['7894561230', Validators.required],
+      contactNumber:['', Validators.required],
       expertiseCategory: ['', Validators.required],
-      address:['Kolkata', Validators.required],
-      registrationNo: ['9999999', Validators.required],
-      aboutPractioner: ['This is about practioner', Validators.required],
+      address:['', Validators.required],
+      registrationNo: ['', Validators.required],
+      aboutPractioner: ['', Validators.required],
       DOB: ['', Validators.required],
      // pracsubCategory: ['1', Validators.required],
-      practisingSince: ['2010', Validators.required],
-      qualification: ['MBBS', Validators.required],
+      practisingSince: ['', Validators.required],
+      qualification: ['', Validators.required],
       practImageFile: [''],
       
     });
@@ -258,7 +258,7 @@ export class SproviderregComponent implements OnInit {
     //     }
     // }
 
-    centerLogoUpload(event,formControl: FormControl) {
+    centerLogoUpload(event,formControl: AbstractControl) {
       console.log(event);
       if (event.target.files.length) {
         this.centerLogo = event.target.files[0];
@@ -363,10 +363,10 @@ export class SproviderregComponent implements OnInit {
           this.userService.serviceProRegister(this.serviceRegForm.value).subscribe(
            res => {
              console.log(res);
-             if(res['Status'] ==1) {
+             if(res['status'] ==1) {
             //  this.dialogRef.close(true);
             this.router.navigate(['/order']);
-              this.toastr.success(res['msg'], '', {
+              this.toastr.success(res['response'][0]['msg'], '', {
                 timeOut: 3000,
               });
              }

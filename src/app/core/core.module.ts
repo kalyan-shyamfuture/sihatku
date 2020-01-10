@@ -38,6 +38,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { HeaderProviderComponent } from './components/header-provider/header-provider.component';
 import { FooterProviderComponent } from './components/footer-provider/footer-provider.component';
 import { ServiceproviderSigninComponent } from './components/serviceprovider-signin/serviceprovider-signin.component';
+import { ServicesidebarComponent } from './components/servicesidebar/servicesidebar.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ServiceproviderSigninComponent } from './components/serviceprovider-sig
     SigninComponent,
      HeaderProviderComponent, 
      FooterProviderComponent,
-     ServiceproviderSigninComponent
+     ServiceproviderSigninComponent,
+     ServicesidebarComponent
 
     
   ],
@@ -113,6 +115,7 @@ import { ServiceproviderSigninComponent } from './components/serviceprovider-sig
     AngularFontAwesomeModule,
     HeaderProviderComponent,
     FooterProviderComponent,
+    ServicesidebarComponent
     
   
   ],

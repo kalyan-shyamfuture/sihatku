@@ -12,12 +12,13 @@ import { ConsumerReviewComponent } from './consumer-review/consumer-review.compo
 import { SwitchToConsumerComponent } from './switch-to-consumer/switch-to-consumer.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { ExploreSihatkuComponent } from './explore-sihatku/explore-sihatku.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 // core
 import { CoreModule } from '../../core/core.module';
 
 
 @NgModule({
-  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent],
+  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,

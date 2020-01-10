@@ -39,5 +39,25 @@ export class UserService {
     return this.http.post(environment.apiEndpoint + 'provider-login/',data);
   }
 
+  providerForgotPassword(data) {
+    return this.http.post(environment.apiEndpoint + 'ProviderForgetPassword/',data);
+  }
+  userForgotPassword(data) {
+    return this.http.post(environment.apiEndpoint + 'ForgetPassword/',data);
+  }
+
+  getUserProfile(id) {
+    return this.http.get(environment.apiEndpoint + 'ServiceProfileviewby/'+id);
+  }
+  getProviderProfile(id) {
+    return this.http.get(environment.apiEndpoint + 'profileviewby/'+id);
+  }
+
+
+  updatedProfileValue(data){
+    return this.http.post(environment.apiEndpoint + 'ProviderProfileUpdate/',data);
+  }
+
+
 
 }

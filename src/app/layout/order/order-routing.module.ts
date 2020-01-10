@@ -10,7 +10,7 @@ import { ConsumerReviewComponent } from './consumer-review/consumer-review.compo
 import { SwitchToConsumerComponent } from './switch-to-consumer/switch-to-consumer.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { ExploreSihatkuComponent } from './explore-sihatku/explore-sihatku.component';
-
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 const routes: Routes = [
@@ -58,6 +58,10 @@ const routes: Routes = [
     {
       path:'explore-Sihatku', 
       component:ExploreSihatkuComponent,
+    },
+    {
+      path:'myProfile', 
+      component:MyProfileComponent,
     },
   ]
 }

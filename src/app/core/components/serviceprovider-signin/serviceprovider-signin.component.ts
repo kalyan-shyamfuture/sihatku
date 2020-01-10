@@ -13,9 +13,13 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class ServiceproviderSigninComponent implements OnInit {
   signInForm: FormGroup;
-  showLogin:boolean=true;
+  showModal:number=1;
   forgotPasswordForm:FormGroup;
-
+  forgotOTPForm:FormGroup;
+  changePasswordForm:FormGroup;
+  getOTP:any;
+  setOTP:any;
+  userEmail:any;
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<ServiceproviderSigninComponent>,
@@ -32,6 +36,12 @@ export class ServiceproviderSigninComponent implements OnInit {
     });
     this.forgotPasswordForm = this.formBuilder.group({
       email:['',Validators.required],
+    });
+    this.forgotOTPForm = this.formBuilder.group({
+      otp:['',Validators.required],
+    });
+    this.changePasswordForm = this.formBuilder.group({
+      password:['',Validators.required],
     });
   }
   closeModal() {
@@ -62,13 +72,13 @@ export class ServiceproviderSigninComponent implements OnInit {
               localStorage.setItem('userContact', res['response'][0]['providerPassword']);
               this.userService.loginStatus(true);
               this.dialogRef.close(true);
-              this.toastr.success(res['msg'], '', {
+              this.toastr.success(res['response'][0]['msg'], '', {
                 timeOut: 3000,
               });
               this.router.navigate(['/order']);
             }
             else {
-              this.toastr.error(res['msg'], '', {
+              this.toastr.error(res['response'][0]['msg'], '', {
                 timeOut: 3000,
               });
             }
@@ -88,19 +98,125 @@ export class ServiceproviderSigninComponent implements OnInit {
    
   }
   gotoForgotPass() {
-    this.showLogin =false;
+    this.showModal =2;
   }
   forgetPass(){
     if(this.forgotPasswordForm.valid){
-      this.showLogin =true;
-      console.log('hi');
+      console.log(this.forgotPasswordForm.value);
+      this.signInForm.markAllAsTouched();
+      this.userEmail = this.forgotPasswordForm.value.email;
+        var data = {
+        "emailid":this.forgotPasswordForm.value.email,
+        "Flag":"1",
+        }
+        this.userService.providerForgotPassword(data).subscribe(
+          res => {
+            console.log("Forgot pass Result==>", res);
+            if(res['status']==1) {
+              if(res['response'][0]['Status']==1) {
+                this.showModal =3;
+                this.getOTP = res['response'][0]['OTP'];
+                this.toastr.success("Your OTP is : "+this.getOTP, '', {
+                  timeOut: 4000,
+                });
+              console.log(this.getOTP);
+              }
+              else {
+                this.toastr.warning(res['response'][0]['msg'], '', {
+                  timeOut: 4000,
+                });
+              }
+              
+            
+            }
+          },
+          error => {
+            console.log(error.error);
+            this.toastr.error('Error!!!', '', {
+              timeOut: 3000,
+            });
+            this.spinner.hide();
+          }
+        )
       
     }
 
   }
   backtoLogin(){
-    this.showLogin =true;
+    this.showModal =1;
   }
+
+  otpMatch() {
+    if(this.forgotOTPForm.valid){
+      console.log(this.forgotOTPForm.value);
+      this.setOTP = this.forgotOTPForm.value.otp;
+      if(this.getOTP == this.setOTP) {
+        this.showModal =4;
+      }
+    }
+    else {
+      this.toastr.error('OTP Mismatch!!!', '', {
+        timeOut: 3000,
+      });
+    }
+  }
+
+  updatePassword() {
+    if(this.changePasswordForm.valid){
+      console.log(this.changePasswordForm.value);
+      var data = {
+        "emailid":this.userEmail,
+        "Flag":"2",
+        "OTP":this.setOTP,
+        "password":this.changePasswordForm.value.password
+      }
+        this.userService.providerForgotPassword(data).subscribe(
+      res => {
+        console.log("Forgot pass Result==>", res);
+        if(res['status']==1) {
+         
+          this.showModal =3;
+          this.getOTP = res['response'][0]['OTP'];
+        console.log(this.getOTP);
+        this.dialogRef.close(true);
+        }
+      },
+      error => {
+        console.log(error.error);
+        this.toastr.error('Error!!!', '', {
+          timeOut: 3000,
+        });
+        this.spinner.hide();
+      }
+    )
+      
+    }
+
+  }
+
+  // var data = {
+  //   "emailid":this.userEmail,
+  //   "Flag":"2",
+  //   "OTP":this.setOTP,
+  //   }
+  //   this.userService.providerForgotPassword(data).subscribe(
+  //     res => {
+  //       console.log("Forgot pass Result==>", res);
+  //       if(res['status']==1) {
+  //         this.showModal =3;
+  //         this.getOTP = res['response'][0]['OTP'];
+  //       console.log(this.getOTP);
+        
+  //       }
+  //     },
+  //     error => {
+  //       console.log(error.error);
+  //       this.toastr.error('Error!!!', '', {
+  //         timeOut: 3000,
+  //       });
+  //       this.spinner.hide();
+  //     }
+  //   )
 
 
 }

@@ -80,4 +80,5 @@ export class MainService {
   getProcedureList(id) {
     return this.http.get(environment.apiEndpoint + 'providerServices/'+id);
   }
+
 }

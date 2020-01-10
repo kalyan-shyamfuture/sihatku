@@ -23,24 +23,27 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private mainService:MainService,
   ) {
+    this.userId = localStorage.getItem('userId');
   }
 
   ngOnInit() {
     this.getCountry();
     this.profileViewForm = this.formBuilder.group({
-      firstName:['Pratick',Validators.required],
-      lastName:['Chgakraborty',Validators.required],
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
       dob:['',Validators.required],
       gender:['1',Validators.required],
       country:[1,Validators.required],
-      number:['7001509923',Validators.required],
-      email:['pc.email1996@gmail.com',Validators.required],
-      address1:['Kolkata',Validators.required],
-      address2:['saltlake',Validators.required],
+      number:['',Validators.required],
+      email:['',Validators.required],
+      address1:['',Validators.required],
+      address2:['',Validators.required],
       city:[1,Validators.required],
       state:[1,Validators.required],
-      pincode:['713213',Validators.required],
+      pincode:['',Validators.required],
     })
+
+    this.getProfile(this.userId);
   }
   
   genderList: any = [
@@ -61,7 +64,6 @@ export class ProfileComponent implements OnInit {
       res => {
         console.log("Country List==>",res);
         this.listCountry = res['response']
-       // console.log("List Country ==>",this.listCountry);
       },
       error => {
         console.log(error.error);
@@ -76,6 +78,36 @@ export class ProfileComponent implements OnInit {
   edit(){
     this.isReadonly = !this.isReadonly;
     this.profileUpdateButton = !this.profileUpdateButton;
+  }
+
+  getProfile(id) {
+    this.userService.getUserProfile(id).subscribe(
+      res => {
+        console.log("User profile Details==>",res['response'][0]);
+       this.userDetails = res['response'][0];
+       this.profileViewForm.patchValue({
+        //name: this.userDetails.name,
+        email:this.userDetails.EmailID,
+        phone:this.userDetails.Phone,
+        aboutClinic:this.userDetails.aboutClinic,
+        providerType:this.userDetails.providerType,
+        centerLogoFile:'',
+        providerAdd1:this.userDetails.providerAdd1,
+        providerAdd2:this.userDetails.providerAdd2,
+        city:this.userDetails.city,
+        state:this.userDetails.state,
+        ZIP:this.userDetails.ZIP,
+        country:this.userDetails.country,
+      });
+      },
+      error => {
+        console.log(error.error);
+       
+      }
+    )
+  }
+  profileUpdate() {
+
   }
 
 }

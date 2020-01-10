@@ -1,0 +1,67 @@
+// css by pratick--------------------------------------------------------------------------------------
+.sidebar
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+._1VD0UF .mainBox {
+    width: 25%;
+}
+.headersideBar{
+    background-color: #ededed;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+}
+.innerHeader {
+    padding: 9px;
+    margin-bottom: 16px;
+}
+.row {
+    width: 100%;
+     margin-right: -0px;
+         margin-left: -0px;
+}
+.profilePic {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+}
+.profileName {
+    padding: 5px 0 0 16px;
+    width: calc(100% - 50px);
+}
+.hello {
+    font-size: 12px;
+}
+
+.sideBarMiddle {
+    margin-bottom: 16px;
+}
+.sideBarMiddleColor{
+    background-color: #ededed;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
+    
+}
+._2ACZMj {
+    padding-bottom: 12px;
+}
+.myOrders {
+    padding: 20px 12px 5px 24px;
+}
+.myOrdersLogo {
+    width: 20px;
+    height: 20px;
+}
+.myOrdersContent {
+    width: calc(100% - 26px);
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #878787;
+    cursor: pointer;
+}
+.borderLine {
+    border-bottom: 1px solid rgba(194, 191, 191, 0.39);
+}

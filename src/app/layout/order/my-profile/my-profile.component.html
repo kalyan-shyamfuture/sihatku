@@ -1,0 +1,221 @@
+<div class="container" style="padding: 10px;">
+    <div class="row">
+        <div class="col-lg-3">
+            <app-servicesidebar></app-servicesidebar>
+        </div>
+        <div class="mainframe1 mainframe2">
+            <div class="mainframeHeight">
+                <div class="mainframeShadow">
+                    <div class="mainframePadding">
+                        <div class="mainframeForm">
+                            <div class="ContentPadding">
+                                <span class="ContentPadding .fontCss">Personal Information</span>
+                                <span class="fontEditCss" (click)="edit()">Edit</span>
+                            </div>
+                            <div>
+                                <form role="form" [formGroup]="profileViewForm" (ngSubmit)="profileUpdate()" novalidate>
+                                    <div class="container">
+                                        
+                                        <div class="row paddingGap">
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Email" formControlName="email"
+                                                            [readonly]="isReadonly">
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'email', 'required')">
+                                                            Please enter Email
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Clinic name"
+                                                            formControlName="clinicName" [readonly]="isReadonly">
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'clinicName', 'required')">
+                                                            Please enter Clinic Name
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="About Clinic"
+                                                            formControlName="aboutClinic" [readonly]="isReadonly">
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'aboutClinic', 'required')">
+                                                            Please enter About Clinic
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-md">
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label">
+                                                        <p> Provider Type </p>
+                                                    </label>
+                                                </div>
+                                                <br>
+                                                <mat-radio-group aria-label="Select an option"
+                                                    formControlName="providerType">
+                                                    <mat-radio-button value="1">Health Service Provider
+                                                    </mat-radio-button><br>
+                                                    <mat-radio-button value="2">Wellness Service Provider
+                                                    </mat-radio-button>
+                                                    <div class="clearfix"></div>
+                                                </mat-radio-group>
+                                                <mat-error
+                                                    *ngIf="errorHandling(profileViewForm,'providerType', 'required')">
+                                                    Please Select Service provider type
+                                                </mat-error>
+                                            </div>
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-md">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-sm-9 col-xs-12">
+                                                            <div class="row">
+                                                                <p>Image/Logo to represent your Center</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="row">
+                                                            <div class="file btn leftbtn waves-effect waves-light"> <i
+                                                                    class="fa fa-plus-square" aria-hidden="true"></i>
+                                                                <!-- <input type="hidden" name="centerLogo" formControlName="centerLogoFile"> -->
+                                                                <input type="file">
+                                                                <div class="default-image">
+
+                                                                    <img [src]="imgCenterURL" height="50" alt=""
+                                                                        title=""></div>
+
+                                                                <i class="fa fa-times delete-img" aria-hidden="true"
+                                                                    *ngIf="imgCenterURL"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Address 1"
+                                                            formControlName="providerAdd1" [readonly]="isReadonly">
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'email', 'required')">
+                                                            Please enter Address 1
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Address 2"
+                                                            formControlName="providerAdd2" [readonly]="isReadonly">
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'clinicName', 'required')">
+                                                            Please enter Address 2
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <mat-label>City</mat-label>
+                                                        <mat-select name="city" formControlName="city">
+                                                            <mat-option [value]="city.id" *ngFor="let city of cityList">
+                                                                {{city.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'city', 'required')">
+                                                            Please select your city
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <mat-label>State</mat-label>
+                                                        <mat-select name="state" formControlName="state">
+                                                            <mat-option [value]="state.id"
+                                                                *ngFor="let state of stateList">
+                                                                {{state.name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'state', 'required')">
+                                                            Please select State
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row paddingGap">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <mat-label>Country</mat-label>
+                                                        <mat-select name="country" formControlName="country">
+                                                            <mat-option [value]="country.countryID"
+                                                                *ngFor="let country of listCountry">
+                                                                {{country.Name}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'country', 'required')">
+                                                            Please select Country
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <mat-form-field class="custom-full-width">
+                                                        <input matInput placeholder="Pincode" formControlName="ZIP"
+                                                            [readonly]="isReadonly">
+                                                        <mat-error
+                                                            *ngIf="errorHandling(profileViewForm,'ZIP', 'required')">
+                                                            Please enter Pincode
+                                                        </mat-error>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="!profileUpdateButton">
+                                        <input type="submit"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

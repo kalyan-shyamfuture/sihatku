@@ -296,7 +296,7 @@
                                             <mat-form-field>
                                                 <input matInput [matDatepicker]="picker" formControlName="DOB" placeholder="DOB">
                                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                                <mat-datepicker #picker  [startAt]="startDate">
+                                                <mat-datepicker #picker  [startAt]="">
                                                 </mat-datepicker>
                                             </mat-form-field>
                                             <p  *ngIf="errorState(item['controls'].DOB, 'DOB').message" class="help-block danger fw600" [innerHTML]="errorState(item['controls'].DOB, 'DOB').message">

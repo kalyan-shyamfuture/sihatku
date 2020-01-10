@@ -14,7 +14,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-  showLogin:boolean=true;
+  showModal:number=1;
   listCountry:any=[];
   signInForm: FormGroup;
   otpForm: FormGroup;
@@ -24,7 +24,11 @@ export class SigninComponent implements OnInit {
   getOtp:any;
   signupForm: FormGroup;
   forgotPasswordForm:FormGroup;
-  
+  forgotOTPForm:FormGroup;
+  changePasswordForm:FormGroup;
+  getOTP:any;
+  setOTP:any;
+  userEmail:any;
 
   constructor(
     public dialogRef: MatDialogRef<SigninComponent>,
@@ -64,6 +68,12 @@ export class SigninComponent implements OnInit {
     
     this.forgotPasswordForm = this.formBuilder.group({
       email:['',Validators.required],
+    });
+    this.forgotOTPForm = this.formBuilder.group({
+      otp:['',Validators.required],
+    });
+    this.changePasswordForm = this.formBuilder.group({
+      password:['',Validators.required],
     });
     
   }
@@ -139,7 +149,6 @@ export class SigninComponent implements OnInit {
       )
   }
   signUp(){
-    console.log(this.signupForm.value)
     this.signupForm.markAllAsTouched();
       var data = {
       "FirstName":this.signupForm.value.firstName,
@@ -181,18 +190,106 @@ export class SigninComponent implements OnInit {
   }
 
   gotoForgotPass() {
-    this.showLogin =false;
+    this.showModal =2;
   }
   forgetPass(){
     if(this.forgotPasswordForm.valid){
-      this.showLogin =true;
-      console.log('hi');
+      console.log(this.forgotPasswordForm.value);
+      this.forgotPasswordForm.markAllAsTouched();
+      this.userEmail = this.forgotPasswordForm.value.email;
+        var data = {
+        "emailid":this.forgotPasswordForm.value.email,
+        "Flag":"1",
+        }
+        this.userService.userForgotPassword(data).subscribe(
+          res => {
+            console.log("Forgot pass Result==>", res);
+            if(res['status']==1) {
+              if(res['response'][0]['Status']==1) {
+                this.showModal =3;
+                this.getOTP = res['response'][0]['OTP'];
+                this.toastr.success("Your OTP is : "+this.getOTP, '', {
+                  timeOut: 4000,
+                });
+              console.log(this.getOTP);
+              }
+              else {
+                this.toastr.warning(res['response'][0]['msg'], '', {
+                  timeOut: 4000,
+                });
+              }
+              
+            
+            }
+          },
+          error => {
+            console.log(error.error);
+            this.toastr.error('Error!!!', '', {
+              timeOut: 3000,
+            });
+            this.spinner.hide();
+          }
+        )
       
     }
 
   }
+
+  otpMatch() {
+
+    if(this.forgotOTPForm.valid){
+      console.log(this.forgotOTPForm.value);
+      this.setOTP = this.forgotOTPForm.value.otp;
+      if(this.getOTP == this.setOTP) {
+        this.showModal =4;
+      }
+      else {
+        this.toastr.error('OTP Mismatch!!!', '', {
+          timeOut: 3000,
+        });
+      }
+    }
+  
+  }
+
+  updatePassword() {
+    if(this.changePasswordForm.valid){
+      console.log(this.changePasswordForm.value);
+      var data = {
+        "emailid":this.userEmail,
+        "Flag":"2",
+        "OTP":this.setOTP,
+        "password":this.changePasswordForm.value.password
+      }
+        this.userService.userForgotPassword(data).subscribe(
+      res => {
+        console.log("Forgot pass Result==>", res);
+        if(res['status']==1) {
+         
+          this.showModal =1;
+       //   this.msg = res['response'][0]['msg'];
+          this.toastr.success(res['response'][0]['msg'], '', {
+            timeOut: 3000,
+          });
+      //  console.log(this.getOTP);
+        //this.dialogRef.close(true);
+        }
+      },
+      error => {
+        console.log(error.error);
+        this.toastr.error('Error!!!', '', {
+          timeOut: 3000,
+        });
+        this.spinner.hide();
+      }
+    )
+      
+    }
+
+  }
+
   backtoLogin(){
-    this.showLogin =true;
+    this.showModal =1;
   }
     
 }

@@ -76,6 +76,9 @@ export class MyProceduresComponent implements OnInit {
   }
  
   openModal(template: TemplateRef<any>) {
+    //openModal(template) {
+   // console.log(template.split())
+
     this.modalRef = this.modalService.show(template, this.config);
   }
 

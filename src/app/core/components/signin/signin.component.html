@@ -1,13 +1,13 @@
 <div class="close-icon" (click)="closeModal()"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
 <div class="loginSection">
 
-    <tabset *ngIf="showLogin">
+    <tabset *ngIf="showModal==1">
         <tab heading="Login" id="tab1">
 
             <form role="form" [formGroup]="signInForm" (ngSubmit)="submitSigninForm()" novalidate>
 
                 <div class="form-group">
-               <mat-form-field class="custom-full-width">
+                    <mat-form-field class="custom-full-width">
                         <input matInput placeholder="Email" formControlName="userName">
                         <mat-error *ngIf="errorHandling(signInForm,'userName', 'required')">
                             Please enter User Name
@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="form-group">
-                  
+
                     <mat-form-field class="custom-full-width">
                         <input matInput type="password" placeholder="Password" formControlName="password"
                             class="no-background-custom">
@@ -29,9 +29,11 @@
                 <button type="submit" class="btn btn-primary">Log in</button>
             </form>
 
-            <div><br><p (click)="gotoForgotPass()"><span style="font-weight: bold;">Forgot Password? Click Here</span></p></div>
+            <div><br>
+                <p (click)="gotoForgotPass()"><span style="font-weight: bold;">Forgot Password? Click Here</span></p>
+            </div>
         </tab>
- <!-------------------------------------------------------------Signup---------------------------------------------------------------------->
+        <!-------------------------------------------------------------Signup---------------------------------------------------------------------->
         <tab heading="Sign Up">
 
 
@@ -40,7 +42,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group" style="width: 200;">
-                                
+
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="First Name" formControlName="firstName">
                                     <mat-error *ngIf="errorHandling(signupForm,'firstName', 'required')">
@@ -50,10 +52,10 @@
                             </div>
                         </div>
 
-       
+
                         <div class="col-6">
                             <div class="form-group">
-                               
+
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Last Name" formControlName="lastName">
                                     <mat-error *ngIf="errorHandling(signupForm,'lastName', 'required')">
@@ -72,7 +74,7 @@
                                 <mat-form-field>
                                     <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="DOB">
                                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker >
+                                    <mat-datepicker #picker>
                                     </mat-datepicker>
                                 </mat-form-field>
                             </div>
@@ -80,7 +82,7 @@
 
                         <div class="col-6">
                             <div class="form-group">
-                              
+
                                 <mat-form-field>
                                     <mat-label>Gender</mat-label>
                                     <mat-select name="gender" formControlName="gender">
@@ -99,7 +101,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                               
+
                                 <mat-form-field>
                                     <mat-label>Country</mat-label>
                                     <mat-select name="country" formControlName="country">
@@ -116,7 +118,7 @@
                         <div class="col-6">
 
                             <div class="form-group">
-                               
+
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Mobile Number" formControlName="mobile">
                                     <mat-error *ngIf="errorHandling(signupForm,'mobile', 'required')">
@@ -133,7 +135,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                              
+
                                 <mat-form-field class="custom-full-width">
                                     <input matInput placeholder="Email" formControlName="email">
                                     <mat-error *ngIf="errorHandling(signupForm,'email', 'required')">
@@ -147,7 +149,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                               
+
                                 <mat-form-field>
                                     <input matInput type="password" placeholder="Password" formControlName="password"
                                         class="no-background-custom">
@@ -159,11 +161,11 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                              
+
                                 <mat-form-field>
                                     <input matInput type="password" placeholder="Confirm Password"
                                         formControlName="confirmPassword" class="no-background-custom">
-                                
+
                                 </mat-form-field>
                             </div>
                         </div>
@@ -175,7 +177,7 @@
     </tabset>
 
     <!---------------------------Forget password-------------------------------------------------------------------------------->
-    <tabset *ngIf="!showLogin">
+    <tabset *ngIf="showModal==2">
         <tab heading="Forgot Password">
             <form role="form" [formGroup]="forgotPasswordForm" (ngSubmit)="forgetPass()" novalidate>
                 <div class="container">
@@ -183,15 +185,17 @@
                         <div class="col-12">
                             <div class="form-group" style="width: 200;">
                                 <mat-form-field class="custom-full-width">
-                                    <input matInput placeholder="Email-id" formControlName="email">
+                                    <input matInput placeholder="Email" formControlName="email">
                                     <mat-error *ngIf="errorHandling(forgotPasswordForm,'email', 'required')">
                                         Please enter Valid Email-id
                                     </mat-error>
                                 </mat-form-field>
                             </div>
-                            <button type="submit" class="btn btn-primary">Verify your account</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
-                        <div class="col-12"><br><p (click)="backtoLogin()"><span style="font-weight: bold;">Back to login</span></p></div>
+                        <div class="col-12"><br>
+                            <p><span style="font-weight: bold;">Back to login</span></p>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -199,9 +203,63 @@
 
         </tab>
     </tabset>
-    <!-------------------------------------------------------------Signup---------------------------------------------------------------------->
+ 
+
+      <!----------------------OTP Form-------------------------------->
+      <tabset *ngIf="showModal==3">
+        <tab heading="Forgot Password">
+            <form role="form" [formGroup]="forgotOTPForm" (ngSubmit)="otpMatch()" novalidate>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group" style="width: 200;">
+                                <mat-form-field class="custom-full-width">
+                                    <input matInput placeholder="OTP" formControlName="otp">
+                                    <mat-error *ngIf="errorHandling(forgotOTPForm,'otp', 'required')">
+                                        Please enter a valid OTP
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                        <div class="col-12"><br>
+                            <p><span (click)="backtoLogin()" style="font-weight: bold;">Back to login</span></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
 
 
+        </tab>
+    </tabset>
+
+         <!----------------------Change Password Form-------------------------------->
+         <tabset *ngIf="showModal==4">
+            <tab heading="Change Password">
+                <form role="form" [formGroup]="changePasswordForm" (ngSubmit)="updatePassword()" novalidate>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group" style="width: 200;">
+                                    <mat-form-field class="custom-full-width">
+                                        <input matInput placeholder="Password" formControlName="password">
+                                        <mat-error *ngIf="errorHandling(changePasswordForm,'password', 'required')">
+                                            Please enter a valid password
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <div class="col-12"><br>
+                                <p><span (click)="backtoLogin()" style="font-weight: bold;">Back to login</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+    
+    
+            </tab>
+        </tabset>
 
 </div>
 <!-- 
