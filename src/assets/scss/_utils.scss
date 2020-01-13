@@ -66,20 +66,16 @@ body {
     border-bottom: 0px solid #fdbe12;
     box-shadow: 0 0px 0 0 #817f78;
 }
+
 // .carousel{ position: relative;
 //     top: 110px;}
-
-    .carousel{
-        position: relative;
-        top: 110px;
-        &.topheight {
-            top:0;
-        }
+.carousel {
+    position: relative;
+    top: 110px;
+    &.topheight {
+        top: 0;
     }
-    
-    
-    
-
+}
 
 .navbar {
     padding: 0px;
@@ -1552,7 +1548,7 @@ footer.page-footer a:hover {
     border-top: none;
     border-left: none;
     border-right: none;
-   border-bottom: 2px solid #0a0a0a;
+    border-bottom: 2px solid #0a0a0a;
     border-radius: 0px;
     margin: 0px;
     font-family: 'Montserrat', sans-serif;
@@ -1901,6 +1897,7 @@ a h2.navtext {
     background-repeat: no-repeat;
 }
 
+
 /*BackTop Button*/
 
 .back-top {
@@ -1942,7 +1939,6 @@ a h2.navtext {
     color: #fff;
     // background: #00abc9;
 }
-
 
 
 /********************************************responsive*******************************************************************/
@@ -2013,28 +2009,35 @@ a h2.navtext {
         width: 19%;
     }
 }
-@media only screen and (min-width: 992px) {
-.navbar-expand-md .navbar-collapse {
-    visibility: visible!important;
-    opacity: 1!important;
-}
-}
 
+@media only screen and (min-width: 992px) {
+    .navbar-expand-md .navbar-collapse {
+        visibility: visible!important;
+        opacity: 1!important;
+    }
+}
 
 .btn-primary {
-   // background:$primary;
+    // background:$primary;
 }
 
-.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
     background-color: #fcbe11;
 }
+
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
     border-color: #fcbe11;
 }
 
 .remove-section {
-    width:100%;
-    img{
+    width: 100%;
+    img {
         float: right;
     }
 }
+
+
+/*********************************Anant 10.01.2020****************************************************************/
