@@ -16,7 +16,9 @@ const routes: Routes = [
       { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
       { path: 'cms', loadChildren: './cms/cms.module#CmsModule' },
       { path: 'order', loadChildren: './order/order.module#OrderModule' },
-      { path: 'providerreg', loadChildren: './providerreg/providerreg.module#ProviderregModule' }
+      { path: 'providerreg', loadChildren: './providerreg/providerreg.module#ProviderregModule' },
+      { path: 'providerregnew', loadChildren: './providerregnew/providerregnew.module#ProviderregnewModule' },
+      { path: 'cart', loadChildren: './cart/cart.module#CartModule' }
 
       ]
   }

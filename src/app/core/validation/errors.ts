@@ -74,14 +74,18 @@ export const Errors = {
   DOB: [
     { type: 'required', message: 'Date-of-Birth is required' },
   ],
-  // email: [
-  //   { type: 'required', message: 'Email is required' },
-  //   { type: 'email', message: 'Enter a valid email' },
-  // ],
-  // confirmPassword: [
-  //   { type: 'required', message: 'Confirm password is required' },
-  //   { type: 'notEqual', message: 'Password mismatch' }
-  // ],
+  otp: [
+    { type: 'required', message: 'Please Enter OTP' },
+  ],
+  email: [
+    { type: 'required', message: 'Email is required' },
+    { type: 'email', message: 'Enter a valid email' },
+  ],
+  confirmPassword: [
+    { type: 'required', message: 'Confirm password is required' },
+    { type: 'notEqual', message: 'Password mismatch' }
+  ],
+ 
   // verifyPassword: [
   //   { type: 'required', message: 'Please Retype Your new Password' },
   //   { type: 'notEqual', message: 'Password mismatch' }
@@ -89,11 +93,14 @@ export const Errors = {
   // oldPassword: [
   //   { type: 'required', message: 'Old password is required' }
   // ],
-  // password: [
-  //   { type: 'required', message: 'Password is required' },
-  //   { type: 'pattern', message: 'Please enter a valid Password.' },
-  //   { type: 'minlength', message: 'Must be more than 4 characters' }
-  // ],
+  password: [
+    { type: 'required', message: 'Password is required' },
+    //{ type: 'pattern', message: 'Please enter a valid Password.' },
+    { type: 'minlength', message: 'Password Must be 6 characters' }
+  ],
+  dob: [
+    { type: 'required', message: 'Date-of-Birth is required' },
+  ],
   // newPassword: [
   //   { type: 'required', message: 'New Password is required' },
   //   { type: 'pattern', message: 'Please enter a valid Password.' }
@@ -114,17 +121,14 @@ export const Errors = {
   // gender: [
   //   { type: 'required', message: 'Gender is required' },
   // ],
-  // country: [
-  //   { type: 'required', message: 'Country is required' },
-  // ],
   // userField: [
   //   { type: 'required', message: 'User\'s field of expertise is required' },
   // ],
-  // contact: [
-  //   { type: 'required', message: 'Mobile Number is required' },
-  //   { type: 'pattern', message: 'Enter a valid Mobile number' },
-  //   { type: 'maxlength', message: 'Mobile Number not be more than 10 characters' }
-  // ],
+  mobile: [
+    { type: 'required', message: 'Mobile Number is required' },
+    { type: 'pattern', message: 'Enter a valid Mobile number' },
+    { type: 'maxlength', message: 'Mobile Number not be more than 10 characters' }
+  ],
   // organizationType: [
   //   { type: 'required', message: 'Organization type is required' }
   // ],

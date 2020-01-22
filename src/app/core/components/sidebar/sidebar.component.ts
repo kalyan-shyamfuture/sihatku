@@ -9,7 +9,7 @@ import { environment } from "../../../../environments/environment";
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
+  loggedIn:boolean;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -19,6 +19,12 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  logOut() {
+    localStorage.clear();
+    this.loggedIn = false;
+    this.router.navigate(['/']);
   }
 
 

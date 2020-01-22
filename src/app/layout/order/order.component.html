@@ -4,8 +4,7 @@
       <div class="row">
          <div class="col-md-12">
             <ul class="nav nav-tabs">
-               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
-               true}">
+               <li class="nav-item" [routerLinkActive]="['active']">
                <a class="nav-link active" [routerLink]="'/order/practioners'">
                <img src="assets/img/Practioners.png">
                </a>
@@ -13,8 +12,7 @@
                   <h2 class="navtext">practioners</h2>
                </a>
                </li>
-               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
-               true}" >
+               <li class="nav-item" [routerLinkActive]="['active']" >
                <a class="nav-link" [routerLink]="'/order/my-procedures'">
                <img src="assets/img/MyProcedures.png">
                </a>
@@ -68,15 +66,7 @@
                   <h2 class="navtext">Inbox</h2>
                </a>
                </li>
-               <!-- <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
-               true}">
-               <a class="nav-link last" [routerLink]="'/order/explore-Sihatku'">
-               <img src="assets/img/Exploresihatku.png">
-               </a>
-               <a>
-                  <h2 class="navtext">My Profile</h2>
-               </a>
-               </li> -->
+               
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                   true}">
                   <a class="nav-link last" [routerLink]="'/order/myProfile'">
@@ -97,22 +87,7 @@
                   </li>
             </ul>
          </div>
-         <!-- <div class="col-md-3">
-            <div class="search-formRow">
-               <form action="" class="search-form">
-                  <div class="form-group has-feedback">
-                     <label for="search" class="sr-only">Search</label>
-                     <input type="text" class="form-control" name="search" id="search" placeholder="search">
-                     <span class="glyphicon glyphicon-search form-control-feedback"><i class="fa fa-search" aria-hidden="true"></i>
-                     </span>
-                  </div>
-               </form>
-            </div>
-            <br clear="all">
-            <div class="addRow">
-               <p><span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure</p>
-            </div>
-         </div> -->
+        
       </div>
       <div class="col-12 p-0 border mb-3">
          <router-outlet></router-outlet>

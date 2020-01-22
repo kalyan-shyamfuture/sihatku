@@ -19,7 +19,9 @@
     </div>
     <div class="col-md-3">
       <div class="addRow">
-         <p><span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Practioner</p>
+         <p >
+           <a [routerLink]="'/order/practioners/add'"> <span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Practioner </a>
+         </p>
       </div>
    </div> 
 
@@ -42,10 +44,15 @@
                   <td>{{praclist.firstName}} {{praclist.lastName}}</td>
                   <td>{{praclist.aboutPractioner}}</td>
                   <td>
-                     <img (click)="openModal(template)" class="table-img1" [src]="praclist.pracImages" alt="" title="">
+                     <img (click)="openModal(template)" class="table-img1 img-small" [src]="praclist.pracImages"  onerror="this.src='assets/img/no-img.png';"  alt="" title="">
                   </td>
                   <td>{{praclist.qualification}}</td>
-                  <td><i style="font-size:24px" class="fa">&#xf06e;</i></td>
+                  <!-- <td><i style="font-size:24px" class="fa">&#xf06e;</i></td> -->
+                  <td>
+                     <a [routerLink]="'/order/practioners/details/'+praclist.pracId"><img class="table-img1" src="assets/img/view.png" alt="" title=""></a><br>
+                     <a [routerLink]="'/order/practioners/edit/'+praclist.pracId"><img class="table-img1" src="assets/img/edit.png" alt="" title=""></a><br>
+                     <a (click)="deletePractioner(templateDelete,praclist.pracId)"><img class="table-img1" src="assets/img/delete.png" alt="" title=""></a>
+                 </td>
              </tr>
           </tbody>
        </table>
@@ -77,3 +84,11 @@
    <!--/.End Banner-->
 </div>
 </ng-template>
+
+<ng-template #templateDelete>
+   <div class="modal-body text-center">
+     <p>Are you sure to delete the procedure?</p>
+     <button type="button" class="btn btn-default" (click)="confirmDelete(practionerId)" >Yes</button>
+     <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+   </div>
+ </ng-template>

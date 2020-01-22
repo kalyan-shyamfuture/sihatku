@@ -2,6 +2,7 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import {  MainService} from "../../../core/services/main.service";
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-practioners',
   templateUrl: './practioners.component.html',
@@ -14,7 +15,7 @@ export class PractionersComponent implements OnInit {
     animated: true
   };
   practionerList:any=[];
-
+  practionerId:any;
   bannerOptions: OwlOptions = {
     loop: true,
     autoplay: true,
@@ -54,7 +55,8 @@ export class PractionersComponent implements OnInit {
   ];
   constructor(
     private mainService: MainService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService,
   ) { 
     this.userId = localStorage.getItem('userId');
   }
@@ -77,6 +79,46 @@ export class PractionersComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, this.config);
+  }
+
+  setDefaultPic() {
+   console.log('Image Not Found');
+  }
+
+
+  deletePractioner(templateDelete: TemplateRef<any>,practionerId){
+    this.practionerId = practionerId;
+  this.modalRef = this.modalService.show(templateDelete, {class: 'modal-sm'});
+  }
+
+  confirmDelete(practionerId) {
+    var data = {
+      "ProviderID":this.userId, // Login User Id
+      "ServiceID":practionerId
+    }
+
+    console.log(data);
+    
+    this.mainService.deletePractioner(data).subscribe(
+      res => {
+        console.log(res);
+        this.toastr.success(res['response'][0]['msg'], '', {
+          timeOut: 3000,
+        });
+        this.modalRef.hide();
+        this.getPractionerList();
+      },
+      error => {
+        console.log(error.error); 
+        this.modalRef.hide();
+        this.toastr.success('Sorry unable to delete procedure', '', {
+          timeOut: 3000,
+        });
+      }
+  )
+  }
+  decline() {
+    this.modalRef.hide();
   }
 
 }

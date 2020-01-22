@@ -6,8 +6,8 @@ import { MainService } from "../../../core/services/main.service";
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
-import { PasswordValidation } from '../../../core/validation/PasswordValidation';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { FormControlValidator,PasswordValidator } from "../../../core/validators";
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -46,7 +46,10 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.getCountry();
     this.signInForm = this.formBuilder.group({
-      userName: ['', [Validators.required]],
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
@@ -56,30 +59,44 @@ export class SigninComponent implements OnInit {
       dob: ['', Validators.required],
       gender: ['',Validators.required],
       country: ['',Validators.required],
-      email: ['',Validators.required],
-      mobile: ['',Validators.required],
-      password: ['',Validators.required],
+      email: ['',[Validators.required,Validators.email]],
+      mobile: ['',[Validators.required, Validators.maxLength(10)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['',Validators.required],
-    },
-    {
-      validator: PasswordValidation.MatchPassword
-    }
+    },{ validator: PasswordValidator('password', 'confirmPassword') }
     );
     
     this.forgotPasswordForm = this.formBuilder.group({
-      email:['',Validators.required],
+      email: ['',[Validators.required,Validators.email]],
     });
     this.forgotOTPForm = this.formBuilder.group({
-      otp:['',Validators.required],
+      otp: ['',Validators.required],
     });
     this.changePasswordForm = this.formBuilder.group({
-      password:['',Validators.required],
-    });
-    
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['',Validators.required],
+    },{ validator: PasswordValidator('password', 'confirmPassword') });
+  }
+
+  get signinControls() {
+    return this.signInForm.controls;
+  }
+  get signupControls() {
+    return this.signupForm.controls;
+  }
+  get forgotPasswordControls() {
+    return this.forgotPasswordForm.controls;
+  }
+  get forgotOTPControls() {
+    return this.forgotOTPForm.controls;
+  }
+  get changePasswordControls() {
+    return this.changePasswordForm.controls;
+  }
+  errorState(field, validatorFieldName) {
+    return FormControlValidator(field, validatorFieldName);
   }
  
-
-
   genderList: any = [
     { id: 1, type: "Male" },
     { id: 2, type: "Female" },
@@ -90,63 +107,57 @@ export class SigninComponent implements OnInit {
     this.dialogRef.close(true);
   }
 
-  public errorHandling = (form: FormGroup,control: string, error: string) => {
-    return form.controls[control].hasError(error);
-  }
 
   getCountry() {
     this.mainService.getCountryList().subscribe(
       res => {
-        console.log("Country List==>",res);
         this.listCountry = res['response']
-       // console.log("List Country ==>",this.listCountry);
       },
       error => {
         console.log(error.error);
-       
       }
     )
   }
 
-  submitSigninForm() {
-    //console.log(this.signInForm.);
-    console.log(this.signInForm.value)
-    this.signInForm.markAllAsTouched();
-      var data = {
-      "Username":this.signInForm.value.userName,
-      "Password":this.signInForm.value.password,
-      "FcmToken":""
-      }
-      this.userService.userSignIn(data).subscribe(
-        res => {
-          console.log("Login Result==>", res);
-          if(res['Status'] ==1) {
-            localStorage.setItem('isLoggedin', 'true');
-            localStorage.setItem('userId', res['UserID']);
-            localStorage.setItem('userName', res['Username']);
-            localStorage.setItem('userEmail', res['EmailID']);
-            localStorage.setItem('userContact', res['Phone']);
-            localStorage.setItem('userType', '2');
-            this.userService.loginStatus(true);
-            this.dialogRef.close(true);
-            this.toastr.success(res['msg'], '', {
-              timeOut: 3000,
-            });
-          }
-          else {
-            this.toastr.error(res['msg'], '', {
-              timeOut: 3000,
-            });
-          }
-        },
-        error => {
-          console.log(error.error);
-          this.toastr.error('Error!!!', '', {
-            timeOut: 3000,
-          });
-          this.spinner.hide();
+  signIn() {
+    if(this.signInForm.valid) {
+      this.signInForm.markAllAsTouched();
+        var data = {
+        "Username":this.signInForm.value.email,
+        "Password":this.signInForm.value.password,
+        "FcmToken":""
         }
-      )
+        this.userService.userSignIn(data).subscribe(
+          res => {
+            if(res['Status'] ==1) {
+              localStorage.setItem('isLoggedin', 'true');
+              localStorage.setItem('userId', res['UserID']);
+              localStorage.setItem('userName', res['Username']);
+              localStorage.setItem('userEmail', res['EmailID']);
+              localStorage.setItem('userContact', res['Phone']);
+              localStorage.setItem('userType', '2');
+              this.userService.loginStatus(true);
+              this.dialogRef.close(true);
+              this.toastr.success(res['msg'], '', {
+                timeOut: 3000,
+              });
+            }
+            else {
+              this.toastr.error(res['msg'], '', {
+                timeOut: 3000,
+              });
+            }
+          },
+          error => {
+            console.log(error.error);
+            this.toastr.error('Error!!!', '', {
+              timeOut: 3000,
+            });
+            this.spinner.hide();
+          }
+        )
+    }
+  
   }
   signUp(){
     this.signupForm.markAllAsTouched();
@@ -163,9 +174,7 @@ export class SigninComponent implements OnInit {
       }
       this.userService.userSignUp(data).subscribe(
         res => {
-          console.log("Signup Result==>", res);
-
-          if(res['Status'] ==1) {
+           if(res['Status'] ==1) {
             this.dialogRef.close(true);
           this.toastr.success(res['msg'], '', {
             timeOut: 3000,
@@ -186,7 +195,6 @@ export class SigninComponent implements OnInit {
           this.spinner.hide();
         }
       )
-
   }
 
   gotoForgotPass() {
@@ -194,7 +202,6 @@ export class SigninComponent implements OnInit {
   }
   forgetPass(){
     if(this.forgotPasswordForm.valid){
-      console.log(this.forgotPasswordForm.value);
       this.forgotPasswordForm.markAllAsTouched();
       this.userEmail = this.forgotPasswordForm.value.email;
         var data = {
@@ -211,15 +218,12 @@ export class SigninComponent implements OnInit {
                 this.toastr.success("Your OTP is : "+this.getOTP, '', {
                   timeOut: 4000,
                 });
-              console.log(this.getOTP);
               }
               else {
                 this.toastr.warning(res['response'][0]['msg'], '', {
                   timeOut: 4000,
                 });
               }
-              
-            
             }
           },
           error => {
@@ -230,15 +234,12 @@ export class SigninComponent implements OnInit {
             this.spinner.hide();
           }
         )
-      
     }
 
   }
 
   otpMatch() {
-
     if(this.forgotOTPForm.valid){
-      console.log(this.forgotOTPForm.value);
       this.setOTP = this.forgotOTPForm.value.otp;
       if(this.getOTP == this.setOTP) {
         this.showModal =4;
@@ -249,12 +250,10 @@ export class SigninComponent implements OnInit {
         });
       }
     }
-  
   }
 
   updatePassword() {
     if(this.changePasswordForm.valid){
-      console.log(this.changePasswordForm.value);
       var data = {
         "emailid":this.userEmail,
         "Flag":"2",
@@ -267,12 +266,9 @@ export class SigninComponent implements OnInit {
         if(res['status']==1) {
          
           this.showModal =1;
-       //   this.msg = res['response'][0]['msg'];
           this.toastr.success(res['response'][0]['msg'], '', {
             timeOut: 3000,
           });
-      //  console.log(this.getOTP);
-        //this.dialogRef.close(true);
         }
       },
       error => {
@@ -283,13 +279,13 @@ export class SigninComponent implements OnInit {
         this.spinner.hide();
       }
     )
-      
     }
-
   }
 
   backtoLogin(){
     this.showModal =1;
   }
+
+ 
     
 }

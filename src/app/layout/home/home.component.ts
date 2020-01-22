@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
   showSearch: boolean = false;
   requestForm: FormGroup;
   submitted = false;
-  searchForm: FormGroup;
   submittedSearch = false;
   bannerList: any = [];
   imageBaseUrl: any;
@@ -176,74 +175,6 @@ export class HomeComponent implements OnInit {
 
   images: any = [];
   catList: any = [];
-  // mediaList: any = [
-  //   {
-  //     image: 'assets/img/banner3.png',
-  //   },
-  //   {
-  //     image: 'assets/img/banner1.png',
-  //   },{
-  //     image: 'assets/img/banner2.png',
-  //   },
-  // ];
-  
-
-  // topOfferList: any = [
-  //   {
-  //     image: 'assets/img/top-offers3.png',
-  //   },
-  //   {
-  //     image: 'assets/img/top-offers2.png',
-  //   },{
-  //     image: 'assets/img/top-offers3.png',
-  //   },{
-  //     image: 'assets/img/top-offers2.png',
-  //   },{
-  //     image: 'assets/img/top-offers3.png',
-  //   },{
-  //     image: 'assets/img/top-offers2.png',
-  //   },{
-  //     image: 'assets/img/top-offers3.png',
-  //   },{
-  //     image: 'assets/img/top-offers2.png',
-  //   },
-  // ];
-
-
-
-  featuredprovidersList: any = [
-    {
-      image: 'assets/img/mostpopular1.png',
-    },
-    {
-      image: 'assets/img/mostpopular2.png',
-    },{
-      image: 'assets/img/mostpopular3.png',
-    },{
-      image: 'assets/img/mostpopular4.png',
-    },{
-      image: 'assets/img/mostpopular1.png',
-    },{
-      image: 'assets/img/mostpopular2.png',
-    },{
-      image: 'assets/img/mostpopular3.png',
-    },{
-      image: 'assets/img/mostpopular4.png',
-    },
-  ];
-
-  testimonialList:any=[
-    {
-      "id":"3","author_image":"assets/img/testimonial-img1.jpg",
-      "author_name":"Drake Brian","author_designation":"Devguru",
-      "video_url":"https:\/\/www.youtube.com\/embed\/JPT3bFIwJYA","description":"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.","created_at":"2019-09-03 07:50:38","modified_at":"2019-09-03 11:30:20","is_deleted":"0","is_active":"1"
-  },
-    {
-      "id":"1",
-      "author_image":"assets/img/testimonial-img1.jpg","author_name":"John Doe","author_designation":"Developer","video_url":"https:\/\/www.youtube.com\/embed\/JPT3bFIwJYA","description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.","created_at":"2019-09-03 06:59:17","modified_at":"2019-09-03 07:54:44","is_deleted":"0","is_active":"1"
-    }
-   
-  ];
   citylist:any=[];
 
   constructor(
@@ -263,77 +194,12 @@ export class HomeComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       subject: ['', [Validators.required]],
     });
-
-    this.searchForm = this.formBuilder.group({
-      citylist: [''],
-      searchtxt: ['', [Validators.required]],
-    });
-    
     this.getAllData();
-    
-    this.bannerList = [{
-      image: 'assets/img/banner1.jpg',
-    },
-    {
-      image: 'assets/img/banner.jpg',
-    },
-    {
-      image: 'assets/img/banner1.jpg',
-    },
-    {
-      image: 'assets/img/banner.jpg',
-    }, {
-      image: 'assets/img/banner1.jpg',
-    }
-    ]
-    // this.procedureList();
-    // this.getTopOffers();
-    // this.getBannerList();
   }
-
-
 
   get f() {
     return this.requestForm.controls;
   }
-
-
-  // procedureList() {
-  //   this.mainService.getProcedureList().subscribe(
-  //     res => {
-  //       console.log("Result Procedure List==>",res);
-  //       this.getTopOffers();
-  //     },
-  //     error => {
-  //       console.log(error.error); 
-  //       this.getTopOffers();
-  //     }
-  //   )
-  // }
-
-  // getTopOffers() {
-  //   this.mainService.getTopOffers().subscribe(
-  //     res => {
-  //       console.log("Result Top Offers==>",res);
-  //       this.getBannerList();
-  //     },
-  //     error => {
-  //       console.log(error.error); 
-  //       this.getBannerList();
-  //     }
-  //   )
-  // }
-
-  // getBannerList() {
-  //   this.mainService.getBannerList().subscribe(
-  //     res => {
-  //       console.log("Result Banner List==>",res);
-  //     },
-  //     error => {
-  //       console.log(error.error); 
-  //     }
-  //   )
-  // }
 
   getAllData() {
     var forkArray = [];
@@ -381,14 +247,10 @@ export class HomeComponent implements OnInit {
 
   requestFeedBack() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.requestForm.invalid) {
       return;
     }
     else {
-
-      this.spinner.show();
-    //  console.log(this.requestForm.value);
      var data = {
        "emailid":this.requestForm.value.email,
        "Message":this.requestForm.value.subject
@@ -408,14 +270,14 @@ export class HomeComponent implements OnInit {
               timeOut: 3000,
             });
           }
-          
+          this.submitted =false;
         },
         error => {
           console.log(error.error);
+          this.submitted =false;
           this.toastr.error('Error!!!', '', {
             timeOut: 3000,
           });
-        //  this.spinner.hide();
         }
       )
     }

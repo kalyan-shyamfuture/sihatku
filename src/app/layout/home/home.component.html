@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="wocommersbox"> <a href="javascript:void(0)"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
+<div class="wocommersbox"> <a  [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
 <!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
 <!-- Start Banner -->
@@ -12,7 +12,7 @@
             <ng-template carouselSlide *ngFor="let banner of bannerList; let i = index">
                 {{banner.serviceImgURL1}}
                 <div class="carousel-item active">
-                    <div class="view"> <img class="d-block w-100" [src]="banner.Column1" alt="First slide">
+                    <div class="view"> <img class="d-block w-100" [src]="banner.Column1" alt="{{banner.Name}}">
                         <div class="mask rgba-black-light"></div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
             <div class="col-sm-6">
                 <h3 class="text-left">Most Popular Procedures</h3>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6" *ngIf="mostpopularList.length  > 0">
                 <h3 class="text-right"><a href="#">View All <i class="fa fa-play" aria-hidden="true"></i></a></h3>
             </div>
         </div>
@@ -118,6 +118,7 @@
                 </ng-template>
             </owl-carousel-o>
         </div>
+        <div class="no-records" *ngIf="mostpopularList.length ==0"><p>Not Available</p></div>
     </div>
 </section>
 <!--/.End Most Popular-->
@@ -206,7 +207,7 @@
     </div>
 </section>
 
-<!------------------------------Explore Sihatku----------------------------------------------------------->
+<!-----------------Explore Sihatku---------------------->
 
 <section #exploreSihatkuRef  id="exploreSihatku">
     <div class="container">

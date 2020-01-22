@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from "../../../core/services/user.service";
 import { NgxSpinnerService } from "ngx-spinner";
+import { FormControlValidator,PasswordValidator } from "../../../core/validators";
 
 @Component({
   selector: 'app-serviceprovider-signin',
@@ -35,17 +36,40 @@ export class ServiceproviderSigninComponent implements OnInit {
       providerPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
     this.forgotPasswordForm = this.formBuilder.group({
-      email:['',Validators.required],
+      email: ['',[Validators.required, Validators.email]],
     });
     this.forgotOTPForm = this.formBuilder.group({
       otp:['',Validators.required],
     });
+    // this.changePasswordForm = this.formBuilder.group({
+    //   password:['',Validators.required],
+    // });
     this.changePasswordForm = this.formBuilder.group({
-      password:['',Validators.required],
-    });
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['',Validators.required],
+    },{ validator: PasswordValidator('password', 'confirmPassword') });
   }
   closeModal() {
     this.dialogRef.close(true);
+  }
+
+  get signinControls() {
+    return this.signInForm.controls;
+  }
+
+  get forgotPasswordControls() {
+    return this.forgotPasswordForm.controls;
+  }
+
+  get forgotOTPControls() {
+    return this.forgotOTPForm.controls;
+  }
+  get changePasswordControls() {
+    return this.changePasswordForm.controls;
+  }
+
+  errorState(field, validatorFieldName) {
+    return FormControlValidator(field, validatorFieldName);
   }
 
   public errorHandling = (form: FormGroup,control: string, error: string) => {
@@ -153,6 +177,11 @@ export class ServiceproviderSigninComponent implements OnInit {
       if(this.getOTP == this.setOTP) {
         this.showModal =4;
       }
+      else {
+        this.toastr.error('OTP Mismatch!!!', '', {
+          timeOut: 3000,
+        });
+      }
     }
     else {
       this.toastr.error('OTP Mismatch!!!', '', {
@@ -176,7 +205,10 @@ export class ServiceproviderSigninComponent implements OnInit {
         if(res['status']==1) {
          
           this.showModal =3;
-          this.getOTP = res['response'][0]['OTP'];
+          //this.getOTP = res['response'][0]['msg'];
+          this.toastr.success(res['response'][0]['msg'], '', {
+            timeOut: 4000,
+          });
         console.log(this.getOTP);
         this.dialogRef.close(true);
         }

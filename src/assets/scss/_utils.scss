@@ -24,6 +24,21 @@ body {
     width: 100%;
 }
 
+.danger {
+    color:#f44336;
+}
+
+.img-small {
+    height:45px;
+    width:45px;
+}
+
+.no-records p {
+    color: #e20000;
+    text-align: center; 
+}
+
+
 .navbar-light .md-form input:not([type]),
 .md-form input[type=password]:not(.browser-default),
 .md-form input[type=email]:not(.browser-default),
@@ -313,6 +328,7 @@ input[type=password] {
     resize: vertical;
     font-family: 'Montserrat', sans-serif;
 }
+
 
 .rightbox button {
     background-color: #FCBE11;
@@ -1878,9 +1894,9 @@ a h2.navtext {
     //width: 70px;
 }
 
-.table td {
-    border-top: 5px solid #dee2e6;
-}
+// .table td {
+//     border-top: 5px solid #dee2e6;
+// }
 
 .trboder {
     border-bottom: 5px solid #f4f4f4;
@@ -1939,6 +1955,75 @@ a h2.navtext {
     color: #fff;
     // background: #00abc9;
 }
+
+
+
+// css for new form design  start 
+mat-form-field {
+    width: 100%;
+}
+
+select.mat-input-element {
+    border-bottom: 0px;
+}
+
+// .table td {
+//     border-top: 1px solid #dee2e6;
+//     vertical-align: middle;
+// }
+
+.fatop {
+    margin-top: 26px;
+    font-size: 23px;
+    color: #ff9100;
+}
+
+.serviceform .btn11 .fa.fa-plus {
+    width: 23px;
+    height: 23px;
+    background: #fdbe12;
+    border-radius: 50%;
+    padding: 5px 6px;
+    box-shadow: 1px 2px #cccc;
+    margin: 0px 8px 0px 0px;
+    color: #ffffff;
+    float: left;
+}
+
+.serviceform .btn11 {
+    padding: 9px 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    color: #000;
+    border: #ccc 1px solid;
+    margin: 20px 0px 0px 0px;
+    cursor: pointer;
+    background: #ffffff;
+    width: auto;
+    float: right;
+    color: #9b9b9b;
+    text-align: left;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.services-section {
+    border: #dcdbdb 1px solid;
+    padding: 10px 12px;
+    margin-bottom: 25px;
+    background: #fff;
+    border-radius: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   }
+.minus-icon{
+    float: right;
+}
+// css for new form design end
+
+
+
+
+
 
 
 /********************************************responsive*******************************************************************/

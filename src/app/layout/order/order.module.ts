@@ -15,10 +15,16 @@ import { ExploreSihatkuComponent } from './explore-sihatku/explore-sihatku.compo
 import { MyProfileComponent } from './my-profile/my-profile.component';
 // core
 import { CoreModule } from '../../core/core.module';
+import { PractionersAddComponent } from './practioners/practioners-add/practioners-add.component';
+import { PractionersDetailsComponent } from './practioners/practioners-details/practioners-details.component';
+import { PractionersEditComponent } from './practioners/practioners-edit/practioners-edit.component';
+import { MyProceduresAddComponent } from './my-procedures/my-procedures-add/my-procedures-add.component';
+import { MyProceduresEditComponent } from './my-procedures/my-procedures-edit/my-procedures-edit.component';
+import { MyProceduresDetailsComponent } from './my-procedures/my-procedures-details/my-procedures-details.component';
 
 
 @NgModule({
-  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent],
+  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent, PractionersAddComponent, PractionersDetailsComponent, PractionersEditComponent, MyProceduresAddComponent, MyProceduresEditComponent, MyProceduresDetailsComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,

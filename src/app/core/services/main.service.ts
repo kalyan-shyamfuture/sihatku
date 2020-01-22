@@ -78,7 +78,21 @@ export class MainService {
     return this.http.get(environment.apiEndpoint + 'PracticenerDetails/'+id);
   }
   getProcedureList(id) {
-    return this.http.get(environment.apiEndpoint + 'providerServices/'+id);
+    return this.http.get(environment.apiEndpoint + 'servicelistbyID/'+id);
+  }
+
+  // deleteProcedure(id) {
+  //   return this.http.get(environment.apiEndpoint + 'ProcedureDeleteby/'+id);
+  // }
+  deleteProcedure(data) {
+    return this.http.post(environment.apiEndpoint + 'ProcedureDelete/',data);
+  }
+
+  // deletePractioner(id) {
+  //   return this.http.get(environment.apiEndpoint + 'ProcedureDeleteby/'+id);
+  // }
+  deletePractioner(data) {
+    return this.http.post(environment.apiEndpoint + 'abccc/',data);
   }
 
 }

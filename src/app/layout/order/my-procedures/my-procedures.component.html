@@ -17,7 +17,10 @@
          </div>
          <div class="col-md-3">
            <div class="addRow">
-              <p><span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure</p>
+              <p>
+                  <a [routerLink]="'/order/my-procedures/add'">
+                  <span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure </a>
+                </p>
            </div>
         </div> 
      
@@ -54,9 +57,10 @@
                                             </td>
                                             <td><span *ngIf="prodlist.locPrice > 0">MYR&nbsp;{{prodlist.locPrice}}</span><span  *ngIf="prodlist.USAPrice > 0">/USD{{prodlist.USAPrice}}</span></td>
                                             <td>
-                                                    <p>Dr.Usman <span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></p>
-                                                    <br>
-                                                    <p>Mr.Rafee <span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></p>
+                                                    <p  *ngFor="let practioner of prodlist.Practioner; let i = index" class="prac-name">{{practioner.firstname}} {{practioner.lastname}}
+                                                        <a [routerLink]="'/order/practioners/details/'+practioner.pracid"><span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></a></p>
+                                              
+                                                    <!-- <p>Mr.Rafee <span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></p> -->
                                                 </td>
                                                 <!-- <td><img class="table-img1" src="assets/img/doctor.png" alt="" title=""><br><img class="table-img1" src="assets/img/user.png" alt="" title=""></td>
                                                 <td>Malaysia<br> USA</td>
@@ -74,9 +78,9 @@
                                                     <br> Lorem&nbsp;Ipsum&nbsp;is&nbsp;simply&nbsp;dummy&nbsp;text
                                                 </td> -->
                                                 <td>
-                                                    <a href="#"><img class="table-img1" src="assets/img/percent.png" alt="" title=""></a><br>
-                                                    <a href="#"><img class="table-img1" src="assets/img/edit.png" alt="" title=""></a><br>
-                                                    <a href="#"><img class="table-img1" src="assets/img/delete.png" alt="" title=""></a>
+                                                    <a [routerLink]="'/order/my-procedures/details'"><img class="table-img1" src="assets/img/percent.png" alt="" title=""></a><br>
+                                                    <a [routerLink]="'/order/my-procedures/edit'"><img class="table-img1" src="assets/img/edit.png" alt="" title=""></a><br>
+                                                    <a (click)="deleteProcedure(templateDelete,prodlist.servicesID)"><img class="table-img1" src="assets/img/delete.png" alt="" title=""></a>
                                                 </td>
 
                                          
@@ -216,3 +220,11 @@
                     <!--/.End Banner-->
                 </div>
                 </ng-template>
+
+                <ng-template #templateDelete>
+                    <div class="modal-body text-center">
+                      <p>Are you sure to delete the procedure?</p>
+                      <button type="button" class="btn btn-default" (click)="confirmDelete(procedureId)" >Yes</button>
+                      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+                    </div>
+                  </ng-template>

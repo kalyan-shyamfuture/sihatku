@@ -1,1 +1,39 @@
-<h1>Contact Page</h1>
+<app-header></app-header>
+
+
+<section class="iconSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2" *ngFor="let speciality of specialitylist | slice:0:5; let i = index">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title=""> </div>
+                    <h2><a href="javascript:void(0)">{{speciality.specialityName}}</a></h2>
+                </div>
+            </div>
+            
+            <div class="col-sm-2">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img src="assets/img/more.png" alt="" title="" class="iconSectionRoundDots"> </div>
+                    <h2><a href="#">More</a></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-----iconbox---->
+
+
+<div class="clearfix"></div>
+
+<!-----------------------------------------How Sihatku work---------------------------------------------------------------------->
+
+
+<!-----------------Explore Sihatku---------------------->
+
+<div class="clearfix"></div>
+
+<!------------------------socailIcon------------------------------------------->
+
+<!------------------------socailIcon------------------------------------------->
+<app-footer></app-footer>

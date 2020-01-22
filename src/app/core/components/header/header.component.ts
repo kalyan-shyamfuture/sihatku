@@ -166,7 +166,8 @@ export class HeaderComponent implements OnInit {
     this.modalRef.hide();
     localStorage.clear();
     this.loggedIn = false;
-    this.router.navigate(['/providerreg']);
+     this.router.navigate(['/providerregnew']);
+    //this.router.navigate(['/registration']);
   }
  
   decline(): void {
