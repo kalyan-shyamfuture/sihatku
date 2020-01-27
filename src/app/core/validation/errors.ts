@@ -101,6 +101,9 @@ export const Errors = {
   dob: [
     { type: 'required', message: 'Date-of-Birth is required' },
   ],
+   businessname: [
+    { type: 'required', message: 'Business Name required' },
+  ],
   // newPassword: [
   //   { type: 'required', message: 'New Password is required' },
   //   { type: 'pattern', message: 'Please enter a valid Password.' }

@@ -4,3 +4,14 @@ table {border: none;}
     vertical-align: middle;
     padding: 0px 10px;
 }
+
+.custom-full-width {
+    width:100%;
+}
+
+.no-background-custom {
+    border:none;
+    background:none;
+    padding:0;
+    height:15px;
+  }

@@ -95,4 +95,12 @@ export class MainService {
     return this.http.post(environment.apiEndpoint + 'abccc/',data);
   }
 
+  getProcedureListbySpecId(data) {
+    return this.http.post(environment.apiEndpoint + 'getProcedureListbySpecId',data);
+  }
+
+  providerNewRegistration(data) {
+    return this.http.post(environment.apiEndpoint + 'CreateProviderdetails',data);
+  }
+
 }

@@ -29,8 +29,8 @@ export const Errors = {
   contactNumber: [
     { type: 'required', message: 'Please Enter Contact Number' },
   ],
-  fieldSpeciality: [
-    { type: 'required', message: 'Please Select Field Speciality' },
+  specialities: [
+    { type: 'required', message: 'Please Select  Speciality' },
   ],
   // placeofPractice: [
   //   { type: 'required', message: 'Please Enter Practice Place' },
@@ -63,13 +63,13 @@ export const Errors = {
     { type: 'required', message: 'Please Enter Practising Since' },
   ],
   qualification: [
-    { type: 'required', message: 'Please Enter Qualification' },
+    { type: 'required', message: 'Qualification Required' },
   ],
   medicalSchool: [
     { type: 'required', message: 'Please Enter Medical School' },
   ],
   aboutPractioner: [
-    { type: 'required', message: 'Please Enter About Practicioner' },
+    { type: 'required', message: 'About Practicioner Required' },
   ],
   DOB: [
     { type: 'required', message: 'Date-of-Birth is required' },
@@ -99,6 +99,33 @@ export const Errors = {
   ],
   otp: [
     { type: 'required', message: 'OTP is required' },
+  ],
+   businessname: [
+    { type: 'required', message: 'Business Name required' },
+  ],
+  businessdesc: [
+    { type: 'required', message: 'Business Description required' },
+  ],
+  businessaddress: [
+    { type: 'required', message: 'Business Address required' },
+  ],
+  city: [
+    { type: 'required', message: 'City required' },
+  ],
+  state: [
+    { type: 'required', message: 'State required' },
+  ],
+  zip: [
+    { type: 'required', message: 'Pincode required' },
+  ],
+  licenceNo: [
+    { type: 'required', message: 'Licence No required' },
+  ],
+  expertise: [
+    { type: 'required', message: 'Expertise required' },
+  ],
+  practicingSince: [
+    { type: 'required', message: 'Year required' },
   ],
   // newPassword: [
   //   { type: 'required', message: 'New Password is required' },
