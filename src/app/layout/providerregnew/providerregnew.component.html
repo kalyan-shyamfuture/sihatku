@@ -375,38 +375,59 @@
                                     </button>
                                 </div>
                             </div>
-                            <div >
-                                <div class="table-responsive" *ngFor="let specility of specialityDetails; index as i">
+                            <div formArrayName="serviceDetails">
+                                <div class="table-responsive" *ngFor="let specility of specialityDetails; index as i" [formGroupName]="i">
                                     <table class="table">
 
                                         <tr>
                                             <td colspan="4"><b>{{specility.speciality}}</b>
-                                                <input matInput placeholder="About Practioner" formControlName="speciality"
-                                                name="speciality" [(ngModel)]="speciality.specialityID">
+                                                <!-- <input matInput placeholder="About Practioner" formControlName="speciality"
+                                                name="speciality" > -->
                                             </td>
                                         </tr>
-                                        <tr *ngFor="let procedure of specility.ProcedureDetails">
-
-                                            <td>
-                                                <mat-checkbox>{{procedure.procedurename}}</mat-checkbox>
+                                        <!-- formArrayName="procedure" -->
+                                        <tr formArrayName="procedure">
+                                            <table class="table" *ngFor="let procedure of specility.ProcedureDetails; index as j" [formGroupName]="j">
+                                                <tr>
+                                                    <td>
+                                                        <mat-checkbox formControlName="isChecked">{{procedure.procedurename}}</mat-checkbox>
+                                                    </td>
+                                                    <td>
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput  placeholder="About Procedure" formControlName="aboutProcedure">
+                                                        </mat-form-field>
+                                                    </td>
+                                                    <td>
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput  placeholder="Set Price USD" formControlName="setPrice">
+                                                        </mat-form-field>
+                                                    </td>
+                                                    <td>
+                                                        <mat-form-field class="example-full-width">
+                                                            <input matInput  placeholder="Set Price MYR" formControlName="locPrice">
+                                                        </mat-form-field>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- <td>
+                                                <mat-checkbox >{{procedure.procedurename}}</mat-checkbox>
                                             </td>
                                             <td>
                                                 <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="About Procedure"
-                                                        >
+                                                    <input matInput  placeholder="About Procedure">
                                                 </mat-form-field>
 
                                             </td>
                                             <td>
                                                 <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="Set Price USD">
+                                                    <input matInput  placeholder="Set Price USD">
                                                 </mat-form-field>
                                             </td>
                                             <td>
                                                 <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="Set Price MYR">
+                                                    <input matInput  placeholder="Set Price MYR">
                                                 </mat-form-field>
-                                            </td>
+                                            </td> -->
                                             <td>
 
 

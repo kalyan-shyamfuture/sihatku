@@ -227,7 +227,7 @@ export class HomeComponent implements OnInit {
           
           if (i == 3) {
             this.mostpopularList = result[i]['response'];
-            console.log("Popular Proce List==>",result[i]);
+            console.log("Most Popular List==>",this.mostpopularList);
           }
           if (i == 4) {
             this.featureProviderList = result[i]['response'];

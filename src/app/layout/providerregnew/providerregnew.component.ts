@@ -204,23 +204,24 @@ export class ProviderregnewComponent implements OnInit {
     return this.serviceRegForm.get('serviceDetails') as FormArray;
   }
 
-  servicedetailsModel(): FormGroup {
+  servicedetailsModel(valueId): FormGroup {
     return this.formBuilder.group({
-      speciality: ['', Validators.required],
+      speciality: [valueId, Validators.required],
       procedure: this.formBuilder.array([])
     });
   }
 
-  createServiceDetail(): void {
+  createServiceDetail(specialityId): void {
     const formIndex = this.mainForm.length;
-    this.mainForm.push(this.servicedetailsModel());
+    this.mainForm.push(this.servicedetailsModel(specialityId));
     // console.log(this.mainForm);
     
   }
 
-  procedureModel(value): FormGroup {
+  procedureModel(procedureId): FormGroup {
     return this.formBuilder.group({
-      id: [value, Validators.required],
+      id: [procedureId, Validators.required],
+      isChecked: [true],
       aboutProcedure: ['', Validators.required],
       setPrice: ['', Validators.required],
       locPrice: ['', Validators.required],
@@ -228,11 +229,11 @@ export class ProviderregnewComponent implements OnInit {
   }
 
 
-  createProcedure(index): void {
+  createProcedure(index, procedureId): void {
     // console.log(index, this.mainForm.at(index));
     const procedureForm = this.mainForm.at(index).get('procedure') as FormArray;
-    const procedureValue = procedureForm.controls.length + 1;
-    procedureForm.push(this.procedureModel(procedureValue));
+    // const procedureValue = procedureForm.controls.length + 1;
+    procedureForm.push(this.procedureModel(procedureId));
   }
 
   submitForm() {
@@ -332,9 +333,9 @@ export class ProviderregnewComponent implements OnInit {
       //  console.log("List Country ==>", this.listCountry);
       this.specialityDetails.map((spc, key) => {
         console.log(spc);
-        this.createServiceDetail();
+        this.createServiceDetail(spc.specialityID);
         spc.ProcedureDetails.forEach(value => {
-          this.createProcedure(key);
+          this.createProcedure(key, value.procedureid);
         });
       });
     

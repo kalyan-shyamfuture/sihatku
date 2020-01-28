@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="wocommersbox"> <a  [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
+<div class="wocommersbox"> <a [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
 <!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
 <!-- Start Banner -->
@@ -58,7 +58,8 @@
             </div> -->
             <div class="col-sm-2">
                 <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img src="assets/img/more.png" alt="" title="" class="iconSectionRoundDots"> </div>
+                    <div class="iconSectionRound"> <img src="assets/img/more.png" alt="" title=""
+                            class="iconSectionRoundDots"> </div>
                     <h2><a href="#">More</a></h2>
                 </div>
             </div>
@@ -82,14 +83,17 @@
         <div class="carousel-inner" role="listbox">
             <owl-carousel-o [options]="topOffersOptions">
                 <ng-template carouselSlide *ngFor="let topoffer of topOfferList; let i = index">
-                 
+
                     <div class="carousel-item active">
-                        <div class="view"> <img class="d-block w-100" [src]="topoffer.serviceImgURL1" alt="First slide">
+                        <div class="view"> <img class="d-block w-100" [src]="topoffer.serviceImgURL1" onerror="this.src='assets/img/no-img.png';" alt="">
                             <div class="mask rgba-black-light"></div>
                         </div>
                     </div>
                 </ng-template>
             </owl-carousel-o>
+        </div>
+        <div class="no-records" *ngIf="topOfferList.length ==0">
+            <p>Not Available</p>
         </div>
     </div>
 </section>
@@ -111,14 +115,16 @@
             <owl-carousel-o [options]="mostpopularOptions">
                 <ng-template carouselSlide *ngFor="let mostpopular of mostpopularList; let i = index">
                     <div class="carousel-item active">
-                        <div class="view"> <img class="d-block w-100" [src]="mostpopular.image" alt="First slide">
+                        <div class="view"> <img class="d-block w-100" [src]="mostpopular.procedureImgURL" alt="">
                             <div class="mask rgba-black-light"></div>
                         </div>
                     </div>
                 </ng-template>
             </owl-carousel-o>
         </div>
-        <div class="no-records" *ngIf="mostpopularList.length ==0"><p>Not Available</p></div>
+        <div class="no-records" *ngIf="mostpopularList.length ==0">
+            <p>Not Available</p>
+        </div>
     </div>
 </section>
 <!--/.End Most Popular-->
@@ -138,12 +144,16 @@
             <owl-carousel-o [options]="featuredprovidersOptions">
                 <ng-template carouselSlide *ngFor="let featuredproviders of featureProviderList; let i = index">
                     <div class="carousel-item active">
-                        <div class="view"> <img class="d-block w-100" [src]="featuredproviders.centerLogoFile" alt="First slide">
+                        <div class="view"> <img class="d-block w-100" [src]="featuredproviders.centerLogoFile" onerror="this.src='assets/img/no-img.png';" alt=""
+                                alt="">
                             <div class="mask rgba-black-light"></div>
                         </div>
                     </div>
                 </ng-template>
             </owl-carousel-o>
+        </div>
+        <div class="no-records" *ngIf="featureProviderList.length ==0">
+            <p>Not Available</p>
         </div>
     </div>
 </section>
@@ -152,7 +162,7 @@
 
 <!-----------------------------------------How Sihatku work---------------------------------------------------------------------->
 
-<section #howSihatkuWorkRef id="howSihatkuWork" >
+<section #howSihatkuWorkRef id="howSihatkuWork">
     <div class="container">
         <div class="col-sm-12">
             <h5>How Sihatku work</h5>
@@ -209,7 +219,7 @@
 
 <!-----------------Explore Sihatku---------------------->
 
-<section #exploreSihatkuRef  id="exploreSihatku">
+<section #exploreSihatkuRef id="exploreSihatku">
     <div class="container">
         <div class="col-sm-12">
             <h5>Explore Sihatku</h5>
@@ -225,7 +235,9 @@
             <div class="col-sm-6">
                 <div class="workRow1Right">
                     <h2>Market Place</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it </p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it </p>
                 </div>
             </div>
         </div>
@@ -237,7 +249,9 @@
             <div class="col-sm-6">
                 <div class="workRow2Left">
                     <h2>Health Tracking System</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it </p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it </p>
                 </div>
             </div>
             <div class="col-sm-6">
@@ -255,7 +269,9 @@
             <div class="col-sm-6">
                 <div class="workRow1Right">
                     <h2>Blood Donation Service</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it </p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                        the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+                        of type and scrambled it </p>
                 </div>
             </div>
         </div>
@@ -265,7 +281,7 @@
 <!----------------------------------------------------------------->
 
 <!-- Start Download App -->
-<section  #downloadappRef id="downloadapp" class="section-bg wow fadeInUp">
+<section #downloadappRef id="downloadapp" class="section-bg wow fadeInUp">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -281,7 +297,8 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <input type="text" class="form-control" placeholder="Email ID" name="email"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <input type="text" class="form-control" placeholder="Email ID" name="email"
+                                    formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                     <div *ngIf="f.email.errors.required">Email is required</div>
                                 </div>
@@ -289,12 +306,14 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <textarea id="subject" class="form-control" name="subject" formControlName="subject" placeholder="Share your query/suggestion/Feedback" style="height:200px" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></textarea>
+                                <textarea id="subject" class="form-control" name="subject" formControlName="subject"
+                                    placeholder="Share your query/suggestion/Feedback" style="height:200px"
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></textarea>
                                 <div *ngIf="submitted && f.subject.errors" class="invalid-feedback">
                                     <div *ngIf="f.subject.errors.required">Subject is required</div>
                                 </div>
                             </div>
-                           
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
