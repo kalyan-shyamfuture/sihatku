@@ -21,10 +21,12 @@ import { PractionersEditComponent } from './practioners/practioners-edit/practio
 import { MyProceduresAddComponent } from './my-procedures/my-procedures-add/my-procedures-add.component';
 import { MyProceduresEditComponent } from './my-procedures/my-procedures-edit/my-procedures-edit.component';
 import { MyProceduresDetailsComponent } from './my-procedures/my-procedures-details/my-procedures-details.component';
+import { ChangepasswordComponent } from './my-profile/changepassword/changepassword.component';
+import { DeactivateComponent } from './my-profile/deactivate/deactivate.component';
 
 
 @NgModule({
-  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent, PractionersAddComponent, PractionersDetailsComponent, PractionersEditComponent, MyProceduresAddComponent, MyProceduresEditComponent, MyProceduresDetailsComponent],
+  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent, PractionersAddComponent, PractionersDetailsComponent, PractionersEditComponent, MyProceduresAddComponent, MyProceduresEditComponent, MyProceduresDetailsComponent, ChangepasswordComponent, DeactivateComponent],
   imports: [
     CommonModule,
     OrderRoutingModule,

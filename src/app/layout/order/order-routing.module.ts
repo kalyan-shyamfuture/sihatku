@@ -10,6 +10,9 @@ import { InboxComponent } from './inbox/inbox.component';
 import { ExploreSihatkuComponent } from './explore-sihatku/explore-sihatku.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 
+import { ChangepasswordComponent } from './my-profile/changepassword/changepassword.component';
+import { DeactivateComponent } from './my-profile/deactivate/deactivate.component';
+
 //Practioner 
 import { PractionersComponent } from './practioners/practioners.component';
 import { PractionersAddComponent } from './practioners/practioners-add/practioners-add.component';
@@ -95,6 +98,13 @@ const routes: Routes = [
     {
       path:'myProfile', 
       component:MyProfileComponent,
+    }, {
+      path:'myProfile/changepassword', 
+      component:ChangepasswordComponent,
+    },
+    {
+      path:'myProfile/deactivate', 
+      component:DeactivateComponent,
     },
   ]
 }

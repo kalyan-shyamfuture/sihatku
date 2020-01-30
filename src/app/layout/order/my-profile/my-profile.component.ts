@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { MainService } from "../../../core/services/main.service";
 import { UserService } from "../../../core/services/user.service";
 import { environment } from "../../../../environments/environment";
-
+import { FormControlValidator,PasswordValidator } from "../../../core/validators";
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -31,21 +31,45 @@ export class MyProfileComponent implements OnInit {
   ngOnInit() {
     this.getCountry();
     this.profileViewForm = this.formBuilder.group({
-      email:['',Validators.required],
-      clinicName:['',Validators.required],
-      aboutClinic:['',Validators.required],
-      providerType:['1',Validators.required],
-      centerLogoFile:[''],
-      providerAdd1:['',Validators.required],
-      providerAdd2:['',Validators.required],
-      city:['',Validators.required],
-      state:['',Validators.required],
-      ZIP:['',Validators.required],
-      country:['',Validators.required],
+      //email:['',Validators.required],
+      // clinicName:['',Validators.required],
+      // aboutClinic:['',Validators.required],
+      // providerType:['1',Validators.required],
+      // centerLogoFile:[''],
+      // providerAdd1:['',Validators.required],
+      // providerAdd2:['',Validators.required],
+      // city:['',Validators.required],
+      // state:['',Validators.required],
+      // ZIP:['',Validators.required],
+      // country:['',Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]],
+      mobile: ['', [Validators.required, Validators.maxLength(10)]],
+      businessName: ['', [Validators.required]],
+      businessDesc: ['', [Validators.required]],
+      businessAddress: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      zip: ['', [Validators.required]],
+      providerType: ['1'],
+      centerLogoFile: [''],
     })
 
     this.getProfile(this.userId);
   }
+
+  get profileViewControls() {
+    return this.profileViewForm.controls;
+  }
+
+  errorState(field, validatorFieldName) {
+    return FormControlValidator(field, validatorFieldName);
+  }
+
+
+
   cityList: any = [
     { id: 1, name: "Kolkata" },
     { id: 2, name: "Delhi" },
@@ -82,7 +106,6 @@ export class MyProfileComponent implements OnInit {
         this.profileDetails = res['response'][0];
         console.log("Provider profile Details==>",this.profileDetails);
         this.profileViewForm.patchValue({
-          //name: this.userDetails.name,
           email:this.profileDetails.providerEmail,
           clinicName:this.profileDetails.clinicName,
           aboutClinic:this.profileDetails.aboutClinic,
@@ -94,6 +117,8 @@ export class MyProfileComponent implements OnInit {
           state:this.profileDetails.state,
           ZIP:this.profileDetails.ZIP,
           country:this.profileDetails.country,
+          email:'',
+       
         });
         
       },

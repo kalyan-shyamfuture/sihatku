@@ -18,4 +18,6 @@ export class ServicesidebarComponent implements OnInit {
     this.router.navigate(['/registration']);
   }
 
+  
+
 }
