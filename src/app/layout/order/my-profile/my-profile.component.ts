@@ -105,20 +105,20 @@ export class MyProfileComponent implements OnInit {
       res => {
         this.profileDetails = res['response'][0];
         console.log("Provider profile Details==>",this.profileDetails);
+        this.imgCenterURL = this.profileDetails.Logo;
+        console.log("Center Logo ==>",this.imgCenterURL);
         this.profileViewForm.patchValue({
-          email:this.profileDetails.providerEmail,
-          clinicName:this.profileDetails.clinicName,
-          aboutClinic:this.profileDetails.aboutClinic,
-          providerType:this.profileDetails.providerType,
-          centerLogoFile:'',
-          providerAdd1:this.profileDetails.providerAdd1,
-          providerAdd2:this.profileDetails.providerAdd2,
-          city:this.profileDetails.city,
-          state:this.profileDetails.state,
-          ZIP:this.profileDetails.ZIP,
-          country:this.profileDetails.country,
-          email:'',
-       
+          email: this.profileDetails.Email,
+          mobile: this.profileDetails.PhoneNo,
+          businessName: this.profileDetails.BusinessName,
+          businessDesc: this.profileDetails.aboutBusiness,
+          businessAddress: this.profileDetails.Address,
+          city:this.profileDetails.City,
+          state: this.profileDetails.State,
+          country: this.profileDetails.Country,
+          zip: this.profileDetails.PINCode,
+          providerType: this.profileDetails.providerType,
+          centerLogoFile: this.profileDetails.Logo,
         });
         
       },
@@ -132,8 +132,10 @@ export class MyProfileComponent implements OnInit {
 
   profileUpdate()
   {
+    console.log(this.profileViewForm.value);
     if(this.profileViewForm.valid){
-    this.userService.updatedProfileValue(this.profileViewForm.value).subscribe(
+
+    this.userService.updatedProviderProfile(this.profileViewForm.value).subscribe(
       response=>{
         console.log(response);
         console.log(response['message']);
@@ -141,8 +143,6 @@ export class MyProfileComponent implements OnInit {
          console.log(response['message']);
          
         }
-        
-
       }
     )
   }

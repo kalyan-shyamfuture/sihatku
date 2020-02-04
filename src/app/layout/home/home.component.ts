@@ -76,16 +76,16 @@ export class HomeComponent implements OnInit {
 
     responsive: {
       0: {
-        items: 2
+        items: 1
       },
       400: {
-        items: 2
+        items: 1
       },
       740: {
-        items: 2
+        items: 3
       },
       940: {
-        items: 2
+        items: 3
       }
     },
     nav: true
@@ -202,6 +202,7 @@ export class HomeComponent implements OnInit {
   }
 
   getAllData() {
+    this.spinner.show();
     var forkArray = [];
     forkArray.push(this.mainService.getBannerList())
     forkArray.push(this.mainService.getSpecialityList())
@@ -214,28 +215,26 @@ export class HomeComponent implements OnInit {
         for (var i = 0; i < result.length; i++) {
           if (i == 0) {   
             this.bannerList = result[i]['response'];
-            console.log("Banner List==>",this.bannerList);
           }
           if (i == 1) {
             this.specialitylist = result[i]['response'];
-            console.log("getSpecialityList List==>",result[i]);
           }
           if (i == 2) {
             this.topOfferList = result[i]['response'];
-            console.log("Top Offer List==>",this.topOfferList);
           }
           
           if (i == 3) {
             this.mostpopularList = result[i]['response'];
-            console.log("Most Popular List==>",this.mostpopularList);
+            console.log(this.mostpopularList);
+            
           }
           if (i == 4) {
             this.featureProviderList = result[i]['response'];
-            console.log("Popular Proce List==>",result[i]);
           }
          
         }
         this.visibleKey = true;
+        this.spinner.hide();
       },
       err => {
         this.toastr.error('Something went wrong', '', {
@@ -243,6 +242,10 @@ export class HomeComponent implements OnInit {
         });
       }
     )
+  }
+
+  gotoProviderList(id) {
+    this.router.navigateByUrl('/cliniclist/' + id);
   }
 
   requestFeedBack() {
@@ -285,6 +288,5 @@ export class HomeComponent implements OnInit {
 
 
 
- 
 
 }

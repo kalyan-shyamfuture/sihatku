@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class=" clearfix"></div>
+<br><br>
+<section class="innerbody">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-xs-12">
+                <div class="mycart-section">
+                    <!-- <div class="textiles">Price Details</div> -->
+                    <h2>CATEGORIES</h2>
+                    <h2><span>SINUS and Allergy Exam</span></h2>
+
+                    <h2>PRICE</h2>
+                    <h2><span></span></h2>
+
+                    <h2>CUSTOMER RATING</h2>
+                    <h2><span></span></h2>
+
+                </div>
+                <!-- <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy
+                    returns<br>
+                    Authentic products 100%</div> -->
+            </div>
+
+
+
+            <div class="col-sm-9 col-xs-12">
+                <div class="mycart-section">
+                    <!-- <div class="textiles">My Cart (2)</div> -->
+
+                    <div class="mycart-box" *ngFor="let clinic of clinicList">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12"><img class="d-block w-100" alt="Sihatku"
+                                    [src]="clinic.centerLogoFile" onerror="this.src='assets/img/no-img.png';"
+                                    title="Sihatku"></div>
+                            <div class="col-sm-6 col-xs-12">
+                                <h1>{{clinic.ClinicName}}</h1>
+                                <!-- <p>Price : USD{{clinic.USAPrice}} /  MYR{{clinic.locPrice}} </p> -->
+                                <!-- <h1>Service Center</h1> -->
+                                <p>
+                                    {{clinic.providerAdd1}}  {{clinic.providerAdd2}}  {{clinic.city}}  {{clinic.state}} {{clinic.country}}
+                                </p>
+                                <p>USD{{clinic.USAPrice}} /  MYR{{clinic.locPrice}}</p>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                    <button class="signupbtn" type="submit" (click)="gotoDetails(clinic.providerID)">View</button>
+                                <button class="signupbtn" type="submit" (click)="addtoCart(clinic)">Add To Cart</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="no-records" *ngIf="clinicList.length ==0">
+                        <p>Not Available</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
+<app-footer></app-footer>

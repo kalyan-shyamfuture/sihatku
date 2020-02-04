@@ -10,9 +10,9 @@
     <div class="carousel-inner" role="listbox">
         <owl-carousel-o [options]="bannerOptions">
             <ng-template carouselSlide *ngFor="let banner of bannerList; let i = index">
-                {{banner.serviceImgURL1}}
+          
                 <div class="carousel-item active">
-                    <div class="view"> <img class="d-block w-100" [src]="banner.Column1" alt="{{banner.Name}}">
+                    <div class="view"> <img class="d-block w-100" [src]="imageBaseUrl + banner.FileUpload" alt="{{banner.Name}}">
                         <div class="mask rgba-black-light"></div>
                     </div>
                 </div>
@@ -32,30 +32,7 @@
                     <h2><a href="javascript:void(0)">{{speciality.specialityName}}</a></h2>
                 </div>
             </div>
-            <!-- <div class="col-sm-2">
-                <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img src="assets/img/lab.png" alt="" title=""> </div>
-                    <h2><a href="#">Labs</a></h2>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img src="assets/img/generalsurgery.png" alt="" title=""> </div>
-                    <h2><a href="#">General Surgery</a></h2>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img src="assets/img/bariatrics-.png" alt="" title=""> </div>
-                    <h2><a href="#">Bariatrics</a></h2>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img src="assets/img/ivf.png" alt="" title=""> </div>
-                    <h2><a href="#">IVF/Fertility</a></h2>
-                </div>
-            </div> -->
+          
             <div class="col-sm-2">
                 <div class="iconSectionBox">
                     <div class="iconSectionRound"> <img src="assets/img/more.png" alt="" title=""
@@ -84,7 +61,7 @@
             <owl-carousel-o [options]="topOffersOptions">
                 <ng-template carouselSlide *ngFor="let topoffer of topOfferList; let i = index">
 
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" (click)="gotoProviderList(topoffer.servicesProcedure)">
                         <div class="view"> <img class="d-block w-100" [src]="topoffer.serviceImgURL1" onerror="this.src='assets/img/no-img.png';" alt="">
                             <div class="mask rgba-black-light"></div>
                         </div>
@@ -114,7 +91,7 @@
         <div class="carousel-inner" role="listbox">
             <owl-carousel-o [options]="mostpopularOptions">
                 <ng-template carouselSlide *ngFor="let mostpopular of mostpopularList; let i = index">
-                    <div class="carousel-item active">
+                    <div class="carousel-item active" (click)="gotoProviderList(mostpopular.procedureID)">
                         <div class="view"> <img class="d-block w-100" [src]="mostpopular.procedureImgURL" alt="">
                             <div class="mask rgba-black-light"></div>
                         </div>
@@ -363,3 +340,12 @@
 
 <!------------------------socailIcon------------------------------------------->
 <app-footer></app-footer>
+
+<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <!-- <p style="font-size: 20px; color: white">
+    
+    </p> --> <p style="font-size: 20px; color: white">
+    
+    </p>
+    <img src="assets/img/loader.gif">
+</ngx-spinner>

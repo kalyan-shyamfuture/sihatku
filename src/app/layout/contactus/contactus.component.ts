@@ -20,7 +20,8 @@ export class ContactusComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+    console.log("contact us");
+    
   }
  
 

@@ -127,6 +127,22 @@ export const Errors = {
   practicingSince: [
     { type: 'required', message: 'Year required' },
   ],
+
+  cardNumber: [
+    { type: 'required', message: 'Card Number required' },
+  ],
+  cardExpMonth: [
+    { type: 'required', message: 'Card exp Month required' },
+  ],
+  cardExpYear: [
+    { type: 'required', message: 'Card ExpYear required' },
+  ],
+  cardCvv: [
+    { type: 'required', message: 'Card Cvv required' },
+  ],
+  cardName: [
+    { type: 'required', message: 'Card Name required' },
+  ],
   // newPassword: [
   //   { type: 'required', message: 'New Password is required' },
   //   { type: 'pattern', message: 'Please enter a valid Password.' }

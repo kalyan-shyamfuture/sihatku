@@ -103,4 +103,13 @@ export class MainService {
     return this.http.post(environment.apiEndpoint + 'CreateProviderdetails',data);
   }
 
+  getProviderList(data) {
+    return this.http.post(environment.apiEndpoint + 'ProviderList',data);
+  }
+
+  userCart(data) {
+    return this.http.post(environment.apiEndpoint + 'usercart',data);
+  }
+
+
 }

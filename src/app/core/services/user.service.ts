@@ -58,6 +58,12 @@ export class UserService {
     return this.http.post(environment.apiEndpoint + 'ProviderProfileUpdate/',data);
   }
 
+    updatedProviderProfile(data){
+    return this.http.post(environment.apiEndpoint + 'ProviderProfileUpdate/',data);
+  }
+
+  
+
 
 
 }

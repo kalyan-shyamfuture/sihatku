@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class=" clearfix"></div>
+<br><br>
+<section class="innerbody">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-xs-12">
+                <div class="mycart-section">
+                    <div class="textiles">Choose your payment method</div>
+
+                    
+
+                      <form role="form" [formGroup]="paymentForm" (ngSubmit)="payNow()" novalidate>
+                       
+                        <mat-radio-group aria-label="Select an option" formControlName="paymentType">
+                            <mat-radio-button value="1">Cash On Delivery</mat-radio-button>
+                            <mat-radio-button value="2">Card Payment</mat-radio-button>                  
+                          </mat-radio-group>
+                       
+                        <div class="form-group">
+                           <mat-form-field class="custom-full-width">
+                              <input matInput placeholder="Card Number" type="text" name="cardNumber" formControlName="cardNumber">
+                           </mat-form-field>
+                           <p *ngIf="errorState(paymentControls.cardNumber, 'cardNumber').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardNumber, 'cardNumber').message">
+                           </p>
+                        </div>
+                        <div class="form-group">
+                           <mat-form-field class="custom-full-width">
+                              <input matInput type="text" placeholder="Exp Month" formControlName="cardExpMonth" name="cardExpMonth"
+                                 class="no-background-custom">
+                           </mat-form-field>
+                           <p *ngIf="errorState(paymentControls.cardExpMonth, 'cardExpMonth').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardExpMonth, 'cardExpMonth').message">
+                           </p>
+                        </div>
+
+                        <div class="form-group">
+                            <mat-form-field class="custom-full-width">
+                               <input matInput type="text" placeholder="Exp Year" formControlName="cardExpYear" name="cardExpYear"
+                                  class="no-background-custom">
+                            </mat-form-field>
+                            <p *ngIf="errorState(paymentControls.cardExpYear, 'cardExpYear').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardExpYear, 'cardExpYear').message">
+                            </p>
+                         </div>
+
+                         <div class="form-group">
+                            <mat-form-field class="custom-full-width">
+                               <input matInput type="text" placeholder="Cvv" formControlName="cardCvv" name="cardCvv"
+                                  class="no-background-custom">
+                            </mat-form-field>
+                            <p *ngIf="errorState(paymentControls.cardCvv, 'cardCvv').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardCvv, 'cardCvv').message">
+                            </p>
+                         </div>
+
+                         
+                        <button type="submit" class="btn btn-primary">Pay Now</button>
+                        </form>
+
+                    <!-- <div class="mycart-box" *ngFor="let cart of cartList">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12"><img class="d-block w-100" alt="Sihatku"
+                                src="assets/img/default-image-1.jpg" title="Sihatku"></div>
+                            <div class="col-sm-9 col-xs-12">
+                                <h1>{{cart.procedureName}}</h1>
+                            
+                                <h1>Service Center</h1>
+                                <p>{{cart.clinicName}}<br>
+                                  
+                                </p>
+                                <h1>USD{{cart.USAPrice}} / MYR{{cart.locPrice}}</h1>
+                                 <button class="signupbtn" type="submit" (click)="removeCart(cart)">Remove</button>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="no-records" *ngIf="cartList.length ==0">
+                        <p>Not Available</p>
+                    </div> -->
+
+                 
+                </div>
+            </div>
+
+
+
+
+            <div class="col-sm-3 col-xs-12">
+                <div class="mycart-section">
+                    <div class="textiles">Price Details</div>
+
+                    <div>
+                        <h2>Price(0procedures)</h2>
+                        <h2><span>USD120/MYR500</span></h2>
+                        <button class="orderbtn" type="submit" (click)="placeOrder()">Place Order</button>
+                            
+                    </div>
+                    <!-- <div class="no-records" *ngIf="cartList.length ==0">
+                        <p>Not Available</p>
+                    </div> -->
+                    
+                </div>
+                <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy
+                    returns<br>
+                    Authentic products 100%</div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</section>
+<app-footer></app-footer>

@@ -27,6 +27,7 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -39,6 +40,7 @@ import { HeaderProviderComponent } from './components/header-provider/header-pro
 import { FooterProviderComponent } from './components/footer-provider/footer-provider.component';
 import { ServiceproviderSigninComponent } from './components/serviceprovider-signin/serviceprovider-signin.component';
 import { ServicesidebarComponent } from './components/servicesidebar/servicesidebar.component';
+
 
 
 @NgModule({
@@ -122,6 +124,9 @@ import { ServicesidebarComponent } from './components/servicesidebar/serviceside
   entryComponents: [
     SigninComponent,
     ServiceproviderSigninComponent
-  ]
+  ],
+   providers: [
+     AuthGuard
+   ]
 })
 export class CoreModule { }
