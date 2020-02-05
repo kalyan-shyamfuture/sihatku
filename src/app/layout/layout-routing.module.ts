@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'deactivate', loadChildren: './deactivate/deactivate.module#DeactivateModule',canActivate: [AuthGuard] },
       { path: 'cliniclist/:id', loadChildren: './cliniclist/cliniclist.module#CliniclistModule'},
       { path: 'payment', loadChildren: './payment/payment.module#PaymentModule'},
-
+      { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutModule'},
       ]
   }
 ];

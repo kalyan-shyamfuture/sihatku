@@ -111,5 +111,10 @@ export class MainService {
     return this.http.post(environment.apiEndpoint + 'usercart',data);
   }
 
+  providerDetails(data) {
+    return this.http.post(environment.apiEndpoint + 'ProviderDetails',data);
+  }
+
+
 
 }

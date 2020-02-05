@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class=" clearfix"></div>
+<br><br>
+<section class="innerbody">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-xs-12">
+                <div class="mycart-section">
+                    <div class="textiles">Checkout({{cartList.length}})</div>
+
+                    <div class="mycart-box" *ngFor="let cart of cartList; let i = index">
+                        <div class="row">
+                                <!-- <div class="col-sm-1 col-xs-12">
+                                        <input type="checkbox"  (change)="selectcart($event,cart)"
+                                        />
+                                        </div> -->
+                            <div class="col-sm-3 col-xs-12"><img class="d-block w-100" alt="Sihatku"
+                                    src="assets/img/default-image-1.jpg" title="Sihatku"></div>
+                            <div class="col-sm-9 col-xs-12">
+                                <h1>{{cart.procedureName}}</h1>
+                                <!-- <p>11.10.2020</p> -->
+                                <h1>Service Center</h1>
+                                <p>{{cart.clinicName}}<br>
+                                    <!-- 19,Jelok 6, Kajang, Selangor-43000 -->
+                                </p>
+                                <h1>USD{{cart.USAPrice}} / MYR{{cart.locPrice}}</h1>
+                                <!-- <input [owlDateTime]="dt1" [(ngModel)]="selectedMoment" [min]="calendarMinDate" placeholder="Date Time" class="hidden-element">
+          <owl-date-time #dt1></owl-date-time> -->
+          <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
+        <owl-date-time #dt1 pickerType="calendar"></owl-date-time>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="no-records" *ngIf="cartList.length ==0">
+                        <p>Not Available</p>
+                    </div>
+
+                    <!-- <div class="mycart-box last">
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-12"><img class="d-block w-100" alt="Sihatku"
+                                src="assets/img/default-image-1.jpg" title="Sihatku"></div>
+                            <div class="col-sm-9 col-xs-12">
+                                <h1>Cardiac imaging</h1>
+                                <p>11.10.2020</p>
+                                <h1>Service Center</h1>
+                                <p>Polyclinic MUC-MP<br>
+                                    19,Jelok 6, Kajang, Selangor-43000</p>
+                                <h1>350 USD/1500 MYR</h1>
+                                <button class="signupbtn" type="submit">Place Order</button>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-sm-3 col-xs-12">
+                <div class="mycart-section">
+                    <div class="textiles">Price Details</div>
+
+                    <div *ngIf="cartList.length > 0">
+                        <h2>Price({{cartList.length}}procedures)</h2>
+                        <h2><span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h2>
+                        <button class="orderbtn" type="submit" (click)="gotoPayment()">Place Order</button>
+
+                    </div>
+                    <div class="no-records" *ngIf="cartList.length ==0">
+                        <p>Not Available</p>
+                    </div>
+
+                </div>
+                <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy
+                    returns<br>
+                    Authentic products 100%</div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
