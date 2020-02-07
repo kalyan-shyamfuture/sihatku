@@ -14,6 +14,7 @@ export class CheckoutComponent implements OnInit {
   total_loc_price: number = 0;
   selectedCartList: any = [];
   selectedMoment: any;
+  userName:any;
   today: any = new Date();
   calendarMinDate: any = new Date(this.today.setDate(this.today.getDate() + 3));
   constructor(
@@ -25,6 +26,7 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit() {
   //  localStorage.setItem('selectedCartList', '');
+  this.userName = localStorage.getItem('userName');
     if(localStorage.getItem('selectedCartList')) {
       this.cartList = JSON.parse(localStorage.getItem('selectedCartList'));
       console.log("Checkout Cart List==>",this.cartList);
@@ -37,7 +39,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   gotoPayment() {
+    console.log(this.cartList);
+    console.log(typeof(this.cartList[0].dateTimeInBuyNowPage));
+    localStorage.setItem('selectedCartList', JSON.stringify(this.cartList));
+    
     this.router.navigateByUrl('/payment' );
+  }
+
+  getSelectedDate(dt1) {
+    console.log("Selected Date===>",dt1._selected);
   }
 
 }

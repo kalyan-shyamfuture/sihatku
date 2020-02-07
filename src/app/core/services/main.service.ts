@@ -115,6 +115,15 @@ export class MainService {
     return this.http.post(environment.apiEndpoint + 'ProviderDetails',data);
   }
 
+  stripePayment(data) {
+    return this.http.post(environment.apiEndpoint + 'stripePayment',data);
+  }
+
+  placeOrder(data) {
+    return this.http.post(environment.apiEndpoint + 'order',data);
+  }
+  
+
 
 
 }

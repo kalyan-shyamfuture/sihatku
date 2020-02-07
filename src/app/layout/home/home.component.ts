@@ -248,6 +248,14 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/cliniclist/' + id);
   }
 
+  gotoAllSpeciality() {
+    this.router.navigateByUrl('/specialitylist');
+  }
+
+  gotoProcedure(id) {
+    this.router.navigateByUrl('/procedurelist/' + id);
+  }
+
   requestFeedBack() {
     this.submitted = true;
     if (this.requestForm.invalid) {

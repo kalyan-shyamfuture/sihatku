@@ -24,6 +24,11 @@ const routes: Routes = [
       { path: 'cliniclist/:id', loadChildren: './cliniclist/cliniclist.module#CliniclistModule'},
       { path: 'payment', loadChildren: './payment/payment.module#PaymentModule'},
       { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutModule'},
+      { path: 'specialitylist', loadChildren: './specialitylist/specialitylist.module#SpecialitylistModule'},
+      { path: 'procedurelist/:id', loadChildren: './procedurelist/procedurelist.module#ProcedurelistModule'},
+      { path: 'success', loadChildren: './success/success.module#SuccessModule'},
+      { path: 'failure', loadChildren: './failure/failure.module#FailureModule'},
+      
       ]
   }
 ];

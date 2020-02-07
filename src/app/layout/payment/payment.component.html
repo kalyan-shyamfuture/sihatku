@@ -8,52 +8,86 @@
                 <div class="mycart-section">
                     <div class="textiles">Choose your payment method</div>
 
-                    
 
-                      <form role="form" [formGroup]="paymentForm" (ngSubmit)="payNow()" novalidate>
-                       
-                        <mat-radio-group aria-label="Select an option" formControlName="paymentType">
+                    <mat-radio-group aria-label="Select an option" (change)="selectPayMethod($event)">
                             <mat-radio-button value="1">Cash On Delivery</mat-radio-button>
-                            <mat-radio-button value="2">Card Payment</mat-radio-button>                  
-                          </mat-radio-group>
-                       
-                        <div class="form-group">
-                           <mat-form-field class="custom-full-width">
-                              <input matInput placeholder="Card Number" type="text" name="cardNumber" formControlName="cardNumber">
-                           </mat-form-field>
-                           <p *ngIf="errorState(paymentControls.cardNumber, 'cardNumber').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardNumber, 'cardNumber').message">
-                           </p>
+                            <br>
+                            <mat-radio-button value="2">Card Payment</mat-radio-button>
+                        </mat-radio-group>
+                    <form *ngIf="showForm" role="form" [formGroup]="paymentForm" (ngSubmit)="payNow()" novalidate>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <mat-form-field class="custom-full-width">
+                                        <input matInput placeholder="Card Number" type="text" name="cardNumber"
+                                            formControlName="cardNumber">
+                                    </mat-form-field>
+                                    <p *ngIf="errorState(paymentControls.cardNumber, 'cardNumber').message"
+                                        class="help-block danger fw600"
+                                        [innerHTML]="errorState(paymentControls.cardNumber, 'cardNumber').message">
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                           <mat-form-field class="custom-full-width">
-                              <input matInput type="text" placeholder="Exp Month" formControlName="cardExpMonth" name="cardExpMonth"
-                                 class="no-background-custom">
-                           </mat-form-field>
-                           <p *ngIf="errorState(paymentControls.cardExpMonth, 'cardExpMonth').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardExpMonth, 'cardExpMonth').message">
-                           </p>
+                        <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <mat-form-field class="custom-full-width">
+                                            <input matInput placeholder="Card Name" type="text" name="cardName"
+                                                formControlName="cardName">
+                                        </mat-form-field>
+                                        <p *ngIf="errorState(paymentControls.cardName, 'cardName').message"
+                                            class="help-block danger fw600"
+                                            [innerHTML]="errorState(paymentControls.cardName, 'cardName').message">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <mat-form-field class="custom-full-width">
+                                        <input matInput type="text" placeholder="Exp Month"
+                                            formControlName="cardExpMonth" name="cardExpMonth"
+                                            class="no-background-custom">
+                                    </mat-form-field>
+                                    <p *ngIf="errorState(paymentControls.cardExpMonth, 'cardExpMonth').message"
+                                        class="help-block danger fw600"
+                                        [innerHTML]="errorState(paymentControls.cardExpMonth, 'cardExpMonth').message">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <mat-form-field class="custom-full-width">
+                                        <input matInput type="text" placeholder="Exp Year" formControlName="cardExpYear"
+                                            name="cardExpYear" class="no-background-custom">
+                                    </mat-form-field>
+                                    <p *ngIf="errorState(paymentControls.cardExpYear, 'cardExpYear').message"
+                                        class="help-block danger fw600"
+                                        [innerHTML]="errorState(paymentControls.cardExpYear, 'cardExpYear').message">
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <mat-form-field class="custom-full-width">
+                                        <input matInput type="text" placeholder="Cvv" formControlName="cardCvv"
+                                            name="cardCvv" class="no-background-custom">
+                                    </mat-form-field>
+                                    <p *ngIf="errorState(paymentControls.cardCvv, 'cardCvv').message"
+                                        class="help-block danger fw600"
+                                        [innerHTML]="errorState(paymentControls.cardCvv, 'cardCvv').message">
+                                    </p>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <mat-form-field class="custom-full-width">
-                               <input matInput type="text" placeholder="Exp Year" formControlName="cardExpYear" name="cardExpYear"
-                                  class="no-background-custom">
-                            </mat-form-field>
-                            <p *ngIf="errorState(paymentControls.cardExpYear, 'cardExpYear').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardExpYear, 'cardExpYear').message">
-                            </p>
-                         </div>
 
-                         <div class="form-group">
-                            <mat-form-field class="custom-full-width">
-                               <input matInput type="text" placeholder="Cvv" formControlName="cardCvv" name="cardCvv"
-                                  class="no-background-custom">
-                            </mat-form-field>
-                            <p *ngIf="errorState(paymentControls.cardCvv, 'cardCvv').message" class="help-block danger fw600" [innerHTML]="errorState(paymentControls.cardCvv, 'cardCvv').message">
-                            </p>
-                         </div>
-
-                         
                         <button type="submit" class="btn btn-primary">Pay Now</button>
-                        </form>
+
+
+                    </form>
 
                     <!-- <div class="mycart-box" *ngFor="let cart of cartList">
                         <div class="row">
@@ -76,13 +110,13 @@
                         <p>Not Available</p>
                     </div> -->
 
-                 
+
                 </div>
             </div>
 
 
 
-
+            <!-- 
             <div class="col-sm-3 col-xs-12">
                 <div class="mycart-section">
                     <div class="textiles">Price Details</div>
@@ -93,10 +127,28 @@
                         <button class="orderbtn" type="submit" (click)="placeOrder()">Place Order</button>
                             
                     </div>
-                    <!-- <div class="no-records" *ngIf="cartList.length ==0">
-                        <p>Not Available</p>
-                    </div> -->
+                   
                     
+                </div>
+                <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy
+                    returns<br>
+                    Authentic products 100%</div>
+            </div> -->
+
+            <div class="col-sm-3 col-xs-12">
+                <div class="mycart-section">
+                    <div class="textiles">Price Details</div>
+
+                    <div *ngIf="cartList.length > 0">
+                        <h2>Price({{cartList.length}}procedures)</h2>
+                        <h2><span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h2>
+                        <button *ngIf="!showForm" class="orderbtn" type="submit" (click)="gotoPayment()">Place Order</button>
+
+                    </div>
+                    <div class="no-records" *ngIf="cartList.length ==0">
+                        <p>Not Available</p>
+                    </div>
+
                 </div>
                 <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy
                     returns<br>

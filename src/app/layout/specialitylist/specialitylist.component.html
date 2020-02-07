@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="wocommersbox"> <a [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
+<!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
+
+<!-- Start Banner -->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+    <!--Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        <owl-carousel-o [options]="bannerOptions">
+            <ng-template carouselSlide *ngFor="let banner of bannerList; let i = index">
+          
+                <div class="carousel-item active">
+                    <div class="view"> <img class="d-block w-100" [src]="imageBaseUrl + banner.FileUpload" alt="{{banner.Name}}">
+                        <div class="mask rgba-black-light"></div>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+    <!--/.Slides-->
+</div>
+<!--/.End Banner-->
+
+<section class="iconSection">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2" (click)="gotoProcedure(speciality.specialityID)" *ngFor="let speciality of specialitylist; let i = index">
+                <div class="iconSectionBox">
+                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title=""> </div>
+                    <h2><a href="javascript:void(0)">{{speciality.specialityName}}</a></h2>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</section>
+
+<!-----iconbox---->
+
+
+
+
+<div class="clearfix"></div>
+
+<app-footer></app-footer>
+
+<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <!-- <p style="font-size: 20px; color: white">
+    
+    </p> --> <p style="font-size: 20px; color: white">
+    
+    </p>
+    <img src="assets/img/loader.gif">
+</ngx-spinner>

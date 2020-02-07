@@ -26,8 +26,10 @@
                                 <h1>USD{{cart.USAPrice}} / MYR{{cart.locPrice}}</h1>
                                 <!-- <input [owlDateTime]="dt1" [(ngModel)]="selectedMoment" [min]="calendarMinDate" placeholder="Date Time" class="hidden-element">
           <owl-date-time #dt1></owl-date-time> -->
-          <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time">
-        <owl-date-time #dt1 pickerType="calendar"></owl-date-time>
+          <input [owlDateTime]="dt1" [(ngModel)]="cart.dateTimeInBuyNowPage" [owlDateTimeTrigger]="dt1" placeholder="Date Time" (dateTimeInput)="getSelectedDate(dt1)">
+        <owl-date-time #dt1 pickerType="calendar" ></owl-date-time>
+
+        <input type="text" [(ngModel)]="cart.patientName" >
                             </div>
                         </div>
                     </div>
@@ -60,7 +62,7 @@
                     <div *ngIf="cartList.length > 0">
                         <h2>Price({{cartList.length}}procedures)</h2>
                         <h2><span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h2>
-                        <button class="orderbtn" type="submit" (click)="gotoPayment()">Place Order</button>
+                        <button class="orderbtn" type="submit" (click)="gotoPayment(cart)">Place Order</button>
 
                     </div>
                     <div class="no-records" *ngIf="cartList.length ==0">

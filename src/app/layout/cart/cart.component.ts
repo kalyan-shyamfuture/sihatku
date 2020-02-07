@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
         this.cartList = res['response'];
         this.cartList.forEach(x => {
         this.total_usa_price += parseFloat(x.USAPrice);
-        this.total_loc_price += parseFloat(x.locPrice);
+        this.total_loc_price += parseFloat(x.locPrice); 
         })
 
       }
@@ -66,6 +66,8 @@ export class CartComponent implements OnInit {
 
   selectcart(event, cart) {
     if (event.target.checked) {
+      cart.dateTimeInBuyNowPage="";
+      cart.patientName=localStorage.getItem('userName');
       this.selectedCartList.push(cart);
       console.log(this.selectedCartList);
     }

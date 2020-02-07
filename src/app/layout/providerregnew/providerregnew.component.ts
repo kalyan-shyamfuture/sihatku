@@ -170,7 +170,7 @@ export class ProviderregnewComponent implements OnInit {
       gender: ['1', Validators.required],
       passportNumber: ['', Validators.required],
       specialities: [[], Validators.required],
-      country: ['', Validators.required],
+      country: [''],
       licenceNo: ['', Validators.required],
       expertise: ['', Validators.required],
       practicingSince: ['', Validators.required],
