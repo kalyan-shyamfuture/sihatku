@@ -3,6 +3,7 @@ table {border: none;}
     border:none;
     vertical-align: middle;
     padding: 0px 10px;
+    word-wrap: break-word;
 }
 
 .custom-full-width {
@@ -15,3 +16,17 @@ table {border: none;}
     padding:0;
     height:15px;
   }
+//   .mat-checkbox-layout {
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//     cursor: inherit;
+//     align-items: baseline;
+//     vertical-align: middle;
+//     display: inline-flex;
+//     white-space: normal !important;
+// }
+.mat-checkbox-label {
+    white-space: normal !important;
+}

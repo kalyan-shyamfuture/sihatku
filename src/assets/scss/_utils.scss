@@ -119,7 +119,7 @@ body {
     transition: 0.35s;
     font-weight: 500;
     font-size: 14px;
-    padding: 0px 6px;
+    padding: 17px 6px;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -1033,7 +1033,15 @@ footer.page-footer a:hover {
     background: #ffed97;
     padding: 30px 0px;
     margin: 109px 0px 40px;
-}
+    }
+
+    .iconSection2 {
+        background: #ffed97;
+        padding: 30px 0px;
+        margin: 109px 0px 40px;
+        min-height: 500px;
+        }
+
 
 .iconSectionBox {
     padding: 0px;
@@ -1050,6 +1058,7 @@ footer.page-footer a:hover {
     border-radius: 50%;
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.08), 0 5px 5px 0 rgba(0, 0, 0, 0.37);
     padding: 0px;
+    overflow: hidden;
 }
 
 .iconSectionRound img {
@@ -1063,9 +1072,10 @@ footer.page-footer a:hover {
 
 .iconSectionBox h2 {
     text-align: center;
-    padding: 10px 0px 0px 0px;
+    padding: 7px 0px 24px 0px;
     margin: 0px;
-}
+    line-height: 10px;
+     }
 
 .iconSectionBox h2 a {
     text-align: center;
@@ -1844,8 +1854,23 @@ a h2.navtext {
 }
 
 .loginSection .tab-content {
-    padding: 30px 10px;
-}
+    padding: 30px 10px 18px 10px;
+    }
+
+.loginSection .tab-content p {
+    font-weight: 300;
+    font-size: 12px; 
+    cursor: pointer;   
+    }
+.loginSection .tab-content .form-group {
+    margin-bottom: 0rem;
+    }
+ 
+.loginSection .tab-content .mat-form-field-infix {
+        padding: .5em 0;
+        border-top: .5em solid transparent;
+    }
+
 
 .textareaHeight {
     min-height: 26px !important;
@@ -2104,7 +2129,7 @@ select.mat-input-element {
     margin: 0px 0px;
     font-size: 16px;
     color: #000;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 30px;
 }
 
@@ -2122,7 +2147,7 @@ select.mat-input-element {
     border-radius: 12px 12px 0px 0px;
     color: #ffffff;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .mycart-box {
@@ -2143,7 +2168,7 @@ select.mat-input-element {
     margin: 0px 0px;
     font-size: 16px;
     color: #000;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .mycart-box p {
@@ -2490,3 +2515,43 @@ select.mat-input-element {
     font-weight: 600;
     font-family: "Montserrat", sans-serif;
     }
+
+.homeNav .dropdown-toggle {
+        margin-top: 3px;
+       }
+    .i-circle {
+        background: #ff0000;
+        color: #fff;
+        padding: 7px 12px;
+        border-radius: 50%;
+        font-size: 22px;
+        }
+
+ .dropdown-toggle::after {
+        display: inline-block;
+        margin-left: 0.255em;
+        vertical-align: 0.255em;
+        content: "";
+        border-top: 0.3em solid;
+        border-right: 0.3em solid transparent;
+        border-bottom: 0;
+        border-left: 0.3em solid transparent;
+        display: none ;
+        }
+.mycart-box input{
+    padding: 6px;
+    margin-right: 15px;
+    border-radius: 4px;
+    border: #ccc 1px solid;
+    margin-top: 15px;
+}
+.mycart-section .orderbtn2 {
+    margin: 7px 18px;
+    width: 70%;
+    font-weight: 600;
+    color: #fff;
+    }
+.body_container{
+    min-height: 575px;
+    }
+

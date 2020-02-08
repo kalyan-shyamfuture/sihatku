@@ -3,8 +3,9 @@
 <br><br>
 <section class="innerbody">
     <div class="container">
+        <div class="body_container">
         <div class="row">
-            <div class="col-sm-9 col-xs-12">
+            <div class="col-sm-8 col-xs-12">
                 <div class="mycart-section">
                     <div class="textiles">Checkout({{cartList.length}})</div>
 
@@ -23,7 +24,7 @@
                                 <p>{{cart.clinicName}}<br>
                                     <!-- 19,Jelok 6, Kajang, Selangor-43000 -->
                                 </p>
-                                <h1>USD{{cart.USAPrice}} / MYR{{cart.locPrice}}</h1>
+                                <h1>USD{{cart.usaPrice}} / MYR{{cart.locPrice}}</h1>
                                 <!-- <input [owlDateTime]="dt1" [(ngModel)]="selectedMoment" [min]="calendarMinDate" placeholder="Date Time" class="hidden-element">
           <owl-date-time #dt1></owl-date-time> -->
           <input [owlDateTime]="dt1" [(ngModel)]="cart.dateTimeInBuyNowPage" [owlDateTimeTrigger]="dt1" placeholder="Date Time" (dateTimeInput)="getSelectedDate(dt1)">
@@ -55,14 +56,14 @@
                     </div> -->
                 </div>
             </div>
-            <div class="col-sm-3 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <div class="mycart-section">
                     <div class="textiles">Price Details</div>
 
                     <div *ngIf="cartList.length > 0">
                         <h2>Price({{cartList.length}}procedures)</h2>
                         <h2><span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h2>
-                        <button class="orderbtn" type="submit" (click)="gotoPayment(cart)">Place Order</button>
+                        <button class="orderbtn orderbtn2" type="submit" (click)="gotoPayment(cart)">Place Order</button>
 
                     </div>
                     <div class="no-records" *ngIf="cartList.length ==0">
@@ -74,7 +75,13 @@
                     returns<br>
                     Authentic products 100%</div>
             </div>
+        
+        
+        
+      
         </div>
+       </div>
     </div>
+    
 </section>
 <app-footer></app-footer>

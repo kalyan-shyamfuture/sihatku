@@ -1,6 +1,5 @@
 <app-header></app-header>
-<app-carticon></app-carticon>
-<!-- <div class="wocommersbox"> <a [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div> -->
+<div class="wocommersbox"> <a [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
 <!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
 <!-- Start Banner -->
@@ -24,12 +23,12 @@
 </div>
 <!--/.End Banner-->
 
-<section class="iconSection">
+<section class="iconSection iconSection2">
     <div class="container">
         <div class="row">
             <div class="col-sm-2" *ngFor="let procedure of procedureList; let i = index">
                 <div class="iconSectionBox">
-                    <div class="iconSectionRound" (click)="gotoProviderList(procedure.procedureID)"> <img [src]="procedure.procedureImgURL" alt="" title="" > </div>
+                    <div class="iconSectionRound" (click)="gotoProviderList(procedure.procedureID)"> <img [src]="procedure.procedureImgURL" alt="" title="" onerror="this.src='assets/img/default-icon.png';"> </div>
                     <h2><a href="javascript:void(0)">{{procedure.procedureName}}</a></h2>
                 </div>
             </div>

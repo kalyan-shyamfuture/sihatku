@@ -31,7 +31,7 @@ export class CheckoutComponent implements OnInit {
       this.cartList = JSON.parse(localStorage.getItem('selectedCartList'));
       console.log("Checkout Cart List==>",this.cartList);
       this.cartList.forEach(x => {
-        this.total_usa_price += parseFloat(x.USAPrice);
+        this.total_usa_price += parseFloat(x.usaPrice);
         this.total_loc_price += parseFloat(x.locPrice);
         })
     }

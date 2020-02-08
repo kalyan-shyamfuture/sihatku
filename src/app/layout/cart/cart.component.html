@@ -3,38 +3,40 @@
 <br><br>
 <section class="innerbody">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-xs-12">
-                <div class="mycart-section">
-                    <div class="textiles">My Cart ({{cartList.length}})</div>
+        <div class="body_container">
+            <div class="row">
+                <div class="col-sm-8 col-xs-12">
+                    <div class="mycart-section">
+                        <div class="textiles">My Cart ({{cartList.length}})</div>
 
-                    <div class="mycart-box" *ngFor="let cart of cartList; let i = index">
-                        <div class="row">
-                            <div class="col-sm-1 col-xs-12">
-                                <input type="checkbox" (change)="selectcart($event,cart)" />
-                            </div>
-                            <div class="col-sm-3 col-xs-12">
+                        <div class="mycart-box" *ngFor="let cart of cartList; let i = index">
+                            <div class="row">
+                                <div class="col-sm-1 col-xs-12">
+                                    <input type="checkbox" (change)="selectcart($event,cart)" />
+                                </div>
+                                <div class="col-sm-3 col-xs-12">
 
-                                <img class="d-block w-100" alt="Sihatku" src="" onerror="this.src='assets/img/default-icon.png';" title="Sihatku"></div>
-                            <div class="col-sm-8 col-xs-12">
-                                <h1>{{cart.procedureName}}</h1>
-                                <!-- <p>11.10.2020</p> -->
-                                <h1>Service Center</h1>
-                                <p>{{cart.clinicName}}<br>
-                                    <!-- 19,Jelok 6, Kajang, Selangor-43000 -->
-                                </p>
-                                <h1>USD{{cart.usaPrice}} / MYR{{cart.locPrice}}</h1>
-                                <p>{{cart.ClinicAddress}}</p>
-                                <button class="signupbtn" type="submit" (click)="removeCart(cart)">Remove</button>
+                                    <img class="d-block w-100" alt="Sihatku" src=""
+                                        onerror="this.src='assets/img/default-icon.png';" title="Sihatku"></div>
+                                <div class="col-sm-8 col-xs-12">
+                                    <h1>{{cart.procedureName}}</h1>
+                                    <!-- <p>11.10.2020</p> -->
+                                    <h1>Service Center</h1>
+                                    <p>{{cart.clinicName}}<br>
+                                        <!-- 19,Jelok 6, Kajang, Selangor-43000 -->
+                                    </p>
+                                    <h1>USD{{cart.usaPrice}} / MYR{{cart.locPrice}}</h1>
+                                    <p>{{cart.ClinicAddress}}</p>
+                                    <button class="signupbtn" type="submit" (click)="removeCart(cart)">Remove</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="no-records" *ngIf="cartList.length ==0">
-                        <p>Not Available</p>
-                    </div>
+                        <div class="no-records" *ngIf="cartList.length ==0">
+                            <p>Not Available</p>
+                        </div>
 
-                    <!-- <div class="mycart-box last">
+                        <!-- <div class="mycart-box last">
                         <div class="row">
                             <div class="col-sm-3 col-xs-12"><img class="d-block w-100" alt="Sihatku"
                                 src="assets/img/default-image-1.jpg" title="Sihatku"></div>
@@ -49,41 +51,43 @@
                             </div>
                         </div>
                     </div> -->
+                    </div>
                 </div>
-            </div>
 
 
 
 
-            <div class="col-sm-4 col-xs-12">
-                <div class="mycart-section">
-                    <div class="textiles">Price Details</div>
+                <div class="col-sm-4 col-xs-12">
+                    <div class="mycart-section">
+                        <div class="textiles">Price Details</div>
 
-                    <div *ngIf="cartList.length > 0">
-                        <h2>Price({{cartList.length}}procedures) 
-                            <!-- <span>1234.00</span> -->
-                        </h2>
-                        <!-- <h3>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}<span>Free</span></h3> -->
+                        <div *ngIf="cartList.length > 0">
+                            <h2>Price({{cartList.length}}procedures)
+                                <!-- <span>1234.00</span> -->
+                            </h2>
+                            <!-- <h3>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}<span>Free</span></h3> -->
 
-                        <h4>Total Payable <span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h4>
+                            <h4>Total Payable <span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h4>
 
-                        <button class="orderbtn orderbtnCart" type="submit" (click)="gotoCheckout()">Checkout</button>
+                            <button class="orderbtn orderbtnCart" type="submit"
+                                (click)="gotoCheckout()">Checkout</button>
+
+                        </div>
+                        <div class="no-records" *ngIf="cartList.length ==0">
+                            <p>Not Available</p>
+                        </div>
 
                     </div>
-                    <div class="no-records" *ngIf="cartList.length ==0">
-                        <p>Not Available</p>
-                    </div>
-
+                    <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments.
+                        Easy returns
+                        <br> Authentic products 100%</div>
                 </div>
-                <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy returns
-                    <br> Authentic products 100%</div>
+
+
+
             </div>
-
-
 
         </div>
-
-
     </div>
 </section>
 <app-footer></app-footer>
