@@ -82,6 +82,11 @@ export const Errors = {
     { type: 'required', message: 'Confirm password is required' },
     { type: 'notEqual', message: 'Password mismatch' }
   ],
+
+  confPassword: [
+    { type: 'required', message: 'Confirm password is required' },
+    { type: 'notEqual', message: 'Password mismatch' }
+  ],
   // verifyPassword: [
   //   { type: 'required', message: 'Please Retype Your new Password' },
   //   { type: 'notEqual', message: 'Password mismatch' }
@@ -103,10 +108,19 @@ export const Errors = {
    businessname: [
     { type: 'required', message: 'Business Name required' },
   ],
+  clinicName: [
+    { type: 'required', message: 'Business Name required' },
+  ],
   businessdesc: [
     { type: 'required', message: 'Business Description required' },
   ],
+  aboutClinic: [
+    { type: 'required', message: 'Business Description required' },
+  ],
   businessaddress: [
+    { type: 'required', message: 'Business Address required' },
+  ],
+  clinicAddress: [
     { type: 'required', message: 'Business Address required' },
   ],
   city: [
@@ -167,6 +181,11 @@ export const Errors = {
   //   { type: 'required', message: 'User\'s field of expertise is required' },
   // ],
   mobile: [
+    { type: 'required', message: 'Mobile Number is required' },
+    { type: 'pattern', message: 'Enter a valid Mobile number' },
+    { type: 'maxlength', message: 'Mobile Number not be more than 10 characters' }
+  ],
+  phoneNo: [
     { type: 'required', message: 'Mobile Number is required' },
     { type: 'pattern', message: 'Enter a valid Mobile number' },
     { type: 'maxlength', message: 'Mobile Number not be more than 10 characters' }

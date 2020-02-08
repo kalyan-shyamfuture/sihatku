@@ -21,7 +21,7 @@ export class ProviderregnewComponent implements OnInit {
   serviceRegForm: FormGroup;
   submitted: boolean = false;
   services_details: FormArray;
-  practioner_details: FormArray;
+  practionerDetails: FormArray;
   fileDataCenterLogo: any;
   listSpeciality: any = [];
   listProcedure: any = [];
@@ -66,24 +66,24 @@ export class ProviderregnewComponent implements OnInit {
     this.serviceRegForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]],
-      mobile: ['', [Validators.required, Validators.maxLength(10)]],
-      businessName: ['', [Validators.required]],
-      businessDesc: ['', [Validators.required]],
-      businessAddress: ['', [Validators.required]],
+      confPassword: ['', [Validators.required]],
+      phoneNo: ['', [Validators.required, Validators.maxLength(10)]],
+      clinicName: ['', [Validators.required]],
+      aboutClinic: ['', [Validators.required]],
+      clinicAddress: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
       country: ['', [Validators.required]],
       zip: ['', [Validators.required]],
       providerType: ['1'],
-      centerLogoFile: [''],
-      practioner_details: this.formBuilder.array([this.practionercreate()]),
+      centerLogo: [''],
+      practionerDetails: this.formBuilder.array([this.practionercreate()]),
      // services_details: this.formBuilder.array([ this.servicecreate() ]),
       //aboutProcedure: [''],
       serviceDetails:this.formBuilder.array([])
     }, {
         // validator: PasswordValidation.MatchPasswordProvider
-        validator: PasswordValidator('password', 'confirmPassword')
+        validator: PasswordValidator('password', 'confPassword')
       })
   }
 
@@ -168,7 +168,6 @@ export class ProviderregnewComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       gender: ['1', Validators.required],
-      passportNumber: ['', Validators.required],
       specialities: [[], Validators.required],
       country: [''],
       licenceNo: ['', Validators.required],
@@ -179,8 +178,8 @@ export class ProviderregnewComponent implements OnInit {
     });
   }
   practioneraddItem(): void {
-    this.practioner_details = this.serviceRegForm.get('practioner_details') as FormArray;
-    this.practioner_details.push(this.practionercreate());
+    this.practionerDetails = this.serviceRegForm.get('practionerDetails') as FormArray;
+    this.practionerDetails.push(this.practionercreate());
     console.log(this.serviceRegForm);
   }
 
@@ -195,7 +194,7 @@ export class ProviderregnewComponent implements OnInit {
       // locPrice: ['', Validators.required],
       // discPrice:['', Validators.required],
       // procedureImageFile: [[]],
-      // practioner_details: this.formBuilder.array([ this.practionercreate() ])
+      // practionerDetails: this.formBuilder.array([ this.practionercreate() ])
     });
   }
 
@@ -220,7 +219,7 @@ export class ProviderregnewComponent implements OnInit {
 
   procedureModel(procedureId): FormGroup {
     return this.formBuilder.group({
-      id: [procedureId, Validators.required],
+      ProcedureID: [procedureId, Validators.required],
       isChecked: [true],
       aboutProcedure: ['', Validators.required],
       setPrice: ['', Validators.required],
@@ -241,6 +240,11 @@ export class ProviderregnewComponent implements OnInit {
     this.mainService.providerNewRegistration(this.serviceRegForm.value).subscribe(
       res => {
         console.log("Res==>",res);
+        if(res['status'] ==1) {
+          this.toastr.error(res['response'][0]['msg'], '', {
+            timeOut: 3000,
+          });
+        }
       },
       error => {
         console.log(error.error);
@@ -253,7 +257,7 @@ export class ProviderregnewComponent implements OnInit {
     console.log(this.serviceRegForm.value);
     let data = [];
     this.allData = [];
-    this.serviceRegForm.value.practioner_details.map(item => {
+    this.serviceRegForm.value.practionerDetails.map(item => {
       data = data.concat(item.specialities);
     });
     this.allData = [...new Set(data)];
