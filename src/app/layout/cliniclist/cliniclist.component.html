@@ -6,16 +6,68 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3 col-xs-12">
-                <div class="mycart-section">
+                <div class="mycart-section-Left">
                     <!-- <div class="textiles">Price Details</div> -->
                     <h2>CATEGORIES</h2>
-                    <h2><span>SINUS and Allergy Exam</span></h2>
+                    <h4>SINUS and Allergy Exam</h4>
 
                     <h2>PRICE</h2>
-                    <h2><span></span></h2>
+
+                    <div class="row chkboxRow">
+
+                        <div class="col-sm-6 col-xs-6">
+                            <mat-form-field>
+                                <mat-label>Min</mat-label>
+                                <select matNativeControl required>
+                          <option value="100">100</option>
+                          <option value="200">200</option>
+                          <option value="300">300</option>
+                          <option value="400">400</option>
+                        </select>
+                            </mat-form-field>
+                        </div>
+
+
+
+
+
+                        <div class="col-sm-6 col-xs-6">
+                            <mat-form-field>
+                                <mat-label>Max</mat-label>
+                                <select matNativeControl required>
+          <option value="500">500</option>
+          <option value="600">600</option>
+          <option value="700">700</option>
+          <option value="800">800</option>
+        </select>
+                            </mat-form-field>
+                        </div>
+
+
+                    </div>
+
+
+
 
                     <h2>CUSTOMER RATING</h2>
-                    <h2><span></span></h2>
+
+                    <p>5 <i class="fa fa-star" aria-hidden="true"></i> and above
+
+                        <mat-checkbox></mat-checkbox>
+                    </p>
+                    <p>4 <i class="fa fa-star" aria-hidden="true"></i> and above
+                        <mat-checkbox></mat-checkbox>
+                    </p>
+                    <p>3 <i class="fa fa-star" aria-hidden="true"></i> and above
+                        <mat-checkbox></mat-checkbox>
+                    </p>
+                    <p>2 <i class="fa fa-star" aria-hidden="true"></i> and above
+                        <mat-checkbox></mat-checkbox>
+                    </p>
+
+
+
+
 
                 </div>
                 <!-- <div class="safe-text"><i class="fa fa-shield" aria-hidden="true"></i> Safe and Secure Payments. Easy
@@ -31,21 +83,28 @@
 
                     <div class="mycart-box" *ngFor="let clinic of clinicList">
                         <div class="row">
-                            <div class="col-sm-3 col-xs-12"><img class="d-block w-100" alt="Sihatku"
-                                    [src]="clinic.centerLogoFile" onerror="this.src='assets/img/no-img.png';"
-                                    title="Sihatku"></div>
-                            <div class="col-sm-6 col-xs-12">
+                            <div class="col-sm-3 col-xs-12 cliniclistImg"><img class="d-block w-100" alt="Sihatku" [src]="clinic.centerLogoFile" onerror="this.src='assets/img/no-img.png';" title="Sihatku"></div>
+                            <div class="col-sm-5 col-xs-12 cliniclistText">
                                 <h1>{{clinic.ClinicName}}</h1>
                                 <!-- <p>Price : USD{{clinic.USAPrice}} /  MYR{{clinic.locPrice}} </p> -->
                                 <!-- <h1>Service Center</h1> -->
                                 <p>
-                                    {{clinic.providerAdd1}}  {{clinic.providerAdd2}}  {{clinic.city}}  {{clinic.state}} {{clinic.country}}
+                                    {{clinic.providerAdd1}} {{clinic.providerAdd2}} {{clinic.city}} {{clinic.state}} {{clinic.country}}
                                 </p>
-                                <p>USD{{clinic.USAPrice}} /  MYR{{clinic.locPrice}}</p>
+                                <p>USD{{clinic.USAPrice}} / MYR{{clinic.locPrice}}</p>
                             </div>
-                            <div class="col-sm-3 col-xs-12">
-                                    <button class="signupbtn" type="submit" (click)="gotoDetails(clinic.providerID)">View</button>
-                                <button class="signupbtn" type="submit" (click)="addtoCart(clinic)">Add To Cart</button>
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="row buttonRow">
+                                    <div class="col-sm-4 col-xs-12">
+                                        <button class="signupbtn" type="submit" (click)="gotoDetails(clinic.providerID)">View</button>
+                                    </div>
+                                    <div class="col-sm-8 col-xs-12">
+                                        <button class="signupbtn" type="submit" (click)="addtoCart(clinic)">Add To Cart</button>
+                                    </div>
+
+                                </div>
+
+
 
                             </div>
                         </div>

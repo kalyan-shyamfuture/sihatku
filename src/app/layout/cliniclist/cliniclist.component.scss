@@ -1,0 +1,86 @@
+.mycart-box {
+    padding: 0px 0px;
+    margin: 0px 20px 0px 20px;
+    width: auto;
+    min-height: 200px;
+    border-bottom: #ececec 1px solid;
+    background: #ffffff;
+}
+
+.cliniclistImg {
+    float: left;
+}
+
+.cliniclistImg img {
+    width: 150px;
+    height: 150px;
+    background: #ccc;
+    margin: 20px 0px;
+}
+
+.cliniclistText {
+    padding: 35px 15px;
+    margin: 0px;
+    ;
+}
+
+.mycart-box h1 {
+    padding: 4px 0px;
+    margin: 0px 0px;
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+    padding-top: 0px;
+    padding-bottom: 5px;
+}
+
+.mycart-box[_ngcontent-dbs-c2] h1[_ngcontent-dbs-c2] {
+    padding-top: 0px !important;
+}
+
+.mycart-section-Left {
+    float: left;
+    padding: 26px 20px;
+    background: #cccccc42;
+    border-radius: 10px;
+    margin: 89px 0px;
+    width: 100%;
+}
+
+.chkboxRow {
+    margin-bottom: 15px
+}
+
+.mycart-section-Left h2 {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px 0px 15px 0px;
+    margin: 0px;
+}
+
+.mycart-section-Left h4 {
+    font-size: 16px;
+    padding: 0px 0px 18px 10px;
+    margin: 0px;
+    color: #f2b203;
+}
+
+.mycart-section-Left p {
+    font-size: 14px;
+    padding: 5px 14px;
+    margin: 0px;
+    font-weight: 400;
+}
+
+.mat-checkbox-inner-container-no-side-margin {
+    margin-left: 9px !important;
+    margin-right: 0;
+}
+
+.buttonRow {
+    padding-top: 115px;
+}
+
+.mycart-box:last-child {
+    border-bottom: none;
+}

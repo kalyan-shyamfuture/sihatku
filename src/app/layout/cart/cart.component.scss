@@ -1,0 +1,55 @@
+.mycart-section-left {
+    float: left;
+}
+
+.mycart-section h2 {
+    padding: 0px 16px 10px;
+    margin: 0px 0px;
+    font-size: 18px;
+    color: #000;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.mycart-section h2 span {
+    text-align: right;
+    float: right;
+}
+
+.mycart-section h3 {
+    padding: 0px 16px;
+    margin: 0px 0px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.mycart-section h3 span {
+    text-align: right;
+    float: right;
+}
+
+.mycart-section h4 {
+    padding: 10px 11px;
+    margin: 16px 7px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    line-height: 30px;
+    border-top: 1px solid #ccc;
+}
+
+.mycart-section h4 span {
+    text-align: right;
+    float: right;
+}
+
+.orderbtnCart {
+    padding: 9px 110px;
+    margin: 18px 0 20px 29px;
+}
+
+.mycart-box:last-child {
+    border-bottom: none;
+}
