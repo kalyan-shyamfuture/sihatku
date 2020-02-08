@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CliniclistComponent implements OnInit {
   serviceId: any;
   clinicList: any = [];
+  cartCount:number;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class CliniclistComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCartList();
   }
 
   getclinicList(id) {
@@ -56,6 +58,7 @@ export class CliniclistComponent implements OnInit {
       this.mainService.userCart(data).subscribe(
         res => {
           console.log(res);
+          this.getCartList();
           // this.clinicList = res['response'];
           //console.log(this.clinicList);
           this.toastr.success('Cart Added Succesfully!!!', '', {
@@ -78,6 +81,23 @@ export class CliniclistComponent implements OnInit {
   gotoDetails(id) {
     this.router.navigateByUrl('/proceduredetails/' + this.serviceId+'/'+id);
   }
+
+  getCartList() {
+    var data = {
+      "userID": localStorage.getItem('userId'),
+      "Flag": "3"
+    }
+    this.mainService.userCart(data).subscribe(
+      res => {
+       // this.cartList = res['response'];
+        this.cartCount = res['response'].length;
+        console.log(this.cartCount);
+        
+
+      }
+    )
+  }
+
 
 
 }

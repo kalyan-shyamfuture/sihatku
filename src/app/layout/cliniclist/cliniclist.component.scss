@@ -84,3 +84,22 @@
 .mycart-box:last-child {
     border-bottom: none;
 }
+
+
+.cart-text{
+    border: #ffed97 1px solid;
+    width: 25px;
+    height: 25px;
+    background: #ff4e00;
+    position: absolute;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    right: 4px;
+    top: 5px;
+}
+.cart-text:hover{
+    background: #ff4e00;
+}

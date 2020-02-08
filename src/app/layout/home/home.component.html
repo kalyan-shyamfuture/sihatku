@@ -1,5 +1,6 @@
 <app-header></app-header>
-<div class="wocommersbox"> <a [routerLink]="'/cart'"><div class="cart-text">1</div><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
+<app-carticon></app-carticon>
+<!-- <div class="wocommersbox"> <a [routerLink]="'/cart'"><div class="cart-text">1</div><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div> -->
 <!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
 <!-- Start Banner -->
@@ -28,7 +29,7 @@
         <div class="row">
             <div class="col-sm-2" *ngFor="let speciality of specialitylist | slice:0:5; let i = index">
                 <div class="iconSectionBox" (click)="gotoProcedure(speciality.specialityID)"> 
-                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title=""> </div>
+                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title="" onerror="this.src='assets/img/default-icon.png';"> </div>
                     <h2><a href="javascript:void(0)">{{speciality.specialityName}}</a></h2>
                 </div>
             </div>
@@ -341,11 +342,7 @@
 <!------------------------socailIcon------------------------------------------->
 <app-footer></app-footer>
 
-<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
-    <!-- <p style="font-size: 20px; color: white">
-    
-    </p> --> <p style="font-size: 20px; color: white">
-    
-    </p>
+<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="">
+   <p style="font-size: 20px; color: white"></p>
     <img src="assets/img/loader.gif">
 </ngx-spinner>

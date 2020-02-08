@@ -1,5 +1,6 @@
 <app-header></app-header>
-<div class="wocommersbox"> <a [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
+<!-- <app-carticon></app-carticon> -->
+<div class="wocommersbox"> <a [routerLink]="'/cart'"><div class="cart-text">{{cartCount}}</div><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div>
 <div class=" clearfix"></div>
 <br><br>
 <section class="innerbody">

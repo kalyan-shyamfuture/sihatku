@@ -32,7 +32,9 @@ export class CartComponent implements OnInit {
       res => {
         this.cartList = res['response'];
         this.cartList.forEach(x => {
-        this.total_usa_price += parseFloat(x.USAPrice);
+          console.log(x);
+          
+        this.total_usa_price += parseFloat(x.usaPrice);
         this.total_loc_price += parseFloat(x.locPrice); 
         })
 

@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-sm-3 col-xs-12">
 
-                                <img class="d-block w-100" alt="Sihatku" src="assets/img/default-image-1.jpg" title="Sihatku"></div>
+                                <img class="d-block w-100" alt="Sihatku" src="" onerror="this.src='assets/img/default-icon.png';" title="Sihatku"></div>
                             <div class="col-sm-8 col-xs-12">
                                 <h1>{{cart.procedureName}}</h1>
                                 <!-- <p>11.10.2020</p> -->
@@ -23,7 +23,8 @@
                                 <p>{{cart.clinicName}}<br>
                                     <!-- 19,Jelok 6, Kajang, Selangor-43000 -->
                                 </p>
-                                <h1>USD{{cart.USAPrice}} / MYR{{cart.locPrice}}</h1>
+                                <h1>USD{{cart.usaPrice}} / MYR{{cart.locPrice}}</h1>
+                                <p>{{cart.ClinicAddress}}</p>
                                 <button class="signupbtn" type="submit" (click)="removeCart(cart)">Remove</button>
                             </div>
                         </div>
@@ -59,10 +60,12 @@
                     <div class="textiles">Price Details</div>
 
                     <div *ngIf="cartList.length > 0">
-                        <h2>Price({{cartList.length}}procedures) <span>1234.00</span></h2>
-                        <h3>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}<span>Free</span></h3>
+                        <h2>Price({{cartList.length}}procedures) 
+                            <!-- <span>1234.00</span> -->
+                        </h2>
+                        <!-- <h3>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}<span>Free</span></h3> -->
 
-                        <h4>Total Payable <span>1234.00</span></h4>
+                        <h4>Total Payable <span>USD{{this.total_usa_price}}/MYR{{this.total_loc_price}}</span></h4>
 
                         <button class="orderbtn orderbtnCart" type="submit" (click)="gotoCheckout()">Checkout</button>
 

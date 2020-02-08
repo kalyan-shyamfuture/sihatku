@@ -40,6 +40,7 @@ import { HeaderProviderComponent } from './components/header-provider/header-pro
 import { FooterProviderComponent } from './components/footer-provider/footer-provider.component';
 import { ServiceproviderSigninComponent } from './components/serviceprovider-signin/serviceprovider-signin.component';
 import { ServicesidebarComponent } from './components/servicesidebar/servicesidebar.component';
+import { CarticonComponent } from './components/carticon/carticon.component';
 
 
 
@@ -52,7 +53,8 @@ import { ServicesidebarComponent } from './components/servicesidebar/serviceside
      HeaderProviderComponent, 
      FooterProviderComponent,
      ServiceproviderSigninComponent,
-     ServicesidebarComponent
+     ServicesidebarComponent,
+     CarticonComponent
 
     
   ],
@@ -117,7 +119,8 @@ import { ServicesidebarComponent } from './components/servicesidebar/serviceside
     AngularFontAwesomeModule,
     HeaderProviderComponent,
     FooterProviderComponent,
-    ServicesidebarComponent
+    ServicesidebarComponent,
+    CarticonComponent
     
   
   ],
