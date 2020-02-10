@@ -23,13 +23,15 @@
 </div>
 <!--/.End Banner-->
 
-<section class="iconSection iconSection2">
+<section class="iconSection-other iconSection2">
     <div class="container">
         <div class="row">
-            <div class="col-sm-2" *ngFor="let procedure of procedureList; let i = index">
+            <div class="col-sm-3" *ngFor="let procedure of procedureList; let i = index">
                 <div class="iconSectionBox">
-                    <div class="iconSectionRound" (click)="gotoProviderList(procedure.procedureID)"> <img [src]="procedure.procedureImgURL" alt="" title="" onerror="this.src='assets/img/default-icon.png';"> </div>
-                    <h2><a href="javascript:void(0)">{{procedure.procedureName}}</a></h2>
+                    <div class="iconSectionRound" (click)="gotoProviderList(procedure.procedureID)"> <img [src]="procedure.procedureImgURL" alt="" title="" onerror="this.src='assets/img/default-icon.png';"> 
+                        <h2>{{procedure.procedureName}}</h2>
+                    </div>
+                   
                 </div>
             </div>
     

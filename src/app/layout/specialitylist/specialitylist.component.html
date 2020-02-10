@@ -3,34 +3,17 @@
 <!-- <div class="wocommersbox"> <a [routerLink]="'/cart'"><i class="fa fa-cart-plus" aria-hidden="true"></i></a> </div> -->
 <!-- <div class="backToTop"> <a href="javascript:void(0)"><i class="" aria-hidden="true"></i></a> Back to top</div> -->
 
-<!-- Start Banner -->
-<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
-    <!--Indicators-->
 
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-        <owl-carousel-o [options]="bannerOptions">
-            <ng-template carouselSlide *ngFor="let banner of bannerList; let i = index">
-          
-                <div class="carousel-item active">
-                    <div class="view"> <img class="d-block w-100" [src]="imageBaseUrl + banner.FileUpload" alt="{{banner.Name}}" onerror="this.src='assets/img/default-icon.png';">
-                        <div class="mask rgba-black-light"></div>
-                    </div>
-                </div>
-            </ng-template>
-        </owl-carousel-o>
-    </div>
-    <!--/.Slides-->
-</div>
-<!--/.End Banner-->
 
-<section class="iconSection">
+<section class="iconSection-other">
     <div class="container">
         <div class="row">
-            <div class="col-sm-2" (click)="gotoProcedure(speciality.specialityID)" *ngFor="let speciality of specialitylist; let i = index">
-                <div class="iconSectionBox">
-                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title=""> </div>
-                    <h2><a href="javascript:void(0)">{{speciality.specialityName}}</a></h2>
+            <div class="col-sm-3" (click)="gotoProcedure(speciality.specialityID)" *ngFor="let speciality of specialitylist; let i = index">
+                <div class="iconSectionBox-other">
+                    <div class="iconSectionRound"> <img [src]="speciality.specialityImgURL" alt="" title=""> 
+                        <h2>{{speciality.specialityName}}</h2>
+                    </div>
+                    
                 </div>
             </div>
     

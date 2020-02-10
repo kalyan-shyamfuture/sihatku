@@ -1090,6 +1090,29 @@ footer.page-footer a:hover {
     text-decoration: none;
 }
 
+
+.iconSection-other {
+    background: #f4f4f4;
+    padding: 30px 0px;
+    margin: 109px 0px 40px;
+    .iconSectionRound {
+        width:250px;
+        height:150px;
+        background: #fff;
+        margin: 0px auto;
+        display: block;
+        text-align: center;
+        border-radius: 4%;
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.08), 0 5px 5px 0 rgba(0, 0, 0, 0.37);
+        padding: 0px;
+        overflow: hidden;
+    }
+    .iconSectionBox {
+        padding-bottom: 20px;
+        margin: 0px;
+    }
+}
+
 .headerTopRow {
     background: #000;
     padding: 0px;

@@ -52,6 +52,7 @@ export class HeaderComponent implements OnInit {
   userType:any;
   modalRef: BsModalRef;
   message: string;
+  uName:any;
   public ngxScrollToDuration: number;
   constructor(
     public dialog: MatDialog,
@@ -143,6 +144,7 @@ export class HeaderComponent implements OnInit {
       this.loggedIn = true;
       this.userId = localStorage.getItem('userId');
       this.userName = localStorage.getItem('userName');
+      this.uName = this.userName.charAt(0);
       this.userType = localStorage.getItem('userType');
       this.userEmail  = localStorage.getItem('userEmail');
 
