@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         <a class="nav-link" [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#howSihatkuWork'">How it works</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="!loggedIn">
                         <a class="nav-link" (click)="openServiceProviderModal(template)">Become service provider</a>
                     </li>
 
