@@ -10,7 +10,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthGuard } from './guard/auth.guard';
 
 // Ngx Bootstrap
-import { BsDropdownModule,TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule,TabsModule,AccordionModule } from 'ngx-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // Material
@@ -20,13 +20,13 @@ import {
   MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule,
   MatProgressBarModule, MatProgressSpinnerModule, MatStepperIntl, MatRadioModule, MatRippleModule, MatFormFieldModule, MatSelectModule,
   MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule,
-  MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatStepperModule,
+  MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatStepperModule
 } from '@angular/material';
 
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -66,6 +66,7 @@ import { CarticonComponent } from './components/carticon/carticon.component';
     ReactiveFormsModule,
     NgxSpinnerModule,
     BsDropdownModule.forRoot(),
+    AccordionModule.forRoot(),
     TabsModule.forRoot(),
       //----------------Material----------------//
       MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -90,12 +91,14 @@ import { CarticonComponent } from './components/carticon/carticon.component';
       NgxPageScrollCoreModule,
       ScrollToModule.forRoot(),
       ModalModule.forRoot(),
+      NgSelectModule
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
     //AgmCoreModule,
     BsDropdownModule,
+    AccordionModule,
     TabsModule,
     //----------------Material----------------//
     MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
@@ -110,6 +113,7 @@ import { CarticonComponent } from './components/carticon/carticon.component';
     CarouselModule,
     OwlDateTimeModule, 
     OwlNativeDateTimeModule,
+    NgSelectModule,
    // NgxImageGalleryModule,
    // LightboxModule,
     HeaderComponent,

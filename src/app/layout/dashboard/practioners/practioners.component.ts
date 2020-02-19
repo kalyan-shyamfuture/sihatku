@@ -16,43 +16,43 @@ export class PractionersComponent implements OnInit {
   };
   practionerList:any=[];
   practionerId:any;
-  bannerOptions: OwlOptions = {
-    loop: true,
-    autoplay: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: true,
-    navSpeed: 700,
-    navText: ['', ''],
+  // bannerOptions: OwlOptions = {
+  //   loop: true,
+  //   autoplay: true,
+  //   mouseDrag: false,
+  //   touchDrag: false,
+  //   pullDrag: false,
+  //   dots: true,
+  //   navSpeed: 700,
+  //   navText: ['', ''],
 
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 1
-      },
-      740: {
-        items: 1
-      },
-      940: {
-        items: 1
-      }
-    },
-    nav: false
-  }
+  //   responsive: {
+  //     0: {
+  //       items: 1
+  //     },
+  //     400: {
+  //       items: 1
+  //     },
+  //     740: {
+  //       items: 1
+  //     },
+  //     940: {
+  //       items: 1
+  //     }
+  //   },
+  //   nav: false
+  // }
 
-  mediaList: any = [
-    {
-      image: '../../../../assets/img/test.jpg',
-    },
-    {
-      image: '../../../../assets/img/test1.jpg',
-    },{
-      image: '../../../../assets/img/test2.jpg',
-    },
-  ];
+  // mediaList: any = [
+  //   {
+  //     image: '../../../../assets/img/test.jpg',
+  //   },
+  //   {
+  //     image: '../../../../assets/img/test1.jpg',
+  //   },{
+  //     image: '../../../../assets/img/test2.jpg',
+  //   },
+  // ];
   constructor(
     private mainService: MainService,
     private modalService: BsModalService,

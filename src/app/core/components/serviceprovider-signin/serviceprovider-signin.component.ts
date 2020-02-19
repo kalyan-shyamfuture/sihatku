@@ -99,7 +99,7 @@ export class ServiceproviderSigninComponent implements OnInit {
               this.toastr.success(res['response'][0]['msg'], '', {
                 timeOut: 3000,
               });
-              this.router.navigate(['/order']);
+              this.router.navigate(['/dashboard']);
             }
             else {
               this.toastr.error(res['response'][0]['msg'], '', {

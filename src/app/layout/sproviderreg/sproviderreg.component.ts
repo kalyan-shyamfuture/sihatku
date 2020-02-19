@@ -365,7 +365,7 @@ export class SproviderregComponent implements OnInit {
              console.log(res);
              if(res['status'] ==1) {
             //  this.dialogRef.close(true);
-            this.router.navigate(['/order']);
+            this.router.navigate(['/dashboard']);
               this.toastr.success(res['response'][0]['msg'], '', {
                 timeOut: 3000,
               });

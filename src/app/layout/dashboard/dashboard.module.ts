@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { OrderRoutingModule } from './order-routing.module';
-import { OrderComponent } from './order.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardComponent } from './dashboard.component';
 import { PractionersComponent } from './practioners/practioners.component';
 import { MyProceduresComponent } from './my-procedures/my-procedures.component';
 import { NewOdersComponent } from './new-oders/new-oders.component';
@@ -26,11 +28,12 @@ import { DeactivateComponent } from './my-profile/deactivate/deactivate.componen
 
 
 @NgModule({
-  declarations: [OrderComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent, PractionersAddComponent, PractionersDetailsComponent, PractionersEditComponent, MyProceduresAddComponent, MyProceduresEditComponent, MyProceduresDetailsComponent, ChangepasswordComponent, DeactivateComponent],
+  declarations: [DashboardComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent, PractionersAddComponent, PractionersDetailsComponent, PractionersEditComponent, MyProceduresAddComponent, MyProceduresEditComponent, MyProceduresDetailsComponent, ChangepasswordComponent, DeactivateComponent],
   imports: [
     CommonModule,
-    OrderRoutingModule,
+    DashboardRoutingModule,
+    AccordionModule.forRoot(),
     CoreModule
   ]
 })
-export class OrderModule { }
+export class DashboardModule { }

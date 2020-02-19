@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         <a class="nav-link" [ngx-scroll-to-duration]="ngxScrollToDuration" [ngx-scroll-to]="'#howSihatkuWork'">How it works</a>
                     </li>
-                    <li class="nav-item" *ngIf="!loggedIn">
+                    <li class="nav-item">
                         <a class="nav-link" (click)="openServiceProviderModal(template)">Become service provider</a>
                     </li>
 
@@ -73,9 +73,10 @@
             <!----------------------------------------homemodel--------------------------------------------------->
             <ng-template #template>
                 <div class="modal-body text-center">
-                  <p>Are you a Service Provider? To switch to Provider Panel, you can log in or sign up with Sihat Ku</p>
-                  <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
-                  <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+                  <h6>Are you a Service Provider? </h6>
+                   <p>   To switch to Provider Panel, you can log in or sign up with Sihat Ku</p>
+                  <button type="button" class="btn btn-default mr-2" (click)="confirm()">Yes</button>
+                  <button type="button" class="btn btn-primary text-white" (click)="decline()" >No</button>
                 </div>
               </ng-template>
               <!----------------------------------------homemodel--------------------------------------------------->

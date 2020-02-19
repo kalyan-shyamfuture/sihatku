@@ -1,0 +1,105 @@
+<div id="menu2" class="col-12"><br>
+
+   <div class="row">
+      <div class="col-md-3">
+         <h3>Practioners</h3>
+      </div>
+
+      <div class="col-md-5">
+         <div class="search-formRow">
+            <form action="" class="search-form">
+               <div class="form-group has-feedback">
+                  <label for="search" class="sr-only">Search</label>
+                  <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                  <span class="glyphicon glyphicon-search form-control-feedback"><i class="fa fa-search"
+                        aria-hidden="true"></i>
+                  </span>
+               </div>
+            </form>
+         </div>
+         <br clear="all">
+      </div>
+      <div class="col-md-3">
+         <div class="addRow">
+            <p>
+               <a [routerLink]="'/dashboard/practioners/add'"> <span><i class="fa fa-plus-square"
+                        aria-hidden="true"></i></span>Add a Practioner </a>
+            </p>
+         </div>
+      </div>
+
+   </div>
+   <div class="table-responsive">
+      <table class="table table-bordered">
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Name</th>
+               <th>Speciality</th>
+              
+               <th>Practioner&nbsp;Image</th>
+               <th>Qualification</th>
+               <th>View</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr class="trboder" *ngFor="let praclist of practionerList; let i = index">
+               <!-- <td *ngIf="praclist.title ==1">Dr.</td>
+               <td *ngIf="praclist.title ==2">Mr.</td>
+               <td *ngIf="praclist.title ==3">Ms.</td> -->
+               <td>{{praclist.title ==1 ? 'Dr.'
+                  : praclist.title ==2 ? 'Mr.'
+                  : 'Ms.'}}</td>
+               <td>{{praclist.firstName}} {{praclist.lastName}}</td>
+               <td>{{praclist.fieldSpeciality}}</td>
+               <td>
+                  <img (click)="openModal(template)" class="table-img1 img-small" [src]="praclist.pracImages"
+                     onerror="this.src='assets/img/default-icon.png';" alt="" title="">
+               </td>
+               <td>{{praclist.qualification}}</td>
+               <!-- <td><i style="font-size:24px" class="fa">&#xf06e;</i></td> -->
+               <td>
+                  <a [routerLink]="'/dashboard/practioners/details/'+praclist.pracId"><img class="table-img1"
+                        src="assets/img/view.png" alt="" title=""></a><br>
+                  <!-- <a [routerLink]="'/dashboard/practioners/edit/'+praclist.pracId"><img class="table-img1"
+                        src="assets/img/edit.png" alt="" title=""></a><br>
+                  <a (click)="deletePractioner(templateDelete,praclist.pracId)"><img class="table-img1"
+                        src="assets/img/delete.png" alt="" title=""></a> -->
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</div>
+<!-- Multi Image slider in modal start-->
+<!-- <ng-template #template>
+   <div class="modal-body">
+   <div id="carousel-example-2" class="carousel topheight slide carousel-fade" data-ride="carousel">
+ 
+       <div class="carousel-inner" role="listbox">
+           <owl-carousel-o [options]="bannerOptions">
+               <ng-template carouselSlide *ngFor="let banner of mediaList; let i = index">
+                   <div class="carousel-item active">
+                       <div class="view"> <img class="d-block w-100" [src]="banner.image"
+                               alt="">
+                           <div class="mask rgba-black-light"></div>
+                       </div>
+                   </div>
+               </ng-template>
+           </owl-carousel-o>
+
+       </div>
+
+   </div>
+</div>
+</ng-template> -->
+
+<!-- Multi Image slider in modal End-->
+
+<ng-template #templateDelete>
+   <div class="modal-body text-center">
+      <p>Are you sure to delete the procedure?</p>
+      <button type="button" class="btn btn-default" (click)="confirmDelete(practionerId)">Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+   </div>
+</ng-template>

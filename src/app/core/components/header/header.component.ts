@@ -54,6 +54,12 @@ export class HeaderComponent implements OnInit {
   message: string;
   uName:any;
   public ngxScrollToDuration: number;
+  config = {
+    animated: true,
+    keyboard: false,
+    class: 'modal-sm modal-dialog-centered',
+    ignoreBackdropClick: true
+  };
   constructor(
     public dialog: MatDialog,
     private router: Router,
@@ -161,15 +167,15 @@ export class HeaderComponent implements OnInit {
   }
   // ----------------------------------------------------------modal function
   openServiceProviderModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.modalRef = this.modalService.show(template, this.config);
   }
  
   confirm(): void {
     this.modalRef.hide();
     localStorage.clear();
     this.loggedIn = false;
-     this.router.navigate(['/providerregnew']);
-    //this.router.navigate(['/registration']);
+    // this.router.navigate(['/providerregnew']);
+    this.router.navigate(['/registration']);
   }
  
   decline(): void {

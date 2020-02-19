@@ -2,7 +2,7 @@
 <div id="menu2" class="col-12"><br> 
     <h3>Order History</h3>
       <div class="col-12 p-0 table-responsive">
-          <table class="table table-bordered">
+          <!-- <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Orders&nbsp;Id</th>
@@ -58,6 +58,23 @@
                 <td>.....</td>          
               </tr>  		
             </tbody>
-          </table>
+          </table> -->
+          <accordion [isAnimated]="true" [closeOthers]="true">
+              <accordion-group>
+                <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
+                  <div class="pull-left float-left">I can have markup!</div>
+                  <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                </button>
+                This is just some content to illustrate fancy headings.
+              </accordion-group>
+              <accordion-group>
+                <button class="btn btn-link" accordion-heading type="button">
+                  I can have markup, too!
+                  <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                </button>
+                <span class="badge badge-secondary center">And some HTML here</span>
+              </accordion-group>
+            </accordion>
+       
         </div>	  
   </div>

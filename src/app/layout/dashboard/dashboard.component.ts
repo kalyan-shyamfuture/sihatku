@@ -2,11 +2,11 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from "@angular/router";
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class OrderComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   modalRef: BsModalRef;
   message: string;
   loggedIn:boolean;

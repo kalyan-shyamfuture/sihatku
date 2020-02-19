@@ -1,0 +1,40 @@
+table {border: none;}
+.table th, .table td {
+    border:none;
+    vertical-align: middle;
+    padding: 0px 10px;
+    word-wrap: break-word;
+}
+
+.custom-full-width {
+    width:100%;
+}
+
+.no-background-custom {
+    border:none;
+    background:none;
+    padding:0;
+    height:15px;
+  }
+//   .mat-checkbox-layout {
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//     cursor: inherit;
+//     align-items: baseline;
+//     vertical-align: middle;
+//     display: inline-flex;
+//     white-space: normal !important;
+// }
+.mat-checkbox-label {
+    white-space: normal !important;
+}
+
+.ng-dropdown-panel .ng-value {
+    background-color: #ff9100 !important;
+}
+
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+    background-color: #ff9100 !important;
+}

@@ -5,15 +5,15 @@
          <div class="col-md-12">
             <ul class="nav nav-tabs">
                <li class="nav-item" [routerLinkActive]="['active']">
-               <a class="nav-link active" [routerLink]="'/order/practioners'">
+               <a class="nav-link active" [routerLink]="'/dashboard/practioners'">
                <img src="assets/img/Practioners.png">
                </a>
                <a>
-                  <h2 class="navtext">practioners</h2>
+                  <h2 class="navtext">practitioners</h2>
                </a>
                </li>
                <li class="nav-item" [routerLinkActive]="['active']" >
-               <a class="nav-link" [routerLink]="'/order/my-procedures'">
+               <a class="nav-link" [routerLink]="'/dashboard/my-procedures'">
                <img src="assets/img/MyProcedures.png">
                </a>
                <a>
@@ -22,7 +22,7 @@
                </li>
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                true}">
-               <a class="nav-link" [routerLink]="'/order/new-oders'">
+               <a class="nav-link" [routerLink]="'/dashboard/new-oders'">
                <img src="assets/img/NewOrders.png">
                </a>
                <a>
@@ -31,7 +31,7 @@
                </li>
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                true}">
-               <a class="nav-link" [routerLink]="'/order/order-history'">
+               <a class="nav-link" [routerLink]="'/dashboard/order-history'">
                <img src="assets/img/OrderHistory.png">
                </a>
                <a>
@@ -40,7 +40,7 @@
                </li>
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                true}">
-               <a class="nav-link" [routerLink]="'/order/my-payments'">
+               <a class="nav-link" [routerLink]="'/dashboard/my-payments'">
                <img src="assets/img/Mypayments.png">
                </a>
                <a>
@@ -49,7 +49,7 @@
                </li>
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                true}">
-               <a class="nav-link" [routerLink]="'/order/consumer-Review'">
+               <a class="nav-link" [routerLink]="'/dashboard/consumer-Review'">
                <img src="assets/img/Consumerreviews.png">
                </a>
                <a>
@@ -59,7 +59,7 @@
             
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                true}">
-               <a class="nav-link last" [routerLink]="'/order/inbox'">
+               <a class="nav-link last" [routerLink]="'/dashboard/inbox'">
                <img src="assets/img/inbox.png">
                </a>
                <a >
@@ -69,14 +69,14 @@
                
                <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                   true}">
-                  <a class="nav-link last" [routerLink]="'/order/myProfile'">
+                  <a class="nav-link last" [routerLink]="'/dashboard/myProfile'">
                   <img src="assets/img/Exploresihatku.png">
                   </a>
                   <a>
                      <h2 class="navtext">My Profile</h2>
                   </a>
                   </li>
-               <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+               <!-- <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
                   true}">
                   <a class="nav-link" (click)="openModal(template)">
                   <img src="assets/img/switchtoconsumerfront.png">
@@ -84,12 +84,12 @@
                   <a>
                      <h2 class="navtext">Switch to Consumer</h2>
                   </a>
-                  </li>
+                  </li> -->
             </ul>
          </div>
         
       </div>
-      <div class="col-12 p-0 border mb-3">
+      <div class="col-12 p-0 border-none mb-3">
          <router-outlet></router-outlet>
       </div>
    </div>

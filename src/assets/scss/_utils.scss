@@ -632,9 +632,14 @@ strong {
     margin-right: 15px !important;
     margin: 0px;
     color: #fff;
-    background: #fcbe11;
+  //  background: #fcbe11;
     font-family: 'Montserrat', sans-serif;
 }
+
+.serviceform .btn3:not([disabled]) {
+    background:#fcbe11;    
+}
+
 
 .serviceform .btn3 a {
     color: #fff;

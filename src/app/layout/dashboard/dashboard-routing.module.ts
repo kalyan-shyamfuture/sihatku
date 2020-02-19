@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OrderComponent } from './order.component';
+import { DashboardComponent } from './dashboard.component';
 import { NewOdersComponent } from './new-oders/new-oders.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { MyPaymentsComponent } from './my-payments/my-payments.component';
@@ -28,7 +28,7 @@ import { MyProceduresEditComponent } from './my-procedures/my-procedures-edit/my
 const routes: Routes = [
   {
   path: '',
-  component: OrderComponent,
+  component: DashboardComponent,
   children:[
     {
       path: '',
@@ -114,4 +114,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OrderRoutingModule { }
+export class DashboardRoutingModule { }

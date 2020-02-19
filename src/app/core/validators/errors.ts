@@ -32,6 +32,9 @@ export const Errors = {
   specialities: [
     { type: 'required', message: 'Please Select  Speciality' },
   ],
+  speciality: [
+    { type: 'required', message: 'Please Select  Speciality' },
+  ],
   // placeofPractice: [
   //   { type: 'required', message: 'Please Enter Practice Place' },
   // ],
@@ -96,8 +99,9 @@ export const Errors = {
   // ],
   password: [
     { type: 'required', message: 'Password is required' },
-    //{ type: 'pattern', message: 'Please enter a valid Password.' },
-    { type: 'minlength', message: 'Password Must be 6 characters' }
+     { type: 'minlength', message: 'Password Must be 8 characters' },
+    // { type: 'pattern', message: 'Password must be 8 characters & contain at least one digit,one uppercase character,one special symbol' }
+    { type: 'pattern', message: 'Valid Password is required' }
   ],
   dob: [
     { type: 'required', message: 'Date-of-Birth is required' },
@@ -185,10 +189,16 @@ export const Errors = {
     { type: 'pattern', message: 'Enter a valid Mobile number' },
     { type: 'maxlength', message: 'Mobile Number not be more than 10 characters' }
   ],
-  phoneNo: [
+  mobileNo: [
     { type: 'required', message: 'Mobile Number is required' },
     { type: 'pattern', message: 'Enter a valid Mobile number' },
     { type: 'maxlength', message: 'Mobile Number not be more than 10 characters' }
+  ],
+  phoneNo: [
+    { type: 'required', message: 'Phone Number is required' },
+    { type: 'pattern', message: 'Enter a valid Phone number' },
+    { type: 'minlength', message: 'Phone Number min 10 characters' },
+    { type: 'maxlength', message: 'Phone Number not be more than 12 characters' }
   ],
   // organizationType: [
   //   { type: 'required', message: 'Organization type is required' }

@@ -122,6 +122,27 @@ export class MainService {
   placeOrder(data) {
     return this.http.post(environment.apiEndpoint + 'order',data);
   }
+  getStateList(data) {
+    return this.http.post(environment.apiEndpoint + 'StatelistbyCountryCode',data);
+  }
+
+  newRegistration(data) {
+    return this.http.post(environment.apiEndpoint + 'ProviderReg',data);
+  }
+  
+  getProviderSpecialityList(data) {
+    return this.http.post(environment.apiEndpoint + 'SpecialityListByProviderID',data);
+  }
+
+  addProvider(data) {
+    return this.http.post(environment.apiEndpoint + 'AddPractioner',data);
+  }
+
+  getPractionerDetails(id) {
+    return this.http.get(environment.apiEndpoint + 'PractionerDetailsby/'+id);
+  }
+
+
   
 
 

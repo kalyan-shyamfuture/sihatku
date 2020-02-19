@@ -18,7 +18,7 @@
          <div class="col-md-3">
            <div class="addRow">
               <p>
-                  <a [routerLink]="'/order/my-procedures/add'">
+                  <a [routerLink]="'/dashboard/my-procedures/add'">
                   <span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure </a>
                 </p>
            </div>
@@ -58,7 +58,7 @@
                                             <td><span *ngIf="prodlist.locPrice > 0">MYR&nbsp;{{prodlist.locPrice}}</span><span  *ngIf="prodlist.USAPrice > 0">/USD{{prodlist.USAPrice}}</span></td>
                                             <td>
                                                     <p  *ngFor="let practioner of prodlist.Practioner; let i = index" class="prac-name">{{practioner.firstname}} {{practioner.lastname}}
-                                                        <a [routerLink]="'/order/practioners/details/'+practioner.pracid"><span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></a></p>
+                                                        <a [routerLink]="'/dashboard/practioners/details/'+practioner.pracid"><span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></a></p>
                                               
                                                     <!-- <p>Mr.Rafee <span><img class="table-img1" src="assets/img/info.png" alt="" title=""></span></p> -->
                                                 </td>
@@ -78,8 +78,8 @@
                                                     <br> Lorem&nbsp;Ipsum&nbsp;is&nbsp;simply&nbsp;dummy&nbsp;text
                                                 </td> -->
                                                 <td>
-                                                    <a [routerLink]="'/order/my-procedures/details'"><img class="table-img1" src="assets/img/percent.png" alt="" title=""></a><br>
-                                                    <a [routerLink]="'/order/my-procedures/edit'"><img class="table-img1" src="assets/img/edit.png" alt="" title=""></a><br>
+                                                    <a [routerLink]="'/dashboard/my-procedures/details'"><img class="table-img1" src="assets/img/percent.png" alt="" title=""></a><br>
+                                                    <a [routerLink]="'/dashboard/my-procedures/edit'"><img class="table-img1" src="assets/img/edit.png" alt="" title=""></a><br>
                                                     <a (click)="deleteProcedure(templateDelete,prodlist.servicesID)"><img class="table-img1" src="assets/img/delete.png" alt="" title=""></a>
                                                 </td>
 

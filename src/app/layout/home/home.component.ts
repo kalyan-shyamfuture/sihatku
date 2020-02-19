@@ -225,7 +225,6 @@ export class HomeComponent implements OnInit {
           
           if (i == 3) {
             this.mostpopularList = result[i]['response'];
-            console.log(this.mostpopularList);
             
           }
           if (i == 4) {
