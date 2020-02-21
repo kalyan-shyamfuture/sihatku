@@ -14,7 +14,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     if(localStorage.getItem('userType') =='4') {
       // this.router.navigateByUrl('/dashboard/new-oders');
-      this.router.navigateByUrl('/dashboard/practioners/details/63');
+      this.router.navigateByUrl('/dashboard/practioners');
       
     }
     // else {

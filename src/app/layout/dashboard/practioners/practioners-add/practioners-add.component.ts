@@ -6,7 +6,6 @@ import { UserService } from "../../../../core/services/user.service";
 import { environment } from "../../../../../environments/environment";
 import { ToastrService } from 'ngx-toastr';
 import { Router, NavigationEnd } from '@angular/router';
-
 import { FormControlValidator, PasswordValidator } from "../../../../core/validators";
 
 @Component({

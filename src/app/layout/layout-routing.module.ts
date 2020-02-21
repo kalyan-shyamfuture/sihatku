@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'contactus', loadChildren: './contactus/contactus.module#ContactusModule' },
       { path: 'profile', loadChildren: './profile/profile.module#ProfileModule',canActivate: [AuthGuard] },
       { path: 'cms', loadChildren: './cms/cms.module#CmsModule' },
-      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule',canActivate: [AuthGuard] },
       { path: 'providerreg', loadChildren: './providerreg/providerreg.module#ProviderregModule' },
       { path: 'providerregnew', loadChildren: './providerregnew/providerregnew.module#ProviderregnewModule' },
       { path: 'cart', loadChildren: './cart/cart.module#CartModule' },

@@ -92,14 +92,14 @@ export class PractionersComponent implements OnInit {
   }
 
   confirmDelete(practionerId) {
-    var data = {
-      "ProviderID":this.userId, // Login User Id
-      "ServiceID":practionerId
-    }
+    // var data = {
+    //   "ProviderID":this.userId, // Login User Id
+    //   "ServiceID":practionerId
+    // }
 
-    console.log(data);
+    //console.log(data);
     
-    this.mainService.deletePractioner(data).subscribe(
+    this.mainService.deletePractioner(practionerId,this.userId).subscribe(
       res => {
         console.log(res);
         this.toastr.success(res['response'][0]['msg'], '', {

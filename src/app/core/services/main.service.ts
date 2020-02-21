@@ -91,8 +91,8 @@ export class MainService {
   // deletePractioner(id) {
   //   return this.http.get(environment.apiEndpoint + 'ProcedureDeleteby/'+id);
   // }
-  deletePractioner(data) {
-    return this.http.post(environment.apiEndpoint + 'abccc/',data);
+  deletePractioner(pracId,provId) {
+    return this.http.get(environment.apiEndpoint + 'PractionerDeleteby/'+pracId+'/'+provId); //practionerId/ ProviderId
   }
 
   getProcedureListbySpecId(data) {
@@ -135,6 +135,9 @@ export class MainService {
   }
 
   addProvider(data) {
+    return this.http.post(environment.apiEndpoint + 'AddPractioner',data);
+  }
+  updatePractioner(data) {
     return this.http.post(environment.apiEndpoint + 'AddPractioner',data);
   }
 
