@@ -10,11 +10,15 @@ export class DashboardComponent implements OnInit {
   modalRef: BsModalRef;
   message: string;
   loggedIn:boolean;
+  userId:any;
+  providerType:any;
   constructor( 
     private modalService: BsModalService,
      private router: Router) { }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
+    this.providerType = localStorage.getItem('providerType');
   }
 
   openModal(template: TemplateRef<any>) {

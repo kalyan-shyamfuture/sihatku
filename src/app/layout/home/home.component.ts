@@ -197,6 +197,31 @@ export class HomeComponent implements OnInit {
     this.getAllData();
   }
 
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log(position);
+        
+        // this.location = position.coords;
+        // this.lat = position.coords.latitude;
+        // this.long = position.coords.longitude;
+        // this.getAddress();
+      },
+        // function (error) {
+        error => {
+          if (error.code == error.PERMISSION_DENIED)
+            console.log("you denied me :-(");
+        //    // alert(this.defaultLocationId);
+        //    this.locationId = this.defaultLocationId;
+        // //  localStorage.setItem('myCurrentLocationId', this.defaultLocationId);
+          this.toastr.error('Your location is Disabled. For now your default location will be Howrah you can change location from Dropdown ', '', {
+            timeOut: 6000,
+          });
+
+        });
+    }
+  }
+
   get f() {
     return this.requestForm.controls;
   }
