@@ -145,6 +145,14 @@ export class MainService {
     return this.http.get(environment.apiEndpoint + 'PractionerDetailsby/'+id);
   }
 
+  getOrderListing(data) {
+    return this.http.post(environment.apiEndpoint + 'orderListing',data);
+  }
+
+  addProcedure(data) {
+    return this.http.post(environment.apiEndpoint + 'addProcedure',data);
+  }
+
 
   
 

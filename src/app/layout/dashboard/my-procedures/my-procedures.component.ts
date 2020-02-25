@@ -273,6 +273,24 @@ currencyList:any;
     procedureForm.push(this.procedureModel(procedureId));
   }
 
+  submitForm() {
+    this.serviceRegForm.value.providerId = this.userId;
+    console.log("Provider reg New==>",this.serviceRegForm.value);
+    this.mainService.addProcedure(this.serviceRegForm.value).subscribe(
+      res => {
+        console.log("Res==>",res);
+        if(res['status'] ==1) {
+          this.toastr.error(res['response'][0]['msg'], '', {
+            timeOut: 3000,
+          });
+        }
+      },
+      error => {
+        console.log(error.error);
+      }
+    )
+  }
+
  
 
 }
