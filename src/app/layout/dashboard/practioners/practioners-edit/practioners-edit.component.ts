@@ -191,7 +191,7 @@ getProviderSpeiality() {
   getPractionerDetails(id) {
     this.mainService.getPractionerDetails(id).subscribe(
       res => {
-        this.practionerDetails = res['response'][0];
+        this.practionerDetails = res['response']['PractionerDetails'][0];
         console.log("Practioner Details==>",this.practionerDetails);
      //   this.practionerForm = this.formBuilder.group({
       this.practionerForm.patchValue({
@@ -199,7 +199,7 @@ getProviderSpeiality() {
           firstName: this.practionerDetails.firstName,
           lastName: this.practionerDetails.lastName,
           gender: this.practionerDetails.Gender,
-          speciality: '',
+          speciality: this.practionerDetails['Speciality'],
           country: this.practionerDetails.country,
           licenceNo: this.practionerDetails.passportNumber,
           practicingSince: this.practionerDetails.practisingSince,

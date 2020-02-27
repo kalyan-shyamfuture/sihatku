@@ -5,6 +5,7 @@ import { MainService } from "../../core/services/main.service";
 import { ToastrService } from 'ngx-toastr';
 import { FormControlValidator,PasswordValidator } from "../../core/validators";
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+//import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -17,6 +18,7 @@ export class PaymentComponent implements OnInit {
   total_loc_price: number = 0;
   showForm:boolean;
   txnId:any;
+  //private subscription: Subscription;
   constructor(
     private formBuilder: FormBuilder,
     private mainService:MainService,
@@ -93,7 +95,8 @@ var data = {
 }
 
 
-   this.mainService.stripePayment(data).subscribe(
+//this.subscription = 
+this.mainService.stripePayment(data).subscribe(
     res => {
       console.log(res['message']);
 
@@ -174,5 +177,9 @@ gotoPayment() {
 
 }
 
+
+// ngOnDestroy() {
+//   this.subscription.unsubscribe();
+// }
 
 }

@@ -150,7 +150,11 @@ export class MainService {
   }
 
   addProcedure(data) {
-    return this.http.post(environment.apiEndpoint + 'addProcedure',data);
+    return this.http.post(environment.apiEndpoint + 'addproc',data);
+  }
+
+  getmyProcList(id) {
+    return this.http.get(environment.apiEndpoint + 'addprocList/'+id);
   }
 
 

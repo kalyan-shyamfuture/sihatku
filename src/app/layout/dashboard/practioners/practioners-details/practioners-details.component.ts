@@ -11,9 +11,10 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class PractionersDetailsComponent implements OnInit {
   userId:any;
   pracId:any;
-  practionerDetails:any;
+  practionerDetails:any={};
   modalRef: BsModalRef;
   practionerId:any;
+  practionerSpeciality:any=[];
   constructor(
     private mainService: MainService,
     private route: ActivatedRoute,
@@ -37,8 +38,11 @@ export class PractionersDetailsComponent implements OnInit {
   getPractionerDetails(id) {
     this.mainService.getPractionerDetails(id).subscribe(
       res => {
-        this.practionerDetails = res['response'][0];
+        this.practionerDetails = res['response']['PractionerDetails'][0];
+        this.practionerSpeciality =this.practionerDetails['Speciality']
         console.log("Practioner Details==>",this.practionerDetails);
+        console.log(this.practionerSpeciality);
+        
       },
       error => {
         console.log(error.error); 

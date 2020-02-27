@@ -4,7 +4,7 @@
          <div class="panel widget light-widget panel-bd-top">
             <div class="panel-heading no-title"> </div>
             <div class="panel-body">
-               <div class="text-center vd_info-parent"> <img alt="example image" src="{{practionerDetails.pracImages}}"
+               <div class="text-center vd_info-parent"> <img alt="example image" [src]="practionerDetails.pracImages"
                      onerror="this.src='assets/img/default-icon.png';"> </div>
                     
                            <div class="col-xs-12 name-prac"> <a class="btn vd_btn vd_bg-green btn-xs btn-block no-br"><i class="fa fa-check-circle append-icon"></i> {{practionerDetails.title ==1 ? 'Dr.'
@@ -78,15 +78,22 @@
                         </div>
                         <div class="col-sm-12">
                            <div class="row mgbt-xs-0">
-                              <label class="col-xs-5 control-label">aboutPractitioner:</label>
-                              <div class="col-xs-7 controls">{{practionerDetails.aboutPractioner}}</div>
+                              <label class="col-xs-5 control-label">About Practitioner:</label>
+                              <div class="col-xs-7 controls">{{practionerDetails.aboutPractioner}}
+                                 
+                              </div>
 
                            </div>
                         </div>
                         <div class="col-sm-12">
                            <div class="row mgbt-xs-0">
                               <label class="col-xs-5 control-label">Specility:</label>
-                              <div class="col-xs-7 controls">{{practionerDetails.fieldSpeciality}}</div>
+                              <div class="col-xs-7 controls">
+                                 <span *ngFor="let speciality of practionerSpeciality; let i = index">
+                                       {{speciality.specialityName}} ,
+                                 </span>
+                             
+                              </div>
 
                            </div>
                         </div>
