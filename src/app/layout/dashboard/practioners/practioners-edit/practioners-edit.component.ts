@@ -219,7 +219,8 @@ getProviderSpeiality() {
     // this.submitted = true;
     console.log(this.practionerForm.value);
     this.practionerForm.value.userId = this.userId;
-    console.log(this.practionerForm.value);
+    this.practionerForm.value.ID = this.pracId;
+    console.log("Update Pracxtioner==>",this.practionerForm.value);
     
     
     this.mainService.updatePractioner(this.practionerForm.value).subscribe(

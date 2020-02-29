@@ -91,12 +91,11 @@ export class ServiceproviderSigninComponent implements OnInit {
               localStorage.setItem('isLoggedin', 'true');
               localStorage.setItem('userId', res['response'][0]['providerID']);
               localStorage.setItem('userType', '4');
-              localStorage.setItem('userName', res['response'][0]['ClinicName']);
+              localStorage.setItem('userName', res['response'][0]['clinicName']);
               localStorage.setItem('userEmail', res['response'][0]['providerEmail']);
               localStorage.setItem('userEmail', res['response'][0]['providerEmail']);
               localStorage.setItem('specialityId', res['response'][0]['Speciality']);
               localStorage.setItem('providerType', res['response'][0]['providerType']);
-             // localStorage.setItem('userContact', res['response'][0]['providerPassword']);
               this.userService.loginStatus(true);
               this.dialogRef.close(true);
               this.toastr.success(res['response'][0]['msg'], '', {

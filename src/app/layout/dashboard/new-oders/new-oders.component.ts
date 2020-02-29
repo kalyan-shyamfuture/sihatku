@@ -28,12 +28,14 @@ export class NewOdersComponent implements OnInit {
   }
 
   getOrderList() {
-    var data = {
-      "userId":this.userId
-    }
-    this.mainService.getOrderListing(data).subscribe(
+    // var data = {
+    //   "userId":this.userId
+    // }
+    this.mainService.getOrderListingbyProvider(this.userId).subscribe(
       res => {
-        console.log("Res==>",res);
+        this.orderList = res['response']['OrderDetails'];
+        console.log("Order List==>",this.orderList);
+        
       },
       error => {
         console.log(error.error); 

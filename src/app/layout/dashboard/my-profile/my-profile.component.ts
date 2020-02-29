@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { MainService } from "../../../core/services/main.service";
 import { UserService } from "../../../core/services/user.service";
 import { environment } from "../../../../environments/environment";
+import { NgxSpinnerService } from "ngx-spinner";
 import { FormControlValidator, PasswordValidator } from "../../../core/validators";
 @Component({
   selector: 'app-my-profile',
@@ -24,7 +25,8 @@ export class MyProfileComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     public mainService: MainService,
-    public userService: UserService
+    public userService: UserService,
+    private spinner: NgxSpinnerService
   ) {
     this.userId = localStorage.getItem('userId');
   }
@@ -93,10 +95,16 @@ export class MyProfileComponent implements OnInit {
   }
 
   getProfile(id) {
+    this.spinner.show();
     this.userService.getProviderProfile(id).subscribe(
       res => {
         console.log(res['response']);
+
         this.profileDetails = res['response']['ProviderDetails'][0];
+
+        var updateSpecilityId = Array.prototype.map.call(this.profileDetails['Speciality'], function(item) { return item.specialityID; }).join(",");
+        localStorage.setItem('specialityId', updateSpecilityId);
+        console.log("zzzz==>",updateSpecilityId);
         console.log("Provider profile Details==>", this.profileDetails);
         this.imgCenterURL = this.profileDetails.centerLogoFile;
         console.log("Center Logo ==>", this.imgCenterURL);
@@ -105,7 +113,7 @@ export class MyProfileComponent implements OnInit {
 
           email: this.profileDetails.providerEmail,
           phoneNo: this.profileDetails.PhoneNo,
-          mobileNo: '',
+          mobileNo: this.profileDetails.MobileNo,
           clinicName: this.profileDetails.clinicName,
           aboutClinic: this.profileDetails.aboutClinic,
           clinicAddress: this.profileDetails.providerAdd1,
@@ -114,14 +122,16 @@ export class MyProfileComponent implements OnInit {
           country: this.profileDetails.country,
           zip: this.profileDetails.ZIP,
           providerType: this.profileDetails.providerType,
-          centerLogo: this.profileDetails.Logo,
+          centerLogo: this.profileDetails.centerLogoFile,
           speciality: this.profileDetails['Speciality'],
          
         });
+        this.spinner.hide();
 
       },
       error => {
         console.log(error.error);
+        this.spinner.hide();
 
       }
     )
@@ -130,22 +140,26 @@ export class MyProfileComponent implements OnInit {
 
   profileUpdate() {
     console.log(this.profileViewForm.value);
-    // if (this.profileViewForm.valid) {
+    this.profileViewForm.value.Id = this.userId;
+    if (this.profileViewForm.valid) {
 
-    //   this.userService.updatedProviderProfile(this.profileViewForm.value).subscribe(
-    //     response => {
-    //       console.log(response);
-    //       console.log(response['message']);
-    //       if (response['status'] == 1) {
-    //         console.log(response['message']);
+      this.userService.updatedProviderProfile(this.profileViewForm.value).subscribe(
+        response => {
+          console.log(response);
+          console.log(response['message']);
+          if (response['status'] == 1) {
+            console.log(response['message']);
+            this.getProfile(this.userId);
+            this.isReadonly = true;
+            this.profileUpdateButton = true;
 
-    //       }
-    //     }
-    //   )
-    // }
-    // else {
-    //   alert("error")
-    // }
+          }
+        }
+      )
+    }
+    else {
+      alert("error")
+    }
 
   }
   centerLogoUpload(event, formControl: FormControl) {

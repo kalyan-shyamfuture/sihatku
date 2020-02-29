@@ -154,6 +154,7 @@ getProviderSpeiality() {
     // this.submitted = true;
     console.log(this.practionerForm.value);
     this.practionerForm.value.userId = this.userId;
+    this.practionerForm.value.ID = '';
     console.log(this.practionerForm.value);
     
     

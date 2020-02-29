@@ -153,8 +153,25 @@ export class MainService {
     return this.http.post(environment.apiEndpoint + 'addproc',data);
   }
 
+  updateProcedure(data) {
+    return this.http.post(environment.apiEndpoint + 'updateproc',data);
+  }
+
   getmyProcList(id) {
     return this.http.get(environment.apiEndpoint + 'addprocList/'+id);
+  }
+
+  // updateProvider(data) {
+
+  // }
+
+  getOrderListingbyProvider(id) {
+    return this.http.get(environment.apiEndpoint + 'Order/'+id);
+  }
+
+  
+  updateProviderPassword(data) {
+    return this.http.post(environment.apiEndpoint + 'ProviderChangePassword',data);
   }
 
 

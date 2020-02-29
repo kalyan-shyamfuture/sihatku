@@ -22,14 +22,14 @@
             <div class="addRow">
                 <p>
                     <a [routerLink]="'/dashboard/my-procedures/add'">
-                        <span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure </a>
+                        <span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add / Update Procedure </a>
                 </p>
             </div>
         </div>
 
     </div>
     <div class="serviceform">
-        <form role="form" autocomplete="off" [formGroup]="serviceRegForm">
+        <!-- <form role="form" autocomplete="off" [formGroup]="serviceRegForm">
         <div class="services-section">
             <div class="row">
 
@@ -77,12 +77,7 @@
                                                         formControlName="setPrice">
                                                 </mat-form-field>
                                             </td>
-                                            <!-- <td style="width:10%">
-                                                <mat-form-field class="example-full-width">
-                                                    <input matInput placeholder="Set Price MYR"
-                                                        formControlName="locPrice">
-                                                </mat-form-field>
-                                            </td> -->
+                                         
                                         </tr>
                                     </table>
                                   
@@ -107,9 +102,88 @@
                 </div>
             </div>
         </div>
+        </form> -->
+
+
+        <form role="form" autocomplete="off" [formGroup]="serviceRegForm">
+            <div class="services-section">
+                <div class="row">
+
+                    <div class="col-sm-12 col-xs-12">
+
+                        <div>
+                            <div class="table-responsive" *ngFor="let specility of specialityDetails; index as i"
+                               >
+                                <table class="table">
+
+                                    <tr>
+                                        <td colspan="4"><b>{{specility.speciality}}</b>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr formArrayName="procedure">
+                                        <table class="table"
+                                            *ngFor="let procedure of specility.procedure; index as j"
+                                           >
+                                            <tr>
+                                                <td style="width:50%">
+                                                        {{procedure.procedureName}}
+                                                    <!-- <mat-checkbox formControlName="isChecked">
+                                                        {{procedure.procedurename}}
+                                                    </mat-checkbox> -->
+                                                </td>
+                                                <td style="width:30%">
+                                                        {{procedure.aboutProcedure}}
+                                                    <!-- <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="About Procedure"
+                                                            formControlName="aboutProcedure">
+                                                    </mat-form-field> -->
+                                                </td>
+                                                <td>
+                                                        {{procedure.currency}}
+                                                    <!-- <mat-form-field class="example-full-width">
+                                                        <mat-label>Currency</mat-label>
+
+                                                        <mat-select formControlName="currency" name="currency">
+                                                            <mat-option *ngFor="let currency of currencyList"
+                                                                value="{{currency}}">
+                                                                {{currency}}</mat-option>
+                                                        </mat-select>
+                                                    </mat-form-field> -->
+                                                </td>
+                                                <td style="width:10%">
+                                                        {{procedure.setPrice}}
+                                                    <!-- <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Set Price"
+                                                            formControlName="setPrice">
+                                                    </mat-form-field> -->
+                                                </td>
+
+                                            </tr>
+                                        </table>
+
+                                        <td>
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
         </form>
 
 
     </div>
-   
+
 </div>
+<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="">
+    <p style="font-size: 20px; color: white"></p>
+    <img src="assets/img/loader.gif">
+</ngx-spinner>

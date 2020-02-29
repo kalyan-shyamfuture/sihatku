@@ -11,6 +11,7 @@ export class ServicesidebarComponent implements OnInit {
   userId:any;
   profileDetails:any={};
   imgCenterURL:any;
+  userName:any;
   constructor( 
     private router: Router,
     public userService: UserService
@@ -18,6 +19,7 @@ export class ServicesidebarComponent implements OnInit {
 
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
+    this.userName =  localStorage.getItem('userName');
     this.getProfile(this.userId);
   }
 
@@ -31,7 +33,7 @@ export class ServicesidebarComponent implements OnInit {
     this.userService.getProviderProfile(id).subscribe(
       res => {
         this.profileDetails = res['response']['ProviderDetails'][0];
-        console.log("Provider profile Details==>", this.profileDetails);
+        console.log("Provider profile DetailsIn side bar==>", this.profileDetails);
         this.imgCenterURL = this.profileDetails.centerLogoFile;
         console.log("Center Logo ==>", this.imgCenterURL);
       },

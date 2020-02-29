@@ -1,80 +1,42 @@
 
 <div id="menu2" class="col-12"><br> 
     <h3>Order History</h3>
-      <div class="col-12 p-0 table-responsive">
-          <!-- <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Orders&nbsp;Id</th>
-                <th>Procedure</th>
-                <th>Procedure&nbsp;Price</th>
-                <th>Discount</th>
-                <th>Customer&nbsp;Name</th>
-                <th>Customer&nbsp;Ph.&nbsp;No.</th>
-                <th>Gender</th>
-                <th>Country</th>
-                <th>Actual&nbsp;Date</th>
-                <th>Appointment&nbsp;Date</th>
-                <th>Payment&nbsp;Amount</th>
-                <th>Payment&nbsp;Method</th>
-                <th>Payment&nbsp;Status</th>
-                <th>Practitioner</th>
-                <th>Appointment&nbsp;Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>654321</td>
-                <td>Stress&nbsp;Test</td>
-                <td>MYR&nbsp;100/USD50</td>
-                <td>10%</td>
-                <td>Mr.Rafee</td>
-                <td>0000000000</td>
-                <td>Male</td>
-                <td>Malaysia</td>
-                <td>16.11.2019</td>
-                <td>16.11.2019</td>
-                <td>MYR&nbsp;100/USD50</td>
-                <td>Bank Transfers</td>
-                <td>Pay&nbsp;Online</td>
-                <td>.....</td>
-                <td>.....</td>          
-              </tr>       
-              <tr>
-                <td>654321</td>
-                <td>Stress&nbsp;Test</td>
-                <td>MYR&nbsp;100/USD50</td>
-                <td>10%</td>
-                <td>Mr.Rafee</td>
-                <td>0000000000</td>
-                <td>Male</td>
-                <td>Malaysia</td>
-                <td>16.11.2019</td>
-                <td>16.11.2019</td>
-                <td>MYR&nbsp;100/USD50</td>
-                <td>Cash</td>
-                <td>Pending</td>
-                <td>.....</td>
-                <td>.....</td>          
-              </tr>  		
-            </tbody>
-          </table> -->
-          <accordion [isAnimated]="true" [closeOthers]="true">
-              <accordion-group>
-                <button class="btn btn-link btn-block clearfix" accordion-heading type="button">
-                  <div class="pull-left float-left">I can have markup!</div>
-                  <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                </button>
-                This is just some content to illustrate fancy headings.
-              </accordion-group>
-              <accordion-group>
-                <button class="btn btn-link" accordion-heading type="button">
-                  I can have markup, too!
-                  <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                </button>
-                <span class="badge badge-secondary center">And some HTML here</span>
-              </accordion-group>
-            </accordion>
+    <div class="col-12 p-0 table-responsive">
+ 
+        <accordion [isAnimated]="true" [closeOthers]="true">
+            <accordion-group  *ngFor="let order of orderList; let i = index" class="card-header22" style="margin-top:5px; margin-bottom: 9px;">
+                <div accordion-heading style="width:100%; font-weight: 600;">ORDER ID : #{{order.OrderID}}</div>
        
-        </div>	  
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Procedure Name</th>
+                  <th>Patient Name</th>
+                  <th>Booking Date</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let orderdetails of order.OrderDetails; let i = index">
+                  <td>{{orderdetails.procedurename}}</td>
+                  <td>-----</td>
+                  <td>{{orderdetails.buydate}}</td>
+                  <td>{{orderdetails.amount}}</td>
+                  <td>-----</td>
+                  <td><button type="button" class="btn btn-primary">Pending</button></td>    
+                </tr>        
+                
+              </tbody>
+            </table>
+          </accordion-group>
+      
+        </accordion>
+      
+        <div class="no-records" *ngIf="orderList.length ==0">
+          <p>Comming Soon</p>
+      </div>
+      </div>
   </div>

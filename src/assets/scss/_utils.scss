@@ -2521,6 +2521,27 @@ select.mat-input-element {
     box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.08), 0 4px 4px 0px rgba(0, 0, 0, 0.37);
 }
 
+.order-list-accor {
+    width:100%;
+    text-align: left;
+}
+.order-list-accor i {
+    float:right;
+}
+
+.accordion-toggle[aria-expanded="true"]:before {
+    content: '\f106';
+    font: normal normal normal 14px/1 FontAwesome;
+    float:right;
+}
+
+.accordion-toggle[aria-expanded="false"]:before {
+    
+    content: "\f107";
+    font: normal normal normal 14px/1 FontAwesome;
+    float:right;
+}
+
 
 /*********************************Anant 10.01.2020****************************************************************/
 

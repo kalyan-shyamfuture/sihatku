@@ -1,32 +1,119 @@
-<!-- Start ServiceForm -->
-<div class="container-fluid">
-
-
-    <!-- Start Services Supported -->
-    <div class="serviceform">
-
-        <div class="row">
-            <div class="col-sm-12 col-xs-12">
-                <h2>Services Supported</h2>
-            </div>
+<div id="menu2" class="col-12"><br>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>My Procedure</h3>
         </div>
 
-        <div class="services-section">
-            <div class="row">
-
-                <!-- <div class="col-sm-12 col-xs-12">
-                    <div class="row" style="display: none;">
-                        <div class="col-sm-12 col-xs-12">
-                            <button class="btn11 mb-4" type="button"><i aria-hidden="true" class="fa fa-plus"></i>
-                                Add More
-                            </button>
-                        </div>
+        <div class="col-md-5">
+            <div class="search-formRow">
+                <form action="" class="search-form">
+                    <div class="form-group has-feedback">
+                        <label for="search" class="sr-only">Search</label>
+                        <input type="text" class="form-control" name="search" id="search" placeholder="search">
+                        <span class="glyphicon glyphicon-search form-control-feedback"><i class="fa fa-search"
+                                aria-hidden="true"></i>
+                        </span>
                     </div>
-                </div> -->
+                </form>
             </div>
-
-
+            <br clear="all">
+        </div>
+        <div class="col-md-3">
+            <div class="addRow">
+                <p>
+                    <a [routerLink]="'/dashboard/my-procedures/add'">
+                        <span><i class="fa fa-plus-square" aria-hidden="true"></i></span>Add a Procedure </a>
+                </p>
+            </div>
         </div>
 
     </div>
+    <div class="serviceform">
+        <form role="form" autocomplete="off" [formGroup]="serviceRegForm">
+        <div class="services-section">
+            <div class="row">
+
+                <div class="col-sm-12 col-xs-12">
+                    
+                    <div formArrayName="serviceDetails">
+                        <div class="table-responsive" *ngFor="let specility of specialityDetails; index as i"
+                            [formGroupName]="i">
+                            <table class="table">
+
+                                <tr>
+                                    <td colspan="4"><b>{{specility.speciality}}</b>
+                                        
+                                    </td>
+                                </tr>
+                             
+                                <tr formArrayName="procedure">
+                                    <table class="table"
+                                        *ngFor="let procedure of specility.ProcedureDetails; index as j"
+                                        [formGroupName]="j">
+                                        <tr>
+                                            <td style="width:50%">
+                                                <mat-checkbox formControlName="isChecked">{{procedure.procedurename}}
+                                                </mat-checkbox>
+                                            </td>
+                                            <td style="width:30%">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="About Procedure"
+                                                        formControlName="aboutProcedure">
+                                                </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Currency</mat-label>
+                    
+                                                    <mat-select   formControlName="currency"  name="currency">
+                                                        <mat-option *ngFor="let currency of currencyList" value="{{currency}}">
+                                                            {{currency}}</mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </td>
+                                            <td style="width:10%">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Set Price"
+                                                        formControlName="setPrice">
+                                                </mat-form-field>
+                                            </td>
+                                            <!-- <td style="width:10%">
+                                                <mat-form-field class="example-full-width">
+                                                    <input matInput placeholder="Set Price MYR"
+                                                        formControlName="locPrice">
+                                                </mat-form-field>
+                                            </td> -->
+                                        </tr>
+                                    </table>
+                                  
+                                    <td>
+  </td>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 d-flex justify-content-center">
+                <div class="justify-content-center">
+                    <button class="btn3" (click)="submitForm()" type="button">Save</button>
+                </div>
+            </div>
+        </div>
+        </form>
+
+
+    </div>
+   
 </div>
+<ngx-spinner bdOpacity=1 bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="">
+        <p style="font-size: 20px; color: white"></p>
+         <img src="assets/img/loader.gif">
+     </ngx-spinner>
