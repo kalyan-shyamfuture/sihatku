@@ -209,7 +209,7 @@ export class MyProceduresComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getProcedureList();
+  //  this.getProcedureList();
     this.serviceRegForm = this.formBuilder.group({
       serviceDetails: this.formBuilder.array([])
     })

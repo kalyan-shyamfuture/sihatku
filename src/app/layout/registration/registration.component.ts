@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router, NavigationEnd } from '@angular/router';
 
 import { FormControlValidator, PasswordValidator } from "../../core/validators";
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -52,13 +52,21 @@ export class RegistrationComponent implements OnInit {
   ];
 
   listState: any = [];
-
+  modalRef: BsModalRef;
+  config = {
+    animated: true,
+    keyboard: false,
+    class: 'modal-sm modal-dialog-centered',
+    ignoreBackdropClick: true
+  };
   constructor(
     private formBuilder: FormBuilder,
     public mainService: MainService,
     public userService: UserService,
     private toastr: ToastrService,
     private router: Router,
+    private modalService: BsModalService,
+  
   ) {
     this.serviceRegForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -172,7 +180,7 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-  submitForm(form: NgForm) {
+  submitForm(form: NgForm,template) {
     // this.submitted = true;
     console.log(this.serviceRegForm.value);
     
@@ -180,9 +188,10 @@ export class RegistrationComponent implements OnInit {
       res => {
         console.log("Res==>",res);
         if(res['status'] ==1) {
-          this.toastr.success(res['response'][0]['msg'], '', {
-            timeOut: 4000,
-          });
+          this.modalRef = this.modalService.show(template, this.config);
+          // this.toastr.success(res['response'][0]['msg'], '', {
+          //   timeOut: 4000,
+          // });
           // this.serviceRegForm.reset();
         //    this.serviceRegForm.markAsPristine();
         //  this.serviceRegForm.markAsUntouched();
@@ -201,6 +210,14 @@ export class RegistrationComponent implements OnInit {
       }
     )
   }
+
+  confirm(): void {
+    this.modalRef.hide();
+    console.log("Click Confirm");
+
+  }
+ 
+
 
 
 }

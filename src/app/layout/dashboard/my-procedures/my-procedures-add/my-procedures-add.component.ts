@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators, FormArray, FormControl, AbstractCon
 import { NgxSpinnerService } from "ngx-spinner";
 import { FormControlValidator, PasswordValidator } from "../../../../core/validators";
 import { log } from 'util';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-procedures-add',
@@ -202,7 +203,8 @@ export class MyProceduresAddComponent implements OnInit {
     private mainService: MainService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router: Router,
   ) { 
     this.userId = localStorage.getItem('userId');
     this.specialtyId = localStorage.getItem('specialityId');
@@ -346,10 +348,12 @@ export class MyProceduresAddComponent implements OnInit {
       this.mainService.addProcedure(this.serviceRegForm.value).subscribe(
         res => {
       //    console.log("Res==>", res);
+
           if (res['status'] == 1) {
             this.toastr.success(res['response'][0]['msg'], '', {
               timeOut: 3000,
             });
+            this.router.navigate(['/dashboard/my-procedures']);
           }
         },
         error => {
@@ -367,6 +371,7 @@ export class MyProceduresAddComponent implements OnInit {
             this.toastr.success(res['response'][0]['msg'], '', {
               timeOut: 3000,
             });
+            this.router.navigate(['/dashboard/my-procedures']);
           }
         },
         error => {

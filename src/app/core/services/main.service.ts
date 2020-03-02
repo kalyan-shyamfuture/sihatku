@@ -174,6 +174,13 @@ export class MainService {
     return this.http.post(environment.apiEndpoint + 'ProviderChangePassword',data);
   }
 
+  // getLocationDetails(data) {
+  //   console.log("kkk==>",data);
+  //  // http://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +"&sensor=false"
+  //   // return this.http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng="+ data.lat + "," + data.long +"&sensor=false"');
+  //   return this.http.get(environment.apiEndpoint + 'Specialitylist');
+  // }
+
 
   
 

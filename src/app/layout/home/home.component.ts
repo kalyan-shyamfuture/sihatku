@@ -195,16 +195,19 @@ export class HomeComponent implements OnInit {
       subject: ['', [Validators.required]],
     });
     this.getAllData();
+    this.getLocation();
   }
 
   getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        console.log(position);
+       // console.log("Location Position===>",position);
         
-        // this.location = position.coords;
-        // this.lat = position.coords.latitude;
-        // this.long = position.coords.longitude;
+        var location = position.coords;
+        console.log("Location==>",location);
+        
+        //  this.lat = position.coords.latitude;
+        //  this.long = position.coords.longitude;
         // this.getAddress();
       },
         // function (error) {
