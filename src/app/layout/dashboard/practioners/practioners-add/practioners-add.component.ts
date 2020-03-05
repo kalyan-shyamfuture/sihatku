@@ -86,7 +86,7 @@ export class PractionersAddComponent implements OnInit {
 
   getYear() {
     var currentYear = new Date().getFullYear();
-    console.log(currentYear);
+    //console.log(currentYear);
     var year = [];
 
     for (var i = 0; i < 60; i++) {
@@ -104,15 +104,15 @@ getProviderSpeiality() {
   }
     this.mainService.getProviderSpecialityList(data).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         
         this.listSpeciality = res['response'];
-        console.log(this.listSpeciality);
+        //console.log(this.listSpeciality);
         
 
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
@@ -123,7 +123,7 @@ getProviderSpeiality() {
         this.listCountry = res['response'];
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
@@ -138,7 +138,7 @@ getProviderSpeiality() {
         res => {
           var imgLink = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
           this.imgCenterURL = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
-         console.log(this.imgCenterURL);
+         //console.log(this.imgCenterURL);
          
           formControl.setValue(this.imgCenterURL);
 
@@ -152,15 +152,15 @@ getProviderSpeiality() {
 
   submitForm() {
     // this.submitted = true;
-    console.log(this.practionerForm.value);
+    //console.log(this.practionerForm.value);
     this.practionerForm.value.userId = this.userId;
     this.practionerForm.value.ID = '';
-    console.log(this.practionerForm.value);
+    //console.log(this.practionerForm.value);
     
     
     this.mainService.addProvider(this.practionerForm.value).subscribe(
       res => {
-        console.log("Res==>",res);
+        //console.log("Res==>",res);
         if(res['status'] ==1) {
           this.router.navigate(['/dashboard/practioners']);
           this.toastr.success(res['response'][0]['msg'], '', {
@@ -174,7 +174,7 @@ getProviderSpeiality() {
         }
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }

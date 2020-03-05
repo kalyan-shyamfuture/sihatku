@@ -31,7 +31,7 @@ export class UserService {
     return this.http.post(environment.apiEndpoint + 'user-registration/',data);
   }
   serviceProRegister(data) {
-    console.log("Data in service page ==>",data);
+    //console.log("Data in service page ==>",data);
     return this.http.post(environment.apiEndpoint + 'CreateProvider/',data);
   }
 
@@ -60,6 +60,14 @@ export class UserService {
 
     updatedProviderProfile(data){
     return this.http.post(environment.apiEndpoint + 'ProviderProfileUpdate/',data);
+  }
+
+  ipDetails() {
+    return this.http.get('https://api.ipify.org/?format=json');
+  }
+
+  getGEOLocation(ip) {
+    return this.http.get("https://api.ipgeolocation.io/ipgeo?apiKey=0f4e06b0721a4a2b82bce38abc80b31a&ip="+ip);
   }
 
   

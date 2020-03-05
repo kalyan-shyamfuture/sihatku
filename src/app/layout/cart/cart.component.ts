@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
       res => {
         this.cartList = res['response'];
         this.cartList.forEach(x => {
-          console.log(x);
+          //console.log(x);
           
         this.total_usa_price += parseFloat(x.usaPrice);
         this.total_loc_price += parseFloat(x.locPrice); 
@@ -43,7 +43,7 @@ export class CartComponent implements OnInit {
   }
 
   removeCart(cart) {
-    console.log(cart);
+    //console.log(cart);
 
     var data = {
       "cartID": cart.cartID,
@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
     }
     this.mainService.userCart(data).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.getCartList();
         this.toastr.success('Cart Added Succesfully!!!', '', {
           timeOut: 3000,
@@ -71,15 +71,15 @@ export class CartComponent implements OnInit {
       cart.dateTimeInBuyNowPage="";
       cart.patientName=localStorage.getItem('userName');
       this.selectedCartList.push(cart);
-      console.log(this.selectedCartList);
+      //console.log(this.selectedCartList);
     }
     else {
       var index = this.selectedCartList.findIndex(y => y.cartID == cart.cartID); 
-      console.log(index);
+      //console.log(index);
       this.selectedCartList.splice(index, 1);
     }
     localStorage.setItem('selectedCartList', JSON.stringify(this.selectedCartList));
-    console.log("Cart 2020==>",this.selectedCartList);
+    //console.log("Cart 2020==>",this.selectedCartList);
   }
 
   gotoCheckout() {

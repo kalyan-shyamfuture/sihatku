@@ -103,7 +103,7 @@ export class RegistrationComponent implements OnInit {
 
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
@@ -114,30 +114,30 @@ export class RegistrationComponent implements OnInit {
         this.listCountry = res['response'];
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
 
   getState(id) {
-    console.log(id);
+    //console.log(id);
     var data = {
       "ID":id
     }
     this.mainService.getStateList(data).subscribe(
       res => {
         this.listState = res['response'];
-        console.log(this.listState);
+        //console.log(this.listState);
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
 
   getYear() {
       var currentYear = new Date().getFullYear();
-      console.log(currentYear);
+      //console.log(currentYear);
       var year = [];
 
       for (var i = 0; i < 60; i++) {
@@ -166,8 +166,8 @@ export class RegistrationComponent implements OnInit {
       this.mainService.uploadImage(formData).subscribe(
         res => {
 
-          console.log("Center Logo Upload==>", res);
-          console.log("Image Url==>", environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name);
+          //console.log("Center Logo Upload==>", res);
+          //console.log("Image Url==>", environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name);
           var imgLink = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
           this.imgCenterURL = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
           formControl.setValue(this.imgCenterURL);
@@ -182,11 +182,11 @@ export class RegistrationComponent implements OnInit {
 
   submitForm(form: NgForm,template) {
     // this.submitted = true;
-    console.log(this.serviceRegForm.value);
+    //console.log(this.serviceRegForm.value);
     
     this.mainService.newRegistration(this.serviceRegForm.value).subscribe(
       res => {
-        console.log("Res==>",res);
+        //console.log("Res==>",res);
         if(res['status'] ==1) {
           this.modalRef = this.modalService.show(template, this.config);
           // this.toastr.success(res['response'][0]['msg'], '', {
@@ -206,14 +206,14 @@ export class RegistrationComponent implements OnInit {
         }
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
 
   confirm(): void {
     this.modalRef.hide();
-    console.log("Click Confirm");
+    //console.log("Click Confirm");
 
   }
  

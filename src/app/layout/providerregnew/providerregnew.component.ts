@@ -91,11 +91,11 @@ export class ProviderregnewComponent implements OnInit {
     this.mainService.getSpecialityList().subscribe(
       res => {
         this.listSpeciality = res['response'];
-        console.log("List Speciality ==>", this.listSpeciality);
+        //console.log("List Speciality ==>", this.listSpeciality);
 
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
@@ -104,18 +104,18 @@ export class ProviderregnewComponent implements OnInit {
     this.mainService.getCountryList().subscribe(
       res => {
         this.listCountry = res['response'];
-        console.log("List Country ==>", this.listCountry);
+        //console.log("List Country ==>", this.listCountry);
 
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
 
   getYear() {
       var currentYear = new Date().getFullYear();
-      console.log(currentYear);
+      //console.log(currentYear);
       var year = [];
 
       for (var i = 0; i < 60; i++) {
@@ -125,7 +125,7 @@ export class ProviderregnewComponent implements OnInit {
         });
       }
      this.yearList =year;
-      console.log(this.yearList);
+      //console.log(this.yearList);
       
       
 
@@ -140,7 +140,7 @@ export class ProviderregnewComponent implements OnInit {
   }
 
   centerLogoUpload(event, formControl: AbstractControl) {
-    console.log(event);
+    //console.log(event);
     if (event.target.files.length) {
       this.centerLogo = event.target.files[0];
       this.fileDataCenterLogo = <File>event.target.files[0];
@@ -149,8 +149,8 @@ export class ProviderregnewComponent implements OnInit {
       this.mainService.uploadImage(formData).subscribe(
         res => {
 
-          console.log("Center Logo Upload==>", res);
-          console.log("Image Url==>", environment.imageEndpoint + res);
+          //console.log("Center Logo Upload==>", res);
+          //console.log("Image Url==>", environment.imageEndpoint + res);
           this.imgCenterURL = environment.imageEndpoint + res;
           formControl.setValue(environment.imageEndpoint + res);
 
@@ -180,7 +180,7 @@ export class ProviderregnewComponent implements OnInit {
   practioneraddItem(): void {
     this.practionerDetails = this.serviceRegForm.get('practionerDetails') as FormArray;
     this.practionerDetails.push(this.practionercreate());
-    console.log(this.serviceRegForm);
+    //console.log(this.serviceRegForm);
   }
 
   servicecreate(): FormGroup {
@@ -213,7 +213,7 @@ export class ProviderregnewComponent implements OnInit {
   createServiceDetail(specialityId): void {
     const formIndex = this.mainForm.length;
     this.mainForm.push(this.servicedetailsModel(specialityId));
-    // console.log(this.mainForm);
+    // //console.log(this.mainForm);
     
   }
 
@@ -229,17 +229,17 @@ export class ProviderregnewComponent implements OnInit {
 
 
   createProcedure(index, procedureId): void {
-    // console.log(index, this.mainForm.at(index));
+    // //console.log(index, this.mainForm.at(index));
     const procedureForm = this.mainForm.at(index).get('procedure') as FormArray;
     // const procedureValue = procedureForm.controls.length + 1;
     procedureForm.push(this.procedureModel(procedureId));
   }
 
   submitForm() {
-    console.log(this.serviceRegForm.value);
+    //console.log(this.serviceRegForm.value);
     this.mainService.providerNewRegistration(this.serviceRegForm.value).subscribe(
       res => {
-        console.log("Res==>",res);
+        //console.log("Res==>",res);
         if(res['status'] ==1) {
           this.toastr.error(res['response'][0]['msg'], '', {
             timeOut: 3000,
@@ -247,22 +247,22 @@ export class ProviderregnewComponent implements OnInit {
         }
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
 
   showNext() {
      this.isShow = false;
-    console.log(this.serviceRegForm.value);
+    //console.log(this.serviceRegForm.value);
     let data = [];
     this.allData = [];
     this.serviceRegForm.value.practionerDetails.map(item => {
       data = data.concat(item.specialities);
     });
     this.allData = [...new Set(data)];
-    console.log(this.allData);
-    console.log(this.allData.toString());
+    //console.log(this.allData);
+    //console.log(this.allData.toString());
     this.getProcedure(this.allData.toString());
     
     // this.specialityDetails.map((spc, key) => {
@@ -332,11 +332,11 @@ export class ProviderregnewComponent implements OnInit {
     }
     this.mainService.getProcedureListbySpecId(data).subscribe(
       res => {
-        console.log("Res==>",res);
+        //console.log("Res==>",res);
         this.specialityDetails = res['response'];
-      //  console.log("List Country ==>", this.listCountry);
+      //  //console.log("List Country ==>", this.listCountry);
       this.specialityDetails.map((spc, key) => {
-        console.log(spc);
+        //console.log(spc);
         this.createServiceDetail(spc.specialityID);
         spc.ProcedureDetails.forEach(value => {
           this.createProcedure(key, value.procedureid);
@@ -345,7 +345,7 @@ export class ProviderregnewComponent implements OnInit {
     
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }

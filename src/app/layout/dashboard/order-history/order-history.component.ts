@@ -34,11 +34,11 @@ export class OrderHistoryComponent implements OnInit {
     this.mainService.getOrderListingbyProvider(this.userId).subscribe(
       res => {
         this.orderList = res['response']['OrderDetails'];
-        console.log("Order List==>",this.orderList);
+        //console.log("Order List==>",this.orderList);
         
       },
       error => {
-        console.log(error.error); 
+        //console.log(error.error); 
       }
   )
   }

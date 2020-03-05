@@ -78,7 +78,7 @@ export class ServiceproviderSigninComponent implements OnInit {
   submitSigninForm() {
 
     if(this.signInForm.valid) {
-      console.log(this.signInForm.value)
+      //console.log(this.signInForm.value)
       this.signInForm.markAllAsTouched();
         var data = {
         "providerEmail":this.signInForm.value.providerEmail,
@@ -86,7 +86,7 @@ export class ServiceproviderSigninComponent implements OnInit {
         }
         this.userService.providerSignIn(data).subscribe(
           res => {
-            console.log("Provider Login Result==>", res);
+            //console.log("Provider Login Result==>", res);
             if(res['response'][0]['Status'] ==1) {
               localStorage.setItem('isLoggedin', 'true');
               localStorage.setItem('userId', res['response'][0]['providerID']);
@@ -110,7 +110,7 @@ export class ServiceproviderSigninComponent implements OnInit {
             }
           },
           error => {
-            console.log(error.error);
+            //console.log(error.error);
             this.toastr.error('Sorry! Please enter valid login creadentials', '', {
               timeOut: 3000,
             });
@@ -128,7 +128,7 @@ export class ServiceproviderSigninComponent implements OnInit {
   }
   forgetPass(){
     if(this.forgotPasswordForm.valid){
-      console.log(this.forgotPasswordForm.value);
+      //console.log(this.forgotPasswordForm.value);
       this.signInForm.markAllAsTouched();
       this.userEmail = this.forgotPasswordForm.value.email;
         var data = {
@@ -137,7 +137,7 @@ export class ServiceproviderSigninComponent implements OnInit {
         }
         this.userService.providerForgotPassword(data).subscribe(
           res => {
-            console.log("Forgot pass Result==>", res);
+            //console.log("Forgot pass Result==>", res);
             if(res['status']==1) {
               if(res['response'][0]['Status']==1) {
                 this.showModal =3;
@@ -145,7 +145,7 @@ export class ServiceproviderSigninComponent implements OnInit {
                 this.toastr.success("Your OTP is : "+this.getOTP, '', {
                   timeOut: 4000,
                 });
-              console.log(this.getOTP);
+              //console.log(this.getOTP);
               }
               else {
                 this.toastr.warning(res['response'][0]['msg'], '', {
@@ -157,7 +157,7 @@ export class ServiceproviderSigninComponent implements OnInit {
             }
           },
           error => {
-            console.log(error.error);
+            //console.log(error.error);
             this.toastr.error('Error!!!', '', {
               timeOut: 3000,
             });
@@ -174,7 +174,7 @@ export class ServiceproviderSigninComponent implements OnInit {
 
   otpMatch() {
     if(this.forgotOTPForm.valid){
-      console.log(this.forgotOTPForm.value);
+      //console.log(this.forgotOTPForm.value);
       this.setOTP = this.forgotOTPForm.value.otp;
       if(this.getOTP == this.setOTP) {
         this.showModal =4;
@@ -194,7 +194,7 @@ export class ServiceproviderSigninComponent implements OnInit {
 
   updatePassword() {
     if(this.changePasswordForm.valid){
-      console.log(this.changePasswordForm.value);
+      //console.log(this.changePasswordForm.value);
       var data = {
         "emailid":this.userEmail,
         "Flag":"2",
@@ -203,7 +203,7 @@ export class ServiceproviderSigninComponent implements OnInit {
       }
         this.userService.providerForgotPassword(data).subscribe(
       res => {
-        console.log("Forgot pass Result==>", res);
+        //console.log("Forgot pass Result==>", res);
         if(res['status']==1) {
          
           this.showModal =3;
@@ -211,12 +211,12 @@ export class ServiceproviderSigninComponent implements OnInit {
           this.toastr.success(res['response'][0]['msg'], '', {
             timeOut: 4000,
           });
-        console.log(this.getOTP);
+        //console.log(this.getOTP);
         this.dialogRef.close(true);
         }
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
         this.toastr.error('Error!!!', '', {
           timeOut: 3000,
         });
@@ -235,16 +235,16 @@ export class ServiceproviderSigninComponent implements OnInit {
   //   }
   //   this.userService.providerForgotPassword(data).subscribe(
   //     res => {
-  //       console.log("Forgot pass Result==>", res);
+  //       //console.log("Forgot pass Result==>", res);
   //       if(res['status']==1) {
   //         this.showModal =3;
   //         this.getOTP = res['response'][0]['OTP'];
-  //       console.log(this.getOTP);
+  //       //console.log(this.getOTP);
         
   //       }
   //     },
   //     error => {
-  //       console.log(error.error);
+  //       //console.log(error.error);
   //       this.toastr.error('Error!!!', '', {
   //         timeOut: 3000,
   //       });

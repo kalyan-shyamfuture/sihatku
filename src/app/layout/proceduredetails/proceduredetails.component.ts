@@ -18,7 +18,7 @@ export class ProceduredetailsComponent implements OnInit {
     public mainService: MainService,
   ) {
     this.route.params.subscribe(routeParams => {
-      console.log(routeParams);
+      //console.log(routeParams);
       this.providerId = routeParams.sid;
       this.procedureId = routeParams.pid;
       this.getProcedureDetails(this.providerId, this.procedureId)
@@ -36,7 +36,7 @@ export class ProceduredetailsComponent implements OnInit {
     }
     this.mainService.providerDetails(data).subscribe(
       res => {
-        console.log("ProcedureDetails==>", res);
+        //console.log("ProcedureDetails==>", res);
       })
   }
 

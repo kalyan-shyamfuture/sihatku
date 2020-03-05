@@ -69,10 +69,10 @@ export class PractionersComponent implements OnInit {
     this.mainService.getPractionerList(this.userId).subscribe(
         res => {
           this.practionerList = res['response'];
-          console.log("Practioner List==>",this.practionerList);
+          //console.log("Practioner List==>",this.practionerList);
         },
         error => {
-          console.log(error.error); 
+          //console.log(error.error); 
         }
     )
   }
@@ -82,7 +82,7 @@ export class PractionersComponent implements OnInit {
   }
 
   setDefaultPic() {
-   console.log('Image Not Found');
+   //console.log('Image Not Found');
   }
 
 
@@ -97,11 +97,11 @@ export class PractionersComponent implements OnInit {
     //   "ServiceID":practionerId
     // }
 
-    //console.log(data);
+    ////console.log(data);
     
     this.mainService.deletePractioner(practionerId,this.userId).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.toastr.success(res['response'][0]['msg'], '', {
           timeOut: 3000,
         });
@@ -109,7 +109,7 @@ export class PractionersComponent implements OnInit {
         this.getPractionerList();
       },
       error => {
-        console.log(error.error); 
+        //console.log(error.error); 
         this.modalRef.hide();
         this.toastr.success('Sorry unable to delete procedure', '', {
           timeOut: 3000,

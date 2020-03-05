@@ -40,7 +40,7 @@ export class ChangepasswordComponent implements OnInit {
   }
 
   passwordUpdate() {
-    console.log("Form Submit==>",this.chnagePasswordForm.value);
+    //console.log("Form Submit==>",this.chnagePasswordForm.value);
   }
 
 }

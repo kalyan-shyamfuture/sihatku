@@ -28,7 +28,7 @@ export class PractionersDetailsComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     this.route.params.subscribe(routeParams => {
-      console.log(routeParams);
+      //console.log(routeParams);
       this.pracId = routeParams.id;
       this.getPractionerDetails(this.pracId)
     });
@@ -40,12 +40,12 @@ export class PractionersDetailsComponent implements OnInit {
       res => {
         this.practionerDetails = res['response']['PractionerDetails'][0];
         this.practionerSpeciality =this.practionerDetails['Speciality']
-        console.log("Practioner Details==>",this.practionerDetails);
-        console.log(this.practionerSpeciality);
+        //console.log("Practioner Details==>",this.practionerDetails);
+        //console.log(this.practionerSpeciality);
         
       },
       error => {
-        console.log(error.error); 
+        //console.log(error.error); 
       }
   )
   }
@@ -61,11 +61,11 @@ export class PractionersDetailsComponent implements OnInit {
     //   "ServiceID":practionerId
     // }
 
-   // console.log(data);
+   // //console.log(data);
     
     this.mainService.deletePractioner(practionerId,this.userId).subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.toastr.success(res['response'][0]['msg'], '', {
           timeOut: 3000,
         });
@@ -74,7 +74,7 @@ export class PractionersDetailsComponent implements OnInit {
       this.router.navigateByUrl('/dashboard/practioners');
       },
       error => {
-        console.log(error.error); 
+        //console.log(error.error); 
         this.modalRef.hide();
         this.toastr.success('Sorry unable to delete procedure', '', {
           timeOut: 3000,

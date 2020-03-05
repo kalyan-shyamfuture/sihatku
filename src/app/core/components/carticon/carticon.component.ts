@@ -26,7 +26,7 @@ export class CarticonComponent implements OnInit {
       res => {
        // this.cartList = res['response'];
         this.cartCount = res['response'].length;
-        console.log(this.cartCount);
+        ////console.log(this.cartCount);
         
 
       }

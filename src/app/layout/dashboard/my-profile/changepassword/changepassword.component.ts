@@ -42,20 +42,20 @@ export class ChangepasswordComponent implements OnInit {
   }
 
   passwordUpdate() {
-    console.log("Form Submit==>",this.chnagePasswordForm.value);
+    //console.log("Form Submit==>",this.chnagePasswordForm.value);
     var data = {
       "ProviderID":this.userId,
       "providerPassword":this.chnagePasswordForm.value.password
     }
     this.mainService.updateProviderPassword(data).subscribe(
       res => {
-        console.log("Password Update ====>", res);
+        //console.log("Password Update ====>", res);
         this.toastr.success(res['response'][0]['msg'], '', {
           timeOut: 3000,
         });
       },
       error => {
-        console.log(error.error);
+        //console.log(error.error);
       }
     )
   }
