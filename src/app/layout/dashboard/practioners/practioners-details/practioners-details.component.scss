@@ -42,6 +42,8 @@
 .tabs .nav-tabs {
     background-color: #FDBE12;
     border-bottom: none;
+    padding: 8px 16px;
+    font-weight: 600;
 }
 
 .tabs .tab-content {
@@ -69,6 +71,7 @@
 
 .vd_bg-yellow {
     background-color: #f89c2c !important;
+    margin-right: 15px;
 }
 
 .append-icon {
@@ -79,4 +82,8 @@
 .name-prac {
     background-color: #f89c2c;
     color:#fff;
+}
+
+.prac_detail{
+    padding: 0px 17px;
 }

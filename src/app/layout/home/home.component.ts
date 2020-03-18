@@ -195,16 +195,16 @@ export class HomeComponent implements OnInit {
       subject: ['', [Validators.required]],
     });
     this.getAllData();
-    //this.getLocation();
+   // this.getLocation();
   }
 
   // getLocation() {
   //   if (navigator.geolocation) {
   //     navigator.geolocation.getCurrentPosition(position => {
-  //      // //console.log("Location Position===>",position);
+  //      // console.log("Location Position===>",position);
         
   //       var location = position.coords;
-  //       //console.log("Location==>",location);
+  //       console.log("Location==>",location);
         
   //       //  this.lat = position.coords.latitude;
   //       //  this.long = position.coords.longitude;
@@ -213,7 +213,7 @@ export class HomeComponent implements OnInit {
   //       // function (error) {
   //       error => {
   //         if (error.code == error.PERMISSION_DENIED)
-  //           //console.log("you denied me :-(");
+  //           console.log("you denied me :-(");
   //       //    // alert(this.defaultLocationId);
   //       //    this.locationId = this.defaultLocationId;
   //       // //  localStorage.setItem('myCurrentLocationId', this.defaultLocationId);
@@ -239,7 +239,7 @@ export class HomeComponent implements OnInit {
     forkArray.push(this.mainService.getFeatureProvider())
     forkJoin(forkArray).subscribe(
       (result: any[]) => {
-        //console.log("All result ==>",result);
+       // console.log("All result ==>",result);
         for (var i = 0; i < result.length; i++) {
           if (i == 0) {   
             this.bannerList = result[i]['response'];
@@ -293,7 +293,7 @@ export class HomeComponent implements OnInit {
        "emailid":this.requestForm.value.email,
        "Message":this.requestForm.value.subject
      }
-     //console.log(data);
+    // console.log(data);
      
       this.mainService.requestFeedBack(data).subscribe(
         res => {
@@ -311,7 +311,7 @@ export class HomeComponent implements OnInit {
           this.submitted =false;
         },
         error => {
-          //console.log(error.error);
+       //   console.log(error.error);
           this.submitted =false;
           this.toastr.error('Error!!!', '', {
             timeOut: 3000,

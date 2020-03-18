@@ -1,6 +1,6 @@
 <div id="menu2" class="col-12"><br>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 practioner-new">
             <h3>My Procedure</h3>
         </div>
 
@@ -46,10 +46,13 @@
                        <tbody >
                         <tr class="trboder" *ngFor="let procedurelist of proc.procedure; let i = index">
                            
-                             <td>{{procedurelist.procedureName}}</td>
-                             <td>{{procedurelist.aboutProcedure}}</td>
-                             <td>{{procedurelist.currency}}</td>
-                             <td>{{procedurelist.setPrice}}</td>
+                             <td style="width:30%;">{{procedurelist.procedureName}}</td>
+                             <td style="width:40%;">
+                                    <div style="word-wrap: break-word;">
+                                 {{procedurelist.aboutProcedure}} </div>
+                                </td>
+                             <td style="width:15%;">{{procedurelist.currency}}</td>
+                             <td style="width:15%;">{{procedurelist.setPrice}}</td>
                           </tr>
                        </tbody>
                     </table>

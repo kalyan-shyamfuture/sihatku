@@ -37,9 +37,9 @@ export class CliniclistComponent implements OnInit {
     }
     this.mainService.getProviderList(data).subscribe(
       res => {
-        //console.log(res);
+        console.log(res);
         this.clinicList = res['response'];
-        //console.log(this.clinicList);
+        console.log(this.clinicList);
 
       }
     )
@@ -57,10 +57,10 @@ export class CliniclistComponent implements OnInit {
       }
       this.mainService.userCart(data).subscribe(
         res => {
-          //console.log(res);
+          console.log(res);
           this.getCartList();
           // this.clinicList = res['response'];
-          ////console.log(this.clinicList);
+          //console.log(this.clinicList);
           this.toastr.success('Cart Added Succesfully!!!', '', {
             timeOut: 3000,
           });
@@ -91,7 +91,7 @@ export class CliniclistComponent implements OnInit {
       res => {
        // this.cartList = res['response'];
         this.cartCount = res['response'].length;
-        //console.log(this.cartCount);
+        console.log(this.cartCount);
         
 
       }

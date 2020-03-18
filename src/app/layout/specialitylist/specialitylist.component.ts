@@ -20,7 +20,7 @@ export class SpecialitylistComponent implements OnInit {
   getSpecialityList() {
     this.mainService.getSpecialityList().subscribe(
       res => {
-        //console.log("Speciality List==>", res);
+        console.log("Speciality List==>", res);
         this.specialitylist = res['response'];
       })
   }

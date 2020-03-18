@@ -39,7 +39,7 @@ export class DeactivateComponent implements OnInit {
   }
 
   deactivateAccount() {
-    //console.log("Form Submit==>",this.deactivateForm.value);
+    console.log("Form Submit==>",this.deactivateForm.value);
   }
 
 }

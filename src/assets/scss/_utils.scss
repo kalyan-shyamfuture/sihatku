@@ -1024,6 +1024,7 @@ textarea {
 footer.page-footer a {
     color: #a7a4a4;
     font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
 }
 
 footer.page-footer a:hover {
@@ -1748,8 +1749,7 @@ a h2.navtext {
 .search-form .form-group {
     float: right !important;
     transition: all 0.35s, border-radius 0s;
-    width: 32px;
-    height: 32px;
+    width: 40px;
     background-color: #fff;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
     border-radius: 25px;
@@ -1785,22 +1785,24 @@ a h2.navtext {
 .search-form .form-group:hover,
 .search-form .form-group.hover {
     width: 100%;
-    border-radius: 4px 25px 25px 4px;
+    border-radius:0px;
 }
 
 .search-form .form-group span.form-control-feedback {
     position: absolute;
-    top: 10px;
-    right: 13px;
+    top: 15px;
+    right: 20px;
     z-index: 2;
     display: block;
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     line-height: 34px;
     text-align: center;
     color: #fdbe12;
     left: initial;
-    font-size: 14px;
+    font-size: 20px;
+    background: #fff;
+    border-radius: 50%;
 }
 
 .search-formRow {
@@ -2603,4 +2605,37 @@ select.mat-input-element {
 .body_container{
     min-height: 575px;
     }
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
+        background: rgba(212, 204, 108, 0.12);
+        color: #d89f00;
+    }
+.ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+        background-color: #efb30f;
+    }
+
+.mat-checkbox-layout {
+      white-space: normal !important;
+    }
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element, .mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element {
+        background: #fdbb07 !important;
+    }
+.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color:  #fdbb07 !important;
+    }
+
+    .default-image {
+        float: left;
+        width: 99px;
+        margin: 7px 0px 0px 21px;
+        height: 99px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       }
+    
+    .default-image img {
+        width: 100%;
+        height: 100%;
+    }
+    
 

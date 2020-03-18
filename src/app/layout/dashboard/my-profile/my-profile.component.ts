@@ -79,12 +79,12 @@ export class MyProfileComponent implements OnInit {
   getCountry() {
     this.mainService.getCountryList().subscribe(
       res => {
-        //console.log("Country List==>", res);
+        console.log("Country List==>", res);
         this.listCountry = res['response']
-        // //console.log("List Country ==>",this.listCountry);
+        // console.log("List Country ==>",this.listCountry);
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
 
       }
     )
@@ -98,16 +98,16 @@ export class MyProfileComponent implements OnInit {
     this.spinner.show();
     this.userService.getProviderProfile(id).subscribe(
       res => {
-        //console.log(res['response']);
+        console.log(res['response']);
 
         this.profileDetails = res['response']['ProviderDetails'][0];
 
         var updateSpecilityId = Array.prototype.map.call(this.profileDetails['Speciality'], function(item) { return item.specialityID; }).join(",");
         localStorage.setItem('specialityId', updateSpecilityId);
-        //console.log("zzzz==>",updateSpecilityId);
-        //console.log("Provider profile Details==>", this.profileDetails);
+        console.log("zzzz==>",updateSpecilityId);
+        console.log("Provider profile Details==>", this.profileDetails);
         this.imgCenterURL = this.profileDetails.centerLogoFile;
-        //console.log("Center Logo ==>", this.imgCenterURL);
+        console.log("Center Logo ==>", this.imgCenterURL);
         this.getState(this.profileDetails.country)
         this.profileViewForm.patchValue({
 
@@ -130,7 +130,7 @@ export class MyProfileComponent implements OnInit {
 
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
         this.spinner.hide();
 
       }
@@ -139,16 +139,16 @@ export class MyProfileComponent implements OnInit {
 
 
   profileUpdate() {
-    //console.log(this.profileViewForm.value);
+    console.log(this.profileViewForm.value);
     this.profileViewForm.value.Id = this.userId;
     if (this.profileViewForm.valid) {
 
       this.userService.updatedProviderProfile(this.profileViewForm.value).subscribe(
         response => {
-          //console.log(response);
-          //console.log(response['message']);
+          console.log(response);
+          console.log(response['message']);
           if (response['status'] == 1) {
-            //console.log(response['message']);
+            console.log(response['message']);
             this.getProfile(this.userId);
             this.isReadonly = true;
             this.profileUpdateButton = true;
@@ -163,7 +163,7 @@ export class MyProfileComponent implements OnInit {
 
   }
   centerLogoUpload(event, formControl: FormControl) {
-    //console.log(event);
+    console.log(event);
     if (event.target.files.length) {
       this.centerLogo = event.target.files[0];
       this.fileDataCenterLogo = <File>event.target.files[0];
@@ -172,10 +172,14 @@ export class MyProfileComponent implements OnInit {
       this.mainService.uploadImage(formData).subscribe(
         res => {
 
-          //console.log("Center Logo Upload==>", res);
-          //console.log("Image Url==>", environment.imageEndpoint + res);
-          this.imgCenterURL = environment.imageEndpoint + res;
-          formControl.setValue(environment.imageEndpoint + res);
+          console.log("Center Logo Upload==>", res);
+          console.log("Image Url==>", environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name);
+          var imgLink = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
+          this.imgCenterURL = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
+         console.log(this.imgCenterURL);
+         
+         
+          formControl.setValue(this.imgCenterURL);
 
         },
         error => {
@@ -192,23 +196,23 @@ export class MyProfileComponent implements OnInit {
 
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }
 
   getState(id) {
-    //console.log(id);
+    console.log(id);
     var data = {
       "ID":id
     }
     this.mainService.getStateList(data).subscribe(
       res => {
         this.listState = res['response'];
-        //console.log(this.listState);
+        console.log(this.listState);
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }

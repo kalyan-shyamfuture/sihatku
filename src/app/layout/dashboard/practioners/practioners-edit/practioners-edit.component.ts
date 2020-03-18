@@ -76,7 +76,7 @@ export class PractionersEditComponent implements OnInit {
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     this.route.params.subscribe(routeParams => {
-      //console.log(routeParams);
+      console.log(routeParams);
       this.pracId = routeParams.id;
       this.getPractionerDetails(this.pracId)
     });
@@ -95,7 +95,7 @@ export class PractionersEditComponent implements OnInit {
 
   getYear() {
     var currentYear = new Date().getFullYear();
-    //console.log(currentYear);
+    console.log(currentYear);
     var year = [];
 
     for (var i = 0; i < 60; i++) {
@@ -113,15 +113,15 @@ getProviderSpeiality() {
   }
     this.mainService.getProviderSpecialityList(data).subscribe(
       res => {
-        //console.log(res);
+        console.log(res);
         
         this.listSpeciality = res['response'];
-        //console.log(this.listSpeciality);
+        console.log(this.listSpeciality);
         
 
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }
@@ -132,7 +132,7 @@ getProviderSpeiality() {
         this.listCountry = res['response'];
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }
@@ -147,7 +147,7 @@ getProviderSpeiality() {
         res => {
           var imgLink = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
           this.imgCenterURL = environment.imageEndpoint+'/content/ProcedurelistImage/' + res['response'][0].Name;
-         //console.log(this.imgCenterURL);
+         console.log(this.imgCenterURL);
          
           formControl.setValue(this.imgCenterURL);
 
@@ -163,9 +163,9 @@ getProviderSpeiality() {
   //   this.userService.getProviderProfile(id).subscribe(
   //     res => {
   //      this.profileDetails = res['response'][0];
-  //       //console.log("Provider profile Details==>",this.profileDetails);
+  //       console.log("Provider profile Details==>",this.profileDetails);
   //       this.imgCenterURL = this.profileDetails.Logo;
-  //       //console.log("Center Logo ==>",this.imgCenterURL);
+  //       console.log("Center Logo ==>",this.imgCenterURL);
   //       this.profileViewForm.patchValue({
   //         email: this.profileDetails.Email,
   //         mobile: this.profileDetails.PhoneNo,
@@ -182,7 +182,7 @@ getProviderSpeiality() {
         
   //     },
   //     error => {
-  //       //console.log(error.error);
+  //       console.log(error.error);
        
   //     }
   //   )
@@ -192,7 +192,7 @@ getProviderSpeiality() {
     this.mainService.getPractionerDetails(id).subscribe(
       res => {
         this.practionerDetails = res['response']['PractionerDetails'][0];
-        //console.log("Practioner Details==>",this.practionerDetails);
+        console.log("Practioner Details==>",this.practionerDetails);
      //   this.practionerForm = this.formBuilder.group({
       this.practionerForm.patchValue({
           title: this.practionerDetails.title,
@@ -209,7 +209,7 @@ getProviderSpeiality() {
         });
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
        
       }
     )
@@ -217,15 +217,15 @@ getProviderSpeiality() {
 
   submitForm() {
     // this.submitted = true;
-    //console.log(this.practionerForm.value);
+    console.log(this.practionerForm.value);
     this.practionerForm.value.userId = this.userId;
     this.practionerForm.value.ID = this.pracId;
-    //console.log("Update Pracxtioner==>",this.practionerForm.value);
+    console.log("Update Pracxtioner==>",this.practionerForm.value);
     
     
     this.mainService.updatePractioner(this.practionerForm.value).subscribe(
       res => {
-        //console.log("Res==>",res);
+        console.log("Res==>",res);
         if(res['status'] ==1) {
           this.router.navigate(['/dashboard/practioners']);
           this.toastr.success(res['response'][0]['msg'], '', {
@@ -239,7 +239,7 @@ getProviderSpeiality() {
         }
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }

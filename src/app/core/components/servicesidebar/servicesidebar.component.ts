@@ -33,12 +33,12 @@ export class ServicesidebarComponent implements OnInit {
     this.userService.getProviderProfile(id).subscribe(
       res => {
         this.profileDetails = res['response']['ProviderDetails'][0];
-        //console.log("Provider profile DetailsIn side bar==>", this.profileDetails);
+        console.log("Provider profile DetailsIn side bar==>", this.profileDetails);
         this.imgCenterURL = this.profileDetails.centerLogoFile;
-        //console.log("Center Logo ==>", this.imgCenterURL);
+        console.log("Center Logo ==>", this.imgCenterURL);
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
 
       }
     )

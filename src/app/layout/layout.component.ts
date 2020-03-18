@@ -24,34 +24,34 @@ export class LayoutComponent implements OnInit {
     // else {
     //   this.router.navigateByUrl('/home/');
     // }
-   // this.getIpDetails();
+    this.getIpDetails();
     
   }
-  // getIpDetails() {
-  //   this.userService.ipDetails().subscribe(
-  //     res => {
-  //       //console.log("IP DETAILS==>",res);
-  //       this.ipaddress = res['ip'];
-  //       this.userService.getGEOLocation('27.146.0.0').subscribe(
-  //         res => {
-  //           //console.log("Geo Location DETAILS==>",res);
-  //         this.getCurrency = res['currency']['code'];
-  //         localStorage.setItem('getCurrency', this.getCurrency);
-  //         //console.log(this.getCurrency);
+  getIpDetails() {
+    this.userService.ipDetails().subscribe(
+      res => {
+        console.log("IP DETAILS==>",res);
+        this.ipaddress = res['ip'];
+        this.userService.getGEOLocation(this.ipaddress).subscribe(
+          res => {
+            console.log("Geo Location DETAILS==>",res);
+          this.getCurrency = res['currency']['code'];
+          localStorage.setItem('getCurrency', this.getCurrency);
+          console.log(this.getCurrency);
           
-  //         },
-  //         error => {
-  //           //console.log(error.error);
-  //         }
-  //       )
+          },
+          error => {
+            console.log(error.error);
+          }
+        )
         
-  //     },
-  //     error => {
-  //       //console.log(error.error);
-  //     }
-  //   )
+      },
+      error => {
+        console.log(error.error);
+      }
+    )
 
-  // }
+  }
 
 
 

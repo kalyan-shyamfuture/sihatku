@@ -109,13 +109,13 @@ export class SproviderregComponent implements OnInit {
   getSpeiality() {
     this.mainService.getSpecialityList().subscribe(
       res => {
-      //  //console.log("Speciality List==>",res);
+      //  console.log("Speciality List==>",res);
         this.listSpeciality = res['response'];
         this.getCountry();
-       // //console.log("List Speciality ==>",this.listSpeciality);
+       // console.log("List Speciality ==>",this.listSpeciality);
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
         this.getCountry();
        
       }
@@ -124,15 +124,15 @@ export class SproviderregComponent implements OnInit {
   }
 
   getProcedure(event) {
-    //console.log(event.value);
+    console.log(event.value);
     this.mainService.getProcedurebySpeciality(event.value).subscribe(
       res => {
-        //console.log("Speciality List==>",res);
+        console.log("Speciality List==>",res);
         this.listProcedure = res['response']
-        //console.log("List Procedure ==>",this.listProcedure);
+        console.log("List Procedure ==>",this.listProcedure);
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
        
       }
     )
@@ -141,12 +141,12 @@ export class SproviderregComponent implements OnInit {
   getCountry() {
     this.mainService.getCountryList().subscribe(
       res => {
-       // //console.log("Country List==>",res);
+       // console.log("Country List==>",res);
         this.listCountry = res['response']
-       // //console.log("List Country ==>",this.listCountry);
+       // console.log("List Country ==>",this.listCountry);
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
        
       }
     )
@@ -171,7 +171,7 @@ export class SproviderregComponent implements OnInit {
   serviceaddItem(): void {
     this.services_details = this.serviceRegForm.get('services_details') as FormArray;
     this.services_details.push(this.servicecreate());
-    //console.log(this.serviceRegForm);
+    console.log(this.serviceRegForm);
   }
 
 
@@ -202,11 +202,11 @@ export class SproviderregComponent implements OnInit {
     });
   }
   practioneraddItem(index): void {
-    //console.log(index); 
+    console.log(index); 
     this.services_details = this.serviceRegForm.get('services_details') as FormArray;
     const practitionerForm = this.services_details.at(index).get('practioner_details') as FormArray;
     practitionerForm.push(this.practionercreate());
-    //console.log(this.serviceRegForm);
+    console.log(this.serviceRegForm);
   }
 
 
@@ -223,14 +223,14 @@ export class SproviderregComponent implements OnInit {
     this.submitted = true;
     // stop here if form is invalid
     if (this.serviceRegForm.invalid) {
-      //console.log("Form Invalid");
+      console.log("Form Invalid");
       return;
     }
 
     else {
-      //console.log("Form is valid");
-      //console.log(this.serviceRegForm.value);
-      //console.log(JSON.stringify(this.serviceRegForm.value))
+      console.log("Form is valid");
+      console.log(this.serviceRegForm.value);
+      console.log(JSON.stringify(this.serviceRegForm.value))
 
     }
   }
@@ -243,23 +243,23 @@ export class SproviderregComponent implements OnInit {
     // centerLogoUpload(event) {
     //     if (event.target.files.length) {
     //       this.centerLogo = event.target.files[0];
-    //     //  //console.log(this.centerLogo);
+    //     //  console.log(this.centerLogo);
     //     }
 
     //     if (event.target.files.length) {
     //       this.centerLogo = event.target.files[0];
-    //       //console.log(this.centerLogo);
+    //       console.log(this.centerLogo);
     //       var reader = new FileReader();
     //       reader.readAsDataURL(event.target.files[0]); 
     //       reader.onload = (_event) => { 
     //         this.imgCenterURL = reader.result; 
-    //         //console.log(this.imgCenterURL);
+    //         console.log(this.imgCenterURL);
     //       }
     //     }
     // }
 
     centerLogoUpload(event,formControl: AbstractControl) {
-      //console.log(event);
+      console.log(event);
       if (event.target.files.length) {
         this.centerLogo = event.target.files[0];
       this.fileDataCenterLogo = <File>event.target.files[0];
@@ -268,8 +268,8 @@ export class SproviderregComponent implements OnInit {
       this.mainService.uploadImage(formData).subscribe(
         res => {
 
-          //console.log("Center Logo Upload==>",res);
-          //console.log("Image Url==>",environment.imageEndpoint+res);
+          console.log("Center Logo Upload==>",res);
+          console.log("Image Url==>",environment.imageEndpoint+res);
           this.imgCenterURL = environment.imageEndpoint+res;
           formControl.setValue(environment.imageEndpoint+res);
           
@@ -282,7 +282,7 @@ export class SproviderregComponent implements OnInit {
   }
 
   practionarImageUpload(event,formControl: FormControl) {
-    //console.log(formControl);
+    console.log(formControl);
     if (event.target.files.length) {
       this.practionerImage = event.target.files[0];
     this.fileDataProfile = <File>event.target.files[0];
@@ -290,7 +290,7 @@ export class SproviderregComponent implements OnInit {
     formData.append('ImageUpload', this.practionerImage, this.practionerImage.name);
     this.mainService.uploadImage(formData).subscribe(
       res => {
-        //console.log("Practioner Image Upload==>",res);
+        console.log("Practioner Image Upload==>",res);
         formControl.setValue(environment.imageEndpoint+res);
       },
       error => {
@@ -310,7 +310,7 @@ export class SproviderregComponent implements OnInit {
           this.proImage.push(event.target.files[i]);
           formData.append('[]', event.target.files[i], event.target.files[i].name);
         }
-      //console.log(this.proImage);
+      console.log(this.proImage);
        this.procedureImage =this.proImage;
      this.fileDataProfile = <FileList>this.proImage;
        // this.procedureImage = event.target.files[0];
@@ -318,18 +318,18 @@ export class SproviderregComponent implements OnInit {
       
       this.mainService.uploadImage(formData).subscribe(
         res => {
-          //console.log("procedureImage Upload==>",res);
-          //console.log(typeof(res));
+          console.log("procedureImage Upload==>",res);
+          console.log(typeof(res));
           var proImg = String(res);
           if(res) {
- ////console.log(res.split(","));
+ //console.log(res.split(","));
           var imgList = proImg.split(",");
           var newImgList = imgList.map(image => {
             image = environment.imageEndpoint+image;
-            //console.log(image);
+            console.log(image);
             return image;
           });
-          //console.log(newImgList);
+          console.log(newImgList);
           formControl.setValue(newImgList);
           }
          
@@ -347,22 +347,22 @@ export class SproviderregComponent implements OnInit {
     // practionarImageUpload(event) {
     //   if (event.target.files.length) {
     //     this.practionarLogo = event.target.files[0];
-    //     //console.log(this.centerLogo);
+    //     console.log(this.centerLogo);
     //     var reader = new FileReader();
     //     reader.readAsDataURL(event.target.files[0]); 
     //     reader.onload = (_event) => { 
     //       this.imgPractURL = reader.result; 
-    //       //console.log(this.imgPractURL);
+    //       console.log(this.imgPractURL);
     //     }
     //   }
     // }
 
     submitForm() {
-      //console.log(this.serviceRegForm.value);
+      console.log(this.serviceRegForm.value);
       if(this.serviceRegForm.valid) {
           this.userService.serviceProRegister(this.serviceRegForm.value).subscribe(
            res => {
-             //console.log(res);
+             console.log(res);
              if(res['status'] ==1) {
             //  this.dialogRef.close(true);
             this.router.navigate(['/dashboard']);
@@ -376,18 +376,18 @@ export class SproviderregComponent implements OnInit {
                 timeOut: 3000,
               });
              }
-            //  //console.log("Country List==>",res);
+            //  console.log("Country List==>",res);
             //  this.listCountry = res['response']
-            // // //console.log("List Country ==>",this.listCountry);
+            // // console.log("List Country ==>",this.listCountry);
            },
            error => {
-             //console.log(error.error);
+             console.log(error.error);
             
            }
          )
       }
       else {
-        //console.log(this.serviceRegForm.value)
+        console.log(this.serviceRegForm.value)
         this.serviceRegForm.markAllAsTouched();
       }
       

@@ -67,7 +67,7 @@ export class HeaderProviderComponent implements OnInit {
   }
 
   openSigninModal() {
-    ////console.log('hi');
+    console.log('hi');
     
     let dialogRef = this.dialog.open(ServiceproviderSigninComponent, {
       width: '626px',

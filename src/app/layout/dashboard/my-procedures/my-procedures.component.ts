@@ -206,7 +206,7 @@ export class MyProceduresComponent implements OnInit {
   ) {
     this.userId = localStorage.getItem('userId');
     this.specialtyId = localStorage.getItem('specialityId');
-    ////console.log("kkkkkkkkkkkkkk==>", this.specialtyId);
+    //console.log("kkkkkkkkkkkkkk==>", this.specialtyId);
   }
 
   ngOnInit() {
@@ -215,20 +215,20 @@ export class MyProceduresComponent implements OnInit {
       serviceDetails: this.formBuilder.array([])
     })
     this.currencyList = Object.keys(this.currency);
-    // //console.log(this.currencyList);
+    // console.log(this.currencyList);
     this.myAllProcedureList();
 
     this.isMYR = Object.values(this.currency).indexOf(localStorage.getItem('getCurrency'))
-    //console.log("Is MYR==>",this.isMYR);
+    console.log("Is MYR==>",this.isMYR);
   }
 
   myAllProcedureList() {
 
     this.mainService.getmyProcList(this.userId).subscribe(
       res => {
-       // //console.log("My Procedure List==>", res);
+       // console.log("My Procedure List==>", res);
         this.listMyProcedure = res['response']['serviceDetails'];
-        //console.log("List My Procedure==>",this.listMyProcedure);
+        console.log("List My Procedure==>",this.listMyProcedure);
        // alert(this.listMyProcedure.length);
         //this.listMyProcedure = res['response']['serviceDetails'];
         // Loop
@@ -236,7 +236,7 @@ export class MyProceduresComponent implements OnInit {
         
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }
@@ -245,7 +245,7 @@ export class MyProceduresComponent implements OnInit {
 
     this.mainService.getmyProcList(this.userId).subscribe(
       res => {
-       // //console.log("My Procedure List==>", res);
+       // console.log("My Procedure List==>", res);
         this.listMyProcedure = res['response'];
        // alert(this.listMyProcedure.length);
         //this.listMyProcedure = res['response']['serviceDetails'];
@@ -256,24 +256,24 @@ export class MyProceduresComponent implements OnInit {
         }
         else {
           const serviceRegForm = this.serviceRegForm.controls.serviceDetails as FormArray;
-        ////console.log(serviceRegForm.controls);
+        //console.log(serviceRegForm.controls);
         this.listMyProcedure['serviceDetails'].map((procItem, key) => {
-       //   //console.log('map', procItem);
+       //   console.log('map', procItem);
           
         });
         serviceRegForm.controls.map(spcControl => {
-          // //console.log('outside if', spcControl);
+          // console.log('outside if', spcControl);
           this.listMyProcedure['serviceDetails'].map((procItem, key) => {
-           // //console.log('outside if', spcControl, procItem);
+           // console.log('outside if', spcControl, procItem);
             if (spcControl.value.speciality === procItem.speciality) {
-            //  //console.log('within if', spcControl);
+            //  console.log('within if', spcControl);
               const procs = spcControl.get('procedure') as FormArray;
               
               procs.controls.map((proc, key) => {
                 procItem.procedure.map(singleProc => {
                   if (singleProc.ProcedureID === proc.get('ProcedureID').value) {
                     // const spcControls = spcControl
-                    //console.log('within if map', proc, singleProc, procItem);
+                    console.log('within if map', proc, singleProc, procItem);
                     proc.get('isChecked').setValue(true);
                     proc.get('aboutProcedure').setValue(singleProc.aboutProcedure);
                     proc.get('currency').setValue(singleProc.currency);
@@ -289,7 +289,7 @@ export class MyProceduresComponent implements OnInit {
         
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }
@@ -302,13 +302,13 @@ export class MyProceduresComponent implements OnInit {
     }
     this.mainService.getProcedureListbySpecId(data).subscribe(
       res => {
-       // //console.log("Res==>", res);
+       // console.log("Res==>", res);
         this.specialityDetails = res['response'];
         this.specialityDetails.map((spc, key) => {
-        //  //console.log(spc);
+        //  console.log(spc);
           this.createServiceDetail(spc.specialityID);
           spc.ProcedureDetails.forEach(value => {
-          //  //console.log("Value ==>",value);
+          //  console.log("Value ==>",value);
             this.createProcedure(key, value.procedureid);
           });
         });
@@ -316,7 +316,7 @@ export class MyProceduresComponent implements OnInit {
         this.myProcedureList();
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
         this.spinner.hide();
       }
     )
@@ -340,7 +340,7 @@ export class MyProceduresComponent implements OnInit {
   createServiceDetail(specialityId): void {
     const formIndex = this.mainForm.length;
     this.mainForm.push(this.servicedetailsModel(specialityId));
-    // //console.log(this.mainForm);
+    // console.log(this.mainForm);
 
   }
 
@@ -357,7 +357,7 @@ export class MyProceduresComponent implements OnInit {
 
 
   createProcedure(index, procedureId): void {
-    // //console.log(index, this.mainForm.at(index));
+    // console.log(index, this.mainForm.at(index));
     const procedureForm = this.mainForm.at(index).get('procedure') as FormArray;
     // const procedureValue = procedureForm.controls.length + 1;
     procedureForm.push(this.procedureModel(procedureId));
@@ -365,14 +365,14 @@ export class MyProceduresComponent implements OnInit {
 
   submitForm() {
     this.serviceRegForm.value.providerId = this.userId;
-    ////console.log("Provider reg New==>", this.serviceRegForm.value);
+    //console.log("Provider reg New==>", this.serviceRegForm.value);
 
- ////console.log("123==>",this.listMyProcedure.length);
+ //console.log("123==>",this.listMyProcedure.length);
     if(this.listMyProcedure.length == 0) {
 
       this.mainService.addProcedure(this.serviceRegForm.value).subscribe(
         res => {
-      //    //console.log("Res==>", res);
+      //    console.log("Res==>", res);
           if (res['status'] == 1) {
             this.toastr.success(res['response'][0]['msg'], '', {
               timeOut: 3000,
@@ -380,7 +380,7 @@ export class MyProceduresComponent implements OnInit {
           }
         },
         error => {
-          //console.log(error.error);
+          console.log(error.error);
         }
       )
 
@@ -388,7 +388,7 @@ export class MyProceduresComponent implements OnInit {
     else {
       this.mainService.updateProcedure(this.serviceRegForm.value).subscribe(
         res => {
-          ////console.log("Res==>", res);
+          //console.log("Res==>", res);
           if (res['status'] == 1) {
             this.getProcedureList();
             this.toastr.success(res['response'][0]['msg'], '', {
@@ -397,7 +397,7 @@ export class MyProceduresComponent implements OnInit {
           }
         },
         error => {
-          //console.log(error.error);
+          console.log(error.error);
         }
       )
     }

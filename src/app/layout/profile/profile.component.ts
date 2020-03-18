@@ -62,11 +62,11 @@ export class ProfileComponent implements OnInit {
   getCountry() {
     this.mainService.getCountryList().subscribe(
       res => {
-        //console.log("Country List==>",res);
+        console.log("Country List==>",res);
         this.listCountry = res['response']
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
        
       }
     )
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
   getProfile(id) {
     this.userService.getUserProfile(id).subscribe(
       res => {
-        //console.log("User profile Details==>",res['response'][0]);
+        console.log("User profile Details==>",res['response'][0]);
        this.userDetails = res['response'][0];
        this.profileViewForm.patchValue({
         //name: this.userDetails.name,
@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
       });
       },
       error => {
-        //console.log(error.error);
+       // console.log(error.error);
        
       }
     )

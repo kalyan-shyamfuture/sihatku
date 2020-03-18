@@ -1,7 +1,7 @@
 <div id="menu2" class="col-12"><br>
 
    <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-3 practioner-new">
          <h3>Practioners</h3>
       </div>
 
@@ -51,7 +51,7 @@
                   : praclist.title ==2 ? 'Mr.'
                   : 'Ms.'}}</td>
                <td>{{praclist.firstName}} {{praclist.lastName}}</td>
-               <td>{{praclist.fieldSpeciality}}</td>
+               <td>{{praclist.fieldSpeciality | slice :0}}</td>
                <td>
                   <img (click)="openModal(template)" class="table-img1 img-small" [src]="praclist.pracImages"
                      onerror="this.src='assets/img/default-icon.png';" alt="" title="">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl, AbstractControl,NgForm } from '@angular/forms';
+
 import { UserService } from "../../core/services/user.service";
 import { MainService } from "../../core/services/main.service";
 import { FormControlValidator,PasswordValidator } from "../../core/validators";
@@ -40,7 +41,7 @@ export class ChangepasswordComponent implements OnInit {
   }
 
   passwordUpdate() {
-    //console.log("Form Submit==>",this.chnagePasswordForm.value);
+    console.log("Form Submit==>",this.chnagePasswordForm.value);
   }
 
 }

@@ -15,8 +15,7 @@ import { SwitchToConsumerComponent } from './switch-to-consumer/switch-to-consum
 import { InboxComponent } from './inbox/inbox.component';
 import { ExploreSihatkuComponent } from './explore-sihatku/explore-sihatku.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-// core
-import { CoreModule } from '../../core/core.module';
+
 import { PractionersAddComponent } from './practioners/practioners-add/practioners-add.component';
 import { PractionersDetailsComponent } from './practioners/practioners-details/practioners-details.component';
 import { PractionersEditComponent } from './practioners/practioners-edit/practioners-edit.component';
@@ -26,7 +25,8 @@ import { MyProceduresDetailsComponent } from './my-procedures/my-procedures-deta
 import { ChangepasswordComponent } from './my-profile/changepassword/changepassword.component';
 import { DeactivateComponent } from './my-profile/deactivate/deactivate.component';
 
-
+// core
+import { CoreModule } from '../../core/core.module';
 @NgModule({
   declarations: [DashboardComponent, PractionersComponent, MyProceduresComponent, NewOdersComponent, OrderHistoryComponent, MyPaymentsComponent, ConsumerReviewComponent, SwitchToConsumerComponent, InboxComponent, ExploreSihatkuComponent,MyProfileComponent, PractionersAddComponent, PractionersDetailsComponent, PractionersEditComponent, MyProceduresAddComponent, MyProceduresEditComponent, MyProceduresDetailsComponent, ChangepasswordComponent, DeactivateComponent],
   imports: [

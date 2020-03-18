@@ -27,7 +27,7 @@ export class PaymentComponent implements OnInit {
   ) {
     if(localStorage.getItem('selectedCartList')) {
       this.cartList = JSON.parse(localStorage.getItem('selectedCartList'));
-      //console.log("Checkout Cart List==>",this.cartList);
+      console.log("Checkout Cart List==>",this.cartList);
       this.cartList.forEach(x => {
         this.total_usa_price += parseFloat(x.usaPrice);
         this.total_loc_price += parseFloat(x.locPrice);
@@ -69,18 +69,18 @@ export class PaymentComponent implements OnInit {
 
 payNow() {
 
-  //console.log(this.paymentForm.value);
+  console.log(this.paymentForm.value);
   (<any>window).Stripe.card.createToken({
     number: this.paymentForm.value.cardNumber,
     exp_month: this.paymentForm.value.cardExpMonth,
     exp_year: this.paymentForm.value.cardExpYear,
     cvc: this.paymentForm.value.cardCvv
   }, (status: number, response: any) => {
-    //console.log(response);
-    //console.log(status);
+    console.log(response);
+    console.log(status);
     if (status === 200) {
      // this.message = `Success! Card token ${response.card.id}.`;
-   //console.log("Token Id",response.id)
+   console.log("Token Id",response.id)
 
 var data = {
       "CardName": this.paymentForm.value.cardName,
@@ -98,7 +98,7 @@ var data = {
 //this.subscription = 
 this.mainService.stripePayment(data).subscribe(
     res => {
-      //console.log(res['message']);
+      console.log(res['message']);
 
       this.txnId= res['response'][0].TranID;
       
@@ -116,7 +116,7 @@ this.mainService.stripePayment(data).subscribe(
 
       this.mainService.placeOrder(data).subscribe(
         res => {
-          //console.log(res);
+          console.log(res);
           
           // if(res.status==1) {
 
@@ -125,7 +125,7 @@ this.mainService.stripePayment(data).subscribe(
           this.router.navigateByUrl('/success');
         },
         error => {
-          //console.log(error.error);
+          console.log(error.error);
          
         }
       )
@@ -134,9 +134,9 @@ this.mainService.stripePayment(data).subscribe(
     }
   )
     } else {
-      //console.log(12333);
+      console.log(12333);
       
-      //console.log(response.error.message);
+      console.log(response.error.message);
       alert(response.error.message);
       this.toastr.success(response.error.message, '', {
         timeOut: 3000,
@@ -161,7 +161,7 @@ gotoPayment() {
 
   this.mainService.placeOrder(data).subscribe(
     res => {
-      //console.log(res);
+      console.log(res);
       
       // if(res.status==1) {
 
@@ -170,7 +170,7 @@ gotoPayment() {
       this.router.navigateByUrl('/success');
     },
     error => {
-      //console.log(error.error);
+      console.log(error.error);
      
     }
   )

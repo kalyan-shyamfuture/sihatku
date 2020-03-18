@@ -114,7 +114,7 @@ export class SigninComponent implements OnInit {
         this.listCountry = res['response']
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
       }
     )
   }
@@ -149,7 +149,7 @@ export class SigninComponent implements OnInit {
             }
           },
           error => {
-            //console.log(error.error);
+            console.log(error.error);
             this.toastr.error('Error!!!', '', {
               timeOut: 3000,
             });
@@ -188,7 +188,7 @@ export class SigninComponent implements OnInit {
         }
         },
         error => {
-          //console.log(error.error);
+          console.log(error.error);
           this.toastr.error('Error!!!', '', {
             timeOut: 3000,
           });
@@ -210,7 +210,7 @@ export class SigninComponent implements OnInit {
         }
         this.userService.userForgotPassword(data).subscribe(
           res => {
-            //console.log("Forgot pass Result==>", res);
+            console.log("Forgot pass Result==>", res);
             if(res['status']==1) {
               if(res['response'][0]['Status']==1) {
                 this.showModal =3;
@@ -227,7 +227,7 @@ export class SigninComponent implements OnInit {
             }
           },
           error => {
-            //console.log(error.error);
+            console.log(error.error);
             this.toastr.error('Error!!!', '', {
               timeOut: 3000,
             });
@@ -262,7 +262,7 @@ export class SigninComponent implements OnInit {
       }
         this.userService.userForgotPassword(data).subscribe(
       res => {
-        //console.log("Forgot pass Result==>", res);
+        console.log("Forgot pass Result==>", res);
         if(res['status']==1) {
          
           this.showModal =1;
@@ -272,7 +272,7 @@ export class SigninComponent implements OnInit {
         }
       },
       error => {
-        //console.log(error.error);
+        console.log(error.error);
         this.toastr.error('Error!!!', '', {
           timeOut: 3000,
         });

@@ -29,7 +29,7 @@ export class CheckoutComponent implements OnInit {
   this.userName = localStorage.getItem('userName');
     if(localStorage.getItem('selectedCartList')) {
       this.cartList = JSON.parse(localStorage.getItem('selectedCartList'));
-      //console.log("Checkout Cart List==>",this.cartList);
+      console.log("Checkout Cart List==>",this.cartList);
       this.cartList.forEach(x => {
         this.total_usa_price += parseFloat(x.usaPrice);
         this.total_loc_price += parseFloat(x.locPrice);
@@ -39,15 +39,15 @@ export class CheckoutComponent implements OnInit {
   }
 
   gotoPayment() {
-    //console.log(this.cartList);
-    //console.log(typeof(this.cartList[0].dateTimeInBuyNowPage));
+    console.log(this.cartList);
+    console.log(typeof(this.cartList[0].dateTimeInBuyNowPage));
     localStorage.setItem('selectedCartList', JSON.stringify(this.cartList));
     
     this.router.navigateByUrl('/payment' );
   }
 
   getSelectedDate(dt1) {
-    //console.log("Selected Date===>",dt1._selected);
+    console.log("Selected Date===>",dt1._selected);
   }
 
 }

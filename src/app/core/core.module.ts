@@ -1,4 +1,4 @@
-import { NgModule,ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -10,7 +10,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { AuthGuard } from './guard/auth.guard';
 
 // Ngx Bootstrap
-import { BsDropdownModule,TabsModule,AccordionModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, AccordionModule } from 'ngx-bootstrap';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 // Material
@@ -46,17 +46,17 @@ import { CarticonComponent } from './components/carticon/carticon.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent, 
-    FooterComponent, 
-    SidebarComponent, 
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
     SigninComponent,
-     HeaderProviderComponent, 
-     FooterProviderComponent,
-     ServiceproviderSigninComponent,
-     ServicesidebarComponent,
-     CarticonComponent
+    HeaderProviderComponent,
+    FooterProviderComponent,
+    ServiceproviderSigninComponent,
+    ServicesidebarComponent,
+    CarticonComponent
 
-    
+
   ],
   imports: [
     CommonModule,
@@ -68,30 +68,30 @@ import { CarticonComponent } from './components/carticon/carticon.component';
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     TabsModule.forRoot(),
-      //----------------Material----------------//
-      MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
-      MatCardModule, MatCheckboxModule, MatChipsModule, MatStepperModule, MatDatepickerModule,
-      MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule,
-      MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule,
-      MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatFormFieldModule, MatSelectModule, MatSidenavModule,
-      MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule,
-      MatTabsModule, MatToolbarModule, MatTooltipModule,
-      //----------------Material----------------//
-  
-      OwlModule,
-      OwlDateTimeModule, 
-      OwlNativeDateTimeModule,
-      CarouselModule,
-      AgmCoreModule.forRoot({
-       apiKey: 'AIzaSyAkkz_K6d5CBMaY6qOBVSCuybYnP_AkagU',
-       //apiKey:'AIzaSyBozOMarWpi9n-gu7TkXZR3WH36Admg--Q',
-        libraries: ['places']
-      }),
-      AngularFontAwesomeModule,
-      NgxPageScrollCoreModule,
-      ScrollToModule.forRoot(),
-      ModalModule.forRoot(),
-      NgSelectModule
+    //----------------Material----------------//
+    MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
+    MatCardModule, MatCheckboxModule, MatChipsModule, MatStepperModule, MatDatepickerModule,
+    MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule,
+    MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule,
+    MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatFormFieldModule, MatSelectModule, MatSidenavModule,
+    MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule,
+    MatTabsModule, MatToolbarModule, MatTooltipModule,
+    //----------------Material----------------//
+
+    OwlModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    CarouselModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAkkz_K6d5CBMaY6qOBVSCuybYnP_AkagU',
+      //apiKey:'AIzaSyBozOMarWpi9n-gu7TkXZR3WH36Admg--Q',
+      libraries: ['places']
+    }),
+    AngularFontAwesomeModule,
+    NgxPageScrollCoreModule,
+    ScrollToModule.forRoot(),
+    ModalModule.forRoot(),
+    NgSelectModule
   ],
   exports: [
     FormsModule,
@@ -111,29 +111,29 @@ import { CarticonComponent } from './components/carticon/carticon.component';
     //----------------Material----------------//
     OwlModule,
     CarouselModule,
-    OwlDateTimeModule, 
+    OwlDateTimeModule,
     OwlNativeDateTimeModule,
     NgSelectModule,
-   // NgxImageGalleryModule,
-   // LightboxModule,
+    // NgxImageGalleryModule,
+    // LightboxModule,
     HeaderComponent,
     FooterComponent,
     NgxSpinnerModule,
-    SidebarComponent, 
+    SidebarComponent,
     AngularFontAwesomeModule,
     HeaderProviderComponent,
     FooterProviderComponent,
     ServicesidebarComponent,
     CarticonComponent
-    
-  
+
+
   ],
   entryComponents: [
     SigninComponent,
     ServiceproviderSigninComponent
   ],
-   providers: [
-     AuthGuard
-   ]
+  providers: [
+    AuthGuard
+  ]
 })
 export class CoreModule { }
